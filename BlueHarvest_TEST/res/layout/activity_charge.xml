@@ -6,7 +6,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="1.0" android:dividerPadding="10sp" android:paddingTop="10sp" android:paddingLeft="2sp">
+            android:weightSum="1.1" android:dividerPadding="10sp" android:paddingTop="10sp" android:paddingLeft="2sp">
         <LinearLayout
                 android:id="@+id/linearLayoutH1"
                 android:layout_width="fill_parent"
@@ -212,6 +212,42 @@
                     android:text="@string/button.send.label"
                     android:id="@+id/sendBtn"
                     android:layout_weight=".33"/>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/chargeActivityButtons"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".10"
+                android:weightSum="1.0" android:gravity="center_horizontal|bottom" android:padding="10dip">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/roundbutton"
+                    android:text="new"
+                    android:id="@+id/button1"
+                    android:layout_weight=".25"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/roundbutton"
+                    android:text="new"
+                    android:id="@+id/button2"
+                    android:layout_weight=".25"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/roundbutton"
+                    android:text="new"
+                    android:id="@+id/button3"
+                    android:layout_weight=".25"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/roundbutton"
+                    android:text="new"
+                    android:id="@+id/button1"
+                    android:layout_weight=".25"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

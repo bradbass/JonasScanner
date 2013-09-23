@@ -105,6 +105,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_ITEM_TABLE);
         db.execSQL(CREATE_TYPE_TABLE);
         setDefaultLabel(db);
+        insertBlankRow();
     }
     
     /**
@@ -172,6 +173,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         db.close(); // Closing database connection
+    }
+
+    private void insertBlankRow() {
+        //insert a blank row into WHSE, ITEM and TYPE tables
+        for (int i=1;i<4;i++) {
+            insertLabel(1,null);
+        }
     }
     
     /**
