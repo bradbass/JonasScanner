@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/warehouse.label"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView" android:layout_gravity="left|center_vertical"/>
+    <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/spinner"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity.label"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView1" android:layout_gravity="left|center_vertical"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/part.upc.label"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView2" android:layout_gravity="left|center_vertical"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText1"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:gravity="center_horizontal" android:padding="10dp"
+            android:weightSum="1">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbutton"
+                android:text="@string/button.scan.label"
+                android:id="@+id/button" android:layout_gravity="center_horizontal|bottom"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbutton"
+                android:text="@string/button.save.label"
+                android:id="@+id/button1" android:layout_gravity="center_horizontal|bottom"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbutton"
+                android:text="@string/button.send.label"
+                android:id="@+id/button2" android:layout_gravity="center_horizontal|bottom"/>
+    </LinearLayout>
+</LinearLayout>

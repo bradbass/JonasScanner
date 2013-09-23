@@ -1,0 +1,133 @@
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Warehouse"
+            android:id="@+id/textView"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="20dp" android:layout_alignParentTop="true"
+            android:layout_marginTop="17dp" android:textSize="18dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job/WO #"
+            android:id="@+id/textView1" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="48dp" android:textSize="18dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost Item"
+            android:id="@+id/textView2" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="81dp" android:textSize="18dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost Type"
+            android:id="@+id/textView3" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="115dp" android:textSize="18dp"/>
+    <Spinner
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerWhse"
+            android:layout_alignBottom="@+id/textView" android:layout_alignTop="@+id/textView"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="120dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/jobWoField" android:layout_toRightOf="@+id/textView" android:layout_below="@+id/textView"
+            android:layout_alignRight="@+id/spinnerWhse" android:layout_alignLeft="@+id/spinnerWhse"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerCostItem" android:layout_alignLeft="@+id/spinnerWhse"
+            android:layout_alignTop="@+id/textView2" android:layout_alignRight="@+id/spinnerWhse"
+            android:layout_alignBottom="@+id/textView2"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerCostType" android:layout_alignLeft="@+id/spinnerWhse"
+            android:layout_alignTop="@+id/textView3" android:layout_alignRight="@+id/spinnerWhse"
+            android:layout_alignBottom="@+id/textView3"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Part # UPC"
+            android:id="@+id/textView4" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="170dp" android:textSize="18dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scanField"
+            android:layout_alignLeft="@+id/spinnerWhse" android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignRight="@+id/spinnerWhse"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:id="@+id/textView5" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="205dp" android:textSize="18dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/quantityField" android:layout_alignLeft="@+id/spinnerWhse"
+            android:layout_alignTop="@+id/textView5" android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignRight="@+id/spinnerWhse"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serial #"
+            android:id="@+id/textView6" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="240dp" android:textSize="18dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/serialField" android:layout_alignLeft="@+id/spinnerWhse"
+            android:layout_alignTop="@+id/textView6" android:layout_alignBaseline="@+id/textView6"
+            android:layout_alignRight="@+id/spinnerWhse"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:id="@+id/textView7" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="275dp" android:textSize="18dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/commentField" android:layout_alignLeft="@+id/spinnerWhse"
+            android:layout_alignTop="@+id/textView7" android:layout_alignBaseline="@+id/textView7"
+            android:layout_alignRight="@+id/spinnerWhse"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Install Date"
+            android:id="@+id/textView8" android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true"
+            android:layout_marginTop="310dp" android:textSize="18dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/installField" android:layout_alignLeft="@+id/spinnerWhse"
+            android:layout_alignTop="@+id/textView8" android:layout_alignBaseline="@+id/textView8"
+            android:layout_alignRight="@+id/spinnerWhse"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbutton"
+            android:text="Scan"
+            android:id="@+id/scanBtn" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true"
+            android:width="100dip"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbutton"
+            android:text="Save"
+            android:id="@+id/saveBtn"
+            android:width="100dip" android:layout_toRightOf="@+id/textView8" android:layout_alignTop="@+id/scanBtn"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbutton"
+            android:text="Send"
+            android:id="@+id/sendBtn"
+            android:width="100dip" android:layout_alignParentRight="true" android:layout_alignTop="@+id/scanBtn"/>
+</RelativeLayout>

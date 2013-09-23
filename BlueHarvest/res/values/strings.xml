@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BlueHarvest</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_config">ConfigActivity</string>
+    <string name="title_activity_database_handler">DatabaseHandler</string>
+    <string name="select_label">Select Label</string>
+    <string name="title_activity_charge">ChargeActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="add.new.label.label">Add New Label</string>
+    <string name="add.label.button">Add Label</string>
+    <string name="select.label.label">Select Label</string>
+    <string name="del.label.button">Del Label</string>
+    <string name="charge.parts.label">Charge Parts</string>
+    <string name="charge.button">Charge</string>
+    <string name="configure.label">Configure</string>
+    <string name="config.button">Config</string>
+    <string name="settings.label">Settings</string>
+    <string name="settings.button">Settings</string>
+    <string name="scan.button">Scan</string>
+    <string name="date.button">Date</string>
+    <string name="save.button">Save</string>
+    <string name="send.button">Send</string>
+    <string name="account.settings.label">Account Settings:</string>
+    <string name="email.account.name.label">Email Account Name:</string>
+    <string name="email.account.password.label">Email Account Password:</string>
+    <string name="email.settings.label">Email Settings:</string>
+    <string name="from.label">From:</string>
+    <string name="to.label">To:</string>
+    <string name="subject.label">Subject:</string>
+    <string name="body.label">Body:</string>
+    <string name="exit.button">Exit</string>
+    <string name="back.button">Back</string>
+    <string name="simple.date.format">yyyy / MM / dd</string>
+    <string name="filename.simple.date.format">yyyy-MM-dd_HH-mm-ss</string>
+    <string name="filename.extension">_upload.csv</string>
+    <string name="toast.filename.is.label">The fileName is:</string>
+    <string name="toast.you.selected.label">You selected:</string>
+    <string name="toast.goodbye.message">Thanks for using BlueHarvest!</string>
+    <string name="onbackpress.dialog.title">Back to MainActivity?</string>
+    <string name="onbackpress.dialog.message">Are you sure? Data will be lost if you have not clicked SEND.</string>
+    <string name="savemsg.dialog.title">Nothing to send!</string>
+    <string name="savemsg.window.message">You must input and save some data before you can SEND.</string>
+    <string name="toast.email.success.message">Email was sent successfully.</string>
+    <string name="toast.email.fail.message">Email was not sent.</string>
+    <string name="toast.saved.settings.message">Saved Settings.</string>
+    <string name="mail.log.e.title">MailApp</string>
+    <string name="mail.log.e.message">Could not send email</string>
+    <string name="toast.label.name.message">Please enter label name</string>
+    <string name="toast.you.selected.message">You selected:</string>
+    <string name="toast.wrote.to.db.message">Wrote Values to DB:</string>
+    <string name="error.server.not.responding.message">error - server not responding</string>
+    <string name="toast.encode.message">Encoded Password:</string>
+    <string name="toast.decode.message">Decoded Password:</string>
+    <string name="toast.failed.to.scan.message">Failed to scan. Please try again.</string>
+
+</resources>

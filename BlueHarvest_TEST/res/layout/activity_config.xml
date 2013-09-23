@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+ 
+    <!-- Label -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add.new.label.label"
+        android:padding="8dip"
+        android:id="@+id/textView" android:layout_alignLeft="@+id/input_label" android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"/>
+ 
+    <!-- Input Text -->
+    <EditText android:id="@+id/input_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="162dp"/>
+ 
+    <!-- Add Button -->
+    <Button android:id="@+id/btn_add"
+        android:background="@drawable/roundbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add.label.button"
+        android:layout_alignLeft="@+id/input_label" android:layout_alignParentTop="true"
+        android:layout_marginTop="205dp" android:layout_alignRight="@+id/input_label"/>
+         
+    <!-- Select Label -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select.label.label"
+        android:padding="8dip"
+        android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true" android:layout_marginTop="263dp"
+        android:id="@+id/textView2"/>
+ 
+    <!-- Spinner Dropdown -->
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:prompt="@string/select_label"
+        android:layout_alignLeft="@+id/textView" android:layout_below="@+id/textView2"/>
+
+    <!--  Del Button -->
+    <Button
+        android:id="@+id/btn_del"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundbutton"
+        android:text="@string/del.label.button"
+        android:layout_alignLeft="@+id/input_label" android:layout_alignParentTop="true"
+        android:layout_marginTop="351dp" android:layout_alignRight="@+id/input_label"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Table"
+            android:id="@+id/textView1" android:layout_alignParentLeft="true" android:layout_marginLeft="6dp"
+            android:layout_alignParentTop="true" android:layout_marginTop="7dp"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="53dp"
+            android:id="@+id/spinnerTable" android:layout_alignLeft="@+id/textView"
+            android:layout_alignRight="@+id/textView"
+            android:layout_below="@+id/textView1"/>
+
+</RelativeLayout>
