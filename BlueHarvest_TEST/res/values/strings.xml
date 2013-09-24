@@ -179,12 +179,12 @@
     <string name="button.scan.label">Scan</string>
     <string name="button.save.label">Save</string>
     <string name="button.send.label">Send</string>
-    <string name="warehouse.label">Warehouse</string>
-    <string name="job.wo.label">Job/WO #</string>
+    <string name="warehouse.label">Warehouse *</string>
+    <string name="job.wo.label">Job/WO # *</string>
     <string name="cost.item.label">Cost Item</string>
-    <string name="cost.type.label">Cost Type</string>
-    <string name="part.upc.label">Part # UPC</string>
-    <string name="quantity.label">Quantity</string>
+    <string name="cost.type.label">Cost Type *</string>
+    <string name="part.upc.label">Part # UPC *</string>
+    <string name="quantity.label">Quantity *</string>
     <string name="serial.label">Serial #</string>
     <string name="comments.label">Comments</string>
     <string name="install.date.label">Install Date</string>
@@ -196,5 +196,9 @@
     <string name="email.host.label">Email Host:</string>
     <string name="receive.po.button">Receive</string>
     <string name="receive.po.label">Receive P/O</string>
+    <string name="first.button">First</string>
+    <string name="previous.button">Prev.</string>
+    <string name="next.button">Next</string>
+    <string name="last.button">Last</string>
 
 </resources>

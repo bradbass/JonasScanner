@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 public class TransferActivity extends Activity implements AdapterView.OnItemSelectedListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_transfer);
+        setTitle("onas Whse Transfer");
     }
 
     /**
