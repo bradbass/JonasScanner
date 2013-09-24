@@ -185,7 +185,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private void insertBlankRow() {
         //insert a blank row into WHSE, ITEM and TYPE tables
         for (int i=1;i<4;i++) {
-            insertLabel(1,null);
+            insertLabel(i," ");
         }
     }
     
