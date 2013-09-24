@@ -14,7 +14,7 @@ import static android.widget.Toast.makeText;
  * @author Brad Bass
  * @version 1.0
  * 
- * MainActivity allows user to either go to the ConfigActivity or the ChargeActivity.
+ * HomeActivity allows user to either go to the ConfigActivity or the ChargeActivity.
  *
  * @see android.os
  * @see android.app
@@ -23,12 +23,12 @@ import static android.widget.Toast.makeText;
  * @see android.widget
  */
 
-public class MainActivity extends Activity {
+public class HomeActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_home);
         setTitle("onas Scanner");
 
         //buttons

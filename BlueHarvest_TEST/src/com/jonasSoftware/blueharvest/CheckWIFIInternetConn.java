@@ -23,7 +23,7 @@ public class CheckWIFIInternetConn extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         //Button btnStatus = (Button) findViewById(R.id.btn_check);
 

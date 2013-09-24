@@ -319,7 +319,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         catch(Exception sqlEx)
         {
-            Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
+            Log.e("HomeActivity", sqlEx.getMessage(), sqlEx);
         }
         _db.close();
     }

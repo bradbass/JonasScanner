@@ -503,7 +503,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		//Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
 		//String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-		//Intent i = new Intent(getApplicationContext(), MainActivity.class);
+		//Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 		db.purgeChrgData();
 		db.close();
 		endActivity();

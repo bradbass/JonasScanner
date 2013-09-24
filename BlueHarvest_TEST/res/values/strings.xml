@@ -200,5 +200,9 @@
     <string name="previous.button">Prev.</string>
     <string name="next.button">Next</string>
     <string name="last.button">Last</string>
+    <string name="username.label">Username</string>
+    <string name="login.label">LOGIN</string>
+    <string name="password.label">Password</string>
+    <string name="login.button">Login</string>
 
 </resources>
