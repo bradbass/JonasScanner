@@ -23,7 +23,7 @@ import static android.widget.Toast.makeText;
 public class DatabaseHandler extends SQLiteOpenHelper {
 		
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 7;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -105,14 +105,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_ITEM_TABLE);
         db.execSQL(CREATE_TYPE_TABLE);
         setDefaultLabel(db);
-        insertBlankRow();
+        //insertBlankRow();
     }
     
     /**
      * @param db    database
      * 
      */
-
     void setDefaultLabel(SQLiteDatabase db) {
     	// creates default label
     	//SQLiteDatabase db = this.getWritableDatabase();
@@ -123,6 +122,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_LABELS, null, values);
         values.put(KEY_NAME, "ITEM");
     	db.insert(TABLE_LABELS, null, values);
+        //*
+        values.put(COLUMN_WHSE, "");
+        db.insert(TABLE_WHSE, null, values);
+        values.put(COLUMN_TYPE, "");
+        db.insert(TABLE_TYPE, null, values);
+        values.put(COLUMN_ITEM, "");
+        db.insert(TABLE_ITEM, null, values);
+        //*/
     }
     
     /**
