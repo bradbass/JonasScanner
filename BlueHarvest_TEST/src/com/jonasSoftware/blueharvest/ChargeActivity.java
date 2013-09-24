@@ -91,6 +91,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		final Button sendBtn = (Button) findViewById(R.id.sendBtn);
 		//final Button backBtn = (Button) findViewById(R.id.btnBack);
 		//final Button exitBtn = (Button) findViewById(R.id.btnExit);
+        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
+        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
+        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
+        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
 		
 		//*
 		final TextView dateField = (TextView) findViewById(R.id.installField);

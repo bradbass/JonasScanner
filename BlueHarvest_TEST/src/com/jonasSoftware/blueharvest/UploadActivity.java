@@ -1,9 +1,13 @@
 package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.*;
+import android.widget.AdapterView.OnItemSelectedListener;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,11 +15,84 @@ import android.widget.AdapterView;
  * Date: 19/09/13
  * Time: 4:22 PM
  */
-public class UploadActivity extends Activity implements AdapterView.OnItemSelectedListener {
+public class UploadActivity extends Activity implements OnItemSelectedListener, OnDateSetListener {
+
+    // Spinner element
+    private Spinner spinnerWhse;
+    //
+    static String _label;
+    private static String _upc;
+    private static String _date;
+    private static String _filename;
+    private static String _whse;
+    private static String _quantity;
+
+    private Boolean sent = false;
+    private Boolean exit = false;
+    private Boolean save = false;
+    // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
+    private String date;
+    private String comment;
+    Crypter crypter = new Crypter();
+    //static ArrayAdapter<String> dataAdapter;
+
+    static EditText installField;
+    static EditText quantityField;
+    static TextView scanField;
+    static String currentDate;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         setTitle("onas Parts Upload");
+
+        //create buttons
+        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
+        final Button saveBtn = (Button) findViewById(R.id.saveBtn);
+        final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
+        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
+        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
+        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
+
+        // Spinner element
+        spinnerWhse = (Spinner) findViewById(R.id.spinnerWhse);
+        // Spinner click listener
+        spinnerWhse.setOnItemSelectedListener(this);
+        // Loading spinner data from database
+        loadSpinnerDataWhse();
+    }
+
+    private void loadSpinnerDataWhse() {
+        // calls method to load spinner
+        loadSpinnerData("1");
+        // load the spinner
+        //spinnerWhse.setAdapter(dataAdapter);
+    }
+
+    /**
+     * Function to load the spinner data from SQLite database
+     * */
+    private void loadSpinnerData(String tableName) {
+        // load WHSE, COST ITEM and COST TYPE spinners from DB
+        //String spinner = tableName;
+        // database handler
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+
+        // Spinner Drop down elements
+        List<String> labels = db.getAllLabels(tableName);
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, labels);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //spinnerWhse.setAdapter(dataAdapter);
+        spinnerWhse.setAdapter(dataAdapter);
+        //return dataAdapter;
     }
 
     /**
@@ -46,6 +123,11 @@ public class UploadActivity extends Activity implements AdapterView.OnItemSelect
      */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+        //do stuff
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
         //do stuff
     }
 }

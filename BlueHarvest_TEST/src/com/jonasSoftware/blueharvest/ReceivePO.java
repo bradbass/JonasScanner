@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +17,15 @@ public class ReceivePO extends Activity implements AdapterView.OnItemSelectedLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive);
         setTitle("onas Receive P/O");
+
+        //create buttons
+        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
+        final Button saveBtn = (Button) findViewById(R.id.saveBtn);
+        final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
+        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
+        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
+        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
     }
 
     /**
