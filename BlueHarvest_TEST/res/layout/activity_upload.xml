@@ -1,7 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:background="#3b3b3b"
             android:id="@+id/scrollView1">
     <LinearLayout
             android:id="@+id/linearLayoutV"
@@ -22,13 +21,11 @@
                     android:id="@+id/textView"
                     android:textSize="18dp"
                     android:layout_weight=".40"
-                    android:textColor="#FFFFFF"
                     android:gravity="center_vertical"/>
             <Spinner
                     android:layout_width="0dp"
                     android:layout_height="40sp"
                     android:id="@+id/spinnerWhse"
-                    android:textColor="#FFFFFF"
                     android:layout_weight=".60"/>
         </LinearLayout>
 
@@ -44,7 +41,6 @@
                     android:text="@string/quantity.label"
                     android:id="@+id/textView4"
                     android:textSize="18dp"
-                    android:textColor="#FFFFFF"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -65,7 +61,6 @@
                     android:text="@string/part.upc.label"
                     android:id="@+id/textView5"
                     android:textSize="18dp"
-                    android:textColor="#FFFFFF"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -151,7 +146,6 @@
                     android:text="* Required"
                     android:id="@+id/requiredTag"
                     android:textSize="18dp"
-                    android:textColor="#FFFFFF"
                     android:layout_weight=".30"/>
             <TextView
                     android:layout_width="0dp"

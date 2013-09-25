@@ -24,7 +24,7 @@ import static android.widget.Toast.makeText;
 public class DatabaseHandler extends SQLiteOpenHelper {
 		
     // Database Version
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 12;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -156,12 +156,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, "ITEM");
     	db.insert(TABLE_LABELS, null, values);
         //*
-        values.put(COLUMN_WHSE, "");
-        db.insert(TABLE_WHSE, null, values);
-        values.put(COLUMN_TYPE, "");
-        db.insert(TABLE_TYPE, null, values);
-        values.put(COLUMN_ITEM, "");
-        db.insert(TABLE_ITEM, null, values);
+        ContentValues valuesWhse = new ContentValues();
+        valuesWhse.put(COLUMN_WHSE, "");
+        db.insert(TABLE_WHSE, null, valuesWhse);
+        ContentValues valuesType = new ContentValues();
+        valuesType.put(COLUMN_TYPE, "");
+        db.insert(TABLE_TYPE, null, valuesType);
+        ContentValues valuesItem = new ContentValues();
+        valuesItem.put(COLUMN_ITEM, "");
+        db.insert(TABLE_ITEM, null, valuesItem);
         //*/
     }
     

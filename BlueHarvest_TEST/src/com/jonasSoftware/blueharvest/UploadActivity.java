@@ -61,6 +61,55 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         spinnerWhse.setOnItemSelectedListener(this);
         // Loading spinner data from database
         loadSpinnerDataWhse();
+
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
+
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
+
+        firstBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
+
+        lastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //do stuff
+            }
+        });
     }
 
     private void loadSpinnerDataWhse() {
