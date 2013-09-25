@@ -112,6 +112,8 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //do stuff
+        _label = parent.getItemAtPosition(position).toString();
+        ((TextView) parent.getChildAt(0)).setTextColor(0x00000000);
     }
 
     /**
