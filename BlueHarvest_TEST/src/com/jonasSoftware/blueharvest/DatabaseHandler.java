@@ -10,6 +10,7 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_LONG;
@@ -58,29 +59,60 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_JOB_WO_NUM = "job_wo_num";
     private static final String COLUMN_SERIAL = "serial";
     private static final String COLUMN_QUANTITY = "quantity";
+    //
+    // Login table name
+    private static final String TABLE_LOGIN = "login";
+    // Login Table Columns names
+    //private static final String KEY_ID = "id";
+    //private static final String KEY_NAME = "name";
+    private static final String KEY_USERNAME = "email";
+    private static final String KEY_UID = "uid";
+    private static final String KEY_CREATED_AT = "created_at";
     
     // Table create strings
     private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + TABLE_LABELS + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT)";
+            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_NAME + " TEXT)";
     
     private static final String CREATE_CHRGDATA_TABLE = "CREATE TABLE " + TABLE_CHRG_DATA + "("
-            + COLUMN_KEY + " INTEGER PRIMARY KEY," + COLUMN_WHSE + " TEXT,"+ COLUMN_JOB_WO_NUM + " TEXT," + COLUMN_ITEM + " TEXT,"
-            + COLUMN_TYPE + " TEXT," + COLUMN_UPC + " TEXT," + COLUMN_QUANTITY + " TEXT,"
-            + COLUMN_SERIAL + " TEXT," + COLUMN_COMMENT + " TEXT," + COLUMN_DATE + " TEXT)";
+            + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_WHSE + " TEXT,"
+            + COLUMN_JOB_WO_NUM + " TEXT,"
+            + COLUMN_ITEM + " TEXT,"
+            + COLUMN_TYPE + " TEXT,"
+            + COLUMN_UPC + " TEXT,"
+            + COLUMN_QUANTITY + " TEXT,"
+            + COLUMN_SERIAL + " TEXT,"
+            + COLUMN_COMMENT + " TEXT,"
+            + COLUMN_DATE + " TEXT)";
     
     private static final String CREATE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
-    		+ COLUMN_KEY + " INTEGER PRIMARY KEY," + COLUMN_ACT_NAME + " TEXT,"
-    		+ COLUMN_PASSWORD + " TEXT," + COLUMN_FROM + " TEXT," + COLUMN_TO + " TEXT,"
-    		+ COLUMN_SUBJECT + " TEXT," + COLUMN_BODY + " TEXT)";
+    		+ COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_ACT_NAME + " TEXT,"
+    		+ COLUMN_PASSWORD + " TEXT,"
+            + COLUMN_FROM + " TEXT,"
+            + COLUMN_TO + " TEXT,"
+    		+ COLUMN_SUBJECT + " TEXT,"
+            + COLUMN_BODY + " TEXT)";
 
     private static final String CREATE_WHSE_TABLE = "CREATE TABLE " + TABLE_WHSE + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + COLUMN_WHSE + " TEXT)";
+            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + COLUMN_WHSE + " TEXT)";
 
     private static final String CREATE_ITEM_TABLE = "CREATE TABLE " + TABLE_ITEM + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + COLUMN_ITEM + " TEXT)";
+            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + COLUMN_ITEM + " TEXT)";
 
     private static final String CREATE_TYPE_TABLE = "CREATE TABLE " + TABLE_TYPE + "("
-            + KEY_ID + " INTEGER PRIMARY KEY," + COLUMN_TYPE + " TEXT)";
+            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + COLUMN_TYPE + " TEXT)";
+
+    private static final String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
+            + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_NAME + " TEXT,"
+            + KEY_USERNAME + " TEXT UNIQUE,"
+            + KEY_UID + " TEXT,"
+            + KEY_CREATED_AT + " TEXT" + ")";
 
     /**
      * 
@@ -104,6 +136,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_WHSE_TABLE);
         db.execSQL(CREATE_ITEM_TABLE);
         db.execSQL(CREATE_TYPE_TABLE);
+        db.execSQL(CREATE_LOGIN_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
     }
@@ -148,6 +181,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WHSE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
  
         // Create tables again
         onCreate(db);
@@ -422,5 +456,72 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
         // returning labels
         return labels;
+    }
+
+    /**
+     * Storing user details in database
+     * */
+    public void addUser(String name, String email, String uid, String created_at) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, name); // Name
+        values.put(KEY_USERNAME, email); // Email
+        values.put(KEY_UID, uid); // Email
+        values.put(KEY_CREATED_AT, created_at); // Created At
+
+        // Inserting Row
+        db.insert(TABLE_LOGIN, null, values);
+        db.close(); // Closing database connection
+    }
+
+    /**
+     * Getting user data from database
+     * */
+    public HashMap<String, String> getUserDetails(){
+        HashMap<String,String> user = new HashMap<String,String>();
+        String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+            user.put("name", cursor.getString(1));
+            user.put("email", cursor.getString(2));
+            user.put("uid", cursor.getString(3));
+            user.put("created_at", cursor.getString(4));
+        }
+        cursor.close();
+        db.close();
+        // return user
+        return user;
+    }
+
+    /**
+     * Getting user login status
+     * return true if rows are there in table
+     * */
+    public int getRowCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_LOGIN;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int rowCount = cursor.getCount();
+        db.close();
+        cursor.close();
+
+        // return row count
+        return rowCount;
+    }
+
+    /**
+     * Re crate database
+     * Delete all tables and create them again
+     * */
+    public void resetTables(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Delete All Rows
+        db.delete(TABLE_LOGIN, null, null);
+        db.close();
     }
 }
