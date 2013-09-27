@@ -2,6 +2,7 @@ package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -66,6 +67,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 //do stuff
+                Intent uploadIntent = new Intent("com.google.zxing.client.android.SCAN");
+                uploadIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(uploadIntent, 0);
             }
         });
 
@@ -73,6 +77,21 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 //do stuff
+                if(_upc == null) {
+                    _upc = scanField.getText().toString();
+                }
+                DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
+
+                _quantity = quantityField.getText().toString();
+                 _whse = spinnerWhse.getSelectedItem().toString();
+
+                saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
+
+                save = true;
+                _upc = null;
+                scanField.setText(null);
+                quantityField.setText(null);
+                spinnerWhse.setSelection(0);
             }
         });
 

@@ -32,6 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Labels table name
     private static final String TABLE_LABELS = "labels";
     private static final String TABLE_CHRG_DATA = "chrgData";
+    private static final String TABLE_UPLOAD_DATA = "uploadData";
     private static final String TABLE_SETTINGS = "settings";
     private static final String TABLE_WHSE = "warehouse";
     private static final String TABLE_ITEM = "cost_item";
@@ -85,6 +86,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_SERIAL + " TEXT,"
             + COLUMN_COMMENT + " TEXT,"
             + COLUMN_DATE + " TEXT)";
+
+    private static final String CREATE_UPLOADDATA_TABLE = "CREATE TABLE " + TABLE_UPLOAD_DATA + "("
+            + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_WHSE + " TEXT,"
+            + COLUMN_UPC + " TEXT,"
+            + COLUMN_QUANTITY + " TEXT)";
     
     private static final String CREATE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
     		+ COLUMN_KEY + " INTEGER PRIMARY KEY,"
@@ -137,6 +144,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_ITEM_TABLE);
         db.execSQL(CREATE_TYPE_TABLE);
         db.execSQL(CREATE_LOGIN_TABLE);
+        db.execSQL(CREATE_UPLOADDATA_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
     }
@@ -185,6 +193,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_UPLOAD_DATA);
  
         // Create tables again
         onCreate(db);
@@ -525,6 +534,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_LOGIN, null, null);
+        db.close();
+    }
+
+    public void saveToDb(String whse, String upc, String quantity, Context context) {
+        //do stuff
+        SQLiteDatabase db = this.getWritableDatabase();
+        //*
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+
+        // Insert row
+        db.insert(TABLE_CHRG_DATA, null, values);
+        //*/
+        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
+                + values, LENGTH_LONG)
+                .show();
+
         db.close();
     }
 }
