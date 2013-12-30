@@ -1,12 +1,14 @@
 package com.jonasSoftware.blueharvest;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
@@ -210,6 +212,34 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
 		    }
 	    });
+
+        firstBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO - when user clicks button, go to first record in db
+            }
+        });
+
+        nextBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO - when user clicks button, go to next record in db
+            }
+        });
+
+        prevBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO - when user clicks button, go to previous record in db
+            }
+        });
+
+        lastBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO - when user clicks button, go to last record in db
+            }
+        });
     }
 	
 	void saveMsg() {
@@ -255,6 +285,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	 * When user clicks on the DATE button, we call this method to show the datePicker.
 	 *
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     void showDatePickerDialog() {
 		DialogFragment newFragment = new DatePickerFragment();
 		newFragment.show(getFragmentManager(), "datePicker");
@@ -421,6 +452,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         wsd.testService(_whse,_wo,_item,_type,_upc,_quantity,_serial,comment,_date);
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     void send() {
         if ((save == null) || !save) {
             saveMsg();
@@ -518,7 +550,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	@Override
 	public void onBackPressed() {
         if ((sent == null) || sent) {
-            if ((sent == null) || !sent || (exit == null) || !exit) {
+            if ((sent == null) || (exit == null) || !exit) {
                 backToMain();
             } else {
                 exitApp();
