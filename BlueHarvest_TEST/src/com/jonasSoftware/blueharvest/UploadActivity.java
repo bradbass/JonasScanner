@@ -1,14 +1,30 @@
 package com.jonasSoftware.blueharvest;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
+
+import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.makeText;
 
 /**
  * Created with IntelliJ IDEA.
@@ -99,6 +115,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 //do stuff
+                //Helper h = new Helper();
+                //h.send();
+                send();
             }
         });
 
@@ -199,5 +218,104 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
         //do stuff
+    }
+
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    void send() {
+        if ((save == null) || !save) {
+            saveMsg();
+        } else {
+            // Auto-generated method stub
+            DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+            db.populateFields();
+
+            setDateTime();
+
+            //db.exportDb(getApplicationContext());
+            db.exportDb(getApplicationContext(), _filename);
+            //
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            // decode password - see Crypter class for methods
+            String _password = SettingsActivity._password;
+            _password = crypter.decode(_password);
+
+            //testing
+            Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+
+            Mail m = new Mail(SettingsActivity._actName, _password);
+            String[] toArr = SettingsActivity._to.split(";");
+            //String[] toArr = { "brad.bass@jonassoftware.com",	"brad.bass@hotmail.ca", "baruch.bass@gmail.com", "tripleb33@hotmail.com" };
+            m.setTo(toArr);
+            m.setFrom(SettingsActivity._from);
+            m.setSubject(SettingsActivity._subject);
+            m.setBody(SettingsActivity._body);
+            try {
+                m.addAttachment(Environment.getExternalStorageDirectory().getPath(),_filename);
+
+                if (!m.send()) {
+                    makeText(UploadActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
+                } else {
+                    makeText(UploadActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
+                    sent = true;
+                }
+            } catch (final Exception e) {
+                //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                Log.e(getString(R.string.mail_log_e_title), getString(R.string.mail_log_e_message), e);
+
+                e.printStackTrace();
+                String stackTrace = Log.getStackTraceString(e);
+
+                AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+                aDB.setTitle("Program Exception!");
+                aDB.setMessage(stackTrace);
+                aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // When user clicks OK, the db is purged and user is sent back to main activity.
+
+                    }
+                });
+                aDB.show();
+            }
+        }
+    }
+
+    void saveMsg() {
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle(getString(R.string.savemsg_dialog_title));
+        aDB.setMessage(getString(R.string.savemsg_window_message));
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    void setDateTime() {
+        // add DateTime to filename
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        Date currentLocalTime = cal.getTime();
+        SimpleDateFormat date = new SimpleDateFormat(getString(R.string.filename_simple_date_format));
+        date.setTimeZone(TimeZone.getDefault());
+        String currentDateTime = date.format(currentLocalTime);
+
+        setFileName(currentDateTime, getBaseContext());
+    }
+
+    void setFileName(String currentDateTime, Context context) {
+        //TODO - Change filename extension
+        _filename = currentDateTime + getString(R.string.filename_extension);
+
+        makeText(context, getString(R.string.toast_filename_is_label)
+                + _filename, LENGTH_LONG)
+                .show();
     }
 }

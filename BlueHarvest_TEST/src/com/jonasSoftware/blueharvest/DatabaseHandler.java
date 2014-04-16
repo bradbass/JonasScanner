@@ -214,26 +214,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         switch (table) {
             case 1:
                 values.put(COLUMN_WHSE, label);
+                assert db != null;
                 db.insert(TABLE_WHSE, null, values);
                 break;
             case 2:
                 values.put(COLUMN_ITEM, label);
+                assert db != null;
                 db.insert(TABLE_ITEM, null, values);
                 break;
             case 3:
                 values.put(COLUMN_TYPE, label);
+                assert db != null;
                 db.insert(TABLE_TYPE, null, values);
         }
 
-        db.close(); // Closing database connection
+        if (db != null) {
+            db.close(); // Closing database connection
+        }
     }
 
+    /*/
     private void insertBlankRow() {
         //insert a blank row into WHSE, ITEM and TYPE tables
         for (int i=1;i<4;i++) {
             insertLabel(i," ");
         }
-    }
+    }//*/
     
     /**
      * Save all fields to the database.
@@ -257,7 +263,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, _date);
     	
     	// Insert row
-    	db.insert(TABLE_CHRG_DATA, null, values);
+        assert db != null;
+        db.insert(TABLE_CHRG_DATA, null, values);
     	//*/
     	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
                 + values, LENGTH_LONG)
@@ -289,7 +296,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	values.put(COLUMN_BODY, _body);
     	
     	// Insert row
-    	db.insert(TABLE_SETTINGS, null, values);
+        assert db != null;
+        db.insert(TABLE_SETTINGS, null, values);
     	//*/
     	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
                 + values, LENGTH_LONG)
@@ -306,7 +314,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	//List<String> settingsFields = new ArrayList<String>();
     	SQLiteDatabase db = this.getReadableDatabase();
 
-    	Cursor cursor = db.query(TABLE_SETTINGS, null, null, null, null, null, null);
+        assert db != null;
+        Cursor cursor = db.query(TABLE_SETTINGS, null, null, null, null, null, null);
     	
     	while (cursor.moveToNext()) {
     		String _act_name = cursor.getString(cursor.getColumnIndex(COLUMN_ACT_NAME));
@@ -350,6 +359,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             file.createNewFile();
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = this.getReadableDatabase();
+            assert db != null;
             Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_CHRG_DATA,null);
             csvWrite.writeNext(curCSV.getColumnNames());
             while(curCSV.moveToNext())
@@ -367,7 +377,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         {
             Log.e("HomeActivity", sqlEx.getMessage(), sqlEx);
         }
-        _db.close();
+        if (_db != null) {
+            _db.close();
+        }
     }
     
     /**
@@ -400,18 +412,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         switch (table) {
             case 1:
+                assert db != null;
                 db.delete(TABLE_WHSE, COLUMN_WHSE + "=?", new String[] {label});
                 break;
             case 2:
+                assert db != null;
                 db.delete(TABLE_ITEM, COLUMN_ITEM + "=?", new String[] {label});
                 break;
             case 3:
+                assert db != null;
                 db.delete(TABLE_TYPE, COLUMN_TYPE + "=?", new String[] {label});
         }
 
     	// removing row
     	//db.delete(TABLE_LABELS, KEY_NAME + "=?", new String[] {label});
-    	db.close();
+        if (db != null) {
+            db.close();
+        }
     }
 
     /**
@@ -420,7 +437,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public void purgeChrgData() {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	db.delete(TABLE_CHRG_DATA, null, null);
+        assert db != null;
+        db.delete(TABLE_CHRG_DATA, null, null);
     	db.close();
     }
 
@@ -429,7 +447,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public void purgeSettings() {
     	SQLiteDatabase db = this.getWritableDatabase();
-    	db.delete(TABLE_SETTINGS, null, null);
+        assert db != null;
+        db.delete(TABLE_SETTINGS, null, null);
     	db.close();
     }
         
@@ -453,6 +472,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase db = this.getReadableDatabase();
+        assert db != null;
         Cursor cursor = db.rawQuery(selectQuery, null);
  
         // looping through all rows and adding to list
@@ -483,6 +503,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_CREATED_AT, created_at); // Created At
 
         // Inserting Row
+        assert db != null;
         db.insert(TABLE_LOGIN, null, values);
         db.close(); // Closing database connection
     }
@@ -495,6 +516,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
 
         SQLiteDatabase db = this.getReadableDatabase();
+        assert db != null;
         Cursor cursor = db.rawQuery(selectQuery, null);
         // Move to first row
         cursor.moveToFirst();
@@ -517,6 +539,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public int getRowCount() {
         String countQuery = "SELECT  * FROM " + TABLE_LOGIN;
         SQLiteDatabase db = this.getReadableDatabase();
+        assert db != null;
         Cursor cursor = db.rawQuery(countQuery, null);
         int rowCount = cursor.getCount();
         db.close();
@@ -533,6 +556,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void resetTables(){
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
+        assert db != null;
         db.delete(TABLE_LOGIN, null, null);
         db.close();
     }
@@ -547,6 +571,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_QUANTITY, quantity);
 
         // Insert row
+        assert db != null;
         db.insert(TABLE_CHRG_DATA, null, values);
         //*/
         makeText(context, context.getString(R.string.toast_wrote_to_db_message)
