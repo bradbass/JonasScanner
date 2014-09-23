@@ -81,7 +81,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     //static TextView dateField;
     static String currentDate;
 
-    //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+    DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
     @SuppressLint("SimpleDateFormat")
 	@Override
@@ -104,6 +104,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
         // TODO - add a delete button
+        final Button delBtn = (Button) findViewById(R.id.delOne);
+        final Button delAllBtn = (Button) findViewById(R.id.delAll);
 		
 		//*
 		final TextView dateField = (TextView) findViewById(R.id.installField);
@@ -187,7 +189,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 _type = spinnerType.getSelectedItem().toString();
 
                 _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
-                        _serial, comment, _date, getBaseContext());
+                        _serial, comment, _date, getBaseContext(), save);
 
 				save = true;
 				_upc = null;
@@ -224,7 +226,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // cursor.moveToFirst()
-                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 _db.moveToFirst("chrgData");
                 populateFields();
             }
@@ -252,14 +253,79 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // cursor.moveToLast()
-                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 _db.moveToLast("chrgData");
                 populateFields();
             }
         });
+
+        delAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //delete all records in db
+                deleteAll();
+            }
+        });
+
+        delBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //delete only the current record
+                deleteOne();
+            }
+        });
     }
-	
-	void saveMsg() {
+
+    private void deleteOne() {
+        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        Builder aDB = new Builder(this);
+        aDB.setTitle("Delete Current Record?");
+        aDB.setMessage("Are you sure you want to delete the current record?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                dbh.deleteOne("chrgData");
+                makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    private void deleteAll() {
+        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        Builder aDB = new Builder(this);
+        aDB.setTitle("Delete All Records?");
+        aDB.setMessage("Are you sure you want to delete all the records you've created?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                dbh.deleteAll("chrgData");
+                makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    void saveMsg() {
 		Builder aDB = new Builder(this);
 		aDB.setTitle(getString(R.string.savemsg_dialog_title));
 		aDB.setMessage(getString(R.string.savemsg_window_message));
@@ -545,6 +611,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		Intent chrgAct = new Intent();
 		setResult(RESULT_OK, chrgAct);
 		db.purgeChrgData();
+        db.close();
 		finish();
 	}
 	
@@ -664,14 +731,14 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         //String spinnerValue = valueItem;
         ArrayAdapter spinAdapter = (ArrayAdapter) spinnerItem.getAdapter();
         int spinnerPos = spinAdapter.getPosition(valueItem);
-        spinnerWhse.setSelection(spinnerPos);
+        spinnerItem.setSelection(spinnerPos);
     }
 
     private void setSpinnerType(String valueType) {
         //String spinnerValue = valueType;
         ArrayAdapter spinAdapter = (ArrayAdapter) spinnerType.getAdapter();
         int spinnerPos = spinAdapter.getPosition(valueType);
-        spinnerWhse.setSelection(spinnerPos);
+        spinnerType.setSelection(spinnerPos);
     }
 
 }

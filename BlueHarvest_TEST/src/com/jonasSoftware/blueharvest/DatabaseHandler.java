@@ -62,7 +62,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_QUANTITY = "quantity";
     //
     static int _recordNum;
+    static Boolean _existingRec = false;
     final SQLiteDatabase _dbr = this.getReadableDatabase();
+    final SQLiteDatabase _dbw = this.getWritableDatabase();
     // Login table name
     private static final String TABLE_LOGIN = "login";
     // Login Table Columns names
@@ -249,9 +251,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public void saveToDb(String _whse, String _wo, String _costItem,
                          String _costType, String _upc, String _quantity, String _serial,
-                         String _comment, String _date, Context context){
+                         String _comment, String _date, Context context, Boolean save){
     	// save fields to db with new fields
-    	SQLiteDatabase db = this.getWritableDatabase();
+    	//SQLiteDatabase db = this.getWritableDatabase();
     	//*
     	ContentValues values = new ContentValues();
     	values.put(COLUMN_WHSE, _whse);
@@ -265,14 +267,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, _date);
     	
     	// Insert row
-        assert db != null;
-        db.insert(TABLE_CHRG_DATA, null, values);
-    	//*/
+        assert _dbw != null;
+        if (_existingRec == false) {
+            _dbw.insert(TABLE_CHRG_DATA, null, values);
+        } else {
+            // TODO - fix update existing record.
+            _dbw.update(TABLE_CHRG_DATA, values, "id=?", new String[] {Long.toString(_recordNum)});
+        }
+        //*/
     	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
                 + values, LENGTH_LONG)
                 .show();
 
-    	db.close();
+    	//_dbw.close();
+        _existingRec = false;
     }
     
     /**
@@ -306,6 +314,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 .show();
     	
     	db.close();
+    }
+
+    public void saveToDb(String whse, String upc, String quantity, Context context) {
+        //do stuff
+        SQLiteDatabase db = this.getWritableDatabase();
+        //*
+        // Insert row
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+
+        assert db != null;
+        db.insert(TABLE_CHRG_DATA, null, values);
+        //*/
+        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
+                + values, LENGTH_LONG)
+                .show();
+
+        //db.close();
     }
 
     /**
@@ -609,26 +637,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void saveToDb(String whse, String upc, String quantity, Context context) {
-        //do stuff
-        SQLiteDatabase db = this.getWritableDatabase();
-        //*
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_WHSE, whse);
-        values.put(COLUMN_UPC, upc);
-        values.put(COLUMN_QUANTITY, quantity);
-
-        // Insert row
-        assert db != null;
-        db.insert(TABLE_CHRG_DATA, null, values);
-        //*/
-        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
-                + values, LENGTH_LONG)
-                .show();
-
-        db.close();
-    }
-
     public void moveToFirst(String dbName) {
         //go to the first record in the db
         //SQLiteDatabase db = this.getReadableDatabase();
@@ -636,6 +644,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         _recordNum = cursor.getPosition();
         populateFields(_recordNum);
+        _existingRec = true;
     }
 
     public void moveToLast(String dbName) {
@@ -645,6 +654,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cursor.moveToLast();
         _recordNum = cursor.getPosition();
         populateFields(_recordNum);
+        _existingRec = true;
     }
 
     public void moveToNext(String dbName, Context context) {
@@ -660,6 +670,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         //*/
         populateFields(_recordNum);
+        _existingRec = true;
     }
 
     public void moveToPrevious(String dbName, Context context) {
@@ -674,5 +685,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG).show();
         }//*/
         populateFields(_recordNum);
+        _existingRec = true;
+    }
+
+    public void deleteAll(String dbName) {
+        //delete all records in db
+        _dbw.delete(dbName, null, null);
+    }
+
+    public void deleteOne(String dbName) {
+        // TODO - delete one record - use _recordNum
     }
 }
