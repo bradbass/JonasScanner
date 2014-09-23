@@ -61,6 +61,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     private static String _type;
     private static String _quantity;
     private static String _serial;
+    private static String _comment;
 
     private Boolean sent = false;
     private Boolean exit = false;
@@ -77,7 +78,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     static EditText serialField;
     static TextView commentField;
     static TextView scanField;
+    //static TextView dateField;
     static String currentDate;
+
+    //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
     @SuppressLint("SimpleDateFormat")
 	@Override
@@ -97,6 +101,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
+        // TODO - add a delete button
 		
 		//*
 		final TextView dateField = (TextView) findViewById(R.id.installField);
@@ -217,6 +222,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // TODO - when user clicks button, go to first record in db
+                // cursor.moveToFirst()
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                db.moveToFirst("chrgData");
+                populateFields();
             }
         });
 
@@ -224,6 +233,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // TODO - when user clicks button, go to next record in db
+                // cursor.moveToNext()
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                db.moveToLast("chrgData");
+                populateFields();
             }
         });
 
@@ -231,6 +244,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // TODO - when user clicks button, go to previous record in db
+                // cursor.moveToPrevious()
             }
         });
 
@@ -238,6 +252,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // TODO - when user clicks button, go to last record in db
+                // cursor.moveToLast()
             }
         });
     }
@@ -583,5 +598,79 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             aDB.show();
         }
     }
+
+    public void populateFields() {
+        //
+        scanField.setText(_upc);
+        commentField.setText(_comment);
+        installField.setText(_date);
+        jobWoField.setText(_wo);
+        quantityField.setText(_quantity);
+        serialField.setText(_serial);
+        setSpinnerWhse(_whse);
+        setSpinnerItem(_item);
+        setSpinnerType(_type);
+    }
+
+    public void setUPC(String upc) {
+        _upc = upc;
+    }
+
+    public void setDate(String date) {
+        _date = date;
+    }
+
+    public void setWO(String wo) {
+        _wo = wo;
+    }
+
+    public void setWHSE(String whse) {
+        _whse = whse;
+        //setSpinnerWhse(_whse);
+    }
+
+    public void setItem(String item) {
+        _item = item;
+        //setSpinnerItem(_item);
+    }
+
+    public void setType(String type) {
+        _type = type;
+        //setSpinnerType(_type);
+    }
+
+    public void setQty(String qty) {
+        _quantity = qty;
+    }
+
+    public void setSerial(String serial) {
+        _serial = serial;
+    }
+
+    public void setComment(String comment) {
+        _comment = comment;
+    }
+
+    private void setSpinnerWhse(String valueWhse) {
+        String spinnerValue = valueWhse;
+        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        int spinnerPos = spinAdapter.getPosition(spinnerValue);
+        spinnerWhse.setSelection(spinnerPos);
+    }
+
+    private void setSpinnerItem(String valueItem) {
+        String spinnerValue = valueItem;
+        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        int spinnerPos = spinAdapter.getPosition(spinnerValue);
+        spinnerWhse.setSelection(spinnerPos);
+    }
+
+    private void setSpinnerType(String valueType) {
+        String spinnerValue = valueType;
+        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        int spinnerPos = spinAdapter.getPosition(spinnerValue);
+        spinnerWhse.setSelection(spinnerPos);
+    }
+
 }
 

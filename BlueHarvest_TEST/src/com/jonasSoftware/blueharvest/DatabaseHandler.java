@@ -61,6 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_SERIAL = "serial";
     private static final String COLUMN_QUANTITY = "quantity";
     //
+    static int _recordNum;
     // Login table name
     private static final String TABLE_LOGIN = "login";
     // Login Table Columns names
@@ -337,6 +338,52 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * populate the fields in the charge activity when using the navigation buttons
+     */
+    public void populateFields(int recordNum) {
+
+        // populate the fields using the cursor position
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        assert db != null;
+        try {
+            cursor = db.query(TABLE_CHRG_DATA, null, null, null, null, null, null);
+            cursor.moveToPosition(recordNum);
+
+            String _upc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
+            String _date = cursor.getString(cursor.getColumnIndex(COLUMN_DATE));
+            String _wo = cursor.getString(cursor.getColumnIndex(COLUMN_JOB_WO_NUM));
+            String _whse = cursor.getString(cursor.getColumnIndex(COLUMN_WHSE));
+            String _item = cursor.getString(cursor.getColumnIndex(COLUMN_ITEM));
+            String _type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
+            String _qty = cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY));
+            String _serial = cursor.getString(cursor.getColumnIndex(COLUMN_SERIAL));
+            String _comment = cursor.getString(cursor.getColumnIndex(COLUMN_COMMENT));
+
+            ChargeActivity ca = new ChargeActivity();
+
+            ca.setUPC(_upc);
+            ca.setDate(_date);
+            ca.setWO(_wo);
+            ca.setWHSE(_whse);
+            ca.setItem(_item);
+            ca.setType(_type);
+            ca.setQty(_qty);
+            ca.setSerial(_serial);
+            ca.setComment(_comment);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //db.endTransaction();
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+    /**
      * Export the database to a csv file.
      * @param context   context
      */
@@ -579,5 +626,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 .show();
 
         db.close();
+    }
+
+    public void moveToFirst(String dbName) {
+        //go to the first record in the db
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+        cursor.moveToFirst();
+        _recordNum = cursor.getPosition();
+        populateFields(_recordNum);
+    }
+
+    public void moveToLast(String dbName) {
+        //go to last record in the db
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+        cursor.moveToLast();
+        _recordNum = cursor.getPosition();
+        populateFields(_recordNum);
     }
 }
