@@ -204,5 +204,7 @@
     <string name="login.label">LOGIN</string>
     <string name="password.label">Password</string>
     <string name="login.button">Login</string>
+    <string name="onFirstRecord">You are on the first record.</string>
+    <string name="onLastRecord">You are on the last record.</string>
 
 </resources>

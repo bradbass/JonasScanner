@@ -62,6 +62,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_QUANTITY = "quantity";
     //
     static int _recordNum;
+    final SQLiteDatabase _dbr = this.getReadableDatabase();
     // Login table name
     private static final String TABLE_LOGIN = "login";
     // Login Table Columns names
@@ -630,8 +631,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void moveToFirst(String dbName) {
         //go to the first record in the db
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+        //SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
         cursor.moveToFirst();
         _recordNum = cursor.getPosition();
         populateFields(_recordNum);
@@ -639,10 +640,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void moveToLast(String dbName) {
         //go to last record in the db
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+        //SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
         cursor.moveToLast();
         _recordNum = cursor.getPosition();
+        populateFields(_recordNum);
+    }
+
+    public void moveToNext(String dbName, Context context) {
+        //go to the next record
+        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
+        cursor.moveToPosition(_recordNum);
+        cursor.moveToNext();
+        int currentPos = _recordNum;
+        _recordNum = cursor.getPosition();
+        //*
+        if (currentPos == _recordNum) {
+            makeText(context, context.getString(R.string.onLastRecord), LENGTH_LONG).show();
+        }
+        //*/
+        populateFields(_recordNum);
+    }
+
+    public void moveToPrevious(String dbName, Context context) {
+        //go to previous record
+        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
+        cursor.moveToPosition(_recordNum);
+        cursor.moveToPrevious();
+        int currentPos = _recordNum;
+        _recordNum = cursor.getPosition();
+        //*
+        if (currentPos == _recordNum) {
+            makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG).show();
+        }//*/
         populateFields(_recordNum);
     }
 }

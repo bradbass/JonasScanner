@@ -89,6 +89,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_charge);
         setTitle("onas Charge Parts");
+
+        final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 		
 		//buttons
 		final Button scanBtn = (Button) findViewById(R.id.scanBtn);
@@ -174,7 +176,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 				if(_upc == null) {
 					_upc = scanField.getText().toString();
 				}
-				DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
+				//DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
 
 				comment = commentField.getText().toString();
                 _quantity = quantityField.getText().toString();
@@ -184,7 +186,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 _item = spinnerItem.getSelectedItem().toString();
                 _type = spinnerType.getSelectedItem().toString();
 
-                saveToDb.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
+                _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
                         _serial, comment, _date, getBaseContext());
 
 				save = true;
@@ -223,8 +225,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View view) {
                 // TODO - when user clicks button, go to first record in db
                 // cursor.moveToFirst()
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                db.moveToFirst("chrgData");
+                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                _db.moveToFirst("chrgData");
                 populateFields();
             }
         });
@@ -234,8 +236,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View view) {
                 // TODO - when user clicks button, go to next record in db
                 // cursor.moveToNext()
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                db.moveToLast("chrgData");
+                _db.moveToNext("chrgData", getBaseContext());
                 populateFields();
             }
         });
@@ -245,6 +246,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View view) {
                 // TODO - when user clicks button, go to previous record in db
                 // cursor.moveToPrevious()
+                _db.moveToPrevious("chrgData", getBaseContext());
+                populateFields();
             }
         });
 
@@ -253,6 +256,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View view) {
                 // TODO - when user clicks button, go to last record in db
                 // cursor.moveToLast()
+                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                _db.moveToLast("chrgData");
+                populateFields();
             }
         });
     }
@@ -652,23 +658,23 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void setSpinnerWhse(String valueWhse) {
-        String spinnerValue = valueWhse;
+        //String spinnerValue = valueWhse;
         ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(spinnerValue);
+        int spinnerPos = spinAdapter.getPosition(valueWhse);
         spinnerWhse.setSelection(spinnerPos);
     }
 
     private void setSpinnerItem(String valueItem) {
-        String spinnerValue = valueItem;
-        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(spinnerValue);
+        //String spinnerValue = valueItem;
+        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerItem.getAdapter();
+        int spinnerPos = spinAdapter.getPosition(valueItem);
         spinnerWhse.setSelection(spinnerPos);
     }
 
     private void setSpinnerType(String valueType) {
-        String spinnerValue = valueType;
-        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(spinnerValue);
+        //String spinnerValue = valueType;
+        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerType.getAdapter();
+        int spinnerPos = spinAdapter.getPosition(valueType);
         spinnerWhse.setSelection(spinnerPos);
     }
 
