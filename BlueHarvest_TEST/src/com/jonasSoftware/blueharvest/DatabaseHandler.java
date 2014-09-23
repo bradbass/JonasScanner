@@ -272,7 +272,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             _dbw.insert(TABLE_CHRG_DATA, null, values);
         } else {
             // TODO - fix update existing record.
-            _dbw.update(TABLE_CHRG_DATA, values, "id=?", new String[] {Long.toString(_recordNum)});
+            String recordNum = Integer.toString(_recordNum);
+            _dbw.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[] {recordNum});
         }
         //*/
     	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
@@ -695,5 +696,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void deleteOne(String dbName) {
         // TODO - delete one record - use _recordNum
+        _dbw.delete(dbName, COLUMN_KEY + "=" + _recordNum, null);
     }
 }

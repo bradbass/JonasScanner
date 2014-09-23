@@ -81,7 +81,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     //static TextView dateField;
     static String currentDate;
 
-    DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+    //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
     @SuppressLint("SimpleDateFormat")
 	@Override
@@ -167,7 +167,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
          */
 		saveBtn.setOnClickListener(new OnClickListener() {
 			
-			@SuppressWarnings("StringBufferReplaceableByString")
+			@SuppressWarnings({"StringBufferReplaceableByString", "ConstantConditions"})
             @Override
 			public void onClick(View v) {
 				// add fields from new table
@@ -276,7 +276,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void deleteOne() {
-        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         Builder aDB = new Builder(this);
         aDB.setTitle("Delete Current Record?");
         aDB.setMessage("Are you sure you want to delete the current record?");
@@ -301,7 +301,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void deleteAll() {
-        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         Builder aDB = new Builder(this);
         aDB.setTitle("Delete All Records?");
         aDB.setMessage("Are you sure you want to delete all the records you've created?");
