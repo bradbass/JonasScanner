@@ -37,8 +37,6 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BlueHarvest.iws" />
@@ -338,18 +336,18 @@
       <file leaf-file-name="ChargeActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.88208956" vertical-offset="2690" max-vertical-offset="5763">
-              <caret line="263" column="5" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.22238806" vertical-offset="2588" max-vertical-offset="5695">
+              <caret line="224" column="44" selection-start-line="224" selection-start-column="44" selection-end-line="224" selection-end-column="44" />
               <folding>
                 <element signature="docComment;class#ChargeActivity#0" expanded="false" />
                 <element signature="e#3281#3342#0" expanded="false" />
                 <element signature="e#4386#4432#0" expanded="false" />
                 <element signature="e#5954#6006#0" expanded="true" />
-                <element signature="e#8342#8666#0" expanded="true" />
-                <element signature="e#8655#8656#0" expanded="true" />
+                <element signature="e#8266#8515#0" expanded="true" />
+                <element signature="e#8504#8505#0" expanded="true" />
                 <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#9685#9876#0" expanded="true" />
-                <element signature="e#9871#9872#0" expanded="true" />
+                <element signature="e#9380#9571#0" expanded="true" />
+                <element signature="e#9566#9567#0" expanded="true" />
                 <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -375,18 +373,18 @@
                 <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#21723#21724#0" expanded="true" />
-                <element signature="e#21749#21750#0" expanded="true" />
-                <element signature="e#21789#21790#0" expanded="true" />
-                <element signature="e#21817#21818#0" expanded="true" />
-                <element signature="e#21853#21854#0" expanded="true" />
-                <element signature="e#21877#21878#0" expanded="true" />
-                <element signature="e#22218#22219#0" expanded="true" />
-                <element signature="e#22249#22250#0" expanded="true" />
-                <element signature="e#22293#22294#0" expanded="true" />
-                <element signature="e#22325#22326#0" expanded="true" />
-                <element signature="e#22371#22372#0" expanded="true" />
-                <element signature="e#22405#22406#0" expanded="true" />
+                <element signature="e#21418#21419#0" expanded="true" />
+                <element signature="e#21444#21445#0" expanded="true" />
+                <element signature="e#21484#21485#0" expanded="true" />
+                <element signature="e#21512#21513#0" expanded="true" />
+                <element signature="e#21548#21549#0" expanded="true" />
+                <element signature="e#21572#21573#0" expanded="true" />
+                <element signature="e#21913#21914#0" expanded="true" />
+                <element signature="e#21944#21945#0" expanded="true" />
+                <element signature="e#21988#21989#0" expanded="true" />
+                <element signature="e#22020#22021#0" expanded="true" />
+                <element signature="e#22066#22067#0" expanded="true" />
+                <element signature="e#22100#22101#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -932,7 +930,11 @@
       <created>1411477909262</created>
       <updated>1411477909262</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Completed the moveToFirst, moveToLast, moveToNext and moveToPrevious methods.  moveToNext and moveToPrevious methods will pop a toast message when on first or last record stating that we are either on the first or the last record.">
+      <created>1411484286100</created>
+      <updated>1411484286100</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1038,7 +1040,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Version 1 - Changes to DatabaseHandler and ChargeActivity to add new tables and fields." />
     <MESSAGE value="Version 1 - Changed TODOs." />
     <MESSAGE value="Version 1 - Changed TODOs.  Added methods to load new spinners." />
     <MESSAGE value="Version 1 -ChargeActivity and DatabaseHandler modified.  Corrected NPE and issue with table names not being recognized." />
@@ -1063,7 +1064,8 @@
     <MESSAGE value="Version 1 - Added classes UserFunctions and JSONParser for use with LoginActivity.  Added LoginActivity and made it launcher activity.  Modified AndroidManifest to reflect the change.  Modified DatabaseHandler, added methods to deal with LoginActivity." />
     <MESSAGE value="Version 1 &#10;- Added helper class which needs work.&#10;- modified uploadActivity, added send() and required methods&#10;- cleaned up some warnings, starting with DatabaseHandler" />
     <MESSAGE value="Added moveToFirst and moveToLast methods to traverse db in ChargeParts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added moveToFirst and moveToLast methods to traverse db in ChargeParts." />
+    <MESSAGE value="Completed the moveToFirst, moveToLast, moveToNext and moveToPrevious methods.  moveToNext and moveToPrevious methods will pop a toast message when on first or last record stating that we are either on the first or the last record." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed the moveToFirst, moveToLast, moveToNext and moveToPrevious methods.  moveToNext and moveToPrevious methods will pop a toast message when on first or last record stating that we are either on the first or the last record." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1202,11 +1204,11 @@
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4386#4432#0" expanded="false" />
             <element signature="e#5954#6006#0" expanded="true" />
-            <element signature="e#8342#8666#0" expanded="true" />
-            <element signature="e#8655#8656#0" expanded="true" />
+            <element signature="e#8266#8515#0" expanded="true" />
+            <element signature="e#8504#8505#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#9685#9876#0" expanded="true" />
-            <element signature="e#9871#9872#0" expanded="true" />
+            <element signature="e#9380#9571#0" expanded="true" />
+            <element signature="e#9566#9567#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -1232,18 +1234,18 @@
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21723#21724#0" expanded="true" />
-            <element signature="e#21749#21750#0" expanded="true" />
-            <element signature="e#21789#21790#0" expanded="true" />
-            <element signature="e#21817#21818#0" expanded="true" />
-            <element signature="e#21853#21854#0" expanded="true" />
-            <element signature="e#21877#21878#0" expanded="true" />
-            <element signature="e#22218#22219#0" expanded="true" />
-            <element signature="e#22249#22250#0" expanded="true" />
-            <element signature="e#22293#22294#0" expanded="true" />
-            <element signature="e#22325#22326#0" expanded="true" />
-            <element signature="e#22371#22372#0" expanded="true" />
-            <element signature="e#22405#22406#0" expanded="true" />
+            <element signature="e#21418#21419#0" expanded="true" />
+            <element signature="e#21444#21445#0" expanded="true" />
+            <element signature="e#21484#21485#0" expanded="true" />
+            <element signature="e#21512#21513#0" expanded="true" />
+            <element signature="e#21548#21549#0" expanded="true" />
+            <element signature="e#21572#21573#0" expanded="true" />
+            <element signature="e#21913#21914#0" expanded="true" />
+            <element signature="e#21944#21945#0" expanded="true" />
+            <element signature="e#21988#21989#0" expanded="true" />
+            <element signature="e#22020#22021#0" expanded="true" />
+            <element signature="e#22066#22067#0" expanded="true" />
+            <element signature="e#22100#22101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1342,11 +1344,11 @@
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4386#4432#0" expanded="false" />
             <element signature="e#5954#6006#0" expanded="true" />
-            <element signature="e#8342#8666#0" expanded="true" />
-            <element signature="e#8655#8656#0" expanded="true" />
+            <element signature="e#8266#8515#0" expanded="true" />
+            <element signature="e#8504#8505#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#9685#9876#0" expanded="true" />
-            <element signature="e#9871#9872#0" expanded="true" />
+            <element signature="e#9380#9571#0" expanded="true" />
+            <element signature="e#9566#9567#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -1372,18 +1374,18 @@
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21723#21724#0" expanded="true" />
-            <element signature="e#21749#21750#0" expanded="true" />
-            <element signature="e#21789#21790#0" expanded="true" />
-            <element signature="e#21817#21818#0" expanded="true" />
-            <element signature="e#21853#21854#0" expanded="true" />
-            <element signature="e#21877#21878#0" expanded="true" />
-            <element signature="e#22218#22219#0" expanded="true" />
-            <element signature="e#22249#22250#0" expanded="true" />
-            <element signature="e#22293#22294#0" expanded="true" />
-            <element signature="e#22325#22326#0" expanded="true" />
-            <element signature="e#22371#22372#0" expanded="true" />
-            <element signature="e#22405#22406#0" expanded="true" />
+            <element signature="e#21418#21419#0" expanded="true" />
+            <element signature="e#21444#21445#0" expanded="true" />
+            <element signature="e#21484#21485#0" expanded="true" />
+            <element signature="e#21512#21513#0" expanded="true" />
+            <element signature="e#21548#21549#0" expanded="true" />
+            <element signature="e#21572#21573#0" expanded="true" />
+            <element signature="e#21913#21914#0" expanded="true" />
+            <element signature="e#21944#21945#0" expanded="true" />
+            <element signature="e#21988#21989#0" expanded="true" />
+            <element signature="e#22020#22021#0" expanded="true" />
+            <element signature="e#22066#22067#0" expanded="true" />
+            <element signature="e#22100#22101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1482,11 +1484,11 @@
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4386#4432#0" expanded="false" />
             <element signature="e#5954#6006#0" expanded="true" />
-            <element signature="e#8342#8666#0" expanded="true" />
-            <element signature="e#8655#8656#0" expanded="true" />
+            <element signature="e#8266#8515#0" expanded="true" />
+            <element signature="e#8504#8505#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#9685#9876#0" expanded="true" />
-            <element signature="e#9871#9872#0" expanded="true" />
+            <element signature="e#9380#9571#0" expanded="true" />
+            <element signature="e#9566#9567#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -1512,18 +1514,18 @@
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21723#21724#0" expanded="true" />
-            <element signature="e#21749#21750#0" expanded="true" />
-            <element signature="e#21789#21790#0" expanded="true" />
-            <element signature="e#21817#21818#0" expanded="true" />
-            <element signature="e#21853#21854#0" expanded="true" />
-            <element signature="e#21877#21878#0" expanded="true" />
-            <element signature="e#22218#22219#0" expanded="true" />
-            <element signature="e#22249#22250#0" expanded="true" />
-            <element signature="e#22293#22294#0" expanded="true" />
-            <element signature="e#22325#22326#0" expanded="true" />
-            <element signature="e#22371#22372#0" expanded="true" />
-            <element signature="e#22405#22406#0" expanded="true" />
+            <element signature="e#21418#21419#0" expanded="true" />
+            <element signature="e#21444#21445#0" expanded="true" />
+            <element signature="e#21484#21485#0" expanded="true" />
+            <element signature="e#21512#21513#0" expanded="true" />
+            <element signature="e#21548#21549#0" expanded="true" />
+            <element signature="e#21572#21573#0" expanded="true" />
+            <element signature="e#21913#21914#0" expanded="true" />
+            <element signature="e#21944#21945#0" expanded="true" />
+            <element signature="e#21988#21989#0" expanded="true" />
+            <element signature="e#22020#22021#0" expanded="true" />
+            <element signature="e#22066#22067#0" expanded="true" />
+            <element signature="e#22100#22101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1997,18 +1999,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.88208956" vertical-offset="2690" max-vertical-offset="5763">
-          <caret line="263" column="5" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.22238806" vertical-offset="2588" max-vertical-offset="5695">
+          <caret line="224" column="44" selection-start-line="224" selection-start-column="44" selection-end-line="224" selection-end-column="44" />
           <folding>
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4386#4432#0" expanded="false" />
             <element signature="e#5954#6006#0" expanded="true" />
-            <element signature="e#8342#8666#0" expanded="true" />
-            <element signature="e#8655#8656#0" expanded="true" />
+            <element signature="e#8266#8515#0" expanded="true" />
+            <element signature="e#8504#8505#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#9685#9876#0" expanded="true" />
-            <element signature="e#9871#9872#0" expanded="true" />
+            <element signature="e#9380#9571#0" expanded="true" />
+            <element signature="e#9566#9567#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -2034,18 +2036,18 @@
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21723#21724#0" expanded="true" />
-            <element signature="e#21749#21750#0" expanded="true" />
-            <element signature="e#21789#21790#0" expanded="true" />
-            <element signature="e#21817#21818#0" expanded="true" />
-            <element signature="e#21853#21854#0" expanded="true" />
-            <element signature="e#21877#21878#0" expanded="true" />
-            <element signature="e#22218#22219#0" expanded="true" />
-            <element signature="e#22249#22250#0" expanded="true" />
-            <element signature="e#22293#22294#0" expanded="true" />
-            <element signature="e#22325#22326#0" expanded="true" />
-            <element signature="e#22371#22372#0" expanded="true" />
-            <element signature="e#22405#22406#0" expanded="true" />
+            <element signature="e#21418#21419#0" expanded="true" />
+            <element signature="e#21444#21445#0" expanded="true" />
+            <element signature="e#21484#21485#0" expanded="true" />
+            <element signature="e#21512#21513#0" expanded="true" />
+            <element signature="e#21548#21549#0" expanded="true" />
+            <element signature="e#21572#21573#0" expanded="true" />
+            <element signature="e#21913#21914#0" expanded="true" />
+            <element signature="e#21944#21945#0" expanded="true" />
+            <element signature="e#21988#21989#0" expanded="true" />
+            <element signature="e#22020#22021#0" expanded="true" />
+            <element signature="e#22066#22067#0" expanded="true" />
+            <element signature="e#22100#22101#0" expanded="true" />
           </folding>
         </state>
       </provider>

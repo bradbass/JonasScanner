@@ -223,7 +223,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         firstBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO - when user clicks button, go to first record in db
                 // cursor.moveToFirst()
                 //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 _db.moveToFirst("chrgData");
@@ -234,7 +233,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         nextBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO - when user clicks button, go to next record in db
                 // cursor.moveToNext()
                 _db.moveToNext("chrgData", getBaseContext());
                 populateFields();
@@ -244,7 +242,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         prevBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO - when user clicks button, go to previous record in db
                 // cursor.moveToPrevious()
                 _db.moveToPrevious("chrgData", getBaseContext());
                 populateFields();
@@ -254,7 +251,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         lastBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO - when user clicks button, go to last record in db
                 // cursor.moveToLast()
                 //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 _db.moveToLast("chrgData");
