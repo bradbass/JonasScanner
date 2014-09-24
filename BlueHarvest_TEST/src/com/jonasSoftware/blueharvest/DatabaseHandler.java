@@ -710,11 +710,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void deleteAll(String dbName) {
         //delete all records in db
-        SQLiteDatabase db = this.getReadableDatabase();
-        if (db != null) {
-            db.delete(dbName, null, null);
-            db.close();
-        }
+        //SQLiteDatabase db = this.getReadableDatabase();
+        //if (db != null) {
+            //db.delete(dbName, null, null);
+            purgeChrgData();
+            //db.close();
+        //}
     }
 
     public void deleteOne(String dbName) {
