@@ -193,18 +193,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
 				save = true;
                 clearFields();
-				/*
-				_upc = null;
-				_scanField.setText(null);
-				_commentField.setText(null);
-                _jobWoField.setText(null);
-                _quantityField.setText(null);
-                _serialField.setText(null);
-                _dateField.setText(_currentDate);
-                spinnerWhse.setSelection(0);
-                spinnerItem.setSelection(0);
-                spinnerType.setSelection(0);
-                //*/
             }
 		});
 		
@@ -222,19 +210,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 send();
                 //testService();
                 clearFields();
-                /*
-                _upc = null;
-                _scanField.setText(null);
-                _commentField.setText(null);
-                _jobWoField.setText(null);
-                _quantityField.setText(null);
-                _serialField.setText(null);
-                _dateField.setText(_currentDate);
-                spinnerWhse.setSelection(0);
-                spinnerItem.setSelection(0);
-                spinnerType.setSelection(0);
-                //*/
-
 		    }
 	    });
 
@@ -280,18 +255,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 //delete all records in db
                 deleteAll();
                 clearFields();
-                /*
-                _upc = null;
-                _scanField.setText(null);
-                _commentField.setText(null);
-                _jobWoField.setText(null);
-                _quantityField.setText(null);
-                _serialField.setText(null);
-                _dateField.setText(_currentDate);
-                spinnerWhse.setSelection(0);
-                spinnerItem.setSelection(0);
-                spinnerType.setSelection(0);
-                //*/
             }
         });
 
@@ -301,18 +264,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 //delete only the current record
                 deleteOne();
                 clearFields();
-                /*
-                _upc = null;
-                _scanField.setText(null);
-                _commentField.setText(null);
-                _jobWoField.setText(null);
-                _quantityField.setText(null);
-                _serialField.setText(null);
-                _dateField.setText(_currentDate);
-                spinnerWhse.setSelection(0);
-                spinnerItem.setSelection(0);
-                spinnerType.setSelection(0);
-                //*/
             }
         });
     }
