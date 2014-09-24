@@ -70,7 +70,8 @@ public class SettingsActivity extends Activity {
 		return true;		
 	}
 	
-	void saveSettings() {
+	@SuppressWarnings("ConstantConditions")
+    void saveSettings() {
 		//save settings to db
 		_actName = actName.getText().toString();
 		_password = password.getText().toString();
@@ -92,7 +93,8 @@ public class SettingsActivity extends Activity {
 		db.close();
 	}
 	
-	void populateFields() {
+	@SuppressWarnings("ConstantConditions")
+    void populateFields() {
 
         // Receiving side
         try {
