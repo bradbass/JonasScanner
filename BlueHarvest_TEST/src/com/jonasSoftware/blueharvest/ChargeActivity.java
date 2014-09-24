@@ -83,7 +83,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
     //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint({"SimpleDateFormat", "CutPasteId"})
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -103,7 +103,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
-        // TODO - add a delete button
+        //
         final Button delBtn = (Button) findViewById(R.id.delOne);
         final Button delAllBtn = (Button) findViewById(R.id.delAll);
 		
@@ -318,13 +318,14 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void deleteOne() {
-        // TODO - fix this - also clear fields when done
+        // TODO - reset fields when done
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         Builder aDB = new Builder(this);
         aDB.setTitle("Delete Current Record?");
         aDB.setMessage("Are you sure you want to delete the current record?");
         aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
@@ -350,6 +351,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         aDB.setMessage("Are you sure you want to delete all the records you've created?");
         aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
@@ -472,6 +474,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
      * When user selects a name from the spinner.
      *
      */
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position,
             long id) {
@@ -515,7 +518,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
      * @param resultCode    resultCode
      * @param intent        intent
      */
-	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+	@SuppressWarnings("ConstantConditions")
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 	   if (requestCode == 0) {
 	      if (resultCode == RESULT_OK) {
 	         String scanResult = intent.getStringExtra("SCAN_RESULT");
@@ -553,6 +557,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		_date = year + "" + _month + "" + _day;
     }
 
+    /*
     public void testService() {
         WebServiceDemo wsd = new WebServiceDemo();
 
@@ -577,7 +582,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
         wsd.testService(_whse,_wo,_item,_type,_upc,_quantity,_serial,comment,_date);
     }
+    //*/
 
+    @SuppressWarnings("ConstantConditions")
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     void send() {
         if ((save == null) || !save) {

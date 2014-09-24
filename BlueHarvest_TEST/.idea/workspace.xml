@@ -45,7 +45,6 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BlueHarvest.iws" />
@@ -347,14 +346,20 @@
       <file leaf-file-name="ChargeActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6636225" vertical-offset="3831" max-vertical-offset="8483">
-              <caret line="303" column="17" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.456621" vertical-offset="8761" max-vertical-offset="9469">
+              <caret line="779" column="5" selection-start-line="779" selection-start-column="5" selection-end-line="779" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#3281#3342#0" expanded="false" />
-                <element signature="e#4521#4567#0" expanded="false" />
-                <element signature="e#6089#6165#0" expanded="true" />
+                <element signature="e#3297#3358#0" expanded="false" />
+                <element signature="e#4510#4556#0" expanded="false" />
+                <element signature="e#6078#6154#0" expanded="true" />
+                <element signature="e#11582#11621#0" expanded="true" />
+                <element signature="e#12620#13072#0" expanded="true" />
+                <element signature="e#12673#12712#0" expanded="true" />
+                <element signature="e#13061#13062#0" expanded="true" />
+                <element signature="e#13111#13355#0" expanded="true" />
+                <element signature="e#13344#13345#0" expanded="true" />
                 <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
@@ -366,16 +371,14 @@
                 <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#setLabel#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
+                <element signature="e#17660#17699#0" expanded="true" />
                 <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
@@ -423,6 +426,7 @@
         <option value="$PROJECT_DIR$/res/layout/activity_charge.xml" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/Helper.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/GeneralHelperClass.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
       </list>
     </option>
@@ -973,7 +977,11 @@
       <created>1411572241100</created>
       <updated>1411572241100</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="removed clearFields method as was not functioning as expected.">
+      <created>1411582929147</created>
+      <updated>1411582929147</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1079,7 +1087,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Version 1 - Removed double quotes from upload file and changed extension to .txt.  Corrected issue with not saving chrgData to db.  Corrected order or fields in chrgData table." />
     <MESSAGE value="Version 1 - Found issue with not being able to delete labels from ConfigActivity.  Made changes to DatabaseHandler and ConfigActivity to correct this issue." />
     <MESSAGE value="Version 1 - Removed some commented methods, changed activity titles. Added scrollView to SettingsActivity and added 2 new fields, Host and HostPort." />
     <MESSAGE value="Version 1 - added class and activity to communicate with web service." />
@@ -1104,7 +1111,8 @@
     <MESSAGE value="- Corrected some warnings in DatabaseHandler.&#10;- Removed save param from saveToDB().&#10;- Completed update existing record.&#10;- Completed delete one record and delete all records." />
     <MESSAGE value="- Changed deleteAll method to call purgeChrgData." />
     <MESSAGE value="- Created clearFields method." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Created clearFields method." />
+    <MESSAGE value="removed clearFields method as was not functioning as expected." />
+    <option name="LAST_COMMIT_MESSAGE" value="removed clearFields method as was not functioning as expected." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1151,44 +1159,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3451" max-vertical-offset="8823">
-          <caret line="261" column="9" selection-start-line="261" selection-start-column="9" selection-end-line="261" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3281#3342#0" expanded="false" />
-            <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6089#6165#0" expanded="true" />
-            <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataWhse#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataItem#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataType#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setLabel#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="2329">
@@ -1275,9 +1245,15 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3281#3342#0" expanded="false" />
-            <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6089#6165#0" expanded="true" />
+            <element signature="e#3297#3358#0" expanded="false" />
+            <element signature="e#4510#4556#0" expanded="false" />
+            <element signature="e#6078#6154#0" expanded="true" />
+            <element signature="e#11582#11621#0" expanded="true" />
+            <element signature="e#12620#13072#0" expanded="true" />
+            <element signature="e#12673#12712#0" expanded="true" />
+            <element signature="e#13061#13062#0" expanded="true" />
+            <element signature="e#13111#13355#0" expanded="true" />
+            <element signature="e#13344#13345#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
@@ -1289,16 +1265,14 @@
             <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setLabel#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
+            <element signature="e#17660#17699#0" expanded="true" />
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
@@ -1392,9 +1366,15 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3281#3342#0" expanded="false" />
-            <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6089#6165#0" expanded="true" />
+            <element signature="e#3297#3358#0" expanded="false" />
+            <element signature="e#4510#4556#0" expanded="false" />
+            <element signature="e#6078#6154#0" expanded="true" />
+            <element signature="e#11582#11621#0" expanded="true" />
+            <element signature="e#12620#13072#0" expanded="true" />
+            <element signature="e#12673#12712#0" expanded="true" />
+            <element signature="e#13061#13062#0" expanded="true" />
+            <element signature="e#13111#13355#0" expanded="true" />
+            <element signature="e#13344#13345#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
@@ -1406,16 +1386,14 @@
             <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setLabel#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
+            <element signature="e#17660#17699#0" expanded="true" />
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
@@ -1889,16 +1867,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/GeneralHelperClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7245053" vertical-offset="1179" max-vertical-offset="2414">
+          <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6636225" vertical-offset="3831" max-vertical-offset="8483">
-          <caret line="303" column="17" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.456621" vertical-offset="8761" max-vertical-offset="9469">
+          <caret line="779" column="5" selection-start-line="779" selection-start-column="5" selection-end-line="779" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3281#3342#0" expanded="false" />
-            <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6089#6165#0" expanded="true" />
+            <element signature="e#3297#3358#0" expanded="false" />
+            <element signature="e#4510#4556#0" expanded="false" />
+            <element signature="e#6078#6154#0" expanded="true" />
+            <element signature="e#11582#11621#0" expanded="true" />
+            <element signature="e#12620#13072#0" expanded="true" />
+            <element signature="e#12673#12712#0" expanded="true" />
+            <element signature="e#13061#13062#0" expanded="true" />
+            <element signature="e#13111#13355#0" expanded="true" />
+            <element signature="e#13344#13345#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
@@ -1910,16 +1902,14 @@
             <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setLabel#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#ChargeActivity#0" expanded="false" />
+            <element signature="e#17660#17699#0" expanded="true" />
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
