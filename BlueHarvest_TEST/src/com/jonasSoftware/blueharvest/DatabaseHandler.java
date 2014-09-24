@@ -710,17 +710,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void deleteAll(String dbName) {
         //delete all records in db
-        //SQLiteDatabase db = this.getReadableDatabase();
-        //if (db != null) {
-            //db.delete(dbName, null, null);
-            purgeChrgData();
-            //db.close();
-        //}
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (db != null) {
+            db.delete(dbName, null, null);
+            //purgeChrgData();
+            db.close();
+        }
     }
 
     public void deleteOne(String dbName) {
         // TODO - delete one record - use _recordNum
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         if (db != null) {
             db.delete(dbName, COLUMN_KEY + "=?", new String[] {Integer.toString(_recordNum + 1)});
             db.close();

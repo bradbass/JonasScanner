@@ -43,7 +43,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.jonasSoftware.blueharvest" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="Clear fields after">
+    <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -270,30 +270,25 @@
       <file leaf-file-name="DatabaseHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3922" max-vertical-offset="6052">
-              <caret line="709" column="0" selection-start-line="709" selection-start-column="0" selection-end-line="709" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5433" max-vertical-offset="6103">
+              <caret line="339" column="0" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="e#6131#6155#0" expanded="false" />
                 <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-                <element signature="e#11779#11782#0" expanded="false" />
                 <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="e#15311#15357#0" expanded="true" />
                 <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -304,12 +299,10 @@
                 <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="e#19021#19029#0" expanded="true" />
                 <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="e#20681#20696#0" expanded="true" />
                 <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -326,13 +319,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1768">
               <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#633#634#0" expanded="true" />
-                <element signature="e#660#661#0" expanded="true" />
-                <element signature="e#1906#1946#0" expanded="true" />
-                <element signature="e#2559#2600#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -342,9 +329,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2856">
               <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -362,33 +347,15 @@
       <file leaf-file-name="ChargeActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6636225" vertical-offset="6415" max-vertical-offset="8687">
-              <caret line="609" column="23" selection-start-line="609" selection-start-column="23" selection-end-line="609" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.6636225" vertical-offset="3831" max-vertical-offset="8483">
+              <caret line="303" column="17" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#ChargeActivity#0" expanded="false" />
                 <element signature="e#3281#3342#0" expanded="false" />
                 <element signature="e#4521#4567#0" expanded="false" />
-                <element signature="e#6058#7532#0" expanded="true" />
                 <element signature="e#6089#6165#0" expanded="true" />
-                <element signature="e#7527#7528#0" expanded="true" />
-                <element signature="e#9351#9582#0" expanded="true" />
-                <element signature="e#9571#9572#0" expanded="true" />
-                <element signature="e#9623#9806#0" expanded="true" />
-                <element signature="e#9795#9796#0" expanded="true" />
-                <element signature="e#9844#10033#0" expanded="true" />
-                <element signature="e#10022#10023#0" expanded="true" />
-                <element signature="e#10418#10817#0" expanded="true" />
-                <element signature="e#10806#10807#0" expanded="true" />
-                <element signature="e#10856#11100#0" expanded="true" />
-                <element signature="e#11089#11090#0" expanded="true" />
-                <element signature="e#11457#11857#0" expanded="true" />
-                <element signature="e#11846#11847#0" expanded="true" />
-                <element signature="e#11896#12140#0" expanded="true" />
-                <element signature="e#12129#12130#0" expanded="true" />
                 <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#12376#12567#0" expanded="true" />
-                <element signature="e#12562#12563#0" expanded="true" />
                 <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -409,23 +376,9 @@
                 <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#21802#21803#0" expanded="true" />
-                <element signature="e#21822#21823#0" expanded="true" />
                 <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
                 <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#24490#24491#0" expanded="true" />
-                <element signature="e#24516#24517#0" expanded="true" />
-                <element signature="e#24556#24557#0" expanded="true" />
-                <element signature="e#24584#24585#0" expanded="true" />
-                <element signature="e#24620#24621#0" expanded="true" />
-                <element signature="e#24644#24645#0" expanded="true" />
-                <element signature="e#24985#24986#0" expanded="true" />
-                <element signature="e#25016#25017#0" expanded="true" />
-                <element signature="e#25060#25061#0" expanded="true" />
-                <element signature="e#25092#25093#0" expanded="true" />
-                <element signature="e#25138#25139#0" expanded="true" />
-                <element signature="e#25172#25173#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -433,14 +386,14 @@
       </file>
       <file leaf-file-name="activity_charge.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="4981">
               <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
               <folding />
             </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -543,6 +496,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -603,8 +558,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -662,6 +615,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -687,19 +653,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1008,7 +961,19 @@
       <created>1411567837100</created>
       <updated>1411567837100</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="- Corrected some warnings in DatabaseHandler.&#10;- Removed save param from saveToDB().&#10;- Completed update existing record.&#10;- Completed delete one record and delete all records.">
+      <created>1411570630100</created>
+      <updated>1411570630100</updated>
+    </task>
+    <task id="LOCAL-00049" summary="- Changed deleteAll method to call purgeChrgData.">
+      <created>1411572203100</created>
+      <updated>1411572203100</updated>
+    </task>
+    <task id="LOCAL-00050" summary="- Created clearFields method.">
+      <created>1411572241100</created>
+      <updated>1411572241100</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1038,10 +1003,8 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2195122" sideWeight="0.6781116" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20588236" sideWeight="0.6781116" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6011478" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.3962804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1482" y="380" width="1394" height="448" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664755" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="1" side_tool="true" content_ui="tabs" />
@@ -1064,6 +1027,8 @@
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6011478" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39741752" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1071,9 +1036,9 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.67180616" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664755" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1094,8 +1059,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805158" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32474965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="1453" y="415" width="1394" height="445" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1282235" sideWeight="0.6809728" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39741752" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1114,9 +1079,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Version 1 - Modified ChargeActivity to populate spinners.  Need to correct NPE loading spinners." />
-    <MESSAGE value="Version 1 - Modified layout of ChargeActivity to fit different screen sizes." />
-    <MESSAGE value="Version 1 - Changed order of fields in ChrgTable." />
     <MESSAGE value="Version 1 - Removed double quotes from upload file and changed extension to .txt.  Corrected issue with not saving chrgData to db.  Corrected order or fields in chrgData table." />
     <MESSAGE value="Version 1 - Found issue with not being able to delete labels from ConfigActivity.  Made changes to DatabaseHandler and ConfigActivity to correct this issue." />
     <MESSAGE value="Version 1 - Removed some commented methods, changed activity titles. Added scrollView to SettingsActivity and added 2 new fields, Host and HostPort." />
@@ -1139,7 +1101,10 @@
     <MESSAGE value="Added TODOs for deleting records from DB and to edit existing records in db.  Issue is that when attempting to db.update(), a new record is being created instead of editing the existing record.  When attempting to delete 1 record, all records are removed." />
     <MESSAGE value="Changes to deleteOne and deleteAll methods.  Added del and delAll buttons.  Some other small changes to clean up code." />
     <MESSAGE value="Clear fields after send.  Removed parameter &quot;save&quot; from saveToDB()." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clear fields after send.  Removed parameter &quot;save&quot; from saveToDB()." />
+    <MESSAGE value="- Corrected some warnings in DatabaseHandler.&#10;- Removed save param from saveToDB().&#10;- Completed update existing record.&#10;- Completed delete one record and delete all records." />
+    <MESSAGE value="- Changed deleteAll method to call purgeChrgData." />
+    <MESSAGE value="- Created clearFields method." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Created clearFields method." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1174,29 +1139,11 @@
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java</url>
-          <line>282</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java</url>
-          <line>274</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java</url>
-          <line>298</line>
-          <properties />
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="32" />
+      <option name="time" value="34" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1213,26 +1160,8 @@
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6058#7532#0" expanded="true" />
             <element signature="e#6089#6165#0" expanded="true" />
-            <element signature="e#7527#7528#0" expanded="true" />
-            <element signature="e#9351#9582#0" expanded="true" />
-            <element signature="e#9571#9572#0" expanded="true" />
-            <element signature="e#9623#9806#0" expanded="true" />
-            <element signature="e#9795#9796#0" expanded="true" />
-            <element signature="e#9844#10033#0" expanded="true" />
-            <element signature="e#10022#10023#0" expanded="true" />
-            <element signature="e#10418#10817#0" expanded="true" />
-            <element signature="e#10806#10807#0" expanded="true" />
-            <element signature="e#10856#11100#0" expanded="true" />
-            <element signature="e#11089#11090#0" expanded="true" />
-            <element signature="e#11457#11857#0" expanded="true" />
-            <element signature="e#11846#11847#0" expanded="true" />
-            <element signature="e#11896#12140#0" expanded="true" />
-            <element signature="e#12129#12130#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#12376#12567#0" expanded="true" />
-            <element signature="e#12562#12563#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -1253,23 +1182,9 @@
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21802#21803#0" expanded="true" />
-            <element signature="e#21822#21823#0" expanded="true" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#24490#24491#0" expanded="true" />
-            <element signature="e#24516#24517#0" expanded="true" />
-            <element signature="e#24556#24557#0" expanded="true" />
-            <element signature="e#24584#24585#0" expanded="true" />
-            <element signature="e#24620#24621#0" expanded="true" />
-            <element signature="e#24644#24645#0" expanded="true" />
-            <element signature="e#24985#24986#0" expanded="true" />
-            <element signature="e#25016#25017#0" expanded="true" />
-            <element signature="e#25060#25061#0" expanded="true" />
-            <element signature="e#25092#25093#0" expanded="true" />
-            <element signature="e#25138#25139#0" expanded="true" />
-            <element signature="e#25172#25173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1287,27 +1202,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5831" max-vertical-offset="10013">
           <caret line="343" column="58" selection-start-line="343" selection-start-column="58" selection-end-line="343" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#6131#6155#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#11779#11782#0" expanded="false" />
             <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#15311#15357#0" expanded="true" />
             <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -1318,12 +1228,10 @@
             <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#19021#19029#0" expanded="true" />
             <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#20681#20696#0" expanded="true" />
             <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -1369,26 +1277,8 @@
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6058#7532#0" expanded="true" />
             <element signature="e#6089#6165#0" expanded="true" />
-            <element signature="e#7527#7528#0" expanded="true" />
-            <element signature="e#9351#9582#0" expanded="true" />
-            <element signature="e#9571#9572#0" expanded="true" />
-            <element signature="e#9623#9806#0" expanded="true" />
-            <element signature="e#9795#9796#0" expanded="true" />
-            <element signature="e#9844#10033#0" expanded="true" />
-            <element signature="e#10022#10023#0" expanded="true" />
-            <element signature="e#10418#10817#0" expanded="true" />
-            <element signature="e#10806#10807#0" expanded="true" />
-            <element signature="e#10856#11100#0" expanded="true" />
-            <element signature="e#11089#11090#0" expanded="true" />
-            <element signature="e#11457#11857#0" expanded="true" />
-            <element signature="e#11846#11847#0" expanded="true" />
-            <element signature="e#11896#12140#0" expanded="true" />
-            <element signature="e#12129#12130#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#12376#12567#0" expanded="true" />
-            <element signature="e#12562#12563#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -1409,23 +1299,9 @@
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21802#21803#0" expanded="true" />
-            <element signature="e#21822#21823#0" expanded="true" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#24490#24491#0" expanded="true" />
-            <element signature="e#24516#24517#0" expanded="true" />
-            <element signature="e#24556#24557#0" expanded="true" />
-            <element signature="e#24584#24585#0" expanded="true" />
-            <element signature="e#24620#24621#0" expanded="true" />
-            <element signature="e#24644#24645#0" expanded="true" />
-            <element signature="e#24985#24986#0" expanded="true" />
-            <element signature="e#25016#25017#0" expanded="true" />
-            <element signature="e#25060#25061#0" expanded="true" />
-            <element signature="e#25092#25093#0" expanded="true" />
-            <element signature="e#25138#25139#0" expanded="true" />
-            <element signature="e#25172#25173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1443,27 +1319,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5831" max-vertical-offset="10013">
           <caret line="343" column="58" selection-start-line="343" selection-start-column="58" selection-end-line="343" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#6131#6155#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#11779#11782#0" expanded="false" />
             <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#15311#15357#0" expanded="true" />
             <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -1474,12 +1345,10 @@
             <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#19021#19029#0" expanded="true" />
             <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#20681#20696#0" expanded="true" />
             <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -1525,26 +1394,8 @@
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6058#7532#0" expanded="true" />
             <element signature="e#6089#6165#0" expanded="true" />
-            <element signature="e#7527#7528#0" expanded="true" />
-            <element signature="e#9351#9582#0" expanded="true" />
-            <element signature="e#9571#9572#0" expanded="true" />
-            <element signature="e#9623#9806#0" expanded="true" />
-            <element signature="e#9795#9796#0" expanded="true" />
-            <element signature="e#9844#10033#0" expanded="true" />
-            <element signature="e#10022#10023#0" expanded="true" />
-            <element signature="e#10418#10817#0" expanded="true" />
-            <element signature="e#10806#10807#0" expanded="true" />
-            <element signature="e#10856#11100#0" expanded="true" />
-            <element signature="e#11089#11090#0" expanded="true" />
-            <element signature="e#11457#11857#0" expanded="true" />
-            <element signature="e#11846#11847#0" expanded="true" />
-            <element signature="e#11896#12140#0" expanded="true" />
-            <element signature="e#12129#12130#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#12376#12567#0" expanded="true" />
-            <element signature="e#12562#12563#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -1565,23 +1416,9 @@
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21802#21803#0" expanded="true" />
-            <element signature="e#21822#21823#0" expanded="true" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#24490#24491#0" expanded="true" />
-            <element signature="e#24516#24517#0" expanded="true" />
-            <element signature="e#24556#24557#0" expanded="true" />
-            <element signature="e#24584#24585#0" expanded="true" />
-            <element signature="e#24620#24621#0" expanded="true" />
-            <element signature="e#24644#24645#0" expanded="true" />
-            <element signature="e#24985#24986#0" expanded="true" />
-            <element signature="e#25016#25017#0" expanded="true" />
-            <element signature="e#25060#25061#0" expanded="true" />
-            <element signature="e#25092#25093#0" expanded="true" />
-            <element signature="e#25138#25139#0" expanded="true" />
-            <element signature="e#25172#25173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1599,27 +1436,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="9350">
           <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#6131#6155#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#11779#11782#0" expanded="false" />
             <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#15311#15357#0" expanded="true" />
             <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -1630,12 +1462,10 @@
             <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#19021#19029#0" expanded="true" />
             <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#20681#20696#0" expanded="true" />
             <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -1655,14 +1485,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
@@ -1680,27 +1510,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="9350">
           <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#6131#6155#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#11779#11782#0" expanded="false" />
             <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#15311#15357#0" expanded="true" />
             <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -1711,12 +1536,10 @@
             <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#19021#19029#0" expanded="true" />
             <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#20681#20696#0" expanded="true" />
             <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -1736,14 +1559,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
@@ -1761,27 +1584,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="9350">
           <caret line="26" column="50" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#6131#6155#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#11779#11782#0" expanded="false" />
             <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#15311#15357#0" expanded="true" />
             <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -1792,12 +1610,10 @@
             <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#19021#19029#0" expanded="true" />
             <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#20681#20696#0" expanded="true" />
             <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -1817,14 +1633,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
@@ -1838,14 +1654,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_receive.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2905297" vertical-offset="0" max-vertical-offset="0">
           <caret line="215" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UserFunctions.java">
@@ -1863,14 +1679,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="7.82" vertical-offset="0" max-vertical-offset="0">
           <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -1882,14 +1698,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6165413" vertical-offset="2089" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
@@ -1912,7 +1728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1054">
           <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1920,7 +1735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1054">
           <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1964,7 +1778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5432836" vertical-offset="12437" max-vertical-offset="13107">
           <caret line="795" column="0" selection-start-line="795" selection-start-column="0" selection-end-line="795" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1980,10 +1793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1266" max-vertical-offset="12461">
           <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding>
-            <element signature="e#28801#28802#0" expanded="true" />
-            <element signature="e#28839#28840#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1991,7 +1800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3325893" vertical-offset="1755" max-vertical-offset="4335">
           <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1999,9 +1807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="8347">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="e#2560#2561#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2009,28 +1814,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="24495" max-vertical-offset="36125">
           <caret line="1511" column="7" selection-start-line="1511" selection-start-column="7" selection-end-line="1511" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="4981">
           <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="2856">
           <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2038,42 +1840,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1768">
           <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#660#661#0" expanded="true" />
-            <element signature="e#1906#1946#0" expanded="true" />
-            <element signature="e#2559#2600#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2441" max-vertical-offset="5967">
-          <caret line="709" column="0" selection-start-line="709" selection-start-column="0" selection-end-line="709" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5433" max-vertical-offset="6103">
+          <caret line="339" column="0" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#6131#6155#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLabel#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#11779#11782#0" expanded="false" />
             <element signature="docComment;method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#populateFields#1;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#15311#15357#0" expanded="true" />
             <element signature="method#exportDb#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getDir#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getDir#0;class#DatabaseHandler#0" expanded="false" />
@@ -2084,12 +1875,10 @@
             <element signature="method#purgeSettings#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllLabels#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#19021#19029#0" expanded="true" />
             <element signature="docComment;method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#addUser#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getUserDetails#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#20681#20696#0" expanded="true" />
             <element signature="docComment;method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getRowCount#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#resetTables#0;class#DatabaseHandler#0" expanded="false" />
@@ -2102,33 +1891,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6636225" vertical-offset="6415" max-vertical-offset="8687">
-          <caret line="609" column="23" selection-start-line="609" selection-start-column="23" selection-end-line="609" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.6636225" vertical-offset="3831" max-vertical-offset="8483">
+          <caret line="303" column="17" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#ChargeActivity#0" expanded="false" />
             <element signature="e#3281#3342#0" expanded="false" />
             <element signature="e#4521#4567#0" expanded="false" />
-            <element signature="e#6058#7532#0" expanded="true" />
             <element signature="e#6089#6165#0" expanded="true" />
-            <element signature="e#7527#7528#0" expanded="true" />
-            <element signature="e#9351#9582#0" expanded="true" />
-            <element signature="e#9571#9572#0" expanded="true" />
-            <element signature="e#9623#9806#0" expanded="true" />
-            <element signature="e#9795#9796#0" expanded="true" />
-            <element signature="e#9844#10033#0" expanded="true" />
-            <element signature="e#10022#10023#0" expanded="true" />
-            <element signature="e#10418#10817#0" expanded="true" />
-            <element signature="e#10806#10807#0" expanded="true" />
-            <element signature="e#10856#11100#0" expanded="true" />
-            <element signature="e#11089#11090#0" expanded="true" />
-            <element signature="e#11457#11857#0" expanded="true" />
-            <element signature="e#11846#11847#0" expanded="true" />
-            <element signature="e#11896#12140#0" expanded="true" />
-            <element signature="e#12129#12130#0" expanded="true" />
             <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#12376#12567#0" expanded="true" />
-            <element signature="e#12562#12563#0" expanded="true" />
             <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
@@ -2149,23 +1920,9 @@
             <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#testService#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#21802#21803#0" expanded="true" />
-            <element signature="e#21822#21823#0" expanded="true" />
             <element signature="method#backToMain#0;class#ChargeActivity#0" expanded="false" />
             <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#24490#24491#0" expanded="true" />
-            <element signature="e#24516#24517#0" expanded="true" />
-            <element signature="e#24556#24557#0" expanded="true" />
-            <element signature="e#24584#24585#0" expanded="true" />
-            <element signature="e#24620#24621#0" expanded="true" />
-            <element signature="e#24644#24645#0" expanded="true" />
-            <element signature="e#24985#24986#0" expanded="true" />
-            <element signature="e#25016#25017#0" expanded="true" />
-            <element signature="e#25060#25061#0" expanded="true" />
-            <element signature="e#25092#25093#0" expanded="true" />
-            <element signature="e#25138#25139#0" expanded="true" />
-            <element signature="e#25172#25173#0" expanded="true" />
           </folding>
         </state>
       </provider>
