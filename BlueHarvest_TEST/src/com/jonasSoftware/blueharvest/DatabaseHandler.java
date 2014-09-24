@@ -63,8 +63,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //
     static int _recordNum;
     static Boolean _existingRec = false;
-    final SQLiteDatabase _dbr = this.getReadableDatabase();
-    final SQLiteDatabase _dbw = this.getWritableDatabase();
+    //final SQLiteDatabase _dbr = this.getReadableDatabase();
+    //final SQLiteDatabase _dbw = this.getWritableDatabase();
     // Login table name
     private static final String TABLE_LOGIN = "login";
     // Login Table Columns names
@@ -251,9 +251,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public void saveToDb(String _whse, String _wo, String _costItem,
                          String _costType, String _upc, String _quantity, String _serial,
-                         String _comment, String _date, Context context, Boolean save){
+                         String _comment, String _date, Context context){
     	// save fields to db with new fields
-    	//SQLiteDatabase db = this.getWritableDatabase();
+    	SQLiteDatabase db = this.getWritableDatabase();
     	//*
     	ContentValues values = new ContentValues();
     	values.put(COLUMN_WHSE, _whse);
@@ -267,20 +267,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, _date);
     	
     	// Insert row
-        assert _dbw != null;
-        if (_existingRec == false) {
-            _dbw.insert(TABLE_CHRG_DATA, null, values);
+        assert db != null;
+        if (!_existingRec) {
+            db.insert(TABLE_CHRG_DATA, null, values);
         } else {
             // TODO - fix update existing record.
-            String recordNum = Integer.toString(_recordNum);
-            _dbw.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[] {recordNum});
+            //String recordNum = Integer.toString(_recordNum + 1);
+            db.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
     	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
                 + values, LENGTH_LONG)
                 .show();
 
-    	//_dbw.close();
+    	db.close();
         _existingRec = false;
     }
     
@@ -334,7 +334,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + values, LENGTH_LONG)
                 .show();
 
-        //db.close();
+        db.close();
     }
 
     /**
@@ -365,6 +365,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     		sa.setSubject(_subject);
     		sa.setBody(_body);
     	}
+        db.close();
+        if (cursor != null) {
+            cursor.close();
+        }
     }
 
     /**
@@ -407,6 +411,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             e.printStackTrace();
         } finally {
             //db.endTransaction();
+            db.close();
             if (cursor != null) {
                 cursor.close();
             }
@@ -640,62 +645,84 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void moveToFirst(String dbName) {
         //go to the first record in the db
-        //SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
-        cursor.moveToFirst();
-        _recordNum = cursor.getPosition();
-        populateFields(_recordNum);
-        _existingRec = true;
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null) {
+            Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+            cursor.moveToFirst();
+            _recordNum = cursor.getPosition();
+            populateFields(_recordNum);
+            _existingRec = true;
+            db.close();
+        }
     }
 
     public void moveToLast(String dbName) {
         //go to last record in the db
-        //SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
-        cursor.moveToLast();
-        _recordNum = cursor.getPosition();
-        populateFields(_recordNum);
-        _existingRec = true;
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null) {
+            Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+            cursor.moveToLast();
+            _recordNum = cursor.getPosition();
+            populateFields(_recordNum);
+            _existingRec = true;
+            db.close();
+        }
     }
 
     public void moveToNext(String dbName, Context context) {
         //go to the next record
-        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
-        cursor.moveToPosition(_recordNum);
-        cursor.moveToNext();
-        int currentPos = _recordNum;
-        _recordNum = cursor.getPosition();
-        //*
-        if (currentPos == _recordNum) {
-            makeText(context, context.getString(R.string.onLastRecord), LENGTH_LONG).show();
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null) {
+            Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+            cursor.moveToPosition(_recordNum);
+            cursor.moveToNext();
+            int currentPos = _recordNum;
+            _recordNum = cursor.getPosition();
+            //*
+            if (currentPos == _recordNum) {
+                makeText(context, context.getString(R.string.onLastRecord), LENGTH_LONG).show();
+            }
+            //*/
+            populateFields(_recordNum);
+            _existingRec = true;
+            db.close();
         }
-        //*/
-        populateFields(_recordNum);
-        _existingRec = true;
     }
 
     public void moveToPrevious(String dbName, Context context) {
         //go to previous record
-        Cursor cursor = _dbr.query(dbName, null, null, null, null, null, null);
-        cursor.moveToPosition(_recordNum);
-        cursor.moveToPrevious();
-        int currentPos = _recordNum;
-        _recordNum = cursor.getPosition();
-        //*
-        if (currentPos == _recordNum) {
-            makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG).show();
-        }//*/
-        populateFields(_recordNum);
-        _existingRec = true;
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null) {
+            Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+            cursor.moveToPosition(_recordNum);
+            cursor.moveToPrevious();
+            int currentPos = _recordNum;
+            _recordNum = cursor.getPosition();
+            //*
+            if (currentPos == _recordNum) {
+                makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG).show();
+            }//*/
+            populateFields(_recordNum);
+            _existingRec = true;
+            db.close();
+        }
     }
 
     public void deleteAll(String dbName) {
         //delete all records in db
-        _dbw.delete(dbName, null, null);
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null) {
+            db.delete(dbName, null, null);
+            db.close();
+        }
     }
 
     public void deleteOne(String dbName) {
         // TODO - delete one record - use _recordNum
-        _dbw.delete(dbName, COLUMN_KEY + "=" + _recordNum, null);
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null) {
+            db.delete(dbName, COLUMN_KEY + "=?", new String[] {Integer.toString(_recordNum + 1)});
+            db.close();
+        }
     }
 }
