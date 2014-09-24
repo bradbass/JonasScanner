@@ -72,20 +72,20 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
 
-    static EditText installField;
-    static EditText jobWoField;
-    static EditText quantityField;
-    static EditText serialField;
-    static TextView commentField;
-    static TextView scanField;
-    //static TextView dateField;
-    static String currentDate;
+    static EditText _installField;
+    static EditText _jobWoField;
+    static EditText _quantityField;
+    static EditText _serialField;
+    static TextView _commentField;
+    static TextView _scanField;
+    static TextView _dateField;
+    static String _currentDate;
 
     //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
     @SuppressLint({"SimpleDateFormat", "CutPasteId"})
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_charge);
         setTitle("onas Charge Parts");
@@ -108,20 +108,20 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button delAllBtn = (Button) findViewById(R.id.delAll);
 		
 		//*
-		final TextView dateField = (TextView) findViewById(R.id.installField);
+		_dateField = (TextView) findViewById(R.id.installField);
 		SimpleDateFormat dateFormat = new SimpleDateFormat(getString(R.string.simple_date_format));
-		final String currentDate = dateFormat.format(new Date());
-		dateField.setText(currentDate);
+		_currentDate = dateFormat.format(new Date());
+		_dateField.setText(_currentDate);
 		//*/
 		
-		installField = (EditText) findViewById(R.id.installField);
-        jobWoField = (EditText) findViewById(R.id.jobWoField);
-        quantityField = (EditText) findViewById(R.id.quantityField);
-        serialField = (EditText) findViewById(R.id.serialField);
-        commentField = (TextView) findViewById(R.id.commentField);
-		scanField = (TextView) findViewById(R.id.scanField);
+		_installField = (EditText) findViewById(R.id.installField);
+        _jobWoField = (EditText) findViewById(R.id.jobWoField);
+        _quantityField = (EditText) findViewById(R.id.quantityField);
+        _serialField = (EditText) findViewById(R.id.serialField);
+        _commentField = (TextView) findViewById(R.id.commentField);
+		_scanField = (TextView) findViewById(R.id.scanField);
 
-		//comment = commentField.getText().toString();
+		//comment = _commentField.getText().toString();
 
         // Spinner element
         spinnerWhse = (Spinner) findViewById(R.id.spinnerWhse);
@@ -138,7 +138,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         loadSpinnerDataItem();
         loadSpinnerDataType();
 
-        installField.setOnClickListener(new OnClickListener() {
+        _installField.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
@@ -172,18 +172,18 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 			public void onClick(View v) {
 				// add fields from new table
 				if(_date == null) {
-					date = currentDate.replaceAll("\\s+", "").replaceAll("/", "");
+					date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
                     _date = date;
 				}
 				if(_upc == null) {
-					_upc = scanField.getText().toString();
+					_upc = _scanField.getText().toString();
 				}
 				//DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
 
-				comment = commentField.getText().toString();
-                _quantity = quantityField.getText().toString();
-                _wo = jobWoField.getText().toString();
-                _serial = serialField.getText().toString();
+				comment = _commentField.getText().toString();
+                _quantity = _quantityField.getText().toString();
+                _wo = _jobWoField.getText().toString();
+                _serial = _serialField.getText().toString();
                 _whse = spinnerWhse.getSelectedItem().toString();
                 _item = spinnerItem.getSelectedItem().toString();
                 _type = spinnerType.getSelectedItem().toString();
@@ -192,15 +192,15 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                         _serial, comment, _date, getBaseContext());
 
 				save = true;
-                //clearFields();
-				//*
+                clearFields();
+				/*
 				_upc = null;
-				scanField.setText(null);
-				commentField.setText(null);
-                jobWoField.setText(null);
-                quantityField.setText(null);
-                serialField.setText(null);
-                dateField.setText(currentDate);
+				_scanField.setText(null);
+				_commentField.setText(null);
+                _jobWoField.setText(null);
+                _quantityField.setText(null);
+                _serialField.setText(null);
+                _dateField.setText(_currentDate);
                 spinnerWhse.setSelection(0);
                 spinnerItem.setSelection(0);
                 spinnerType.setSelection(0);
@@ -221,15 +221,15 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
                 send();
                 //testService();
-                //clearFields();
-                //*
+                clearFields();
+                /*
                 _upc = null;
-                scanField.setText(null);
-                commentField.setText(null);
-                jobWoField.setText(null);
-                quantityField.setText(null);
-                serialField.setText(null);
-                dateField.setText(currentDate);
+                _scanField.setText(null);
+                _commentField.setText(null);
+                _jobWoField.setText(null);
+                _quantityField.setText(null);
+                _serialField.setText(null);
+                _dateField.setText(_currentDate);
                 spinnerWhse.setSelection(0);
                 spinnerItem.setSelection(0);
                 spinnerType.setSelection(0);
@@ -279,15 +279,15 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View v) {
                 //delete all records in db
                 deleteAll();
-                //clearFields();
-                //*
+                clearFields();
+                /*
                 _upc = null;
-                scanField.setText(null);
-                commentField.setText(null);
-                jobWoField.setText(null);
-                quantityField.setText(null);
-                serialField.setText(null);
-                dateField.setText(currentDate);
+                _scanField.setText(null);
+                _commentField.setText(null);
+                _jobWoField.setText(null);
+                _quantityField.setText(null);
+                _serialField.setText(null);
+                _dateField.setText(_currentDate);
                 spinnerWhse.setSelection(0);
                 spinnerItem.setSelection(0);
                 spinnerType.setSelection(0);
@@ -300,21 +300,36 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View v) {
                 //delete only the current record
                 deleteOne();
-                //clearFields();
-                //*
+                clearFields();
+                /*
                 _upc = null;
-                scanField.setText(null);
-                commentField.setText(null);
-                jobWoField.setText(null);
-                quantityField.setText(null);
-                serialField.setText(null);
-                dateField.setText(currentDate);
+                _scanField.setText(null);
+                _commentField.setText(null);
+                _jobWoField.setText(null);
+                _quantityField.setText(null);
+                _serialField.setText(null);
+                _dateField.setText(_currentDate);
                 spinnerWhse.setSelection(0);
                 spinnerItem.setSelection(0);
                 spinnerType.setSelection(0);
                 //*/
             }
         });
+    }
+
+    private void clearFields() {
+        //*
+        _upc = null;
+        _scanField.setText(null);
+        _commentField.setText(null);
+        _jobWoField.setText(null);
+        _quantityField.setText(null);
+        _serialField.setText(null);
+        _dateField.setText(_currentDate);
+        spinnerWhse.setSelection(0);
+        spinnerItem.setSelection(0);
+        spinnerType.setSelection(0);
+        //*/
     }
 
     private void deleteOne() {
@@ -536,7 +551,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	}
 
 	/**
-	 * When user selects a date from the datePicker, we first set the contents of the dateField
+	 * When user selects a date from the datePicker, we first set the contents of the _dateField
 	 * with the date the user selected.  We then format the date string to be sent to the database.
 	 * we then initialise the static variable _date to the new formatted date.
 	 * 
@@ -564,18 +579,18 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         setDateTime();
 
         if(_date == null) {
-            date = currentDate.replaceAll("\\s+", "").replaceAll("/", "");
+            date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
             _date = date;
         }
         if(_upc == null) {
-            _upc = scanField.getText().toString();
+            _upc = _scanField.getText().toString();
         }
         //DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
 
-        comment = commentField.getText().toString();
-        _quantity = quantityField.getText().toString();
-        _wo = jobWoField.getText().toString();
-        _serial = serialField.getText().toString();
+        comment = _commentField.getText().toString();
+        _quantity = _quantityField.getText().toString();
+        _wo = _jobWoField.getText().toString();
+        _serial = _serialField.getText().toString();
         _whse = spinnerWhse.getSelectedItem().toString();
         _item = spinnerItem.getSelectedItem().toString();
         _type = spinnerType.getSelectedItem().toString();
@@ -722,12 +737,12 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
     public void populateFields() {
         //
-        scanField.setText(_upc);
-        commentField.setText(_comment);
-        installField.setText(_date);
-        jobWoField.setText(_wo);
-        quantityField.setText(_quantity);
-        serialField.setText(_serial);
+        _scanField.setText(_upc);
+        _commentField.setText(_comment);
+        _installField.setText(_date);
+        _jobWoField.setText(_wo);
+        _quantityField.setText(_quantity);
+        _serialField.setText(_serial);
         setSpinnerWhse(_whse);
         setSpinnerItem(_item);
         setSpinnerType(_type);
