@@ -333,7 +333,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void deleteOne() {
-        // TODO - reset fields when done
+        //
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         Builder aDB = new Builder(this);
         aDB.setTitle("Delete Current Record?");
