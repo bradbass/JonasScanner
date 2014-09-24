@@ -189,7 +189,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 _type = spinnerType.getSelectedItem().toString();
 
                 _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
-                        _serial, comment, _date, getBaseContext(), save);
+                        _serial, comment, _date, getBaseContext());
 
 				save = true;
 				_upc = null;
@@ -218,6 +218,16 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
                 send();
                 //testService();
+                _upc = null;
+                scanField.setText(null);
+                commentField.setText(null);
+                jobWoField.setText(null);
+                quantityField.setText(null);
+                serialField.setText(null);
+                dateField.setText(currentDate);
+                spinnerWhse.setSelection(0);
+                spinnerItem.setSelection(0);
+                spinnerType.setSelection(0);
 
 		    }
 	    });
