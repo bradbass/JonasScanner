@@ -192,7 +192,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                         _serial, comment, _date, getBaseContext());
 
 				save = true;
-				_upc = null;
+                clearFields();
+				/*_upc = null;
 				scanField.setText(null);
 				commentField.setText(null);
                 jobWoField.setText(null);
@@ -201,7 +202,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 dateField.setText(currentDate);
                 spinnerWhse.setSelection(0);
                 spinnerItem.setSelection(0);
-                spinnerType.setSelection(0);
+                spinnerType.setSelection(0);*/
             }
 		});
 		
@@ -218,7 +219,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
                 send();
                 //testService();
-                _upc = null;
+                clearFields();
+                /*_upc = null;
                 scanField.setText(null);
                 commentField.setText(null);
                 jobWoField.setText(null);
@@ -227,7 +229,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 dateField.setText(currentDate);
                 spinnerWhse.setSelection(0);
                 spinnerItem.setSelection(0);
-                spinnerType.setSelection(0);
+                spinnerType.setSelection(0);*/
 
 		    }
 	    });
@@ -273,6 +275,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View v) {
                 //delete all records in db
                 deleteAll();
+                clearFields();
             }
         });
 
@@ -281,8 +284,22 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View v) {
                 //delete only the current record
                 deleteOne();
+                clearFields();
             }
         });
+    }
+
+    private void clearFields() {
+        _upc = null;
+        scanField.setText(null);
+        commentField.setText(null);
+        jobWoField.setText(null);
+        quantityField.setText(null);
+        serialField.setText(null);
+        installField.setText(currentDate);
+        spinnerWhse.setSelection(0);
+        spinnerItem.setSelection(0);
+        spinnerType.setSelection(0);
     }
 
     private void deleteOne() {
