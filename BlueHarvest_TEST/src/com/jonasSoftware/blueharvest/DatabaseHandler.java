@@ -10,7 +10,7 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_LONG;
@@ -575,6 +575,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
+    /*
     public void addUser(String name, String email, String uid, String created_at) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -589,10 +590,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_LOGIN, null, values);
         db.close(); // Closing database connection
     }
+    //*/
 
     /**
      * Getting user data from database
      * */
+    /*
     public HashMap<String, String> getUserDetails(){
         HashMap<String,String> user = new HashMap<String,String>();
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
@@ -613,6 +616,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return user
         return user;
     }
+    //*/
 
     /**
      * Getting user login status
