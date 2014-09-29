@@ -39,7 +39,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     //
     static String _label;
     private static String _upc;
-    private static String _date;
     private static String _filename;
     private static String _whse;
     private static String _quantity;
@@ -48,20 +47,18 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private Boolean exit = false;
     private Boolean save = false;
     // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
-    private String date;
-    private String comment;
     Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
 
-    static EditText installField;
-    static EditText quantityField;
-    static TextView scanField;
-    static String currentDate;
+    static EditText _quantityField;
+    static TextView _scanField;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         setTitle("onas Parts Upload");
+
+        final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
         //create buttons
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
@@ -90,23 +87,24 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         });
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View view) {
                 //do stuff
                 if(_upc == null) {
-                    _upc = scanField.getText().toString();
+                    _upc = _scanField.getText().toString();
                 }
                 DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
 
-                _quantity = quantityField.getText().toString();
+                _quantity = _quantityField.getText().toString();
                  _whse = spinnerWhse.getSelectedItem().toString();
 
                 saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
 
                 save = true;
                 _upc = null;
-                scanField.setText(null);
-                quantityField.setText(null);
+                _scanField.setText(null);
+                _quantityField.setText(null);
                 spinnerWhse.setSelection(0);
             }
         });
@@ -124,7 +122,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         firstBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //do stuff
+                //do stuff - table uploadData
+                _db.moveToFirst("uploadData", 2);
+                populateFields();
             }
         });
 
@@ -132,6 +132,8 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 //do stuff
+                _db.moveToNext("uploadData", getBaseContext(), 2);
+                populateFields();
             }
         });
 
@@ -139,6 +141,8 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 //do stuff
+                _db.moveToPrevious("uploadData", getBaseContext(), 2);
+                populateFields();
             }
         });
 
@@ -146,8 +150,24 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 //do stuff
+                _db.moveToLast("uploadData", 2);
+                populateFields();
             }
         });
+    }
+
+    public void populateFields() {
+        //populate fields
+        _scanField.setText(_upc);
+        _quantityField.setText(_quantity);
+        setSpinnerWhse(_whse);
+    }
+
+    private void setSpinnerWhse(String valueWhse) {
+        //String spinnerValue = valueWhse;
+        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        int spinnerPos = spinAdapter.getPosition(valueWhse);
+        spinnerWhse.setSelection(spinnerPos);
     }
 
     private void loadSpinnerDataWhse() {
@@ -196,6 +216,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
      * @param position The position of the view in the adapter
      * @param id       The row id of the item that is selected
      */
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //do stuff
@@ -220,6 +241,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         //do stuff
     }
 
+    @SuppressWarnings("ConstantConditions")
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     void send() {
         if ((save == null) || !save) {
@@ -317,5 +339,17 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         makeText(context, getString(R.string.toast_filename_is_label)
                 + _filename, LENGTH_LONG)
                 .show();
+    }
+
+    public void setUPC(String upc) {
+        _upc = upc;
+    }
+
+    public void setWHSE(String whse) {
+        _whse = whse;
+    }
+
+    public void setQty(String qty) {
+        _quantity = qty;
     }
 }
