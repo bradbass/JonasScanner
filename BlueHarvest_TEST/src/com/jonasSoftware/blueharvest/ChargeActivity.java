@@ -217,7 +217,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // cursor.moveToFirst()
-                _db.moveToFirst("chrgData");
+                _db.moveToFirst("chrgData", 1);
                 populateFields();
             }
         });
@@ -226,7 +226,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // cursor.moveToNext()
-                _db.moveToNext("chrgData", getBaseContext());
+                _db.moveToNext("chrgData", getBaseContext(), 1);
                 populateFields();
             }
         });
@@ -235,7 +235,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // cursor.moveToPrevious()
-                _db.moveToPrevious("chrgData", getBaseContext());
+                _db.moveToPrevious("chrgData", getBaseContext(), 1);
                 populateFields();
             }
         });
@@ -244,7 +244,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 // cursor.moveToLast()
-                _db.moveToLast("chrgData");
+                _db.moveToLast("chrgData", 1);
                 populateFields();
             }
         });
@@ -611,7 +611,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 });
                 aDB.show();
             }
-            db.purgeChrgData();
+            db.purgeData("chrgData");
             db.close();
         }
     }
@@ -628,7 +628,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 		Intent chrgAct = new Intent();
 		setResult(RESULT_OK, chrgAct);
-		db.purgeChrgData();
+		db.purgeData("chrgData");
         db.close();
 		finish();
 	}
@@ -638,7 +638,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		//String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 		//Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-		db.purgeChrgData();
+		db.purgeData("chrgData");
 		db.close();
 		endActivity();
 	}
