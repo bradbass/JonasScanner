@@ -374,7 +374,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * populate the fields in the charge activity when using the navigation buttons
      */
-    public void populateFields(int recordNum) {
+    public void populateChrg(int recordNum) {
 
         // populate the fields using the cursor position
         SQLiteDatabase db = this.getReadableDatabase();
@@ -416,6 +416,45 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
+    }
+
+    public void populateUpload(int recordNum) {
+        // populate the fields using the cursor position
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        assert db != null;
+        try {
+            cursor = db.query(TABLE_UPLOAD_DATA, null, null, null, null, null, null);
+            cursor.moveToPosition(recordNum);
+
+            String _upc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
+            String _whse = cursor.getString(cursor.getColumnIndex(COLUMN_WHSE));
+            String _qty = cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY));
+
+            UploadActivity ua = new UploadActivity();
+
+            ua.setUPC(_upc);
+            ua.setWHSE(_whse);
+            ua.setQty(_qty);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //db.endTransaction();
+            db.close();
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+    public void populateTrans(int recordNum) {
+        // TODO - finish this
+    }
+
+    public void populateRecieve(int recordNum) {
+        // TODO - finish this
     }
 
     /**
@@ -517,10 +556,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * purge the charge data table.
      *
      */
-    public void purgeChrgData() {
+    public void purgeData(String dbName) {
     	SQLiteDatabase db = this.getWritableDatabase();
         assert db != null;
-        db.delete(TABLE_CHRG_DATA, null, null);
+        db.delete(dbName, null, null);
     	db.close();
     }
 
@@ -647,33 +686,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void moveToFirst(String dbName) {
+    public void switchDB(int dbNum) {
+        switch (dbNum) {
+            case 1: populateChrg(_recordNum);
+                break;
+            case 2: populateUpload(_recordNum);
+                break;
+            case 3: populateTrans(_recordNum);
+                break;
+            case 4: populateRecieve(_recordNum);
+                break;
+        }
+    }
+
+    public void moveToFirst(String dbName, int dbNum) {
         //go to the first record in the db
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null) {
             Cursor cursor = db.query(dbName, null, null, null, null, null, null);
             cursor.moveToFirst();
             _recordNum = cursor.getPosition();
-            populateFields(_recordNum);
+            switchDB(dbNum);
             _existingRec = true;
             db.close();
         }
     }
 
-    public void moveToLast(String dbName) {
+    public void moveToLast(String dbName, int dbNum) {
         //go to last record in the db
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null) {
             Cursor cursor = db.query(dbName, null, null, null, null, null, null);
             cursor.moveToLast();
             _recordNum = cursor.getPosition();
-            populateFields(_recordNum);
+            switchDB(dbNum);
             _existingRec = true;
             db.close();
         }
     }
 
-    public void moveToNext(String dbName, Context context) {
+    public void moveToNext(String dbName, Context context, int dbNum) {
         //go to the next record
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null) {
@@ -687,13 +739,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 makeText(context, context.getString(R.string.onLastRecord), LENGTH_LONG).show();
             }
             //*/
-            populateFields(_recordNum);
+            switchDB(dbNum);
             _existingRec = true;
             db.close();
         }
     }
 
-    public void moveToPrevious(String dbName, Context context) {
+    public void moveToPrevious(String dbName, Context context, int dbNum) {
         //go to previous record
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null) {
@@ -706,7 +758,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             if (currentPos == _recordNum) {
                 makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG).show();
             }//*/
-            populateFields(_recordNum);
+            switchDB(dbNum);
             _existingRec = true;
             db.close();
         }
