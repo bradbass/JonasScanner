@@ -24,7 +24,7 @@ import static android.widget.Toast.makeText;
 public class DatabaseHandler extends SQLiteOpenHelper {
 		
     // Database Version
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 13;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -33,6 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_LABELS = "labels";
     private static final String TABLE_CHRG_DATA = "chrgData";
     private static final String TABLE_UPLOAD_DATA = "uploadData";
+    private static final String TABLE_TRANSFER_DATA = "transferData";
+    private static final String TABLE_RECEIVE_DATA = "receiveData";
     private static final String TABLE_SETTINGS = "settings";
     private static final String TABLE_WHSE = "warehouse";
     private static final String TABLE_ITEM = "cost_item";
@@ -60,9 +62,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_JOB_WO_NUM = "job_wo_num";
     private static final String COLUMN_SERIAL = "serial";
     private static final String COLUMN_QUANTITY = "quantity";
+    private static final String COLUMN_FROM_WHSE = "from_whse";
+    private static final String COLUMN_TO_WHSE = "to_whse";
     //
     static int _recordNum;
     static Boolean _existingRec = false;
+    static Cursor _curCSV;
     //final SQLiteDatabase _dbr = this.getReadableDatabase();
     //final SQLiteDatabase _dbw = this.getWritableDatabase();
     // Login table name
@@ -96,6 +101,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_WHSE + " TEXT,"
             + COLUMN_UPC + " TEXT,"
             + COLUMN_QUANTITY + " TEXT)";
+
+    private static final String CREATE_TRANSFER_TABLE = "CREATE TABLE " + TABLE_TRANSFER_DATA + "("
+            + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_FROM_WHSE + " TEXT,"
+            + COLUMN_TO_WHSE + " TEXT,"
+            + COLUMN_QUANTITY + " TEXT,"
+            + COLUMN_UPC + " TEXT,"
+            + COLUMN_SERIAL + " TEXT)";
     
     private static final String CREATE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
     		+ COLUMN_KEY + " INTEGER PRIMARY KEY,"
@@ -149,6 +162,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TYPE_TABLE);
         db.execSQL(CREATE_LOGIN_TABLE);
         db.execSQL(CREATE_UPLOADDATA_TABLE);
+        db.execSQL(CREATE_TRANSFER_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
     }
@@ -272,7 +286,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.insert(TABLE_CHRG_DATA, null, values);
         } else {
             // TODO - fix update existing record.
-            //String recordNum = Integer.toString(_recordNum + 1);
             db.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
@@ -328,13 +341,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_QUANTITY, quantity);
 
         assert db != null;
-        db.insert(TABLE_CHRG_DATA, null, values);
+        if (!_existingRec) {
+            db.insert(TABLE_UPLOAD_DATA, null, values);
+        } else {
+            db.update(TABLE_UPLOAD_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
+        }
         //*/
         makeText(context, context.getString(R.string.toast_wrote_to_db_message)
                 + values, LENGTH_LONG)
                 .show();
 
         db.close();
+        _existingRec = false;
     }
 
     /**
@@ -462,7 +480,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * @param context   context
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void exportDb(Context context, String _filename) {
+    public void exportDb(Context context, String _filename, Integer tableNum) {
         //
     	SQLiteDatabase _db = this.getReadableDatabase();
         //File exportDir = new File(Environment.getExternalStorageDirectory().getPath(), "");
@@ -481,18 +499,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = this.getReadableDatabase();
             assert db != null;
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_CHRG_DATA,null);
-            csvWrite.writeNext(curCSV.getColumnNames());
-            while(curCSV.moveToNext())
-            {
-               //Which column you want to export
-                String arrStr[] ={curCSV.getString(1), curCSV.getString(2),
-                        curCSV.getString(3), curCSV.getString(4), curCSV.getString(5), curCSV.getString(6),
-                        curCSV.getString(7), curCSV.getString(8), curCSV.getString(9)};
-                csvWrite.writeNext(arrStr);
+
+            if (tableNum == 1) {
+                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_CHRG_DATA,null);
+                csvWrite.writeNext(_curCSV.getColumnNames());
+                while(_curCSV.moveToNext())
+                {
+                   //Which column you want to export
+                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
+                            _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5), _curCSV.getString(6),
+                            _curCSV.getString(7), _curCSV.getString(8), _curCSV.getString(9)};
+                    csvWrite.writeNext(arrStr);
+                }
+            } else if (tableNum == 2) {
+                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_UPLOAD_DATA,null);
+                csvWrite.writeNext(_curCSV.getColumnNames());
+                while(_curCSV.moveToNext())
+                {
+                    //Which column you want to export
+                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
+                            _curCSV.getString(3)};
+                    csvWrite.writeNext(arrStr);
+                }
             }
             csvWrite.close();
-            curCSV.close();
+            _curCSV.close();
         }
         catch(Exception sqlEx)
         {
