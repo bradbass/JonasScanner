@@ -563,7 +563,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             setDateTime();
 
             //db.exportDb(getApplicationContext());
-            db.exportDb(getApplicationContext(), _filename);
+            db.exportDb(getApplicationContext(), _filename, 1);
             //
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
