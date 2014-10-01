@@ -68,6 +68,11 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
+        final Button delBtn = (Button) findViewById(R.id.delBtn);
+        final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+
+        _scanField = (TextView) findViewById(R.id.partUpcField);
+        _quantityField = (EditText) findViewById(R.id.quantityField);
 
         // Spinner element
         spinnerWhse = (Spinner) findViewById(R.id.spinnerWhse);
@@ -154,6 +159,31 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 populateFields();
             }
         });
+
+        delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // do stuff
+                _db.deleteOne("uploadData");
+                clearFields();
+            }
+        });
+
+        delAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do stuff
+                _db.deleteAll("uploadData");
+                clearFields();
+            }
+        });
+    }
+
+    private void clearFields() {
+        _upc = null;
+        _scanField.setText(null);
+        _quantityField.setText(null);
+        spinnerWhse.setSelection(0);
     }
 
     public void populateFields() {
@@ -220,8 +250,14 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //do stuff
-        _label = parent.getItemAtPosition(position).toString();
-        ((TextView) parent.getChildAt(0)).setTextColor(0x00000000);
+        //_label = parent.getItemAtPosition(position).toString();
+        //((TextView) parent.getChildAt(0)).setTextColor(0x00000000);
+        String label = parent.getItemAtPosition(position).toString();
+        setLabel(label);
+    }
+
+    void setLabel(String label) {
+        _label = label;
     }
 
     /**
@@ -254,7 +290,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             setDateTime();
 
             //db.exportDb(getApplicationContext());
-            db.exportDb(getApplicationContext(), _filename);
+            db.exportDb(getApplicationContext(), _filename, 2);
             //
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -302,6 +338,8 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 });
                 aDB.show();
             }
+            db.purgeData("uploadData");
+            db.close();
         }
     }
 
@@ -351,5 +389,75 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
     public void setQty(String qty) {
         _quantity = qty;
+    }
+
+    /**
+     * closes the Activity.
+     */
+    void endActivity() {
+        this.finish();
+    }
+
+    void exitApp() {
+        makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        Intent chrgAct = new Intent();
+        setResult(RESULT_OK, chrgAct);
+        db.purgeData("uploadData");
+        db.close();
+        finish();
+    }
+
+    void backToMain() {
+        //Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
+        //String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+        db.purgeData("uploadData");
+        db.close();
+        endActivity();
+    }
+
+    /**
+     * When called, will pop an AlertDialog asking user if they are sure they want
+     * to exit the screen.  This is attached to UI back button, BACK button and EXIT
+     * button.  If user selects YES, we purge the database and send them back to the
+     * main activity.
+     */
+    @Override
+    public void onBackPressed() {
+        if ((sent == null) || sent) {
+            if ((sent == null) || (exit == null) || !exit) {
+                backToMain();
+            } else {
+                exitApp();
+            }
+        } else {
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle(getString(R.string.onbackpress_dialog_title));
+            aDB.setMessage(getString(R.string.onbackpress_dialog_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // When user clicks OK, the db is purged and user is sent back to main activity.
+                    if((exit != null) && exit) {
+                        exitApp();
+                    } else {
+                        backToMain();
+                    }
+                }
+            });
+            aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // If user clicks NO, dialog is closed.
+                    exit = false;
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }
     }
 }
