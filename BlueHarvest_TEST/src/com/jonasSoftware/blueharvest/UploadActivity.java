@@ -242,10 +242,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerWhse(String valueWhse) {
-        //String spinnerValue = valueWhse;
-        //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
-        //int spinnerPos = spinAdapter.getPosition(valueWhse);
-        //spinnerWhse.setSelection(spinnerPos);
         int index = 0;
 
         for (int i=0;i<spinnerWhse.getCount();i++) {
@@ -445,6 +441,39 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
     public void setQty(String qty) {
         _quantity = qty;
+    }
+
+    /**
+     * Initialise the static variable _upc
+     *
+     * @param scanResult	upc code returned from the scanner
+     */
+    void setUpc(String scanResult) {
+        _upc = scanResult;
+    }
+
+    /**
+     * When scanner returns a result, we verify ok then send to the text box.
+     *
+     * @param requestCode   requestCode
+     * @param resultCode    resultCode
+     * @param intent        intent
+     */
+    @SuppressWarnings("ConstantConditions")
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String scanResult = intent.getStringExtra("SCAN_RESULT");
+                //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+                EditText code =(EditText)findViewById(R.id.scanField);
+                code.setText(scanResult);
+                setUpc(scanResult);
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+                Toast.makeText(getApplicationContext(),getString(R.string.toast_failed_to_scan_message),LENGTH_LONG).show();
+            }
+        }
     }
 
     /**
