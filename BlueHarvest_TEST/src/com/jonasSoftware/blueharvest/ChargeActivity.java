@@ -738,25 +738,55 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         _comment = comment;
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void setSpinnerWhse(String valueWhse) {
         //String spinnerValue = valueWhse;
-        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(valueWhse);
-        spinnerWhse.setSelection(spinnerPos);
+        //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueWhse);
+        //spinnerWhse.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<spinnerWhse.getCount();i++) {
+            if (spinnerWhse.getItemAtPosition(i).toString().equalsIgnoreCase(valueWhse)) {
+                index = i;
+                i = spinnerWhse.getCount();
+            }
+        }
+        spinnerWhse.setSelection(index);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void setSpinnerItem(String valueItem) {
         //String spinnerValue = valueItem;
-        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerItem.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(valueItem);
-        spinnerItem.setSelection(spinnerPos);
+        //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerItem.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueItem);
+        //spinnerItem.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<spinnerWhse.getCount();i++) {
+            if (spinnerWhse.getItemAtPosition(i).toString().equalsIgnoreCase(valueItem)) {
+                index = i;
+                i = spinnerWhse.getCount();
+            }
+        }
+        spinnerWhse.setSelection(index);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void setSpinnerType(String valueType) {
         //String spinnerValue = valueType;
-        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerType.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(valueType);
-        spinnerType.setSelection(spinnerPos);
+        //ArrayAdapter<String> spinAdapter = (ArrayAdapter<String>) spinnerType.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueType);
+        //spinnerType.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<spinnerWhse.getCount();i++) {
+            if (spinnerWhse.getItemAtPosition(i).toString().equalsIgnoreCase(valueType)) {
+                index = i;
+                i = spinnerWhse.getCount();
+            }
+        }
+        spinnerWhse.setSelection(index);
     }
 
 }
