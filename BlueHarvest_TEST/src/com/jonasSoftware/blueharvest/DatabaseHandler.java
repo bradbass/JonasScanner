@@ -285,7 +285,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (!_existingRec) {
             db.insert(TABLE_CHRG_DATA, null, values);
         } else {
-            // TODO - fix update existing record.
             db.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
@@ -471,7 +470,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // TODO - finish this
     }
 
-    public void populateRecieve(int recordNum) {
+    public void populateReceive(int recordNum) {
         // TODO - finish this
     }
 
@@ -725,7 +724,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 break;
             case 3: populateTrans(_recordNum);
                 break;
-            case 4: populateRecieve(_recordNum);
+            case 4: populateReceive(_recordNum);
                 break;
         }
     }
@@ -806,7 +805,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void deleteOne(String dbName) {
-        // TODO - delete one record - use _recordNum
         SQLiteDatabase db = this.getWritableDatabase();
         if (db != null) {
             db.delete(dbName, COLUMN_KEY + "=?", new String[] {Integer.toString(_recordNum + 1)});
