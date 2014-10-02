@@ -117,9 +117,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //do stuff
-                //Helper h = new Helper();
-                //h.send();
                 send();
             }
         });
@@ -186,7 +183,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         spinnerWhse.setSelection(0);
     }
 
-    public void populateFields() {
+    private void populateFields() {
         //populate fields
         _scanField.setText(_upc);
         _quantityField.setText(_quantity);
@@ -279,7 +276,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
     @SuppressWarnings("ConstantConditions")
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    void send() {
+    private void send() {
         if ((save == null) || !save) {
             saveMsg();
         } else {
@@ -343,7 +340,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         }
     }
 
-    void saveMsg() {
+    private void saveMsg() {
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle(getString(R.string.savemsg_dialog_title));
         aDB.setMessage(getString(R.string.savemsg_window_message));
@@ -359,7 +356,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     }
 
     @SuppressLint("SimpleDateFormat")
-    void setDateTime() {
+    private void setDateTime() {
         // add DateTime to filename
         Calendar cal = Calendar.getInstance(TimeZone.getDefault());
         Date currentLocalTime = cal.getTime();
@@ -370,9 +367,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         setFileName(currentDateTime, getBaseContext());
     }
 
-    void setFileName(String currentDateTime, Context context) {
+    private void setFileName(String currentDateTime, Context context) {
         //TODO - Change filename extension
-        _filename = currentDateTime + getString(R.string.filename_extension);
+        _filename = currentDateTime + getString(R.string.upload_filename_extension);
 
         makeText(context, getString(R.string.toast_filename_is_label)
                 + _filename, LENGTH_LONG)
@@ -394,11 +391,11 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     /**
      * closes the Activity.
      */
-    void endActivity() {
+    private void endActivity() {
         this.finish();
     }
 
-    void exitApp() {
+    private void exitApp() {
         makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         Intent chrgAct = new Intent();
@@ -408,7 +405,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         finish();
     }
 
-    void backToMain() {
+    private void backToMain() {
         //Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
         //String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
