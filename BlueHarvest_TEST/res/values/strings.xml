@@ -37,6 +37,9 @@
     <string name="simple.date.format">yyyy / MM / dd</string>
     <string name="filename.simple.date.format">yyyy-MM-dd_HH-mm-ss</string>
     <string name="filename.extension">_sendpart.txt</string>
+    <string name="upload.filename.extension">_upload.txt</string>
+    <string name="whse.transfer.filename.extension">_whsetran.txt</string>
+    <string name="po.receive.filename.extension">_poreceive.txt</string>
     <string name="toast.filename.is.label">The fileName is:</string>
     <string name="toast.you.selected.label">You selected:</string>
     <string name="toast.goodbye.message">Thanks for using BlueHarvest!</string>
@@ -206,5 +209,8 @@
     <string name="login.button">Login</string>
     <string name="onFirstRecord">You are on the first record.</string>
     <string name="onLastRecord">You are on the last record.</string>
+    <string name="required_fields">* Required</string>
+    <string name="delete_button">Delete</string>
+    <string name="delete_all_button">Delete All</string>
 
 </resources>
