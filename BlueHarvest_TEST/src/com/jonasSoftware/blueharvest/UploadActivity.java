@@ -159,7 +159,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View v) {
                 // do stuff
-                _db.deleteOne("uploadData");
+                deleteOne();
                 clearFields();
             }
         });
@@ -168,10 +168,62 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View v) {
                 //do stuff
-                _db.deleteAll("uploadData");
+                deleteAll();
                 clearFields();
             }
         });
+    }
+
+    private void deleteAll() {
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Delete All Records?");
+        aDB.setMessage("Are you sure you want to delete all the records you've created?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                dbh.deleteAll("uploadData");
+                makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    private void deleteOne() {
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Delete Current Record?");
+        aDB.setMessage("Are you sure you want to delete the current record?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                dbh.deleteOne("uploadData");
+                makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
     }
 
     private void clearFields() {
@@ -188,11 +240,21 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         setSpinnerWhse(_whse);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void setSpinnerWhse(String valueWhse) {
         //String spinnerValue = valueWhse;
-        ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
-        int spinnerPos = spinAdapter.getPosition(valueWhse);
-        spinnerWhse.setSelection(spinnerPos);
+        //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueWhse);
+        //spinnerWhse.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<spinnerWhse.getCount();i++) {
+            if (spinnerWhse.getItemAtPosition(i).toString().equalsIgnoreCase(valueWhse)) {
+                index = i;
+                i = spinnerWhse.getCount();
+            }
+        }
+        spinnerWhse.setSelection(index);
     }
 
     private void loadSpinnerDataWhse() {
