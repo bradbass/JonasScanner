@@ -107,10 +107,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
 
                 save = true;
-                _upc = null;
-                _scanField.setText(null);
-                _quantityField.setText(null);
-                spinnerWhse.setSelection(0);
+                clearFields();
             }
         });
 
@@ -118,6 +115,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 send();
+                clearFields();
             }
         });
 
@@ -368,7 +366,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void setFileName(String currentDateTime, Context context) {
-        //TODO - Change filename extension
         _filename = currentDateTime + getString(R.string.upload_filename_extension);
 
         makeText(context, getString(R.string.toast_filename_is_label)
