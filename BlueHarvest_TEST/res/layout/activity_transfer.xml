@@ -181,10 +181,25 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="* Required"
+                    android:text="@string/required_fields"
                     android:id="@+id/requiredTag"
                     android:textSize="18dp"
-                    android:layout_weight=".30"/>
+                    android:layout_weight=".80"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbutton"
+                android:text="@string/delete_button"
+                android:id="@+id/delBtn" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbutton"
+                android:text="@string/delete_all_button"
+                android:id="@+id/delAllBtn" />
+
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="40sp"
