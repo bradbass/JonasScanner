@@ -146,23 +146,21 @@
                     android:text="@string/required_fields"
                     android:id="@+id/requiredTag"
                     android:textSize="18dp"
-                    android:layout_weight="0.43"/>
+                    android:layout_weight="0.80"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/delete_button"
                 android:id="@+id/delBtn"
-                android:background="@drawable/roundbutton"
-                android:layout_weight="0.08" />
+                android:background="@drawable/roundbutton"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/delete_all_button"
                 android:id="@+id/delAllBtn"
-                android:background="@drawable/roundbutton"
-                android:layout_weight="0.08" />
+                android:background="@drawable/roundbutton"/>
 
             <TextView
                     android:layout_width="0dp"
