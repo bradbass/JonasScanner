@@ -1,6 +1,7 @@
 package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 /**
  * Created with IntelliJ IDEA.
@@ -60,6 +64,9 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(View v) {
                 // TODO -
+                Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
+                transferIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(transferIntent, 0);
             }
         });
 
@@ -150,4 +157,37 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     public void onNothingSelected(AdapterView<?> parent) {
         //do stuff
     }
+
+    /**
+     * Initialise the static variable _upc
+     *
+     * @param scanResult	upc code returned from the scanner
+     */
+    void setUpc(String scanResult) {
+        _upc = scanResult;
+    }
+
+    /**
+     * When scanner returns a result, we verify ok then send to the text box.
+     *
+     * @param requestCode   requestCode
+     * @param resultCode    resultCode
+     * @param intent        intent
+     */
+    @SuppressWarnings("ConstantConditions")
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String scanResult = intent.getStringExtra("SCAN_RESULT");
+                //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+                EditText code =(EditText)findViewById(R.id.scanField);
+                code.setText(scanResult);
+                setUpc(scanResult);
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_failed_to_scan_message), LENGTH_LONG).show();
+            }
+        }
+    }//
 }
