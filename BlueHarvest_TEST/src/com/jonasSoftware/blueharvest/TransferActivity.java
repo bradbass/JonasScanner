@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +16,30 @@ import android.widget.Button;
  * Date: 9/19/13
  * Time: 9:25 PM
  */
-public class TransferActivity extends Activity implements AdapterView.OnItemSelectedListener {
+public class TransferActivity extends Activity implements OnItemSelectedListener {
+
+    // Spinner element
+    private Spinner spinnerFromWhse;
+    private Spinner spinnerToWhse;
+    //
+    static String _label;
+    private static String _upc;
+    private static String _filename;
+    private static String _fromWhse;
+    private static String _toWhse;
+    private static String _quantity;
+    private static String _serial;
+
+    private Boolean sent = false;
+    private Boolean exit = false;
+    private Boolean save = false;
+
+    Crypter crypter = new Crypter();
+
+    static EditText _quantityField;
+    static TextView _scanField;
+    static EditText _serialField;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
@@ -26,6 +53,71 @@ public class TransferActivity extends Activity implements AdapterView.OnItemSele
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
+        final Button delBtn = (Button) findViewById(R.id.delBtn);
+        final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        firstBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        lastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO -
+            }
+        });
+
+        delAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO -
+            }
+        });
     }
 
     /**
