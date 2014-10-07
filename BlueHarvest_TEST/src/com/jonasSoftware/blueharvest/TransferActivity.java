@@ -1,6 +1,8 @@
 package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.makeText;
 
 /**
  * Created with IntelliJ IDEA.
@@ -131,6 +134,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(View v) {
                 // TODO -
+                deleteOne();
+                clearFields();
             }
         });
 
@@ -138,8 +143,104 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(View v) {
                 //TODO -
+                deleteAll();
+                clearFields();
             }
         });
+    }
+
+    private void deleteAll() {
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Delete All Records?");
+        aDB.setMessage("Are you sure you want to delete all the records you've created?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                dbh.deleteAll("uploadData");
+                makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    private void deleteOne() {
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Delete Current Record?");
+        aDB.setMessage("Are you sure you want to delete the current record?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                dbh.deleteOne("uploadData");
+                makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    private void clearFields() {
+        _upc = null;
+        _scanField.setText(null);
+        _quantityField.setText(null);
+        spinnerFromWhse.setSelection(0);
+        spinnerToWhse.setSelection(0);
+    }
+
+    private void populateFields() {
+        //populate fields
+        _scanField.setText(_upc);
+        _quantityField.setText(_quantity);
+        setSpinnerFromWhse(_fromWhse);
+        setSpinnerToWhse(_toWhse);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private void setSpinnerFromWhse(String valueWhse) {
+        int index = 0;
+
+        for (int i=0;i<spinnerFromWhse.getCount();i++) {
+            if (spinnerFromWhse.getItemAtPosition(i).toString().equalsIgnoreCase(valueWhse)) {
+                index = i;
+                i = spinnerFromWhse.getCount();
+            }
+        }
+        spinnerFromWhse.setSelection(index);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private void setSpinnerToWhse(String valueWhse) {
+        int index = 0;
+
+        for (int i=0;i<spinnerToWhse.getCount();i++) {
+            if (spinnerToWhse.getItemAtPosition(i).toString().equalsIgnoreCase(valueWhse)) {
+                index = i;
+                i = spinnerToWhse.getCount();
+            }
+        }
+        spinnerToWhse.setSelection(index);
     }
 
     private void loadSpinnerDataWhse() {
