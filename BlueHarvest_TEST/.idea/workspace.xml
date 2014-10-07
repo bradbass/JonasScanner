@@ -43,10 +43,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.jonasSoftware.blueharvest" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="Removed TODOs from saveToDb method and">
-      <change type="DELETED" beforePath="C:\PROJECTS\Android\BlueHarvest\BlueHarvest_TEST\src\com\jonasSoftware\blueharvest\GeneralHelperClass.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_charge.xml" afterPath="$PROJECT_DIR$/res/layout/activity_charge.xml" />
+    <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BlueHarvest.iws" />
@@ -271,118 +269,59 @@
       <file leaf-file-name="DatabaseHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2089" max-vertical-offset="13702">
+            <state vertical-scroll-proportion="0.0" vertical-offset="9962" max-vertical-offset="13702">
               <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java">
+      <file leaf-file-name="ChargeActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2924" max-vertical-offset="4063">
-              <caret line="172" column="52" selection-start-line="172" selection-start-column="52" selection-end-line="172" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="12308" max-vertical-offset="13481">
+              <caret line="724" column="0" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChargeActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
+      <file leaf-file-name="TransferActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.24200913" vertical-offset="8608" max-vertical-offset="9520">
-              <caret line="724" column="0" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
+            <state vertical-scroll-proportion="2.1119404" vertical-offset="846" max-vertical-offset="3502">
+              <caret line="173" column="46" selection-start-line="173" selection-start-column="46" selection-end-line="173" selection-end-column="46" />
               <folding>
-                <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#3303#3364#0" expanded="false" />
-                <element signature="e#4498#4545#0" expanded="false" />
-                <element signature="e#5592#5894#0" expanded="true" />
-                <element signature="e#5889#5890#0" expanded="true" />
-                <element signature="e#7500#7683#0" expanded="true" />
-                <element signature="e#7675#7676#0" expanded="true" />
-                <element signature="e#7723#7959#0" expanded="true" />
-                <element signature="e#7948#7949#0" expanded="true" />
-                <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#loadSpinnerDataWhse#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#loadSpinnerDataItem#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#loadSpinnerDataType#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-                <element signature="e#25041#25080#0" expanded="true" />
-                <element signature="e#25637#25676#0" expanded="true" />
-                <element signature="e#26233#26272#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2656#3019#0" expanded="true" />
+                <element signature="e#3008#3009#0" expanded="true" />
+                <element signature="e#7011#7012#0" expanded="true" />
+                <element signature="e#7044#7045#0" expanded="true" />
+                <element signature="e#7266#7305#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_transfer.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_transfer.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-76.81481" vertical-offset="1326" max-vertical-offset="3655">
+              <caret line="200" column="46" selection-start-line="200" selection-start-column="46" selection-end-line="200" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="UploadActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4681" max-vertical-offset="6919">
-              <caret line="243" column="51" selection-start-line="243" selection-start-column="51" selection-end-line="243" selection-end-column="51" />
-              <folding>
-                <element signature="e#2909#3270#0" expanded="true" />
-                <element signature="e#3259#3260#0" expanded="true" />
-                <element signature="e#3350#3389#0" expanded="true" />
-                <element signature="e#6227#6266#0" expanded="true" />
-                <element signature="e#7336#7375#0" expanded="true" />
-                <element signature="e#8400#8439#0" expanded="true" />
-                <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-                <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-                <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-                <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-                <element signature="e#10606#10645#0" expanded="false" />
-                <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-                <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-                <element signature="e#16172#16173#0" expanded="true" />
-                <element signature="e#16205#16206#0" expanded="true" />
-                <element signature="e#16427#16466#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_upload.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.851851" vertical-offset="2315" max-vertical-offset="3026">
-              <caret line="155" column="58" selection-start-line="155" selection-start-column="58" selection-end-line="155" selection-end-column="58" />
-              <folding>
-                <element signature="e#7479#7506#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_charge.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.481482" vertical-offset="4338" max-vertical-offset="4981">
-              <caret line="275" column="56" selection-start-line="275" selection-start-column="56" selection-end-line="275" selection-end-column="56" />
-              <folding>
-                <element signature="e#12105#12130#0" expanded="true" />
-                <element signature="e#12431#12454#0" expanded="true" />
-                <element signature="e#12713#12740#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="873" max-vertical-offset="7735">
+              <caret line="255" column="26" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -398,9 +337,7 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/com/example/blueharvest/ReceivePO.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_transfer.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_receive.xml" />
-        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UserFunctions.java" />
@@ -417,6 +354,8 @@
         <option value="$PROJECT_DIR$/res/layout/activity_upload.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_charge.xml" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_transfer.xml" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" />
       </list>
     </option>
   </component>
@@ -490,7 +429,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -551,6 +489,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -608,19 +547,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -646,6 +572,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1054,7 +993,23 @@
       <created>1412338177100</created>
       <updated>1412338177100</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Corrected issue with setSpinnerItem and setSpinnerType methods.">
+      <created>1412344283100</created>
+      <updated>1412344283100</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Added delBtn and delAllBtn to layout.">
+      <created>1412344636100</created>
+      <updated>1412344636100</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Added fields and button listeners.&#10;Added TODOs for buttons">
+      <created>1412345502100</created>
+      <updated>1412345502100</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Started working on this activity.  &#10;Added scanBtn code.">
+      <created>1412369758100</created>
+      <updated>1412369758100</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1093,7 +1048,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805158" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32474965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="1453" y="415" width="1394" height="445" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1282235" sideWeight="0.57593125" order="0" side_tool="false" content_ui="tabs" />
@@ -1110,6 +1064,7 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805158" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39741752" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1117,9 +1072,9 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.67180616" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664755" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1140,8 +1095,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805158" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32474965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="1453" y="415" width="1394" height="445" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1282235" sideWeight="0.57593125" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39741752" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1160,10 +1115,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="- Corrected some warnings in DatabaseHandler.&#10;- Removed save param from saveToDB().&#10;- Completed update existing record.&#10;- Completed delete one record and delete all records." />
-    <MESSAGE value="- Changed deleteAll method to call purgeChrgData." />
-    <MESSAGE value="- Created clearFields method." />
-    <MESSAGE value="removed clearFields method as was not functioning as expected." />
     <MESSAGE value="cleaning up some warnings." />
     <MESSAGE value="cleaning up some warnings.&#10;commented out some unused methods." />
     <MESSAGE value="changed some variable names for consistency." />
@@ -1185,7 +1136,11 @@
     <MESSAGE value="Removed TODOs from saveToDb method and deleteOne method." />
     <MESSAGE value="Added onActivityResult and setUpc methods." />
     <MESSAGE value="Corrected position of delete and deleteAll buttons." />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected position of delete and deleteAll buttons." />
+    <MESSAGE value="Corrected issue with setSpinnerItem and setSpinnerType methods." />
+    <MESSAGE value="Added delBtn and delAllBtn to layout." />
+    <MESSAGE value="Added fields and button listeners.&#10;Added TODOs for buttons" />
+    <MESSAGE value="Started working on this activity.  &#10;Added scanBtn code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on this activity.  &#10;Added scanBtn code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1226,36 +1181,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1972" max-vertical-offset="4063">
-          <caret line="116" column="62" selection-start-line="116" selection-start-column="62" selection-end-line="116" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4267" max-vertical-offset="5542">
           <caret line="251" column="52" selection-start-line="251" selection-start-column="52" selection-end-line="251" selection-end-column="52" />
-          <folding>
-            <element signature="e#2909#3270#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3350#3389#0" expanded="true" />
-            <element signature="e#6227#6266#0" expanded="true" />
-            <element signature="e#7336#7375#0" expanded="true" />
-            <element signature="e#8400#8439#0" expanded="true" />
-            <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10606#10645#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16205#16206#0" expanded="true" />
-            <element signature="e#16427#16466#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1271,37 +1201,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3451" max-vertical-offset="8823">
           <caret line="261" column="9" selection-start-line="261" selection-start-column="9" selection-end-line="261" selection-end-column="9" />
-          <folding>
-            <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3303#3364#0" expanded="false" />
-            <element signature="e#4498#4545#0" expanded="false" />
-            <element signature="e#5592#5894#0" expanded="true" />
-            <element signature="e#5889#5890#0" expanded="true" />
-            <element signature="e#7500#7683#0" expanded="true" />
-            <element signature="e#7675#7676#0" expanded="true" />
-            <element signature="e#7723#7959#0" expanded="true" />
-            <element signature="e#7948#7949#0" expanded="true" />
-            <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataWhse#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataItem#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataType#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#25041#25080#0" expanded="true" />
-            <element signature="e#25637#25676#0" expanded="true" />
-            <element signature="e#26233#26272#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1309,7 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="2329">
           <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,24 +1232,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4404" max-vertical-offset="5134">
           <caret line="251" column="52" selection-start-line="251" selection-start-column="52" selection-end-line="251" selection-end-column="52" />
-          <folding>
-            <element signature="e#2909#3270#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3350#3389#0" expanded="true" />
-            <element signature="e#6227#6266#0" expanded="true" />
-            <element signature="e#7336#7375#0" expanded="true" />
-            <element signature="e#8400#8439#0" expanded="true" />
-            <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10606#10645#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16205#16206#0" expanded="true" />
-            <element signature="e#16427#16466#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1366,37 +1248,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="10081">
           <caret line="66" column="30" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="33" />
-          <folding>
-            <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3303#3364#0" expanded="false" />
-            <element signature="e#4498#4545#0" expanded="false" />
-            <element signature="e#5592#5894#0" expanded="true" />
-            <element signature="e#5889#5890#0" expanded="true" />
-            <element signature="e#7500#7683#0" expanded="true" />
-            <element signature="e#7675#7676#0" expanded="true" />
-            <element signature="e#7723#7959#0" expanded="true" />
-            <element signature="e#7948#7949#0" expanded="true" />
-            <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataWhse#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataItem#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataType#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#25041#25080#0" expanded="true" />
-            <element signature="e#25637#25676#0" expanded="true" />
-            <element signature="e#26233#26272#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1404,7 +1256,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="2329">
           <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,40 +1276,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
           <folding>
-            <element signature="e#7479#7506#0" expanded="true" />
+            <element signature="e#7479#7506#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="3536">
           <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="e#2909#3270#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3350#3389#0" expanded="true" />
-            <element signature="e#6227#6266#0" expanded="true" />
-            <element signature="e#7336#7375#0" expanded="true" />
-            <element signature="e#8400#8439#0" expanded="true" />
-            <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10606#10645#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16205#16206#0" expanded="true" />
-            <element signature="e#16427#16466#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1479,40 +1313,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
           <folding>
-            <element signature="e#7479#7506#0" expanded="true" />
+            <element signature="e#7479#7506#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="3536">
           <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="e#2909#3270#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3350#3389#0" expanded="true" />
-            <element signature="e#6227#6266#0" expanded="true" />
-            <element signature="e#7336#7375#0" expanded="true" />
-            <element signature="e#8400#8439#0" expanded="true" />
-            <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10606#10645#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16205#16206#0" expanded="true" />
-            <element signature="e#16427#16466#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1533,52 +1350,35 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="2754">
           <caret line="147" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7479#7506#0" expanded="true" />
+            <element signature="e#7479#7506#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="3536">
           <caret line="103" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#2909#3270#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3350#3389#0" expanded="true" />
-            <element signature="e#6227#6266#0" expanded="true" />
-            <element signature="e#7336#7375#0" expanded="true" />
-            <element signature="e#8400#8439#0" expanded="true" />
-            <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10606#10645#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16205#16206#0" expanded="true" />
-            <element signature="e#16427#16466#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_receive.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2905297" vertical-offset="0" max-vertical-offset="0">
           <caret line="215" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UserFunctions.java">
@@ -1596,14 +1396,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="7.82" vertical-offset="0" max-vertical-offset="0">
           <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -1611,13 +1411,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="53" column="39" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1054">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1694,7 +1487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1285" max-vertical-offset="1955">
           <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1726,9 +1518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="644" max-vertical-offset="17986">
           <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="e#3777#3778#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1736,7 +1525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6917" max-vertical-offset="30957">
           <caret line="590" column="0" selection-start-line="590" selection-start-column="0" selection-end-line="590" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,7 +1532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="797" max-vertical-offset="6205">
           <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,10 +1539,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="355" max-vertical-offset="8347">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.481482" vertical-offset="4236" max-vertical-offset="4981">
+          <caret line="269" column="39" selection-start-line="269" selection-start-column="39" selection-end-line="269" selection-end-column="39" />
           <folding>
-            <element signature="e#2560#2561#0" expanded="false" />
+            <element signature="e#12105#12130#0" expanded="true" />
+            <element signature="e#12431#12454#0" expanded="true" />
+            <element signature="e#12713#12740#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.407408" vertical-offset="2315" max-vertical-offset="3026">
+          <caret line="167" column="48" selection-start-line="167" selection-start-column="48" selection-end-line="167" selection-end-column="48" />
+          <folding>
+            <element signature="e#7479#7506#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8608" max-vertical-offset="9520">
+          <caret line="724" column="0" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_transfer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-76.81481" vertical-offset="1326" max-vertical-offset="3655">
+          <caret line="200" column="46" selection-start-line="200" selection-start-column="46" selection-end-line="200" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
@@ -1766,93 +1597,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.851851" vertical-offset="2315" max-vertical-offset="3026">
-          <caret line="155" column="58" selection-start-line="155" selection-start-column="58" selection-end-line="155" selection-end-column="58" />
-          <folding>
-            <element signature="e#7479#7506#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.481482" vertical-offset="4338" max-vertical-offset="4981">
-          <caret line="275" column="56" selection-start-line="275" selection-start-column="56" selection-end-line="275" selection-end-column="56" />
-          <folding>
-            <element signature="e#12105#12130#0" expanded="true" />
-            <element signature="e#12431#12454#0" expanded="true" />
-            <element signature="e#12713#12740#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5173" max-vertical-offset="6919">
-          <caret line="243" column="51" selection-start-line="243" selection-start-column="51" selection-end-line="243" selection-end-column="51" />
-          <folding>
-            <element signature="e#2909#3270#0" expanded="true" />
-            <element signature="e#3259#3260#0" expanded="true" />
-            <element signature="e#3350#3389#0" expanded="true" />
-            <element signature="e#6227#6266#0" expanded="true" />
-            <element signature="e#7336#7375#0" expanded="true" />
-            <element signature="e#8400#8439#0" expanded="true" />
-            <element signature="method#loadSpinnerDataWhse#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10606#10645#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="docComment;method#onNothingSelected#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16205#16206#0" expanded="true" />
-            <element signature="e#16427#16466#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="873" max-vertical-offset="7735">
+          <caret line="255" column="26" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24200913" vertical-offset="8608" max-vertical-offset="9520">
-          <caret line="724" column="0" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.1119404" vertical-offset="846" max-vertical-offset="3502">
+          <caret line="173" column="46" selection-start-line="173" selection-start-column="46" selection-end-line="173" selection-end-column="46" />
           <folding>
-            <element signature="docComment;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#3303#3364#0" expanded="false" />
-            <element signature="e#4498#4545#0" expanded="false" />
-            <element signature="e#5592#5894#0" expanded="true" />
-            <element signature="e#5889#5890#0" expanded="true" />
-            <element signature="e#7500#7683#0" expanded="true" />
-            <element signature="e#7675#7676#0" expanded="true" />
-            <element signature="e#7723#7959#0" expanded="true" />
-            <element signature="e#7948#7949#0" expanded="true" />
-            <element signature="method#saveMsg#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setDateTime#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#setFileName#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#showDatePickerDialog#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataWhse#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataItem#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerDataType#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#loadSpinnerData#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onItemSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setLabel#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#setUpc#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="method#onDateSet#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="docComment;method#onBackPressed#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#25041#25080#0" expanded="true" />
-            <element signature="e#25637#25676#0" expanded="true" />
-            <element signature="e#26233#26272#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2656#3019#0" expanded="true" />
+            <element signature="e#3008#3009#0" expanded="true" />
+            <element signature="e#7011#7012#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="e#7266#7305#0" expanded="true" />
           </folding>
         </state>
       </provider>

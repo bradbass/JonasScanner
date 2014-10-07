@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -59,6 +62,18 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
         final Button delBtn = (Button) findViewById(R.id.delBtn);
         final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+
+        _scanField = (TextView) findViewById(R.id.partUpcField);
+        _quantityField = (EditText) findViewById(R.id.quantityField);
+        _serialField = (EditText) findViewById(R.id.serialField);
+
+        spinnerFromWhse = (Spinner) findViewById(R.id.spinnerWhseFrom);
+        spinnerFromWhse.setOnItemSelectedListener(this);
+        loadSpinnerDataWhse();
+
+        spinnerToWhse = (Spinner) findViewById(R.id.spinnerWhseTo);
+        spinnerToWhse.setOnItemSelectedListener(this);
+        loadSpinnerDataWhse();
 
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +140,39 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 //TODO -
             }
         });
+    }
+
+    private void loadSpinnerDataWhse() {
+        // calls method to load spinner
+        loadSpinnerData("1");
+        // load the spinner
+        //spinnerWhse.setAdapter(dataAdapter);
+    }
+
+    /**
+     * Function to load the spinner data from SQLite database
+     * */
+    private void loadSpinnerData(String tableName) {
+        // load WHSE, COST ITEM and COST TYPE spinners from DB
+        //String spinner = tableName;
+        // database handler
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+
+        // Spinner Drop down elements
+        List<String> labels = db.getAllLabels(tableName);
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, labels);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //spinnerWhse.setAdapter(dataAdapter);
+        spinnerFromWhse.setAdapter(dataAdapter);
+        spinnerToWhse.setAdapter(dataAdapter);
+        //return dataAdapter;
     }
 
     /**
