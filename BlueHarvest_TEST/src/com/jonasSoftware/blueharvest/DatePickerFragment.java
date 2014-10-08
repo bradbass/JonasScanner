@@ -1,8 +1,10 @@
 package com.jonasSoftware.blueharvest;
 
+import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.DatePicker;
 
@@ -14,6 +16,7 @@ import java.util.Calendar;
  * 
  *
  */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class DatePickerFragment extends DialogFragment
 implements DatePickerDialog.OnDateSetListener {
 

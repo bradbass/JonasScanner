@@ -24,7 +24,7 @@ import static android.widget.Toast.makeText;
 public class DatabaseHandler extends SQLiteOpenHelper {
 		
     // Database Version
-    private static final int DATABASE_VERSION = 13;
+    private static final int DATABASE_VERSION = 14;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -64,6 +64,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_QUANTITY = "quantity";
     private static final String COLUMN_FROM_WHSE = "from_whse";
     private static final String COLUMN_TO_WHSE = "to_whse";
+    private static final String COLUMN_PO_NUM = "po_num";
     //
     static int _recordNum;
     static Boolean _existingRec = false;
@@ -109,6 +110,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_QUANTITY + " TEXT,"
             + COLUMN_UPC + " TEXT,"
             + COLUMN_SERIAL + " TEXT)";
+
+    private static final String CREATE_RECEIVE_TABLE = "CREATE TABLE " + TABLE_RECEIVE_DATA + "("
+            + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_WHSE + " TEXT,"
+            + COLUMN_PO_NUM + " TEXT,"
+            + COLUMN_UPC + " TEXT,"
+            + COLUMN_QUANTITY + " TEXT,"
+            + COLUMN_SERIAL + " TEXT,"
+            + COLUMN_COMMENT + " TEXT,"
+            + COLUMN_DATE + " TEXT)";
     
     private static final String CREATE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
     		+ COLUMN_KEY + " INTEGER PRIMARY KEY,"
@@ -163,6 +174,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_LOGIN_TABLE);
         db.execSQL(CREATE_UPLOADDATA_TABLE);
         db.execSQL(CREATE_TRANSFER_TABLE);
+        db.execSQL(CREATE_RECEIVE_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
     }
@@ -212,6 +224,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_UPLOAD_DATA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSFER_DATA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECEIVE_DATA);
  
         // Create tables again
         onCreate(db);
@@ -268,7 +282,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                          String _comment, String _date, Context context){
     	// save fields to db with new fields
     	SQLiteDatabase db = this.getWritableDatabase();
-    	//*
+
     	ContentValues values = new ContentValues();
     	values.put(COLUMN_WHSE, _whse);
         values.put(COLUMN_JOB_WO_NUM, _wo);
@@ -332,8 +346,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void saveToDb(String whse, String upc, String quantity, Context context) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
-        //*
-        // Insert row
+
         ContentValues values = new ContentValues();
         values.put(COLUMN_WHSE, whse);
         values.put(COLUMN_UPC, upc);
@@ -371,6 +384,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.insert(TABLE_TRANSFER_DATA, null, values);
         } else {
             db.update(TABLE_TRANSFER_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
+        }
+        //*/
+        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
+                + values, LENGTH_LONG)
+                .show();
+
+        db.close();
+        _existingRec = false;
+    }
+
+    public void saveToDb(String whse, String quantity, String upc, String serial, String date, String comment, String po, Context context) {
+        //do stuff
+        SQLiteDatabase db = this.getWritableDatabase();
+        //*
+        // Insert row
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_PO_NUM, po);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+        values.put(COLUMN_SERIAL, serial);
+        values.put(COLUMN_DATE, date);
+        values.put(COLUMN_COMMENT, comment);
+
+        assert db != null;
+        if (!_existingRec) {
+            db.insert(TABLE_RECEIVE_DATA, null, values);
+        } else {
+            db.update(TABLE_RECEIVE_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
         makeText(context, context.getString(R.string.toast_wrote_to_db_message)
@@ -530,6 +572,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void populateReceive(int recordNum) {
         // TODO - finish this
+        // populate the fields using the cursor position
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        assert db != null;
+        try {
+            cursor = db.query(TABLE_TRANSFER_DATA, null, null, null, null, null, null);
+            cursor.moveToPosition(recordNum);
+
+            String _upc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
+            String _whse = cursor.getString(cursor.getColumnIndex(COLUMN_FROM_WHSE));
+            String _qty = cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY));
+            String _serial = cursor.getString(cursor.getColumnIndex(COLUMN_SERIAL));
+            String _date = cursor.getString(cursor.getColumnIndex(COLUMN_DATE));
+            String _comment = cursor.getString(cursor.getColumnIndex(COLUMN_COMMENT));
+            String _po = cursor.getString(cursor.getColumnIndex(COLUMN_PO_NUM));
+
+            ReceivePO rp = new ReceivePO();
+
+            rp.setWHSE(_whse);
+            rp.setUPC(_upc);
+            rp.setQty(_qty);
+            rp.setSerial(_serial);
+            rp.setDate(_date);
+            rp.setComment(_comment);
+            rp.setPo(_po);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //db.endTransaction();
+            db.close();
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 
     /**
@@ -585,6 +663,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 {
                     String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
                             _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5)};
+                    csvWrite.writeNext(arrStr);
+                }
+            } else if (tableNum == 4) {
+                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_RECEIVE_DATA,null);
+                //csvWrite.writeNext(_curCSV.getColumnNames());
+                while (_curCSV.moveToNext())
+                {
+                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
+                            _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5), _curCSV.getString(6),
+                            _curCSV.getString(7)};
                     csvWrite.writeNext(arrStr);
                 }
             }
