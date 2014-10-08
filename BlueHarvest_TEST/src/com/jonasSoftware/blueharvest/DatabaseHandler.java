@@ -354,6 +354,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         _existingRec = false;
     }
 
+    public void saveToDb(String fromWhse, String toWhse, String quantity, String upc, String serial, Context context) {
+        //do stuff
+        SQLiteDatabase db = this.getWritableDatabase();
+        //*
+        // Insert row
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FROM_WHSE, fromWhse);
+        values.put(COLUMN_TO_WHSE, toWhse);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+        values.put(COLUMN_SERIAL, serial);
+
+        assert db != null;
+        if (!_existingRec) {
+            db.insert(TABLE_TRANSFER_DATA, null, values);
+        } else {
+            db.update(TABLE_TRANSFER_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
+        }
+        //*/
+        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
+                + values, LENGTH_LONG)
+                .show();
+
+        db.close();
+        _existingRec = false;
+    }
+
     /**
      * populate all the fields in the settings activity
      */
@@ -467,7 +494,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void populateTrans(int recordNum) {
-        // TODO - finish this
+        // populate the fields using the cursor position
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        assert db != null;
+        try {
+            cursor = db.query(TABLE_TRANSFER_DATA, null, null, null, null, null, null);
+            cursor.moveToPosition(recordNum);
+
+            String _upc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
+            String _fromWhse = cursor.getString(cursor.getColumnIndex(COLUMN_FROM_WHSE));
+            String _toWhse = cursor.getString(cursor.getColumnIndex(COLUMN_TO_WHSE));
+            String _qty = cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY));
+            String _serial = cursor.getString(cursor.getColumnIndex(COLUMN_SERIAL));
+
+            TransferActivity ta = new TransferActivity();
+
+            ta.setFromWHSE(_fromWhse);
+            ta.setToWhse(_toWhse);
+            ta.setUPC(_upc);
+            ta.setQty(_qty);
+            ta.setSerial(_serial);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //db.endTransaction();
+            db.close();
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 
     public void populateReceive(int recordNum) {
@@ -518,6 +576,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     //Which column you want to export
                     String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
                             _curCSV.getString(3)};
+                    csvWrite.writeNext(arrStr);
+                }
+            } else if (tableNum == 3) {
+                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_TRANSFER_DATA,null);
+                csvWrite.writeNext(_curCSV.getColumnNames());
+                while (_curCSV.moveToNext())
+                {
+                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
+                            _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5)};
                     csvWrite.writeNext(arrStr);
                 }
             }
