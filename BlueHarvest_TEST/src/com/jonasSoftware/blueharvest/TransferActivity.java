@@ -95,7 +95,6 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
                 Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
                 transferIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
                 startActivityForResult(transferIntent, 0);
@@ -103,9 +102,9 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         });
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v) {
-                // TODO -
                 if(_upc == null) {
                     _upc = _scanField.getText().toString();
                 }
@@ -486,6 +485,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
      * @param position The position of the view in the adapter
      * @param id       The row id of the item that is selected
      */
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //do stuff
