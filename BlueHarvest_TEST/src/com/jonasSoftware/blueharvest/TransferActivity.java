@@ -55,11 +55,11 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     private Boolean exit = false;
     private Boolean save = false;
 
-    Crypter crypter = new Crypter();
+    private final Crypter crypter = new Crypter();
 
-    static EditText _quantityField;
-    static TextView _scanField;
-    static EditText _serialField;
+    private static EditText _quantityField;
+    private static TextView _scanField;
+    private static EditText _serialField;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -279,26 +279,26 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
 
     private void loadSpinnerDataToWhse() {
         // calls method to load spinner
-        loadSpinnerData("1", 2);
+        loadSpinnerData(2);
         // load the spinner
         //spinnerWhse.setAdapter(dataAdapter);
     }
 
     private void loadSpinnerDataFromWhse() {
-        loadSpinnerData("1", 1);
+        loadSpinnerData(1);
     }
 
     /**
      * Function to load the spinner data from SQLite database
      * */
-    private void loadSpinnerData(String tableName, Integer column) {
+    private void loadSpinnerData(Integer column) {
         // load WHSE, COST ITEM and COST TYPE spinners from DB
         //String spinner = tableName;
         // database handler
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
         // Spinner Drop down elements
-        List<String> labels = db.getAllLabels(tableName);
+        List<String> labels = db.getAllLabels("1");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
