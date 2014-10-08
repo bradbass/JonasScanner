@@ -559,7 +559,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             if (tableNum == 1) {
                 _curCSV = db.rawQuery("SELECT * FROM " + TABLE_CHRG_DATA,null);
-                csvWrite.writeNext(_curCSV.getColumnNames());
+                //csvWrite.writeNext(_curCSV.getColumnNames());
                 while(_curCSV.moveToNext())
                 {
                    //Which column you want to export
@@ -570,7 +570,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 }
             } else if (tableNum == 2) {
                 _curCSV = db.rawQuery("SELECT * FROM " + TABLE_UPLOAD_DATA,null);
-                csvWrite.writeNext(_curCSV.getColumnNames());
+                //csvWrite.writeNext(_curCSV.getColumnNames());
                 while(_curCSV.moveToNext())
                 {
                     //Which column you want to export
@@ -580,7 +580,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 }
             } else if (tableNum == 3) {
                 _curCSV = db.rawQuery("SELECT * FROM " + TABLE_TRANSFER_DATA,null);
-                csvWrite.writeNext(_curCSV.getColumnNames());
+                //csvWrite.writeNext(_curCSV.getColumnNames());
                 while (_curCSV.moveToNext())
                 {
                     String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
