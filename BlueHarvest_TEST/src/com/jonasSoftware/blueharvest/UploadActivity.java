@@ -95,7 +95,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View view) {
-                //do stuff
                 if(_upc == null) {
                     _upc = _scanField.getText().toString();
                 }
