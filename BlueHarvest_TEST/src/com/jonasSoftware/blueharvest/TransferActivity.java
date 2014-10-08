@@ -1,10 +1,17 @@
 package com.jonasSoftware.blueharvest;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
@@ -55,6 +66,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         setContentView(R.layout.activity_transfer);
         setTitle("onas Whse Transfer");
 
+        final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
+
         //create buttons
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
         final Button saveBtn = (Button) findViewById(R.id.saveBtn);
@@ -72,11 +85,12 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
 
         spinnerFromWhse = (Spinner) findViewById(R.id.spinnerWhseFrom);
         spinnerFromWhse.setOnItemSelectedListener(this);
-        loadSpinnerDataWhse();
 
         spinnerToWhse = (Spinner) findViewById(R.id.spinnerWhseTo);
         spinnerToWhse.setOnItemSelectedListener(this);
-        loadSpinnerDataWhse();
+
+        loadSpinnerDataFromWhse();
+        loadSpinnerDataToWhse();
 
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,48 +106,67 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(View v) {
                 // TODO -
+                if(_upc == null) {
+                    _upc = _scanField.getText().toString();
+                }
+                DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+
+                _quantity = _quantityField.getText().toString();
+                _toWhse = spinnerToWhse.getSelectedItem().toString();
+                _fromWhse = spinnerFromWhse.getSelectedItem().toString();
+                _serial = _serialField.getText().toString();
+
+                dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial, getBaseContext());
+
+                save = true;
+                clearFields();
             }
         });
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
+                send();
+                clearFields();
             }
         });
 
         firstBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
+                _db.moveToFirst("transferData", 3);
+                populateFields();
             }
         });
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
+                _db.moveToNext("transferData", getBaseContext(), 3);
+                populateFields();
             }
         });
 
         prevBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
+                _db.moveToPrevious("transferData", getBaseContext(), 3);
+                populateFields();
             }
         });
 
         lastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
+                _db.moveToLast("transferData", 3);
+                populateFields();
             }
         });
 
         delBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO -
+                //
                 deleteOne();
                 clearFields();
             }
@@ -142,7 +175,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         delAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO -
+                //
                 deleteAll();
                 clearFields();
             }
@@ -160,7 +193,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
-                dbh.deleteAll("uploadData");
+                dbh.deleteAll("transferData");
                 makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
             }
         });
@@ -186,7 +219,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
-                dbh.deleteOne("uploadData");
+                dbh.deleteOne("transferData");
                 makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
             }
         });
@@ -205,6 +238,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         _upc = null;
         _scanField.setText(null);
         _quantityField.setText(null);
+        _serialField.setText(null);
         spinnerFromWhse.setSelection(0);
         spinnerToWhse.setSelection(0);
     }
@@ -213,6 +247,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         //populate fields
         _scanField.setText(_upc);
         _quantityField.setText(_quantity);
+        _serialField.setText(_serial);
         setSpinnerFromWhse(_fromWhse);
         setSpinnerToWhse(_toWhse);
     }
@@ -243,17 +278,21 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         spinnerToWhse.setSelection(index);
     }
 
-    private void loadSpinnerDataWhse() {
+    private void loadSpinnerDataToWhse() {
         // calls method to load spinner
-        loadSpinnerData("1");
+        loadSpinnerData("1", 2);
         // load the spinner
         //spinnerWhse.setAdapter(dataAdapter);
+    }
+
+    private void loadSpinnerDataFromWhse() {
+        loadSpinnerData("1", 1);
     }
 
     /**
      * Function to load the spinner data from SQLite database
      * */
-    private void loadSpinnerData(String tableName) {
+    private void loadSpinnerData(String tableName, Integer column) {
         // load WHSE, COST ITEM and COST TYPE spinners from DB
         //String spinner = tableName;
         // database handler
@@ -265,16 +304,173 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, labels);
-
         // Drop down layout style - list view with radio button
-        dataAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        //spinnerWhse.setAdapter(dataAdapter);
-        spinnerFromWhse.setAdapter(dataAdapter);
-        spinnerToWhse.setAdapter(dataAdapter);
-        //return dataAdapter;
+        if (column == 1) {
+            spinnerFromWhse.setAdapter(dataAdapter);
+        } else if (column == 2){
+            spinnerToWhse.setAdapter(dataAdapter);
+        }
     }
+
+    @SuppressWarnings("ConstantConditions")
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    private void send() {
+        if ((save == null) || !save) {
+            saveMsg();
+        } else {
+            // Auto-generated method stub
+            DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+            db.populateFields();
+
+            setDateTime();
+
+            //db.exportDb(getApplicationContext());
+            db.exportDb(getApplicationContext(), _filename, 3);
+            //
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            // decode password - see Crypter class for methods
+            String _password = SettingsActivity._password;
+            _password = crypter.decode(_password);
+
+            //testing
+            Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+
+            Mail m = new Mail(SettingsActivity._actName, _password);
+            String[] toArr = SettingsActivity._to.split(";");
+            //String[] toArr = { "brad.bass@jonassoftware.com",	"brad.bass@hotmail.ca", "baruch.bass@gmail.com", "tripleb33@hotmail.com" };
+            m.setTo(toArr);
+            m.setFrom(SettingsActivity._from);
+            m.setSubject(SettingsActivity._subject);
+            m.setBody(SettingsActivity._body);
+            try {
+                m.addAttachment(Environment.getExternalStorageDirectory().getPath(),_filename);
+
+                if (!m.send()) {
+                    makeText(TransferActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
+                } else {
+                    makeText(TransferActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
+                    sent = true;
+                }
+            } catch (final Exception e) {
+                //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                Log.e(getString(R.string.mail_log_e_title), getString(R.string.mail_log_e_message), e);
+
+                e.printStackTrace();
+                String stackTrace = Log.getStackTraceString(e);
+
+                AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+                aDB.setTitle("Program Exception!");
+                aDB.setMessage(stackTrace);
+                aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // When user clicks OK, the db is purged and user is sent back to main activity.
+
+                    }
+                });
+                aDB.show();
+            }
+            db.purgeData("transferData");
+            db.close();
+        }
+    }
+
+    private void saveMsg() {
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle(getString(R.string.savemsg_dialog_title));
+        aDB.setMessage(getString(R.string.savemsg_window_message));
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private void setDateTime() {
+        // add DateTime to filename
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        Date currentLocalTime = cal.getTime();
+        SimpleDateFormat date = new SimpleDateFormat(getString(R.string.filename_simple_date_format));
+        date.setTimeZone(TimeZone.getDefault());
+        String currentDateTime = date.format(currentLocalTime);
+
+        setFileName(currentDateTime, getBaseContext());
+    }
+
+    private void setFileName(String currentDateTime, Context context) {
+        _filename = currentDateTime + getString(R.string.whse_transfer_filename_extension);
+
+        makeText(context, getString(R.string.toast_filename_is_label)
+                + _filename, LENGTH_LONG)
+                .show();
+    }
+
+    /**
+     * Initialise the static variable _upc
+     *
+     * @param scanResult	upc code returned from the scanner
+     */
+    void setUpc(String scanResult) {
+        _upc = scanResult;
+    }
+
+    public void setUPC(String upc) {
+        _upc = upc;
+    }
+
+    public void setFromWHSE(String fromWhse) {
+        _fromWhse = fromWhse;
+    }
+
+    public void  setToWhse(String toWhse){
+        _toWhse = toWhse;
+    }
+
+    public void setQty(String qty) {
+        _quantity = qty;
+    }
+
+    public void setSerial(String serial) {
+        _serial = serial;
+    }
+
+    void setLabel(String label) {
+        _label = label;
+    }
+
+    /**
+     * When scanner returns a result, we verify ok then send to the text box.
+     *
+     * @param requestCode   requestCode
+     * @param resultCode    resultCode
+     * @param intent        intent
+     */
+    @SuppressWarnings("ConstantConditions")
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String scanResult = intent.getStringExtra("SCAN_RESULT");
+                //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+                EditText code =(EditText)findViewById(R.id.partUpcField);
+                code.setText(scanResult);
+                setUpc(scanResult);
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_failed_to_scan_message), LENGTH_LONG).show();
+            }
+        }
+    }//
 
     /**
      * <p>Callback method to be invoked when an item in this view has been
@@ -293,6 +489,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //do stuff
+        String label = parent.getItemAtPosition(position).toString();
+        setLabel(label);
     }
 
     /**
@@ -308,35 +506,70 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     }
 
     /**
-     * Initialise the static variable _upc
-     *
-     * @param scanResult	upc code returned from the scanner
+     * closes the Activity.
      */
-    void setUpc(String scanResult) {
-        _upc = scanResult;
+    private void endActivity() {
+        this.finish();
+    }
+
+    private void exitApp() {
+        makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        Intent transAct = new Intent();
+        setResult(RESULT_OK, transAct);
+        db.purgeData("transferData");
+        db.close();
+        finish();
+    }
+
+    private void backToMain() {
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        //Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+        db.purgeData("transferData");
+        db.close();
+        endActivity();
     }
 
     /**
-     * When scanner returns a result, we verify ok then send to the text box.
-     *
-     * @param requestCode   requestCode
-     * @param resultCode    resultCode
-     * @param intent        intent
+     * When called, will pop an AlertDialog asking user if they are sure they want
+     * to exit the screen.  This is attached to UI back button, BACK button and EXIT
+     * button.  If user selects YES, we purge the database and send them back to the
+     * main activity.
      */
-    @SuppressWarnings("ConstantConditions")
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
-                String scanResult = intent.getStringExtra("SCAN_RESULT");
-                //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-                // Handle successful scan
-                EditText code =(EditText)findViewById(R.id.scanField);
-                code.setText(scanResult);
-                setUpc(scanResult);
-            } else if (resultCode == RESULT_CANCELED) {
-                // Handle cancel
-                Toast.makeText(getApplicationContext(), getString(R.string.toast_failed_to_scan_message), LENGTH_LONG).show();
+    @Override
+    public void onBackPressed() {
+        if ((sent == null) || sent) {
+            if ((sent == null) || (exit == null) || !exit) {
+                backToMain();
+            } else {
+                exitApp();
             }
+        } else {
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle(getString(R.string.onbackpress_dialog_title));
+            aDB.setMessage(getString(R.string.onbackpress_dialog_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // When user clicks OK, the db is purged and user is sent back to main activity.
+                    if((exit != null) && exit) {
+                        exitApp();
+                    } else {
+                        backToMain();
+                    }
+                }
+            });
+            aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // If user clicks NO, dialog is closed.
+                    exit = false;
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
         }
-    }//
+    }
 }
