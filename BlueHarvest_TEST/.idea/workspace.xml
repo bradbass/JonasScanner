@@ -47,11 +47,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment2.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/braba.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/braba.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BlueHarvest.iws" />
@@ -276,24 +273,36 @@
       <file leaf-file-name="DatabaseHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16116">
-              <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="9369" max-vertical-offset="16116">
+              <caret line="591" column="0" selection-start-line="591" selection-start-column="0" selection-end-line="591" selection-end-column="0" />
               <folding>
                 <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
-                <element signature="e#22485#22531#0" expanded="true" />
-                <element signature="e#32746#32786#0" expanded="true" />
-                <element signature="e#33481#33522#0" expanded="true" />
+                <element signature="e#22479#22525#0" expanded="true" />
+                <element signature="e#32740#32780#0" expanded="true" />
+                <element signature="e#33475#33516#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatePickerFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ChargeActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="10219" max-vertical-offset="11917">
+              <caret line="690" column="33" selection-start-line="690" selection-start-column="33" selection-end-line="690" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatePickerFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38059703" vertical-offset="0" max-vertical-offset="670">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
               <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
               <folding />
             </state>
@@ -310,73 +319,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReceivePO.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ReceivePO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="10489">
-              <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.5403349" vertical-offset="3062" max-vertical-offset="10591">
+              <caret line="201" column="18" selection-start-line="201" selection-start-column="18" selection-end-line="201" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3832#3991#0" expanded="true" />
-                <element signature="e#3980#3981#0" expanded="true" />
-                <element signature="e#4030#4367#0" expanded="true" />
-                <element signature="e#4356#4357#0" expanded="true" />
-                <element signature="e#4406#5417#0" expanded="true" />
-                <element signature="e#4447#4486#0" expanded="true" />
-                <element signature="e#5406#5407#0" expanded="true" />
-                <element signature="e#5456#5627#0" expanded="true" />
-                <element signature="e#5616#5617#0" expanded="true" />
-                <element signature="e#5667#5868#0" expanded="true" />
-                <element signature="e#5857#5858#0" expanded="true" />
-                <element signature="e#5907#6125#0" expanded="true" />
-                <element signature="e#6114#6115#0" expanded="true" />
-                <element signature="e#6164#6386#0" expanded="true" />
-                <element signature="e#6375#6376#0" expanded="true" />
-                <element signature="e#6425#6625#0" expanded="true" />
-                <element signature="e#6614#6615#0" expanded="true" />
-                <element signature="e#6663#6858#0" expanded="true" />
-                <element signature="e#6847#6848#0" expanded="true" />
-                <element signature="e#6899#7094#0" expanded="true" />
-                <element signature="e#7083#7084#0" expanded="true" />
-                <element signature="e#7456#7911#0" expanded="true" />
-                <element signature="e#7509#7548#0" expanded="true" />
-                <element signature="e#7900#7901#0" expanded="true" />
-                <element signature="e#7950#8194#0" expanded="true" />
-                <element signature="e#8183#8184#0" expanded="true" />
-                <element signature="e#8566#9020#0" expanded="true" />
-                <element signature="e#8619#8658#0" expanded="true" />
-                <element signature="e#9009#9010#0" expanded="true" />
-                <element signature="e#9059#9303#0" expanded="true" />
-                <element signature="e#9292#9293#0" expanded="true" />
-                <element signature="e#11796#12089#0" expanded="true" />
-                <element signature="e#12070#12071#0" expanded="true" />
-                <element signature="e#12478#12722#0" expanded="true" />
-                <element signature="e#12711#12712#0" expanded="true" />
-                <element signature="e#13289#13328#0" expanded="true" />
-                <element signature="e#13731#13732#0" expanded="true" />
-                <element signature="e#13764#13765#0" expanded="true" />
-                <element signature="e#14279#14287#0" expanded="true" />
-                <element signature="e#15813#15814#0" expanded="true" />
-                <element signature="e#15846#15847#0" expanded="true" />
-                <element signature="e#15884#15885#0" expanded="true" />
-                <element signature="e#15910#15911#0" expanded="true" />
-                <element signature="e#15954#15955#0" expanded="true" />
-                <element signature="e#15986#15987#0" expanded="true" />
-                <element signature="e#16024#16025#0" expanded="true" />
-                <element signature="e#16055#16056#0" expanded="true" />
-                <element signature="e#16099#16100#0" expanded="true" />
-                <element signature="e#16131#16132#0" expanded="true" />
-                <element signature="e#16177#16178#0" expanded="true" />
+                <element signature="e#3866#4025#0" expanded="true" />
+                <element signature="e#4014#4015#0" expanded="true" />
+                <element signature="e#4064#4401#0" expanded="true" />
+                <element signature="e#4390#4391#0" expanded="true" />
+                <element signature="e#4440#5451#0" expanded="true" />
+                <element signature="e#4481#4520#0" expanded="true" />
+                <element signature="e#5440#5441#0" expanded="true" />
+                <element signature="e#5490#5661#0" expanded="true" />
+                <element signature="e#5650#5651#0" expanded="true" />
+                <element signature="e#5701#5902#0" expanded="true" />
+                <element signature="e#5891#5892#0" expanded="true" />
+                <element signature="e#5941#6159#0" expanded="true" />
+                <element signature="e#6148#6149#0" expanded="true" />
+                <element signature="e#6198#6420#0" expanded="true" />
+                <element signature="e#6409#6410#0" expanded="true" />
+                <element signature="e#6459#6659#0" expanded="true" />
+                <element signature="e#6648#6649#0" expanded="true" />
+                <element signature="e#6697#6892#0" expanded="true" />
+                <element signature="e#6881#6882#0" expanded="true" />
+                <element signature="e#6933#7128#0" expanded="true" />
+                <element signature="e#7117#7118#0" expanded="true" />
+                <element signature="e#7490#7945#0" expanded="true" />
+                <element signature="e#7543#7582#0" expanded="true" />
+                <element signature="e#7934#7935#0" expanded="true" />
+                <element signature="e#7984#8228#0" expanded="true" />
+                <element signature="e#8217#8218#0" expanded="true" />
+                <element signature="e#8600#9054#0" expanded="true" />
+                <element signature="e#8653#8692#0" expanded="true" />
+                <element signature="e#9043#9044#0" expanded="true" />
+                <element signature="e#9093#9337#0" expanded="true" />
+                <element signature="e#9326#9327#0" expanded="true" />
+                <element signature="e#11830#12123#0" expanded="true" />
+                <element signature="e#12104#12105#0" expanded="true" />
+                <element signature="e#12512#12756#0" expanded="true" />
+                <element signature="e#12745#12746#0" expanded="true" />
+                <element signature="e#13430#13469#0" expanded="true" />
+                <element signature="e#13872#13873#0" expanded="true" />
+                <element signature="e#13905#13906#0" expanded="true" />
+                <element signature="e#14420#14428#0" expanded="true" />
+                <element signature="e#16000#16001#0" expanded="true" />
+                <element signature="e#16033#16034#0" expanded="true" />
+                <element signature="e#16071#16072#0" expanded="true" />
+                <element signature="e#16097#16098#0" expanded="true" />
+                <element signature="e#16141#16142#0" expanded="true" />
+                <element signature="e#16173#16174#0" expanded="true" />
                 <element signature="e#16211#16212#0" expanded="true" />
-                <element signature="e#16251#16252#0" expanded="true" />
-                <element signature="e#16279#16280#0" expanded="true" />
-                <element signature="e#16315#16316#0" expanded="true" />
-                <element signature="e#16339#16340#0" expanded="true" />
-                <element signature="e#16374#16375#0" expanded="true" />
-                <element signature="e#16404#16405#0" expanded="true" />
-                <element signature="e#17660#17699#0" expanded="true" />
-                <element signature="e#19967#19968#0" expanded="true" />
-                <element signature="e#19996#19997#0" expanded="true" />
+                <element signature="e#16242#16243#0" expanded="true" />
+                <element signature="e#16286#16287#0" expanded="true" />
+                <element signature="e#16318#16319#0" expanded="true" />
+                <element signature="e#16364#16365#0" expanded="true" />
+                <element signature="e#16398#16399#0" expanded="true" />
+                <element signature="e#16438#16439#0" expanded="true" />
+                <element signature="e#16466#16467#0" expanded="true" />
+                <element signature="e#16502#16503#0" expanded="true" />
+                <element signature="e#16526#16527#0" expanded="true" />
+                <element signature="e#16561#16562#0" expanded="true" />
+                <element signature="e#16591#16592#0" expanded="true" />
+                <element signature="e#17847#17886#0" expanded="true" />
+                <element signature="e#20154#20155#0" expanded="true" />
+                <element signature="e#20183#20184#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -385,9 +394,11 @@
       <file leaf-file-name="activity_receive.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_receive.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-137.25926" vertical-offset="102" max-vertical-offset="4352">
-              <caret line="224" column="57" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
-              <folding />
+            <state vertical-scroll-proportion="63.592594" vertical-offset="3162" max-vertical-offset="4352">
+              <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+              <folding>
+                <element signature="e#10351#10376#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer">
@@ -423,10 +434,10 @@
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_receive.xml" />
-        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment2.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
       </list>
     </option>
   </component>
@@ -555,6 +566,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BlueHarvest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BlueHarvest_TEST" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BlueHarvest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BlueHarvest_TEST" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1117,7 +1160,11 @@
       <created>1412777043100</created>
       <updated>1412777043100</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Completed ReceivePO activity">
+      <created>1412801923100</created>
+      <updated>1412801923100</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1142,7 +1189,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="854" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2195122" sideWeight="0.6781116" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1223,7 +1270,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="added delBtn and delAll buttons." />
     <MESSAGE value="Changed DB to version 13&#10;Added CREATE_UPLOAD_TABLE and required columns&#10;Changed saveToDb for upload activity to be able to update existing records&#10;Added conditions to exportDb to handle the different tables." />
     <MESSAGE value="Completed UploadActivity" />
     <MESSAGE value="Changed filename extension to _upload, as per specs." />
@@ -1248,7 +1294,8 @@
     <MESSAGE value="Changed access modifier for some fields.  Inlined variable for loadSpinner." />
     <MESSAGE value="Added del and delAll buttons." />
     <MESSAGE value="Completed ReceivePO activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed ReceivePO activity" />
+    <MESSAGE value="COrrected issue with the moveToFirst, Last, etc.. as well as the deleteOne and deleteAll methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="COrrected issue with the moveToFirst, Last, etc.. as well as the deleteOne and deleteAll methods." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1281,7 +1328,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="48" />
+      <option name="time" value="53" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1297,9 +1344,9 @@
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#22485#22531#0" expanded="true" />
-            <element signature="e#32746#32786#0" expanded="true" />
-            <element signature="e#33481#33522#0" expanded="true" />
+            <element signature="e#22479#22525#0" expanded="true" />
+            <element signature="e#32740#32780#0" expanded="true" />
+            <element signature="e#33475#33516#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1363,12 +1410,6 @@
           <caret line="66" column="30" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5152#5306#0" expanded="true" />
-            <element signature="e#5295#5296#0" expanded="true" />
-            <element signature="e#15852#15853#0" expanded="true" />
-            <element signature="e#15882#15883#0" expanded="true" />
-            <element signature="e#21745#21746#0" expanded="true" />
-            <element signature="e#21765#21766#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1388,9 +1429,9 @@
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#22485#22531#0" expanded="true" />
-            <element signature="e#32746#32786#0" expanded="true" />
-            <element signature="e#33481#33522#0" expanded="true" />
+            <element signature="e#22479#22525#0" expanded="true" />
+            <element signature="e#32740#32780#0" expanded="true" />
+            <element signature="e#33475#33516#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1461,9 +1502,9 @@
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#22485#22531#0" expanded="true" />
-            <element signature="e#32746#32786#0" expanded="true" />
-            <element signature="e#33481#33522#0" expanded="true" />
+            <element signature="e#22479#22525#0" expanded="true" />
+            <element signature="e#32740#32780#0" expanded="true" />
+            <element signature="e#33475#33516#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1534,9 +1575,9 @@
             <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#22485#22531#0" expanded="true" />
-            <element signature="e#32746#32786#0" expanded="true" />
-            <element signature="e#33481#33522#0" expanded="true" />
+            <element signature="e#22479#22525#0" expanded="true" />
+            <element signature="e#32740#32780#0" expanded="true" />
+            <element signature="e#33475#33516#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1916,37 +1957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16116">
-          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-          <folding>
-            <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="e#22485#22531#0" expanded="true" />
-            <element signature="e#32746#32786#0" expanded="true" />
-            <element signature="e#33481#33522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5374" max-vertical-offset="12070">
-          <caret line="382" column="9" selection-start-line="382" selection-start-column="9" selection-end-line="382" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5152#5306#0" expanded="true" />
-            <element signature="e#5295#5296#0" expanded="true" />
-            <element signature="e#15852#15853#0" expanded="true" />
-            <element signature="e#15882#15883#0" expanded="true" />
-            <element signature="e#21745#21746#0" expanded="true" />
-            <element signature="e#21765#21766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
@@ -1955,92 +1965,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10219" max-vertical-offset="11917">
+          <caret line="690" column="33" selection-start-line="690" selection-start-column="33" selection-end-line="690" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_receive.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-137.25926" vertical-offset="102" max-vertical-offset="4352">
-          <caret line="224" column="57" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
-          <folding />
+        <state vertical-scroll-proportion="63.592594" vertical-offset="3162" max-vertical-offset="4352">
+          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+          <folding>
+            <element signature="e#10351#10376#0" expanded="true" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="10489">
-          <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="9369" max-vertical-offset="16116">
+          <caret line="591" column="0" selection-start-line="591" selection-start-column="0" selection-end-line="591" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3832#3991#0" expanded="true" />
-            <element signature="e#3980#3981#0" expanded="true" />
-            <element signature="e#4030#4367#0" expanded="true" />
-            <element signature="e#4356#4357#0" expanded="true" />
-            <element signature="e#4406#5417#0" expanded="true" />
-            <element signature="e#4447#4486#0" expanded="true" />
-            <element signature="e#5406#5407#0" expanded="true" />
-            <element signature="e#5456#5627#0" expanded="true" />
-            <element signature="e#5616#5617#0" expanded="true" />
-            <element signature="e#5667#5868#0" expanded="true" />
-            <element signature="e#5857#5858#0" expanded="true" />
-            <element signature="e#5907#6125#0" expanded="true" />
-            <element signature="e#6114#6115#0" expanded="true" />
-            <element signature="e#6164#6386#0" expanded="true" />
-            <element signature="e#6375#6376#0" expanded="true" />
-            <element signature="e#6425#6625#0" expanded="true" />
-            <element signature="e#6614#6615#0" expanded="true" />
-            <element signature="e#6663#6858#0" expanded="true" />
-            <element signature="e#6847#6848#0" expanded="true" />
-            <element signature="e#6899#7094#0" expanded="true" />
-            <element signature="e#7083#7084#0" expanded="true" />
-            <element signature="e#7456#7911#0" expanded="true" />
-            <element signature="e#7509#7548#0" expanded="true" />
-            <element signature="e#7900#7901#0" expanded="true" />
-            <element signature="e#7950#8194#0" expanded="true" />
-            <element signature="e#8183#8184#0" expanded="true" />
-            <element signature="e#8566#9020#0" expanded="true" />
-            <element signature="e#8619#8658#0" expanded="true" />
-            <element signature="e#9009#9010#0" expanded="true" />
-            <element signature="e#9059#9303#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#11796#12089#0" expanded="true" />
-            <element signature="e#12070#12071#0" expanded="true" />
-            <element signature="e#12478#12722#0" expanded="true" />
-            <element signature="e#12711#12712#0" expanded="true" />
-            <element signature="e#13289#13328#0" expanded="true" />
-            <element signature="e#13731#13732#0" expanded="true" />
-            <element signature="e#13764#13765#0" expanded="true" />
-            <element signature="e#14279#14287#0" expanded="true" />
-            <element signature="e#15813#15814#0" expanded="true" />
-            <element signature="e#15846#15847#0" expanded="true" />
-            <element signature="e#15884#15885#0" expanded="true" />
-            <element signature="e#15910#15911#0" expanded="true" />
-            <element signature="e#15954#15955#0" expanded="true" />
-            <element signature="e#15986#15987#0" expanded="true" />
-            <element signature="e#16024#16025#0" expanded="true" />
-            <element signature="e#16055#16056#0" expanded="true" />
-            <element signature="e#16099#16100#0" expanded="true" />
-            <element signature="e#16131#16132#0" expanded="true" />
-            <element signature="e#16177#16178#0" expanded="true" />
-            <element signature="e#16211#16212#0" expanded="true" />
-            <element signature="e#16251#16252#0" expanded="true" />
-            <element signature="e#16279#16280#0" expanded="true" />
-            <element signature="e#16315#16316#0" expanded="true" />
-            <element signature="e#16339#16340#0" expanded="true" />
-            <element signature="e#16374#16375#0" expanded="true" />
-            <element signature="e#16404#16405#0" expanded="true" />
-            <element signature="e#17660#17699#0" expanded="true" />
-            <element signature="e#19967#19968#0" expanded="true" />
-            <element signature="e#19996#19997#0" expanded="true" />
+            <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="e#22479#22525#0" expanded="true" />
+            <element signature="e#32740#32780#0" expanded="true" />
+            <element signature="e#33475#33516#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38059703" vertical-offset="0" max-vertical-offset="670">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
-          <folding />
+        <state vertical-scroll-proportion="0.5403349" vertical-offset="3062" max-vertical-offset="10591">
+          <caret line="201" column="18" selection-start-line="201" selection-start-column="18" selection-end-line="201" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3866#4025#0" expanded="true" />
+            <element signature="e#4014#4015#0" expanded="true" />
+            <element signature="e#4064#4401#0" expanded="true" />
+            <element signature="e#4390#4391#0" expanded="true" />
+            <element signature="e#4440#5451#0" expanded="true" />
+            <element signature="e#4481#4520#0" expanded="true" />
+            <element signature="e#5440#5441#0" expanded="true" />
+            <element signature="e#5490#5661#0" expanded="true" />
+            <element signature="e#5650#5651#0" expanded="true" />
+            <element signature="e#5701#5902#0" expanded="true" />
+            <element signature="e#5891#5892#0" expanded="true" />
+            <element signature="e#5941#6159#0" expanded="true" />
+            <element signature="e#6148#6149#0" expanded="true" />
+            <element signature="e#6198#6420#0" expanded="true" />
+            <element signature="e#6409#6410#0" expanded="true" />
+            <element signature="e#6459#6659#0" expanded="true" />
+            <element signature="e#6648#6649#0" expanded="true" />
+            <element signature="e#6697#6892#0" expanded="true" />
+            <element signature="e#6881#6882#0" expanded="true" />
+            <element signature="e#6933#7128#0" expanded="true" />
+            <element signature="e#7117#7118#0" expanded="true" />
+            <element signature="e#7490#7945#0" expanded="true" />
+            <element signature="e#7543#7582#0" expanded="true" />
+            <element signature="e#7934#7935#0" expanded="true" />
+            <element signature="e#7984#8228#0" expanded="true" />
+            <element signature="e#8217#8218#0" expanded="true" />
+            <element signature="e#8600#9054#0" expanded="true" />
+            <element signature="e#8653#8692#0" expanded="true" />
+            <element signature="e#9043#9044#0" expanded="true" />
+            <element signature="e#9093#9337#0" expanded="true" />
+            <element signature="e#9326#9327#0" expanded="true" />
+            <element signature="e#11830#12123#0" expanded="true" />
+            <element signature="e#12104#12105#0" expanded="true" />
+            <element signature="e#12512#12756#0" expanded="true" />
+            <element signature="e#12745#12746#0" expanded="true" />
+            <element signature="e#13430#13469#0" expanded="true" />
+            <element signature="e#13872#13873#0" expanded="true" />
+            <element signature="e#13905#13906#0" expanded="true" />
+            <element signature="e#14420#14428#0" expanded="true" />
+            <element signature="e#16000#16001#0" expanded="true" />
+            <element signature="e#16033#16034#0" expanded="true" />
+            <element signature="e#16071#16072#0" expanded="true" />
+            <element signature="e#16097#16098#0" expanded="true" />
+            <element signature="e#16141#16142#0" expanded="true" />
+            <element signature="e#16173#16174#0" expanded="true" />
+            <element signature="e#16211#16212#0" expanded="true" />
+            <element signature="e#16242#16243#0" expanded="true" />
+            <element signature="e#16286#16287#0" expanded="true" />
+            <element signature="e#16318#16319#0" expanded="true" />
+            <element signature="e#16364#16365#0" expanded="true" />
+            <element signature="e#16398#16399#0" expanded="true" />
+            <element signature="e#16438#16439#0" expanded="true" />
+            <element signature="e#16466#16467#0" expanded="true" />
+            <element signature="e#16502#16503#0" expanded="true" />
+            <element signature="e#16526#16527#0" expanded="true" />
+            <element signature="e#16561#16562#0" expanded="true" />
+            <element signature="e#16591#16592#0" expanded="true" />
+            <element signature="e#17847#17886#0" expanded="true" />
+            <element signature="e#20154#20155#0" expanded="true" />
+            <element signature="e#20183#20184#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

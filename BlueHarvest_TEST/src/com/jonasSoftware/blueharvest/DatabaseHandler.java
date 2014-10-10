@@ -578,11 +578,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         assert db != null;
         try {
-            cursor = db.query(TABLE_TRANSFER_DATA, null, null, null, null, null, null);
+            cursor = db.query(TABLE_RECEIVE_DATA, null, null, null, null, null, null);
             cursor.moveToPosition(recordNum);
 
             String _upc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
-            String _whse = cursor.getString(cursor.getColumnIndex(COLUMN_FROM_WHSE));
+            String _whse = cursor.getString(cursor.getColumnIndex(COLUMN_WHSE));
             String _qty = cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY));
             String _serial = cursor.getString(cursor.getColumnIndex(COLUMN_SERIAL));
             String _date = cursor.getString(cursor.getColumnIndex(COLUMN_DATE));

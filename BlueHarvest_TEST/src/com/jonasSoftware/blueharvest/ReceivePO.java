@@ -58,7 +58,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     private Boolean exit = false;
     private Boolean save = false;
     private String date;
-    private String comment;
+    //private String comment;
     Crypter crypter = new Crypter();
 
     static EditText _installField;
@@ -70,6 +70,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     static String _currentDate;
     static EditText _poField;
 
+    @SuppressLint("CutPasteId")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive);
@@ -157,7 +158,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         firstBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _db.moveToFirst("receiveData", 3);
+                _db.moveToFirst("receiveData", 4);
                 populateFields();
             }
         });
@@ -165,7 +166,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _db.moveToNext("receiveData", getBaseContext(), 3);
+                _db.moveToNext("receiveData", getBaseContext(), 4);
                 populateFields();
             }
         });
@@ -173,7 +174,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         prevBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _db.moveToPrevious("receiveData", getBaseContext(), 3);
+                _db.moveToPrevious("receiveData", getBaseContext(), 4);
                 populateFields();
             }
         });
@@ -181,7 +182,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         lastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _db.moveToLast("receiveData", 3);
+                _db.moveToLast("receiveData", 4);
                 populateFields();
             }
         });
@@ -355,6 +356,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _scanField.setText(_upc);
         _quantityField.setText(_quantity);
         _serialField.setText(_serial);
+        _poField.setText(_po);
+        _commentField.setText(_comment);
+        _dateField.setText(_date);
         setSpinnerWhse(_whse);
     }
 
@@ -392,6 +396,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 android.R.layout.simple_spinner_item, labels);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerWhse.setAdapter(dataAdapter);
     }
 
     /**
