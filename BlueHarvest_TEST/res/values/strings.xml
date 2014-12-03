@@ -180,7 +180,7 @@
   <string name="wifi_ssid_label">Network Name</string>
   <string name="wifi_type_label">Type</string>
     <string name="button.scan.label">Scan</string>
-    <string name="button.save.label">Save</string>
+    <string name="button.save.label">Add</string>
     <string name="button.send.label">Send</string>
     <string name="warehouse.label">Warehouse *</string>
     <string name="job.wo.label">Job/WO # *</string>
