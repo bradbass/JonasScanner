@@ -17,7 +17,7 @@
     <EditText android:id="@+id/input_label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="textCapWords"
+        android:inputType="textCapCharacters"
         android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="162dp"/>
  
     <!-- Add Button -->
