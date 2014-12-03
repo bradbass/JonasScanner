@@ -35,7 +35,6 @@ import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
 /**
- * Created with IntelliJ IDEA.
  * User: brad
  * Date: 23/09/13
  * Time: 11:48 AM
@@ -44,7 +43,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
 
     private Spinner spinnerWhse;
 
-    static String _label;
+    private static String _label;
     private static String _upc;
     private static String _date;
     private static String _filename;
@@ -57,19 +56,25 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     private Boolean sent = false;
     private Boolean exit = false;
     private Boolean save = false;
+    private Boolean isValid = false;
     private String date;
+    private String title;
+    private String msg;
     //private String comment;
-    Crypter crypter = new Crypter();
+    private final Crypter crypter = new Crypter();
 
-    static EditText _installField;
-    static EditText _quantityField;
-    static EditText _serialField;
-    static TextView _commentField;
-    static TextView _scanField;
-    static TextView _dateField;
-    static String _currentDate;
-    static EditText _poField;
+    private static EditText _quantityField;
+    private static EditText _serialField;
+    private static TextView _commentField;
+    private static TextView _scanField;
+    private static TextView _dateField;
+    private static String _currentDate;
+    private static EditText _poField;
 
+    /**
+     *
+     * @param savedInstanceState    savedInstanceState
+     */
     @SuppressLint("CutPasteId")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,8 +99,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _currentDate = dateFormat.format(new Date());
         _dateField.setText(_currentDate);
 
-        _installField = (EditText) findViewById(R.id.receiveDateField);
+        EditText _installField = (EditText) findViewById(R.id.receiveDateField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
+        _quantityField.setText("1");
         _serialField = (EditText) findViewById(R.id.serialField);
         _commentField = (EditText) findViewById(R.id.commentField);
         _scanField = (EditText) findViewById(R.id.scanField);
@@ -132,6 +138,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 if(_upc == null) {
                     _upc = _scanField.getText().toString();
                 }
+
                 DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
                 _quantity = _quantityField.getText().toString();
@@ -140,10 +147,14 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 _comment = _commentField.getText().toString();
                 _po = _poField.getText().toString();
 
-                dbh.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po, getBaseContext());
+                validateFields();
 
-                save = true;
-                clearFields();
+                if (isValid) {
+                    dbh.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po, getBaseContext());
+
+                    save = true;
+                    clearFields();
+                }
             }
         });
 
@@ -207,6 +218,47 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
 
     }
 
+    private boolean validateFields() {
+        // validate the required fields
+        if (_date == null) {
+            msg = "The Date field is a required field and must be filled out.";
+            msgBox(msg);
+        } else if (_whse == null) {
+            msg = "The Warehouse field is a required field and must be filled out.";
+            msgBox(msg);
+        } else if (_po == null) {
+            msg = "The P.O.# field is a required field and must be filled out.";
+            msgBox(msg);
+        } else if (_upc == null) {
+            msg = "The Part # UPC is a required field and must be filled out.";
+            msgBox(msg);
+        } else if (_quantity == null) {
+            msg = "The Quantity field is a required field and must be filled out.";
+            msgBox(msg);
+        } else {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    private void msgBox(String msg) {
+        //
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Invalid Field Found!");
+        aDB.setMessage(msg);
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        aDB.show();
+    }
+
+    /**
+     *
+     */
     private void deleteAll() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
@@ -233,6 +285,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         aDB.show();
     }
 
+    /**
+     *
+     */
     private void deleteOne() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
@@ -259,6 +314,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         aDB.show();
     }
 
+    /**
+     *
+     */
     @SuppressWarnings("ConstantConditions")
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     private void send() {
@@ -325,6 +383,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         }
     }
 
+    /**
+     *
+     */
     private void saveMsg() {
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle(getString(R.string.savemsg_dialog_title));
@@ -340,6 +401,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         aDB.show();
     }
 
+    /**
+     *
+     */
     private void clearFields() {
         _upc = null;
         _scanField.setText(null);
@@ -351,6 +415,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         spinnerWhse.setSelection(0);
     }
 
+    /**
+     *
+     */
     private void populateFields() {
         //populate fields
         _scanField.setText(_upc);
@@ -362,6 +429,10 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         setSpinnerWhse(_whse);
     }
 
+    /**
+     *
+     * @param valueWhse     the selected warehouse
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerWhse(String valueWhse) {
         int index = 0;
@@ -375,6 +446,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         spinnerWhse.setSelection(index);
     }
 
+    /**
+     *
+     */
     private void loadSpinnerDataWhse() {
         loadSpinnerData();
     }
@@ -410,6 +484,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         newFragment.show(getFragmentManager(), "datePicker");
     }
 
+    /**
+     *
+     */
     @SuppressLint("SimpleDateFormat")
     private void setDateTime() {
         // add DateTime to filename
@@ -422,6 +499,11 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         setFileName(currentDateTime, getBaseContext());
     }
 
+    /**
+     *
+     * @param currentDateTime   the current date and time from setDateTime()
+     * @param context           application context
+     */
     private void setFileName(String currentDateTime, Context context) {
         _filename = currentDateTime + getString(R.string.po_receive_filename_extension);
 
@@ -439,34 +521,66 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _upc = scanResult;
     }
 
+    /**
+     *
+     * @param upc       n/a
+     */
     public void setUPC(String upc) {
         _upc = upc;
     }
 
+    /**
+     *
+     * @param fromWhse  warehouse the part is coming from
+     */
     public void setWHSE(String fromWhse) {
         _whse = fromWhse;
     }
 
+    /**
+     *
+     * @param qty       the entered quantity
+     */
     public void setQty(String qty) {
         _quantity = qty;
     }
 
+    /**
+     *
+     * @param serial        the optional serial number
+     */
     public void setSerial(String serial) {
         _serial = serial;
     }
 
+    /**
+     *
+     * @param comment       the optional comment
+     */
     public void setComment(String comment) {
         _comment = comment;
     }
 
+    /**
+     *
+     * @param date      the selected date
+     */
     public void setDate(String date) {
         _date = date;
     }
 
+    /**
+     *
+     * @param po        the po number
+     */
     public void setPo(String po) {
         _po = po;
     }
 
+    /**
+     *
+     * @param label     the currently selected dropbox item
+     */
     void setLabel(String label) {
         _label = label;
     }
@@ -491,9 +605,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         //do stuff
         // modify for new spinners
         // On selecting a spinner item
-        String label = parent.getItemAtPosition(position).toString();
+        _label = parent.getItemAtPosition(position).toString();
 
-        setLabel(label);
+        setLabel(_label);
     }
 
     /**
@@ -561,6 +675,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         this.finish();
     }
 
+    /**
+     *
+     */
     void exitApp() {
         makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -571,6 +688,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         finish();
     }
 
+    /**
+     *
+     */
     void backToMain() {
         //Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
         //String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
