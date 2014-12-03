@@ -58,7 +58,6 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     private Boolean save = false;
     private Boolean isValid = false;
     private String date;
-    private String title;
     private String msg;
     //private String comment;
     private final Crypter crypter = new Crypter();
