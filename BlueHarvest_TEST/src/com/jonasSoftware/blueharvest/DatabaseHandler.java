@@ -571,7 +571,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void populateReceive(int recordNum) {
-        // TODO - finish this
         // populate the fields using the cursor position
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
