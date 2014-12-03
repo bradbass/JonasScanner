@@ -46,6 +46,8 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private Boolean sent = false;
     private Boolean exit = false;
     private Boolean save = false;
+    private Boolean isValid = false;
+    private String msg;
     // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
     Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
@@ -73,6 +75,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
         _scanField = (TextView) findViewById(R.id.partUpcField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
+        _quantityField.setText("1");
 
         // Spinner element
         spinnerWhse = (Spinner) findViewById(R.id.spinnerWhse);
@@ -103,10 +106,14 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 _quantity = _quantityField.getText().toString();
                  _whse = spinnerWhse.getSelectedItem().toString();
 
-                saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
+                validateFields();
 
-                save = true;
-                clearFields();
+                if (isValid) {
+                    saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
+
+                    save = true;
+                    clearFields();
+                }
             }
         });
 
@@ -171,6 +178,38 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 clearFields();
             }
         });
+    }
+
+    private boolean validateFields() {
+        // validate the required fields
+        if (_whse == "") {
+            msg = "The Warehouse field is a required field and must be filled out.";
+            msgBox(msg);
+        } else if (_upc == "") {
+            msg = "The Part # UPC is a required field and must be filled out.";
+            msgBox(msg);
+        } else if (_quantity == "") {
+            msg = "The Quantity field is a required field and must be filled out.";
+            msgBox(msg);
+        } else {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    private void msgBox(String msg) {
+        //
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Invalid Field Found!");
+        aDB.setMessage(msg);
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        aDB.show();
     }
 
     private void deleteAll() {
