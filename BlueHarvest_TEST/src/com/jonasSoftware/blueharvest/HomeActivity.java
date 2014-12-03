@@ -38,17 +38,8 @@ public class HomeActivity extends Activity {
         final Button uploadBtn = (Button) findViewById(R.id.uploadBtn);
         final Button transferBtn = (Button) findViewById(R.id.transferBtn);
         final Button receiveBtn = (Button) findViewById(R.id.receiveBtn);
-        // testing
-        //final Button testBtn = (Button) findViewById(R.id.testBtn);
-/*
 
-        testBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                testWebService();
-            }
-        });
-*/
+        //check tables for data.  If data exists, change the button color of the corresponding module and italicise the text
 
         scanBtn.setOnClickListener(new OnClickListener() {
             @Override
