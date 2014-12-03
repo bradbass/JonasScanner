@@ -272,6 +272,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             insertLabel(i," ");
         }
     }//*/
+
+    public void checkTables(String[] tables)
+    {
+        for (int i = 0; i < tables.length; i++) {
+            String table = tables[i];
+            SQLiteDatabase db = this.getWritableDatabase();
+            String sqlCmd = "SELECT COUNT(*) FROM " + table;
+            Cursor cursor = db.rawQuery(sqlCmd, null);
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            if (count > 0) {
+                //
+            }
+        }
+    }
+
     
     /**
      * Save all fields to the database.
