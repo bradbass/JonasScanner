@@ -278,19 +278,19 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
     private boolean validateFields() {
         // validate the required fields
-        if (_whse == null) {
+        if (_whse == "") {
             field = "Warehouse";
             msgBox(field);
-        } else if (_jobWoField == null) {
+        } else if (_wo == "") {
             field = "Job/WO #";
             msgBox(field);
-        } else if (_type == null) {
+        } else if (_type == "") {
             field = "Cost Type";
             msgBox(field);
-        } else if (_upc == null) {
+        } else if (_upc == "") {
             field = "Part # UPC";
             msgBox(field);
-        } else if (_quantity == null) {
+        } else if (_quantity == "") {
             field = "Quantity";
             msgBox(field);
         } else {
