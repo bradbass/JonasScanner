@@ -219,19 +219,19 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
 
     private boolean validateFields() {
         // validate the required fields
-        if (_date == null) {
+        if (_date == "") {
             msg = "The Date field is a required field and must be filled out.";
             msgBox(msg);
-        } else if (_whse == null) {
+        } else if (_whse == "") {
             msg = "The Warehouse field is a required field and must be filled out.";
             msgBox(msg);
-        } else if (_po == null) {
+        } else if (_po == "") {
             msg = "The P.O.# field is a required field and must be filled out.";
             msgBox(msg);
-        } else if (_upc == null) {
+        } else if (_upc == "") {
             msg = "The Part # UPC is a required field and must be filled out.";
             msgBox(msg);
-        } else if (_quantity == null) {
+        } else if (_quantity == "") {
             msg = "The Quantity field is a required field and must be filled out.";
             msgBox(msg);
         } else {
