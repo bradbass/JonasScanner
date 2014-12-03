@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -282,6 +283,11 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.charge_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // go back to home screen
         return true;
     }
 
