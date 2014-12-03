@@ -3,6 +3,7 @@ package com.jonasSoftware.blueharvest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -66,8 +67,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     private Boolean sent = false;
     private Boolean exit = false;
     private Boolean save = false;
+    private Boolean isValid = false;
 	// --Commented out by Inspection (5/15/13 12:43 PM):public String label;
 	private String date;
+    private String field;
 	private String comment;
     Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
@@ -117,6 +120,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		_installField = (EditText) findViewById(R.id.installField);
         _jobWoField = (EditText) findViewById(R.id.jobWoField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
+        _quantityField.setText("1");
         _serialField = (EditText) findViewById(R.id.serialField);
         _commentField = (TextView) findViewById(R.id.commentField);
 		_scanField = (TextView) findViewById(R.id.scanField);
@@ -188,11 +192,15 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 _item = spinnerItem.getSelectedItem().toString();
                 _type = spinnerType.getSelectedItem().toString();
 
-                _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
-                        _serial, comment, _date, getBaseContext());
+                validateFields();
 
-				save = true;
-                clearFields();
+                if (isValid) {
+                    _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
+                            _serial, comment, _date, getBaseContext());
+
+                    save = true;
+                    clearFields();
+                }
             }
 		});
 		
@@ -266,6 +274,44 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 clearFields();
             }
         });
+    }
+
+    private boolean validateFields() {
+        // validate the required fields
+        if (_whse == null) {
+            field = "Warehouse";
+            msgBox(field);
+        } else if (_jobWoField == null) {
+            field = "Job/WO #";
+            msgBox(field);
+        } else if (_type == null) {
+            field = "Cost Type";
+            msgBox(field);
+        } else if (_upc == null) {
+            field = "Part # UPC";
+            msgBox(field);
+        } else if (_quantity == null) {
+            field = "Quantity";
+            msgBox(field);
+        } else {
+            return isValid = true;
+        }
+        return isValid = false;
+    }
+
+    private void msgBox(String field) {
+        //
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Invalid Field Found!");
+        aDB.setMessage("The " + field + " is a required field and must be filled out.");
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        aDB.show();
     }
 
     private void clearFields() {
