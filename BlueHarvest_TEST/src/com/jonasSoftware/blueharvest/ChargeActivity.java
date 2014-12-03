@@ -106,7 +106,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
-        //
+
+        //TODO - Add return to home button.  On the top bar?
+
         final Button delBtn = (Button) findViewById(R.id.delOne);
         final Button delAllBtn = (Button) findViewById(R.id.delAll);
 		
