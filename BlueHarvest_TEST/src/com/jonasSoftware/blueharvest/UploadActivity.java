@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -180,16 +182,28 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.charge_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // go back to home screen
+        endActivity();
+        return true;
+    }
+
     private boolean validateFields() {
         // validate the required fields
-        if (_whse == "") {
-            msg = "The Warehouse field is a required field and must be filled out.";
+        if (_whse.equals("")) {
+            msg = "Warehouse";
             msgBox(msg);
-        } else if (_upc == "") {
-            msg = "The Part # UPC is a required field and must be filled out.";
+        } else if (_upc.equals("")) {
+            msg = "Part # UPC";
             msgBox(msg);
-        } else if (_quantity == "") {
-            msg = "The Quantity field is a required field and must be filled out.";
+        } else if (_quantity.equals("")) {
+            msg = "Quantity";
             msgBox(msg);
         } else {
             isValid = true;
@@ -201,7 +215,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         //
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Invalid Field Found!");
-        aDB.setMessage(msg);
+        aDB.setMessage("The " + msg + " field is a required field and must be filled out.");
         aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @SuppressWarnings("ConstantConditions")

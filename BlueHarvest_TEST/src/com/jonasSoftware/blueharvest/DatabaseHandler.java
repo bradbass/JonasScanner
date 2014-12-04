@@ -23,6 +23,7 @@ import static android.widget.Toast.makeText;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 		
+    public static List<String> _dataTables;
     // Database Version
     private static final int DATABASE_VERSION = 14;
  
@@ -273,21 +274,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }//*/
 
-    public void checkTables(String[] tables)
+    public List<String> checkTables()
     {
-        for (int i = 0; i < tables.length; i++) {
-            String table = tables[i];
+        String[] tables = {TABLE_CHRG_DATA, TABLE_RECEIVE_DATA, TABLE_TRANSFER_DATA, TABLE_UPLOAD_DATA};
+        _dataTables = new ArrayList<>();
+
+        for (String table : tables) {
             SQLiteDatabase db = this.getWritableDatabase();
             String sqlCmd = "SELECT COUNT(*) FROM " + table;
             Cursor cursor = db.rawQuery(sqlCmd, null);
             cursor.moveToFirst();
             int count = cursor.getInt(0);
             if (count > 0) {
-                //
+                // do something
+                _dataTables.add(table);
             }
         }
+        return _dataTables;
     }
-
     
     /**
      * Save all fields to the database.
@@ -468,9 +472,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     		sa.setBody(_body);
     	}
         db.close();
-        if (cursor != null) {
-            cursor.close();
-        }
+        cursor.close();
     }
 
     /**
@@ -633,16 +635,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void exportDb(Context context, String _filename, Integer tableNum) {
         //
     	SQLiteDatabase _db = this.getReadableDatabase();
-        //File exportDir = new File(Environment.getExternalStorageDirectory().getPath(), "");
         File exportDir = getDir(context);
-        
+
         if (!exportDir.exists())
         {
             exportDir.mkdirs();
         }
 
         File file = new File(exportDir, _filename);
-        //File file = new File(exportDir, "csvname.csv");
         try
         {
             file.createNewFile();
@@ -650,46 +650,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getReadableDatabase();
             assert db != null;
 
-            if (tableNum == 1) {
-                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_CHRG_DATA,null);
-                //csvWrite.writeNext(_curCSV.getColumnNames());
-                while(_curCSV.moveToNext())
-                {
-                   //Which column you want to export
-                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
-                            _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5), _curCSV.getString(6),
-                            _curCSV.getString(7), _curCSV.getString(8), _curCSV.getString(9)};
-                    csvWrite.writeNext(arrStr);
-                }
-            } else if (tableNum == 2) {
-                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_UPLOAD_DATA,null);
-                //csvWrite.writeNext(_curCSV.getColumnNames());
-                while(_curCSV.moveToNext())
-                {
-                    //Which column you want to export
-                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
-                            _curCSV.getString(3)};
-                    csvWrite.writeNext(arrStr);
-                }
-            } else if (tableNum == 3) {
-                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_TRANSFER_DATA,null);
-                //csvWrite.writeNext(_curCSV.getColumnNames());
-                while (_curCSV.moveToNext())
-                {
-                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
-                            _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5)};
-                    csvWrite.writeNext(arrStr);
-                }
-            } else if (tableNum == 4) {
-                _curCSV = db.rawQuery("SELECT * FROM " + TABLE_RECEIVE_DATA,null);
-                //csvWrite.writeNext(_curCSV.getColumnNames());
-                while (_curCSV.moveToNext())
-                {
-                    String arrStr[] ={_curCSV.getString(1), _curCSV.getString(2),
-                            _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5), _curCSV.getString(6),
-                            _curCSV.getString(7)};
-                    csvWrite.writeNext(arrStr);
-                }
+            switch (tableNum) {
+                case 1:
+                    _curCSV = db.rawQuery("SELECT * FROM " + TABLE_CHRG_DATA, null);
+                    while (_curCSV.moveToNext()) {
+                        String arrStr[] = {_curCSV.getString(1), _curCSV.getString(2),
+                                _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5), _curCSV.getString(6),
+                                _curCSV.getString(7), _curCSV.getString(8), _curCSV.getString(9)};
+                        csvWrite.writeNext(arrStr);
+                    }
+                    break;
+                case 2:
+                    _curCSV = db.rawQuery("SELECT * FROM " + TABLE_UPLOAD_DATA, null);
+                    while (_curCSV.moveToNext()) {
+                        String arrStr[] = {_curCSV.getString(1), _curCSV.getString(2),
+                                _curCSV.getString(3)};
+                        csvWrite.writeNext(arrStr);
+                    }
+                    break;
+                case 3:
+                    _curCSV = db.rawQuery("SELECT * FROM " + TABLE_TRANSFER_DATA, null);
+                    while (_curCSV.moveToNext()) {
+                        String arrStr[] = {_curCSV.getString(1), _curCSV.getString(2),
+                                _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5)};
+                        csvWrite.writeNext(arrStr);
+                    }
+                    break;
+                case 4:
+                    _curCSV = db.rawQuery("SELECT * FROM " + TABLE_RECEIVE_DATA, null);
+                    while (_curCSV.moveToNext()) {
+                        String arrStr[] = {_curCSV.getString(1), _curCSV.getString(2),
+                                _curCSV.getString(3), _curCSV.getString(4), _curCSV.getString(5), _curCSV.getString(6),
+                                _curCSV.getString(7)};
+                        csvWrite.writeNext(arrStr);
+                    }
+                    break;
             }
             csvWrite.close();
             _curCSV.close();
@@ -780,16 +775,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public List<String> getAllLabels(String table){
         //
-        List<String> labels = new ArrayList<String>();
+        List<String> labels = new ArrayList<>();
 
-        if (table.equals("1")) {
-            selectQuery = "SELECT * FROM " + TABLE_WHSE;
-        } else if (table.equals("2")) {
-            selectQuery = "SELECT * FROM " + TABLE_ITEM;
-        } else if (table.equals("3")) {
-            selectQuery = "SELECT * FROM " + TABLE_TYPE;
-        } else if (table.equals("0")) {
-            selectQuery = "SELECT * FROM " + TABLE_LABELS;
+        switch (table) {
+            case "1":
+                selectQuery = "SELECT * FROM " + TABLE_WHSE;
+                break;
+            case "2":
+                selectQuery = "SELECT * FROM " + TABLE_ITEM;
+                break;
+            case "3":
+                selectQuery = "SELECT * FROM " + TABLE_TYPE;
+                break;
+            case "0":
+                selectQuery = "SELECT * FROM " + TABLE_LABELS;
+                break;
         }
 
         SQLiteDatabase db = this.getReadableDatabase();

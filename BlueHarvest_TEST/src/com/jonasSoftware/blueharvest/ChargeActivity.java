@@ -34,7 +34,7 @@ import static android.widget.Toast.makeText;
 /**
  * @author Brad Bass
  * @version 1.0
- * 
+ *
  * ChargeActivity allows user to scan UPC barcode, select a Name from database (see configActivity),
  * select a date, using a datePickerDialog, and allows them to enter a comment.  All fields are sent
  * to a database and then if/when user clicks on the SEND button, will extract database contents into
@@ -48,13 +48,13 @@ import static android.widget.Toast.makeText;
  */
 //@SuppressWarnings("unused")
 public class ChargeActivity extends Activity implements OnItemSelectedListener, OnDateSetListener {
-	
+
 	// Spinner element
     private Spinner spinnerWhse;
     private Spinner spinnerItem;
     private Spinner spinnerType;
     //
-    static String _label;
+    private static String _label;
     private static String _upc;
     private static String _date;
     private static String _filename;
@@ -70,21 +70,20 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     private Boolean exit = false;
     private Boolean save = false;
     private Boolean isValid = false;
-	// --Commented out by Inspection (5/15/13 12:43 PM):public String label;
-	private String date;
-    private String field;
-	private String comment;
-    Crypter crypter = new Crypter();
+    // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
+    private String date;
+    private String comment;
+    private final Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
 
-    static EditText _installField;
-    static EditText _jobWoField;
-    static EditText _quantityField;
-    static EditText _serialField;
-    static TextView _commentField;
-    static TextView _scanField;
-    static TextView _dateField;
-    static String _currentDate;
+    private static EditText _installField;
+    private static EditText _jobWoField;
+    private static EditText _quantityField;
+    private static EditText _serialField;
+    private static TextView _commentField;
+    private static TextView _scanField;
+    private static TextView _dateField;
+    private static String _currentDate;
 
     //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
@@ -96,7 +95,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         setTitle("onas Charge Parts");
 
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
-		
+
 		//buttons
 		final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 		//final Button dateBtn = (Button) findViewById(R.id.dateBtn);
@@ -109,18 +108,16 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
 
-        //TODO - Add return to home button.  On the top bar?
-
         final Button delBtn = (Button) findViewById(R.id.delOne);
         final Button delAllBtn = (Button) findViewById(R.id.delAll);
-		
+
 		//*
 		_dateField = (TextView) findViewById(R.id.installField);
 		SimpleDateFormat dateFormat = new SimpleDateFormat(getString(R.string.simple_date_format));
 		_currentDate = dateFormat.format(new Date());
 		_dateField.setText(_currentDate);
 		//*/
-		
+
 		_installField = (EditText) findViewById(R.id.installField);
         _jobWoField = (EditText) findViewById(R.id.jobWoField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
@@ -135,12 +132,12 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         spinnerWhse = (Spinner) findViewById(R.id.spinnerWhse);
         spinnerItem = (Spinner) findViewById(R.id.spinnerCostItem);
         spinnerType = (Spinner) findViewById(R.id.spinnerCostType);
- 
+
         // Spinner click listener
         spinnerWhse.setOnItemSelectedListener(this);
         spinnerItem.setOnItemSelectedListener(this);
         spinnerType.setOnItemSelectedListener(this);
- 
+
         // Loading spinner data from database
         loadSpinnerDataWhse();
         loadSpinnerDataItem();
@@ -159,22 +156,22 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
          * PRODUCT_MODE, which scans UPC bar codes.
          */
         scanBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// Auto-generated method stub
 				Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
 					chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
 					startActivityForResult(chargeIntent, 0);
-				
+
 			}
 		});
-		
+
         /**
          * When user clicks the SAVE button, we insert all fields into the database
          */
 		saveBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@SuppressWarnings({"StringBufferReplaceableByString", "ConstantConditions"})
             @Override
 			public void onClick(View v) {
@@ -207,7 +204,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 }
             }
 		});
-		
+
 		/**
 		 * When user clicks the SEND button we first call db.exportDB() from
          * DatabaseHandler which exports the contents of the chrgData table
@@ -215,7 +212,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
          * create and send an email with the csv file as an attachment.
 		 */
 		sendBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(final View v) {
 
@@ -288,11 +285,13 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
+        endActivity();
         return true;
     }
 
     private boolean validateFields() {
         // validate the required fields
+        String field;
         if (_whse.equals("")) {
             field = "Warehouse";
             msgBox(field);
@@ -406,22 +405,22 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// If user clicks NO, dialog is closed.
-				dialog.cancel();				
+				dialog.cancel();
 			}
 		});
 		aDB.show();
 	}
-	
-	//*    
+
+	//*
 	@SuppressLint("SimpleDateFormat")
     void setDateTime() {
     	// add DateTime to filename
     	Calendar cal = Calendar.getInstance(TimeZone.getDefault());
     	Date currentLocalTime = cal.getTime();
     	SimpleDateFormat date = new SimpleDateFormat(getString(R.string.filename_simple_date_format));
-    	date.setTimeZone(TimeZone.getDefault()); 
+    	date.setTimeZone(TimeZone.getDefault());
     	String currentDateTime = date.format(currentLocalTime);
-    	
+
     	setFileName(currentDateTime, getBaseContext());
     }
     //*/
@@ -433,9 +432,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     	makeText(context, getString(R.string.toast_filename_is_label)
                 + _filename, LENGTH_LONG)
                 .show();
-    }    
+    }
     //*/
-	
+
 	/**
 	 * When user clicks on the DATE button, we call this method to show the datePicker.
 	 *
@@ -464,7 +463,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
         //spinnerType.setAdapter(dataAdapter);
     }
-		
+
 	/**
      * Function to load the spinner data from SQLite database
      * */
@@ -476,27 +475,31 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
         // Spinner Drop down elements
         List<String> labels = db.getAllLabels(tableName);
- 
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, labels);
- 
+
         // Drop down layout style - list view with radio button
         dataAdapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //spinnerWhse.setAdapter(dataAdapter);
-        if (tableName.equals("1")) {
-            spinnerWhse.setAdapter(dataAdapter);
-        } else if (tableName.equals("2")) {
-            spinnerItem.setAdapter(dataAdapter);
-        } else if (tableName.equals("3")) {
-            spinnerType.setAdapter(dataAdapter);
+        switch (tableName) {
+            case "1":
+                spinnerWhse.setAdapter(dataAdapter);
+                break;
+            case "2":
+                spinnerItem.setAdapter(dataAdapter);
+                break;
+            case "3":
+                spinnerType.setAdapter(dataAdapter);
+                break;
         }
 
         //return dataAdapter;
     }
-    
+
     /**
      * When user selects a name from the spinner.
      *
@@ -512,35 +515,35 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         setLabel(label);
 
     }
-    
+
     /**
      * Initialise the static variable _label 
-     * 
+     *
      * @param label		Name that user selected from the spinner
      */
     void setLabel(String label) {
     	_label = label;
-    	
+
     }
 
     /**
      * Initialise the static variable _upc
-     * 
+     *
      * @param scanResult	upc code returned from the scanner
      */
     void setUpc(String scanResult) {
     	_upc = scanResult;
     }
-    
+
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
         // Auto-generated method stub
- 
+
     }
 
     /**
      * When scanner returns a result, we verify ok then send to the text box.
-     * 
+     *
      * @param requestCode   requestCode
      * @param resultCode    resultCode
      * @param intent        intent
@@ -566,7 +569,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	 * When user selects a date from the datePicker, we first set the contents of the _dateField
 	 * with the date the user selected.  We then format the date string to be sent to the database.
 	 * we then initialise the static variable _date to the new formatted date.
-	 * 
+	 *
 	 * @param view      view
 	 * @param year		the year returned from the datePicker
 	 * @param month		the month returned from the datePicker
@@ -676,14 +679,14 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             db.close();
         }
     }
-	
+
 	/**
 	 * closes the ChargeActivity.
 	 */
     void endActivity() {
 		this.finish();
 	}
-	
+
 	void exitApp() {
 		makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -693,7 +696,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         db.close();
 		finish();
 	}
-	
+
 	void backToMain() {
 		//Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
 		//String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
@@ -703,7 +706,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		db.close();
 		endActivity();
 	}
-	
+
 	/**
 	 * When called, will pop an AlertDialog asking user if they are sure they want
 	 * to exit the screen.  This is attached to UI back button, BACK button and EXIT
@@ -712,7 +715,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	 */
 	@Override
 	public void onBackPressed() {
-        if ((sent == null) || sent) {
+        endActivity();
+        /*if ((sent == null) || sent) {
             if ((sent == null) || (exit == null) || !exit) {
                 backToMain();
             } else {
@@ -744,10 +748,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 }
             });
             aDB.show();
-        }
+        }//*/
     }
 
-    public void populateFields() {
+    void populateFields() {
         //
         _scanField.setText(_upc);
         _commentField.setText(_comment);
@@ -843,6 +847,5 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         }
         spinnerType.setSelection(index);
     }
-
 }
 

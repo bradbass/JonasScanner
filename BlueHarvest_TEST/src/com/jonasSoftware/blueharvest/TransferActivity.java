@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,8 +44,6 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     // Spinner element
     private Spinner spinnerFromWhse;
     private Spinner spinnerToWhse;
-    //
-    static String _label;
     private static String _upc;
     private static String _filename;
     private static String _fromWhse;
@@ -60,6 +60,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     private static EditText _quantityField;
     private static TextView _scanField;
     private static EditText _serialField;
+    private boolean isValid = false;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +82,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
 
         _scanField = (TextView) findViewById(R.id.partUpcField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
+        _quantityField.setText("1");
         _serialField = (EditText) findViewById(R.id.serialField);
 
         spinnerFromWhse = (Spinner) findViewById(R.id.spinnerWhseFrom);
@@ -111,14 +113,19 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
                 _quantity = _quantityField.getText().toString();
+                _quantityField.setText("1");
                 _toWhse = spinnerToWhse.getSelectedItem().toString();
                 _fromWhse = spinnerFromWhse.getSelectedItem().toString();
                 _serial = _serialField.getText().toString();
 
-                dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial, getBaseContext());
+                validateFields();
 
-                save = true;
-                clearFields();
+                if (isValid) {
+                    dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial, getBaseContext());
+
+                    save = true;
+                    clearFields();
+                }
             }
         });
 
@@ -179,6 +186,54 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 clearFields();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.charge_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // go back to home screen
+        endActivity();
+        return true;
+    }
+
+    private boolean validateFields() {
+        // validate the required fields
+        String field;
+        if (_toWhse.equals("")) {
+            field = "Warehouse";
+            msgBox(field);
+        } else if (_fromWhse.equals("")) {
+            field = "Job/WO #";
+            msgBox(field);
+        } else if (_upc.equals("")) {
+            field = "Part # UPC";
+            msgBox(field);
+        } else if (_quantity.equals("")) {
+            field = "Quantity";
+            msgBox(field);
+        } else {
+            return isValid = true;
+        }
+        return isValid = false;
+    }
+
+    private void msgBox(String field) {
+        //
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Invalid Field Found!");
+        aDB.setMessage("The " + field + " is a required field and must be filled out.");
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        aDB.show();
     }
 
     private void deleteAll() {
@@ -444,7 +499,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     }
 
     void setLabel(String label) {
-        _label = label;
+        String _label = label;
     }
 
     /**

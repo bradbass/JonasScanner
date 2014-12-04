@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -58,7 +60,6 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     private Boolean save = false;
     private Boolean isValid = false;
     private String date;
-    private String msg;
     //private String comment;
     private final Crypter crypter = new Crypter();
 
@@ -217,23 +218,41 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.charge_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // go back to home screen
+        endActivity();
+        return true;
+    }
+
     private boolean validateFields() {
         // validate the required fields
-        if (_date == "") {
-            msg = "The Date field is a required field and must be filled out.";
-            msgBox(msg);
-        } else if (_whse == "") {
-            msg = "The Warehouse field is a required field and must be filled out.";
-            msgBox(msg);
-        } else if (_po == "") {
-            msg = "The P.O.# field is a required field and must be filled out.";
-            msgBox(msg);
-        } else if (_upc == "") {
-            msg = "The Part # UPC is a required field and must be filled out.";
-            msgBox(msg);
-        } else if (_quantity == "") {
-            msg = "The Quantity field is a required field and must be filled out.";
-            msgBox(msg);
+        String field;
+        if (_date.equals("")) {
+            field = "Date";
+            isValid = false;
+            msgBox(field);
+        } else if (_whse.equals("")) {
+            field = "Warehouse";
+            isValid = false;
+            msgBox(field);
+        } else if (_po.equals("")) {
+            field = "P.O.#";
+            isValid = false;
+            msgBox(field);
+        } else if (_upc.equals("")) {
+            field = "Part # UPC";
+            isValid = false;
+            msgBox(field);
+        } else if (_quantity.equals("")) {
+            field = "Quantity";
+            isValid = false;
+            msgBox(field);
         } else {
             isValid = true;
         }
@@ -244,7 +263,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         //
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Invalid Field Found!");
-        aDB.setMessage(msg);
+        aDB.setMessage("The " + msg + " field is a required field and must be filled out.");
         aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @SuppressWarnings("ConstantConditions")
@@ -590,7 +609,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
      * position is different from the previously selected position or if
      * there was no selected item.</p>
      * <p/>
-     * Impelmenters can call getItemAtPosition(position) if they need to access the
+     * Implementers can call getItemAtPosition(position) if they need to access the
      * data associated with the selected item.
      *
      * @param parent   The AdapterView where the selection happened

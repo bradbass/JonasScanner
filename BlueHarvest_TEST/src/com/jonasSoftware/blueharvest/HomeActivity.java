@@ -3,10 +3,13 @@ package com.jonasSoftware.blueharvest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import static android.view.View.OnClickListener;
+import java.util.List;
+
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
@@ -25,6 +28,11 @@ import static android.widget.Toast.makeText;
 
 public class HomeActivity extends Activity {
 
+    static Button _uploadBtn;
+    static Button _chrgBtn;
+    static Button _transferBtn;
+    static Button _receiveBtn;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,21 +40,24 @@ public class HomeActivity extends Activity {
         setTitle("onas Scanner");
 
         //buttons
-        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
         final Button configBtn = (Button) findViewById(R.id.configBtn);
         final Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
-        final Button uploadBtn = (Button) findViewById(R.id.uploadBtn);
-        final Button transferBtn = (Button) findViewById(R.id.transferBtn);
-        final Button receiveBtn = (Button) findViewById(R.id.receiveBtn);
+        _chrgBtn = (Button) findViewById(R.id.scanBtn);
+        _uploadBtn = (Button) findViewById(R.id.uploadBtn);
+        _transferBtn = (Button) findViewById(R.id.transferBtn);
+        _receiveBtn = (Button) findViewById(R.id.receiveBtn);
+
+        //test
+        //_chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
 
         //check tables for data.  If data exists, change the button color of the corresponding module and italicise the text
+        DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        dbh.checkTables();
 
-        scanBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chargeParts();
-            }
-        });
+        if (!DatabaseHandler._dataTables.isEmpty()) {
+            List<String> dataTables = DatabaseHandler._dataTables;
+            moduleBtnClrChngr(dataTables);
+        }
 
         configBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -62,26 +73,45 @@ public class HomeActivity extends Activity {
             }
         });
 
-        uploadBtn.setOnClickListener(new OnClickListener() {
+        _chrgBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chargeParts();
+            }
+        });
+
+        _uploadBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 uploadParts();
             }
         });
 
-        transferBtn.setOnClickListener(new OnClickListener() {
+        _transferBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 transferParts();
             }
         });
 
-        receiveBtn.setOnClickListener(new OnClickListener() {
+        _receiveBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 receivePO();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.charge_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // go back to home screen
+        this.finish();
+        return true;
     }
 
     void receivePO() {
@@ -154,6 +184,14 @@ public class HomeActivity extends Activity {
 		settingsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(settingsIntent);
 	}
+
+    // change module button color if data exists in corresponding table
+    public void moduleBtnClrChngr(List<String> dataTables) {
+        //TODO - do this
+        for (String table : dataTables) {
+            _chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
+        }
+    }
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {

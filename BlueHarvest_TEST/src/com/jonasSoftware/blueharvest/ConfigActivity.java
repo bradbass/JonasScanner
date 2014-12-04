@@ -3,6 +3,8 @@ package com.jonasSoftware.blueharvest;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
@@ -92,15 +94,19 @@ public class ConfigActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 String label = parent.getItemAtPosition(position).toString();
 
-                if (label.equals("WHSE")) {
-                    tableNum = 1;
+                switch (label) {
+                    case "WHSE":
+                        tableNum = 1;
 
-                } else if (label.equals("ITEM")) {
-                    tableNum = 2;
+                        break;
+                    case "ITEM":
+                        tableNum = 2;
 
-                } else if (label.equals("TYPE")) {
-                    tableNum = 3;
+                        break;
+                    case "TYPE":
+                        tableNum = 3;
 
+                        break;
                 }
 
                 loadSpinnerData(tableNum);
@@ -113,6 +119,18 @@ public class ConfigActivity extends Activity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.charge_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // go back to home screen
+        endActivity();
+        return true;
+    }
+
     public void delLabel() {
         //String label = spinner.getSelectedItem().toString();
         String table = spinnerTable.getSelectedItem().toString();
@@ -121,15 +139,19 @@ public class ConfigActivity extends Activity {
         DatabaseHandler db = new DatabaseHandler(
                 getApplicationContext());
 
-        if (table.equals("WHSE")) {
-            tableNum = 1;
+        switch (table) {
+            case "WHSE":
+                tableNum = 1;
 
-        } else if (table.equals("ITEM")) {
-            tableNum = 2;
+                break;
+            case "ITEM":
+                tableNum = 2;
 
-        } else if (table.equals("TYPE")) {
-            tableNum = 3;
+                break;
+            case "TYPE":
+                tableNum = 3;
 
+                break;
         }
 
         // remove label from database
@@ -149,15 +171,19 @@ public class ConfigActivity extends Activity {
             DatabaseHandler db = new DatabaseHandler(
                     getApplicationContext());
 
-            if (table.equals("WHSE")) {
-                tableNum = 1;
+            switch (table) {
+                case "WHSE":
+                    tableNum = 1;
 
-            } else if (table.equals("ITEM")) {
-                tableNum = 2;
+                    break;
+                case "ITEM":
+                    tableNum = 2;
 
-            } else if (table.equals("TYPE")) {
-                tableNum = 3;
+                    break;
+                case "TYPE":
+                    tableNum = 3;
 
+                    break;
             }
 
             // inserting new label into database
@@ -229,5 +255,9 @@ public class ConfigActivity extends Activity {
  
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+    }
+
+    void endActivity() {
+        this.finish();
     }
 }

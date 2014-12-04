@@ -33,4 +33,5 @@
     <color name="NiceButtonBorderColor">#254117</color>
     <color name="JonasButtonColor">#FF8000</color>
     <color name="JonasButtonColorBottom">#CB5800</color>
+    <color name="DataToSendButtonColor">#0a0</color>
 </resources>

@@ -85,12 +85,13 @@ public class SettingsActivity extends Activity {
         _password = crypter.encode(_password);
 
         //test
-        makeText(getApplicationContext(),getString(R.string.toast_encode_message)+_password,LENGTH_LONG).show();
+        //makeText(getApplicationContext(),getString(R.string.toast_encode_message)+_password,LENGTH_LONG).show();
 
 		db.purgeSettings();
 		db.saveToDb(_actName, _password, _from, _to, _subject, _body, getApplicationContext());
 		makeText(getBaseContext(), getString(R.string.toast_saved_settings_message), LENGTH_LONG).show();
 		db.close();
+        endActivity();
 	}
 	
 	@SuppressWarnings("ConstantConditions")
@@ -104,7 +105,7 @@ public class SettingsActivity extends Activity {
         }
 
         //test
-        makeText(getApplicationContext(), getString(R.string.toast_decode_message)+_password, LENGTH_LONG).show();
+        //makeText(getApplicationContext(), getString(R.string.toast_decode_message)+_password, LENGTH_LONG).show();
 
 		actName.setText(_actName);
 		password.setText(_password);
@@ -161,4 +162,8 @@ public class SettingsActivity extends Activity {
 		}
 		return super.onKeyDown(keyCode, event);		
 	}
+
+    void endActivity() {
+        this.finish();
+    }
 }
