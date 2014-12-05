@@ -282,6 +282,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         for (String table : tables) {
             SQLiteDatabase db = this.getWritableDatabase();
             String sqlCmd = "SELECT COUNT(*) FROM " + table;
+            assert db != null;
             Cursor cursor = db.rawQuery(sqlCmd, null);
             cursor.moveToFirst();
             int count = cursor.getInt(0);
@@ -322,9 +323,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
-    	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
-                + values, LENGTH_LONG)
-                .show();
+        //testing
+    	//makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
     	db.close();
         _existingRec = false;
@@ -356,9 +356,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         assert db != null;
         db.insert(TABLE_SETTINGS, null, values);
     	//*/
-    	makeText(context, context.getString(R.string.toast_wrote_to_db_message)
-                + values, LENGTH_LONG)
-                .show();
+        //testing
+    	//makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
     	
     	db.close();
     }
@@ -379,15 +378,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.update(TABLE_UPLOAD_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
-        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
-                + values, LENGTH_LONG)
-                .show();
+        //Testing
+        //makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
         db.close();
         _existingRec = false;
     }
 
-    public void saveToDb(String fromWhse, String toWhse, String quantity, String upc, String serial, Context context) {
+    public void saveToDb(String fromWhse, String toWhse, String quantity, String upc,
+                         String serial, Context context) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
         //*
@@ -406,15 +405,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.update(TABLE_TRANSFER_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
-        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
-                + values, LENGTH_LONG)
-                .show();
+        //testing
+        //makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
         db.close();
         _existingRec = false;
     }
 
-    public void saveToDb(String whse, String quantity, String upc, String serial, String date, String comment, String po, Context context) {
+    public void saveToDb(String whse, String quantity, String upc, String serial, String date,
+                         String comment, String po, Context context) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
         //*
@@ -435,9 +434,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.update(TABLE_RECEIVE_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
         //*/
-        makeText(context, context.getString(R.string.toast_wrote_to_db_message)
-                + values, LENGTH_LONG)
-                .show();
+        //testing
+        //makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
         db.close();
         _existingRec = false;
