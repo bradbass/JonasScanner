@@ -153,8 +153,17 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                     dbh.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po, getBaseContext());
 
                     save = true;
-                    clearFields();
+                    clearBottomFields();
                 }
+            }
+
+            private void clearBottomFields() {
+                _upc = null;
+                _scanField.setText(null);
+                _dateField.setText(_currentDate);
+                _quantityField.setText("1");
+                _serialField.setText(null);
+                _commentField.setText(null);
             }
         });
 
@@ -358,7 +367,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             _password = crypter.decode(_password);
 
             //testing
-            Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
 
             Mail m = new Mail(SettingsActivity._actName, _password);
             String[] toArr = SettingsActivity._to.split(";");
@@ -398,25 +407,39 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
             db.purgeData("receiveData");
             db.close();
+
+            //change home screen module button back to original color
+            HomeActivity._moduleBtnColorChngr(4);
         }
     }
 
     /**
      *
      */
-    private void saveMsg() {
-        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
-        aDB.setTitle(getString(R.string.savemsg_dialog_title));
-        aDB.setMessage(getString(R.string.savemsg_window_message));
-        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // If user clicks NO, dialog is closed.
-                dialog.cancel();
+    void saveMsg() {
+        //for (String table : DatabaseHandler._dataTables) {
+        String[] tables = new String[DatabaseHandler._dataTables.size()];
+        tables = DatabaseHandler._dataTables.toArray(tables);
+        for (String table : tables) {
+            if (table.equals("receiveData")) {
+                save = true;
+                send();
             }
-        });
-        aDB.show();
+        }
+        if (!save) {
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle(getString(R.string.savemsg_dialog_title));
+            aDB.setMessage(getString(R.string.savemsg_window_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }
+        //}
     }
 
     /**
@@ -439,7 +462,11 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     private void populateFields() {
         //populate fields
         _scanField.setText(_upc);
-        _quantityField.setText(_quantity);
+        if (_quantity == null || _quantity.equals("")) {
+            _quantityField.setText("1");
+        } else {
+            _quantityField.setText(_quantity);
+        }
         _serialField.setText(_serial);
         _poField.setText(_po);
         _commentField.setText(_comment);
@@ -484,7 +511,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         List<String> labels = db.getAllLabels("1");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, labels);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
