@@ -200,10 +200,20 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                             _serial, comment, _date, getBaseContext());
 
                     save = true;
-                    clearFields();
+                    clearBottomFields();
                 }
             }
-		});
+
+            private void clearBottomFields() {
+                _upc = null;
+                _scanField.setText(null);
+                _commentField.setText(null);
+                _quantityField.setText("1");
+                _serialField.setText(null);
+                _dateField.setText(_currentDate);
+                spinnerItem.setSelection(0);
+            }
+        });
 
 		/**
 		 * When user clicks the SEND button we first call db.exportDB() from
@@ -397,19 +407,31 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     void saveMsg() {
-		Builder aDB = new Builder(this);
-		aDB.setTitle(getString(R.string.savemsg_dialog_title));
-		aDB.setMessage(getString(R.string.savemsg_window_message));
-		aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        //for (String table : DatabaseHandler._dataTables) {
+        String[] tables = new String[DatabaseHandler._dataTables.size()];
+        tables = DatabaseHandler._dataTables.toArray(tables);
+        for (String table : tables) {
+            if (table.equals("chrgData")) {
+                save = true;
+                send();
+            }
+        }
+        if (!save) {
+            Builder aDB = new Builder(this);
+            aDB.setTitle(getString(R.string.savemsg_dialog_title));
+            aDB.setMessage(getString(R.string.savemsg_window_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// If user clicks NO, dialog is closed.
-				dialog.cancel();
-			}
-		});
-		aDB.show();
-	}
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // If user clicks NO, dialog is closed.
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }
+        //}
+    }
 
 	//*
 	@SuppressLint("SimpleDateFormat")
@@ -477,7 +499,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         List<String> labels = db.getAllLabels(tableName);
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, labels);
 
         // Drop down layout style - list view with radio button
@@ -488,12 +510,15 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         switch (tableName) {
             case "1":
                 spinnerWhse.setAdapter(dataAdapter);
+
                 break;
             case "2":
                 spinnerItem.setAdapter(dataAdapter);
+
                 break;
             case "3":
                 spinnerType.setAdapter(dataAdapter);
+
                 break;
         }
 
@@ -677,78 +702,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             }
             db.purgeData("chrgData");
             db.close();
+
+            //change home screen module button back to original color
+            HomeActivity._moduleBtnColorChngr(1);
         }
-    }
-
-	/**
-	 * closes the ChargeActivity.
-	 */
-    void endActivity() {
-		this.finish();
-	}
-
-	void exitApp() {
-		makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
-		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-		Intent chrgAct = new Intent();
-		setResult(RESULT_OK, chrgAct);
-		db.purgeData("chrgData");
-        db.close();
-		finish();
-	}
-
-	void backToMain() {
-		//Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
-		//String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
-		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-		//Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-		db.purgeData("chrgData");
-		db.close();
-		endActivity();
-	}
-
-	/**
-	 * When called, will pop an AlertDialog asking user if they are sure they want
-	 * to exit the screen.  This is attached to UI back button, BACK button and EXIT
-	 * button.  If user selects YES, we purge the database and send them back to the
-	 * main activity.
-	 */
-	@Override
-	public void onBackPressed() {
-        endActivity();
-        /*if ((sent == null) || sent) {
-            if ((sent == null) || (exit == null) || !exit) {
-                backToMain();
-            } else {
-                exitApp();
-            }
-        } else {
-            Builder aDB = new Builder(this);
-            aDB.setTitle(getString(R.string.onbackpress_dialog_title));
-            aDB.setMessage(getString(R.string.onbackpress_dialog_message));
-            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // When user clicks OK, the db is purged and user is sent back to main activity.
-                    if((exit != null) && exit) {
-                        exitApp();
-                    } else {
-                        backToMain();
-                    }
-                }
-            });
-            aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // If user clicks NO, dialog is closed.
-                    exit = false;
-                    dialog.cancel();
-                }
-            });
-            aDB.show();
-        }//*/
     }
 
     void populateFields() {
@@ -757,7 +714,11 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         _commentField.setText(_comment);
         _installField.setText(_date);
         _jobWoField.setText(_wo);
-        _quantityField.setText(_quantity);
+        if (_quantity == null || _quantity.equals("")) {
+            _quantityField.setText("1");
+        } else {
+            _quantityField.setText(_quantity);
+        }
         _serialField.setText(_serial);
         setSpinnerWhse(_whse);
         setSpinnerItem(_item);
@@ -846,6 +807,77 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             }
         }
         spinnerType.setSelection(index);
+    }
+
+	/**
+	 * closes the ChargeActivity.
+	 */
+    void endActivity() {
+		this.finish();
+	}
+
+	void exitApp() {
+		makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
+		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+		Intent chrgAct = new Intent();
+		setResult(RESULT_OK, chrgAct);
+		db.purgeData("chrgData");
+        db.close();
+		finish();
+	}
+
+	void backToMain() {
+		//Toast.makeText(getBaseContext(), "Thanks for using BlueHarvest!", Toast.LENGTH_LONG).show();
+		//String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
+		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+		//Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+		db.purgeData("chrgData");
+		db.close();
+		endActivity();
+	}
+
+	/**
+	 * When called, will pop an AlertDialog asking user if they are sure they want
+	 * to exit the screen.  This is attached to UI back button, BACK button and EXIT
+	 * button.  If user selects YES, we purge the database and send them back to the
+	 * main activity.
+	 */
+	@Override
+	public void onBackPressed() {
+        endActivity();
+        /*if ((sent == null) || sent) {
+            if ((sent == null) || (exit == null) || !exit) {
+                backToMain();
+            } else {
+                exitApp();
+            }
+        } else {
+            Builder aDB = new Builder(this);
+            aDB.setTitle(getString(R.string.onbackpress_dialog_title));
+            aDB.setMessage(getString(R.string.onbackpress_dialog_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // When user clicks OK, the db is purged and user is sent back to main activity.
+                    if((exit != null) && exit) {
+                        exitApp();
+                    } else {
+                        backToMain();
+                    }
+                }
+            });
+            aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // If user clicks NO, dialog is closed.
+                    exit = false;
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }//*/
     }
 }
 
