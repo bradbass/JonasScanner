@@ -366,6 +366,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteOne("chrgData");
+                clearVars();
                 makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
             }
         });
@@ -380,6 +381,17 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         aDB.show();
     }
 
+    private void clearVars() {
+        _quantity = "";
+        _wo = "";
+        _type = "";
+        _comment = "";
+        _date = "";
+        _item = "";
+        _upc = "";
+        _whse = "";
+    }
+
     private void deleteAll() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         Builder aDB = new Builder(this);
@@ -392,6 +404,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteAll("chrgData");
+                clearVars();
                 makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
             }
         });
