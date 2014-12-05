@@ -124,8 +124,15 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                     dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial, getBaseContext());
 
                     save = true;
-                    clearFields();
+                    clearBottomFields();
                 }
+            }
+
+            private void clearBottomFields() {
+                _upc = null;
+                _scanField.setText(null);
+                _quantityField.setText("1");
+                _serialField.setText(null);
             }
         });
 
@@ -300,12 +307,20 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     private void populateFields() {
         //populate fields
         _scanField.setText(_upc);
-        _quantityField.setText(_quantity);
+        if (_quantity == null || _quantity.equals("")) {
+            _quantityField.setText("1");
+        } else {
+            _quantityField.setText(_quantity);
+        }
         _serialField.setText(_serial);
         setSpinnerFromWhse(_fromWhse);
         setSpinnerToWhse(_toWhse);
     }
 
+    /**
+     *
+     * @param valueWhse     the warehouse the part is being taken from.
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerFromWhse(String valueWhse) {
         int index = 0;
@@ -319,6 +334,10 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         spinnerFromWhse.setSelection(index);
     }
 
+    /**
+     *
+     * @param valueWhse     the warehouse the part is being transfered to.
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerToWhse(String valueWhse) {
         int index = 0;
@@ -356,7 +375,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         List<String> labels = db.getAllLabels("1");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, labels);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -391,7 +410,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             _password = crypter.decode(_password);
 
             //testing
-            Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
 
             Mail m = new Mail(SettingsActivity._actName, _password);
             String[] toArr = SettingsActivity._to.split(";");
@@ -431,24 +450,44 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
             db.purgeData("transferData");
             db.close();
+
+            //change home screen module button back to original color
+            HomeActivity._moduleBtnColorChngr(3);
         }
     }
 
-    private void saveMsg() {
-        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
-        aDB.setTitle(getString(R.string.savemsg_dialog_title));
-        aDB.setMessage(getString(R.string.savemsg_window_message));
-        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // If user clicks NO, dialog is closed.
-                dialog.cancel();
+    /**
+     *
+     */
+    void saveMsg() {
+        //for (String table : DatabaseHandler._dataTables) {
+        String[] tables = new String[DatabaseHandler._dataTables.size()];
+        tables = DatabaseHandler._dataTables.toArray(tables);
+        for (String table : tables) {
+            if (table.equals("transferData")) {
+                save = true;
+                send();
             }
-        });
-        aDB.show();
+        }
+        if (!save) {
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle(getString(R.string.savemsg_dialog_title));
+            aDB.setMessage(getString(R.string.savemsg_window_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }
+        //}
     }
 
+    /**
+     *
+     */
     @SuppressLint("SimpleDateFormat")
     private void setDateTime() {
         // add DateTime to filename
@@ -461,6 +500,11 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         setFileName(currentDateTime, getBaseContext());
     }
 
+    /**
+     *
+     * @param currentDateTime   the current date and time from setDateTime()
+     * @param context           current application context.
+     */
     private void setFileName(String currentDateTime, Context context) {
         _filename = currentDateTime + getString(R.string.whse_transfer_filename_extension);
 
@@ -478,22 +522,42 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         _upc = scanResult;
     }
 
+    /**
+     *
+     * @param upc       upc code
+     */
     public void setUPC(String upc) {
         _upc = upc;
     }
 
+    /**
+     *
+     * @param fromWhse  the warehouse the part is being transfered from.
+     */
     public void setFromWHSE(String fromWhse) {
         _fromWhse = fromWhse;
     }
 
+    /**
+     *
+     * @param toWhse    the warehouse the part is being taken from.
+     */
     public void  setToWhse(String toWhse){
         _toWhse = toWhse;
     }
 
+    /**
+     *
+     * @param qty       quantity of parts being transfered
+     */
     public void setQty(String qty) {
         _quantity = qty;
     }
 
+    /**
+     *
+     * @param serial    optional serial number.
+     */
     public void setSerial(String serial) {
         _serial = serial;
     }
