@@ -114,8 +114,14 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                     saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
 
                     save = true;
-                    clearFields();
+                    clearBottomFields();
                 }
+            }
+
+            private void clearBottomFields() {
+                _upc = null;
+                _scanField.setText(null);
+                _quantityField.setText("1");
             }
         });
 
@@ -288,7 +294,11 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private void populateFields() {
         //populate fields
         _scanField.setText(_upc);
-        _quantityField.setText(_quantity);
+        if (_quantity == null || _quantity.equals("")) {
+            _quantityField.setText("1");
+        } else {
+            _quantityField.setText(_quantity);
+        }
         setSpinnerWhse(_whse);
     }
 
@@ -325,7 +335,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         List<String> labels = db.getAllLabels(tableName);
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, labels);
 
         // Drop down layout style - list view with radio button
@@ -445,22 +455,36 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
             db.purgeData("uploadData");
             db.close();
+
+            //change home screen module button back to original color
+            HomeActivity._moduleBtnColorChngr(2);
         }
     }
 
-    private void saveMsg() {
-        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
-        aDB.setTitle(getString(R.string.savemsg_dialog_title));
-        aDB.setMessage(getString(R.string.savemsg_window_message));
-        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // If user clicks NO, dialog is closed.
-                dialog.cancel();
+    void saveMsg() {
+        //for (String table : DatabaseHandler._dataTables) {
+        String[] tables = new String[DatabaseHandler._dataTables.size()];
+        tables = DatabaseHandler._dataTables.toArray(tables);
+        for (String table : tables) {
+            if (table.equals("uploadData")) {
+                save = true;
+                send();
             }
-        });
-        aDB.show();
+        }
+        if (!save) {
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle(getString(R.string.savemsg_dialog_title));
+            aDB.setMessage(getString(R.string.savemsg_window_message));
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }
+        //}
     }
 
     @SuppressLint("SimpleDateFormat")
