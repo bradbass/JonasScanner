@@ -49,7 +49,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private Boolean exit = false;
     private Boolean save = false;
     private Boolean isValid = false;
-    private String msg;
     // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
     Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
@@ -203,13 +202,13 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private boolean validateFields() {
         // validate the required fields
         if (_whse.equals("")) {
-            msg = "Warehouse";
+            String msg = "Warehouse";
             msgBox(msg);
         } else if (_upc.equals("")) {
-            msg = "Part # UPC";
+            String msg = "Part # UPC";
             msgBox(msg);
         } else if (_quantity.equals("")) {
-            msg = "Quantity";
+            String msg = "Quantity";
             msgBox(msg);
         } else {
             isValid = true;
