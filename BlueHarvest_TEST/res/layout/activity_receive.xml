@@ -85,7 +85,7 @@
                     android:layout_height="40sp"
                     android:id="@+id/scanField"
                     android:layout_weight=".60"
-                    android:inputType="textCapCharacters"/>
+                    android:inputType="number"/>
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/linearLayoutH6"
