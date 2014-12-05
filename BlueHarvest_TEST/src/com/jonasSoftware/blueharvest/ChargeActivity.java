@@ -424,7 +424,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // If user clicks NO, dialog is closed.
                     dialog.cancel();
                 }
             });
@@ -662,7 +661,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             _password = crypter.decode(_password);
 
             //testing
-            Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
 
             Mail m = new Mail(SettingsActivity._actName, _password);
             String[] toArr = SettingsActivity._to.split(";");
