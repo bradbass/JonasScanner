@@ -7,9 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import static android.view.View.OnClickListener;
+
 import java.util.List;
 
+import static android.view.View.OnClickListener;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
@@ -56,7 +57,7 @@ public class HomeActivity extends Activity {
 
         if (!DatabaseHandler._dataTables.isEmpty()) {
             List<String> dataTables = DatabaseHandler._dataTables;
-            moduleBtnClrChngr(dataTables);
+            moduleBtnColorChngr(dataTables);
         }
 
         configBtn.setOnClickListener(new OnClickListener() {
@@ -186,10 +187,47 @@ public class HomeActivity extends Activity {
 	}
 
     // change module button color if data exists in corresponding table
-    public void moduleBtnClrChngr(List<String> dataTables) {
+    private void moduleBtnColorChngr(List<String> dataTables) {
         //TODO - do this
         for (String table : dataTables) {
-            _chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
+            switch (table) {
+                case "chrgData":
+                    _chrgBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    break;
+                case "uploadData":
+                    _uploadBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    break;
+                case "transferData":
+                    _transferBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    break;
+                case "receiveData":
+                    _receiveBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    break;
+                default:
+                    //default case?
+                    break;
+            }
+        }
+    }
+
+    //after send, change module button color back to original
+    public static void _moduleBtnColorChngr(Integer tableNum) {
+        switch (tableNum) {
+            case 1:
+                _chrgBtn.setBackgroundResource(R.drawable.roundbutton);
+                break;
+            case 2:
+                _uploadBtn.setBackgroundResource(R.drawable.roundbutton);
+                break;
+            case 3:
+                _transferBtn.setBackgroundResource(R.drawable.roundbutton);
+                break;
+            case 4:
+                _receiveBtn.setBackgroundResource(R.drawable.roundbutton);
+                break;
+            default:
+                // default case?
+                break;
         }
     }
 	
