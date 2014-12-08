@@ -121,7 +121,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 validateFields();
 
                 if (isValid) {
-                    dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial, getBaseContext());
+                    dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial);
 
                     save = true;
                     clearBottomFields();
@@ -228,6 +228,11 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         return isValid = false;
     }
 
+    /**
+     * if any invalid fields are found, we alert the user
+     *
+     * @param field is the invalid field
+     */
     private void msgBox(String field) {
         //
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);

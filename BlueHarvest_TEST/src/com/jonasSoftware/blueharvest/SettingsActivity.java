@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -17,7 +16,6 @@ import static android.widget.Toast.makeText;
 
 /**
  * @author Brad Bass
- * TODO add ability to change email server settings
  */
 public class SettingsActivity extends Activity {
 	
@@ -106,7 +104,7 @@ public class SettingsActivity extends Activity {
         //makeText(getApplicationContext(),getString(R.string.toast_encode_message)+_password,LENGTH_LONG).show();
 
 		db.purgeSettings();
-		db.saveToDb(_actName, _password, _from, _to, _subject, _body, _host, _port, getApplicationContext());
+		db.saveToDb(_actName, _password, _from, _to, _subject, _body, _host, _port);
 		makeText(getBaseContext(), getString(R.string.toast_saved_settings_message), LENGTH_LONG).show();
 		db.close();
         endActivity();
@@ -232,7 +230,8 @@ public class SettingsActivity extends Activity {
 	 * 
 	 * @return      returns keyCode, event
 	 */
-	@Override
+	@SuppressWarnings("NullableProblems")
+    @Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		
 		if(keyCode == KeyEvent.KEYCODE_SPACE)

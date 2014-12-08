@@ -194,7 +194,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
                 if (isValid) {
                     _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
-                            _serial, comment, _date, getBaseContext());
+                            _serial, comment, _date);
 
                     save = true;
                     clearBottomFields();
@@ -320,8 +320,12 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         return isValid = false;
     }
 
+    /**
+     * if any invalid fields are found, we alert the user
+     *
+     * @param field is the invalid field
+     */
     private void msgBox(String field) {
-        //
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Invalid Field Found!");
         aDB.setMessage("The " + field + " is a required field and must be filled out.");
@@ -336,7 +340,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     }
 
     private void clearFields() {
-        //*
         _upc = null;
         _scanField.setText(null);
         _commentField.setText(null);
@@ -347,7 +350,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         spinnerWhse.setSelection(0);
         spinnerItem.setSelection(0);
         spinnerType.setSelection(0);
-        //*/
     }
 
     private void deleteOne() {
@@ -455,8 +457,12 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
     	setFileName(currentDateTime, getBaseContext());
     }
-    //*/
-    //*
+
+    /**
+     *
+     * @param currentDateTime the current date and time from setDateTime()
+     * @param context   application context
+     */
     void setFileName(String currentDateTime, Context context) {
     	//
     	_filename = currentDateTime + getString(R.string.filename_extension);
@@ -465,7 +471,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 + _filename, LENGTH_LONG)
                 .show();
     }
-    //*/
 
 	/**
 	 * When user clicks on the DATE button, we call this method to show the datePicker.
@@ -496,9 +501,11 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         //spinnerType.setAdapter(dataAdapter);
     }
 
-	/**
+    /**
      * Function to load the spinner data from SQLite database
-     * */
+     *
+     * @param tableName selected table
+     */
     private void loadSpinnerData(String tableName) {
         // load WHSE, COST ITEM and COST TYPE spinners from DB
         //String spinner = tableName;
@@ -538,6 +545,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     /**
      * When user selects a name from the spinner.
      *
+     * @param parent    AdapterView
+     * @param view      View
+     * @param position  selected item position
+     * @param id        selected item id
      */
     @SuppressWarnings("ConstantConditions")
     @Override
@@ -549,24 +560,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
         setLabel(label);
 
-    }
-
-    /**
-     * Initialise the static variable _label 
-     *
-     * @param label		Name that user selected from the spinner
-     */
-    void setLabel(String label) {
-
-    }
-
-    /**
-     * Initialise the static variable _upc
-     *
-     * @param scanResult	upc code returned from the scanner
-     */
-    void setUpc(String scanResult) {
-    	_upc = scanResult;
     }
 
     @Override
@@ -736,42 +729,100 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         setSpinnerType(_type);
     }
 
+    /**
+     * Initialise the static variable _label
+     *
+     * @param label		Name that user selected from the spinner
+     */
+    void setLabel(String label) {
+
+    }
+
+    /**
+     * Initialise the static variable _upc
+     *
+     * @param scanResult	upc code returned from the scanner
+     */
+    void setUpc(String scanResult) {
+        _upc = scanResult;
+    }
+
+    /**
+     *
+     * @param upc   upc code
+     */
     public void setUPC(String upc) {
         _upc = upc;
     }
 
+    /**
+     *
+     * @param date  install date
+     */
     public void setDate(String date) {
         _date = date;
     }
 
+    /**
+     *
+     * @param wo    job/wo number
+     */
     public void setWO(String wo) {
         _wo = wo;
     }
 
+    /**
+     *
+     * @param whse  warehouse
+     */
     public void setWHSE(String whse) {
         _whse = whse;
     }
 
+    /**
+     *
+     * @param item  cost item
+     */
     public void setItem(String item) {
         _item = item;
     }
 
+    /**
+     *
+     * @param type  cost type
+     */
     public void setType(String type) {
         _type = type;
     }
 
+    /**
+     *
+     * @param qty   qty
+     */
     public void setQty(String qty) {
         _quantity = qty;
     }
 
+    /**
+     *
+     * @param serial optional serial number
+     */
     public void setSerial(String serial) {
         _serial = serial;
     }
 
+    /**
+     *
+     * @param comment optional comment
+     */
     public void setComment(String comment) {
         _comment = comment;
     }
 
+    /**
+     *
+     * @param valueWhse the selected warehouse
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerWhse(String valueWhse) {
         //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
@@ -788,6 +839,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         spinnerWhse.setSelection(index);
     }
 
+    /**
+     *
+     * @param valueItem     Cost Item
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerItem(String valueItem) {
         //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerItem.getAdapter();
@@ -804,6 +859,10 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         spinnerItem.setSelection(index);
     }
 
+    /**
+     *
+     * @param valueType     Cost Type
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerType(String valueType) {
         //ArrayAdapter<String> spinAdapter = (ArrayAdapter<String>) spinnerType.getAdapter();

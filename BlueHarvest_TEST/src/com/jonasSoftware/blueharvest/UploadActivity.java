@@ -110,7 +110,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 validateFields();
 
                 if (isValid) {
-                    saveToDb.saveToDb(_whse, _upc, _quantity, getBaseContext());
+                    saveToDb.saveToDb(_whse, _upc, _quantity);
 
                     save = true;
                     clearBottomFields();
@@ -202,25 +202,30 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private boolean validateFields() {
         // validate the required fields
         if (_whse.equals("")) {
-            String msg = "Warehouse";
-            msgBox(msg);
+            String field = "Warehouse";
+            msgBox(field);
         } else if (_upc.equals("")) {
-            String msg = "Part # UPC";
-            msgBox(msg);
+            String field = "Part # UPC";
+            msgBox(field);
         } else if (_quantity.equals("")) {
-            String msg = "Quantity";
-            msgBox(msg);
+            String field = "Quantity";
+            msgBox(field);
         } else {
             isValid = true;
         }
         return isValid;
     }
 
-    private void msgBox(String msg) {
+    /**
+     * if any invalid fields are found, we alert the user
+     *
+     * @param field is the invalid field
+     */
+    private void msgBox(String field) {
         //
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Invalid Field Found!");
-        aDB.setMessage("The " + msg + " field is a required field and must be filled out.");
+        aDB.setMessage("The " + field + " field is a required field and must be filled out.");
         aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @SuppressWarnings("ConstantConditions")
@@ -309,6 +314,11 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         setSpinnerWhse(_whse);
     }
 
+    /**
+     *
+     *
+     * @param valueWhse the selected warehouse
+     */
     @SuppressWarnings("ConstantConditions")
     private void setSpinnerWhse(String valueWhse) {
         int index = 0;
@@ -331,7 +341,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
     /**
      * Function to load the spinner data from SQLite database
-     * */
+     *
+     * @param tableName the selected table
+     */
     private void loadSpinnerData(String tableName) {
         // load WHSE, COST ITEM and COST TYPE spinners from DB
         //String spinner = tableName;
@@ -360,7 +372,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
      * position is different from the previously selected position or if
      * there was no selected item.</p>
      * <p/>
-     * Impelmenters can call getItemAtPosition(position) if they need to access the
+     * Implementers can call getItemAtPosition(position) if they need to access the
      * data associated with the selected item.
      *
      * @param parent   The AdapterView where the selection happened
@@ -376,10 +388,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         //((TextView) parent.getChildAt(0)).setTextColor(0x00000000);
         String label = parent.getItemAtPosition(position).toString();
         setLabel(label);
-    }
-
-    void setLabel(String label) {
-        _label = label;
     }
 
     /**
@@ -508,6 +516,12 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         setFileName(currentDateTime, getBaseContext());
     }
 
+    /**
+     * sets the filename to be sent
+     *
+     * @param currentDateTime   the current date and time from setDateTime()
+     * @param context           application context(used for toast)
+     */
     private void setFileName(String currentDateTime, Context context) {
         _filename = currentDateTime + getString(R.string.upload_filename_extension);
 
@@ -516,14 +530,34 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 .show();
     }
 
+    /**
+     *
+     * @param label spinner item
+     */
+    void setLabel(String label) {
+        _label = label;
+    }
+
+    /**
+     *
+     * @param upc upc
+     */
     public void setUPC(String upc) {
         _upc = upc;
     }
 
+    /**
+     *
+     * @param whse whse
+     */
     public void setWHSE(String whse) {
         _whse = whse;
     }
 
+    /**
+     *
+     * @param qty qty
+     */
     public void setQty(String qty) {
         _quantity = qty;
     }

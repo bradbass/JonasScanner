@@ -150,7 +150,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 validateFields();
 
                 if (isValid) {
-                    dbh.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po, getBaseContext());
+                    dbh.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po);
 
                     save = true;
                     clearBottomFields();
@@ -268,11 +268,16 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         return isValid;
     }
 
-    private void msgBox(String msg) {
+    /**
+     * If an invalid field is found, we pop a message advising the user what field it is.
+     *
+     * @param field the invalid field
+     */
+    private void msgBox(String field) {
         //
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Invalid Field Found!");
-        aDB.setMessage("The " + msg + " field is a required field and must be filled out.");
+        aDB.setMessage("The " + field + " field is a required field and must be filled out.");
         aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @SuppressWarnings("ConstantConditions")
