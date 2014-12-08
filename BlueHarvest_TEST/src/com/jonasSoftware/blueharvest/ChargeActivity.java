@@ -46,15 +46,13 @@ import static android.widget.Toast.makeText;
  * @see android.view
  * @see android.widget
  */
-//@SuppressWarnings("unused")
+@SuppressWarnings("unused")
 public class ChargeActivity extends Activity implements OnItemSelectedListener, OnDateSetListener {
 
 	// Spinner element
     private Spinner spinnerWhse;
     private Spinner spinnerItem;
     private Spinner spinnerType;
-    //
-    private static String _label;
     private static String _upc;
     private static String _date;
     private static String _filename;
@@ -66,7 +64,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     private static String _serial;
     private static String _comment;
 
-    private Boolean sent = false;
     private Boolean exit = false;
     private Boolean save = false;
     private Boolean isValid = false;
@@ -560,7 +557,6 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
      * @param label		Name that user selected from the spinner
      */
     void setLabel(String label) {
-    	_label = label;
 
     }
 
@@ -693,7 +689,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                     makeText(ChargeActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
                 } else {
                     makeText(ChargeActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
-                    sent = true;
+                    Boolean sent = true;
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
