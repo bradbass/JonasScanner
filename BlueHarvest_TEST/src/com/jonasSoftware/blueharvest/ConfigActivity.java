@@ -28,6 +28,7 @@ import static android.widget.Toast.makeText;
  * @see android.view
  * @see android.widget
  */
+@SuppressWarnings("ConstantConditions")
 public class ConfigActivity extends Activity {
 	
 	// Spinner element
@@ -45,7 +46,7 @@ public class ConfigActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
-        setTitle("onas Config");
+        setTitle(" Configuration");
         // Spinner element
         spinner = (Spinner) findViewById(R.id.spinner);
         spinnerTable = (Spinner) findViewById(R.id.spinnerTable);
