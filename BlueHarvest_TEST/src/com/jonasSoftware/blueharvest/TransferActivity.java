@@ -255,6 +255,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteAll("transferData");
+                clearVars();
                 makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
             }
         });
@@ -269,6 +270,14 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         aDB.show();
     }
 
+    private void clearVars() {
+        _quantity = "";
+        _upc = "";
+        _toWhse = "";
+        _fromWhse = "";
+        _serial = "";
+    }
+
     private void deleteOne() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
@@ -281,6 +290,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteOne("transferData");
+                clearVars();
                 makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
             }
         });

@@ -298,6 +298,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteAll("receiveData");
+                clearVars();
                 makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
             }
         });
@@ -310,6 +311,15 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
         aDB.show();
+    }
+
+    private void clearVars() {
+        _quantity = "";
+        _comment = "";
+        _date = "";
+        _upc = "";
+        _whse = "";
+        _serial = "";
     }
 
     /**
@@ -327,6 +337,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteOne("receiveData");
+                clearVars();
                 makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
             }
         });

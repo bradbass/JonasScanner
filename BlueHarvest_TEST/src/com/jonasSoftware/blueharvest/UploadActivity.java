@@ -243,6 +243,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteAll("uploadData");
+                clearVars();
                 makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
             }
         });
@@ -257,6 +258,12 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         aDB.show();
     }
 
+    private void clearVars() {
+        _quantity = "";
+        _upc = "";
+        _whse = "";
+    }
+
     private void deleteOne() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
@@ -269,6 +276,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(DialogInterface dialog, int which) {
                 // When user clicks OK, the db is purged and user is sent back to main activity.
                 dbh.deleteOne("uploadData");
+                clearVars();
                 makeText(getApplicationContext(), "This record has been deleted!", LENGTH_LONG).show();
             }
         });
