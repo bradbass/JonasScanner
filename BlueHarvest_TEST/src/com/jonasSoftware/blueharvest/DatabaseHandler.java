@@ -967,7 +967,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         if (db != null) {
             db.delete(dbName, null, null);
+            //db.execSQL("DELETE FROM " + dbName);
             //purgeChrgData();
+            db.execSQL("vacuum");
             db.close();
         }
     }
@@ -976,6 +978,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         if (db != null) {
             db.delete(dbName, COLUMN_KEY + "=?", new String[] {Integer.toString(_recordNum + 1)});
+            //db.delete(dbName, COLUMN_KEY+"="+_recordNum, null);
             db.close();
         }
     }
