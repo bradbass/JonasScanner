@@ -30,7 +30,7 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setTitle("onas Scanner Login");
+        setTitle(" User Login");
 
         final Button loginBtn = (Button) findViewById(R.id.btnLogin);
         final EditText loginUsername = (EditText) findViewById(R.id.loginUsername);
