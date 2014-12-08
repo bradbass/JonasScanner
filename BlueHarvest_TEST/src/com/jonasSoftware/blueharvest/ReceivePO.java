@@ -79,7 +79,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive);
-        setTitle("onas Receive P/O");
+        setTitle(" Receive P/O");
 
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
@@ -387,6 +387,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             m.setFrom(SettingsActivity._from);
             m.setSubject(SettingsActivity._subject);
             m.setBody(SettingsActivity._body);
+            m.setHost(SettingsActivity._host);
+            m.setPort(SettingsActivity._port);
             try {
                 m.addAttachment(Environment.getExternalStorageDirectory().getPath(),_filename);
 

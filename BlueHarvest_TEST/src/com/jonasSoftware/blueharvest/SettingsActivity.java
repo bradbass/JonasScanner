@@ -1,7 +1,12 @@
 package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +27,8 @@ public class SettingsActivity extends Activity {
 	public static String _to;
 	public static String _subject;
 	public static String _body;
+    public static String _host;
+    public static String _port;
 	//private MenuItem menuItem;
     private TextView actName;
 	private TextView password;
@@ -29,6 +36,8 @@ public class SettingsActivity extends Activity {
 	private TextView to;
 	private TextView subject;
 	private TextView body;
+    private TextView host;
+    private TextView port;
     private final Crypter crypter;
     private final DatabaseHandler db;
 
@@ -41,7 +50,7 @@ public class SettingsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-        setTitle("onas eMail Settings");
+        setTitle(" eMail Settings");
 		
 		actName = (TextView) findViewById(R.id.accountName);
 		password = (TextView) findViewById(R.id.accountPassword);
@@ -49,6 +58,8 @@ public class SettingsActivity extends Activity {
 		to = (TextView) findViewById(R.id.emailTo);
 		subject = (TextView) findViewById(R.id.emailSubject);
 		body = (TextView) findViewById(R.id.emailBody);
+        host = (TextView) findViewById(R.id.emailHost);
+        port = (TextView) findViewById(R.id.emailPort);
 
 		db.populateFields();
 
@@ -64,10 +75,15 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
-		//call saveSettings()
-		saveSettings();
-		
-		return true;		
+		//handle toolbar buttons
+        String toolbarItem = item.toString();
+        if (toolbarItem.equals("SAVE")) {
+            saveSettings();
+        } else if (toolbarItem.equals("TEST")) {
+            sendTestEmail();
+        }
+
+        return true;
 	}
 	
 	@SuppressWarnings("ConstantConditions")
@@ -79,6 +95,8 @@ public class SettingsActivity extends Activity {
 		_to = to.getText().toString();
 		_subject = subject.getText().toString();
 		_body = body.getText().toString();
+        _host = host.getText().toString();
+        _port = port.getText().toString();
 		
 		// encrypt password - see ChargeActivity to decrypt password
         // Sending side
@@ -88,7 +106,7 @@ public class SettingsActivity extends Activity {
         //makeText(getApplicationContext(),getString(R.string.toast_encode_message)+_password,LENGTH_LONG).show();
 
 		db.purgeSettings();
-		db.saveToDb(_actName, _password, _from, _to, _subject, _body, getApplicationContext());
+		db.saveToDb(_actName, _password, _from, _to, _subject, _body, _host, _port, getApplicationContext());
 		makeText(getBaseContext(), getString(R.string.toast_saved_settings_message), LENGTH_LONG).show();
 		db.close();
         endActivity();
@@ -113,7 +131,62 @@ public class SettingsActivity extends Activity {
 		to.setText(_to);
 		subject.setText(_subject);
 		body.setText(_body);
-	}
+        host.setText(_host);
+        port.setText(_port);
+    }
+
+    private void sendTestEmail() {
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        db.populateFields();
+
+        //
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // decode password - see Crypter class for methods
+        String _password = SettingsActivity._password;
+        _password = crypter.decode(_password);
+
+        //testing
+        //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+
+        Mail m = new Mail(SettingsActivity._actName, _password);
+        String[] toArr = SettingsActivity._to.split(";");
+        //String[] toArr = { "brad.bass@jonassoftware.com",	"brad.bass@hotmail.ca", "baruch.bass@gmail.com", "tripleb33@hotmail.com" };
+        m.setTo(toArr);
+        m.setFrom(SettingsActivity._from);
+        m.setSubject("This is a test email from Jonas Scanner");
+        m.setBody("This is a test email verifying that the email settings in the Jonas Scanner application are functioning as expected.");
+        m.setHost(SettingsActivity._host);
+        m.setPort(SettingsActivity._port);
+        try {
+            if (!m.send()) {
+                makeText(SettingsActivity.this, getString(R.string.toast_test_email_fail_msg), LENGTH_LONG).show();
+            } else {
+                makeText(SettingsActivity.this, getString(R.string.toast_test_email_success_msg), LENGTH_LONG).show();
+            }
+        } catch (final Exception e) {
+            //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+            Log.e(getString(R.string.mail_log_e_title), getString(R.string.mail_log_e_message), e);
+
+            e.printStackTrace();
+            String stackTrace = Log.getStackTraceString(e);
+
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle("Program Exception!");
+            aDB.setMessage(stackTrace);
+            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // When user clicks OK, the db is purged and user is sent back to main activity.
+
+                }
+            });
+            aDB.show();
+        }
+        db.close();
+    }
 
 	public void setActName(String _act_name) {
 		// Auto-generated method stub
@@ -144,6 +217,14 @@ public class SettingsActivity extends Activity {
 		// Auto-generated method stub
 		_body = _body2;
 	}
+
+    public void setHost(String _host2) {
+        _host = _host2;
+    }
+
+    public void setPort(String _port2) {
+        _port = _port2;
+    }
 	
 	/**
 	 * DOES NOT WORK

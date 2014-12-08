@@ -25,7 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
     public static List<String> _dataTables;
     // Database Version
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 16;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -66,6 +66,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_FROM_WHSE = "from_whse";
     private static final String COLUMN_TO_WHSE = "to_whse";
     private static final String COLUMN_PO_NUM = "po_num";
+    private static final String COLUMN_HOST = "email_host";
+    private static final String COLUMN_PORT = "email_port";
     //
     static int _recordNum;
     static Boolean _existingRec = false;
@@ -129,7 +131,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_FROM + " TEXT,"
             + COLUMN_TO + " TEXT,"
     		+ COLUMN_SUBJECT + " TEXT,"
-            + COLUMN_BODY + " TEXT)";
+            + COLUMN_BODY + " TEXT,"
+            + COLUMN_HOST + " TEXT,"
+            + COLUMN_PORT + " TEXT)";
 
     private static final String CREATE_WHSE_TABLE = "CREATE TABLE " + TABLE_WHSE + "("
             + KEY_ID + " INTEGER PRIMARY KEY,"
@@ -278,9 +282,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         String[] tables = {TABLE_CHRG_DATA, TABLE_RECEIVE_DATA, TABLE_TRANSFER_DATA, TABLE_UPLOAD_DATA};
         _dataTables = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         for (String table : tables) {
-            SQLiteDatabase db = this.getWritableDatabase();
+            //SQLiteDatabase db = this.getWritableDatabase();
             String sqlCmd = "SELECT COUNT(*) FROM " + table;
             assert db != null;
             Cursor cursor = db.rawQuery(sqlCmd, null);
@@ -290,6 +295,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 // do something
                 _dataTables.add(table);
             }
+        }
+        if (db != null) {
+            db.close();
         }
         return _dataTables;
     }
@@ -340,7 +348,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * @param context       context
      */
     public void saveToDb(String _actName, String _password, String _from, String _to,
-                         String _subject, String _body, Context context){
+                         String _subject, String _body, String _host, String _port, Context context){
     	//
     	SQLiteDatabase db = this.getWritableDatabase();
     	//*
@@ -351,6 +359,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	values.put(COLUMN_TO, _to);
     	values.put(COLUMN_SUBJECT, _subject);
     	values.put(COLUMN_BODY, _body);
+        values.put(COLUMN_HOST, _host);
+        values.put(COLUMN_PORT, _port);
     	
     	// Insert row
         assert db != null;
@@ -459,8 +469,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     		String _to = cursor.getString(cursor.getColumnIndex(COLUMN_TO));
     		String _subject = cursor.getString(cursor.getColumnIndex(COLUMN_SUBJECT));
     		String _body = cursor.getString(cursor.getColumnIndex(COLUMN_BODY));
-    		
-    		SettingsActivity sa = new SettingsActivity();
+            String _host = cursor.getString(cursor.getColumnIndex(COLUMN_HOST));
+            String _port = cursor.getString(cursor.getColumnIndex(COLUMN_PORT));
+
+            SettingsActivity sa = new SettingsActivity();
     		
     		sa.setActName(_act_name);
     		sa.setPassword(_password);
@@ -468,6 +480,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     		sa.setTo(_to);
     		sa.setSubject(_subject);
     		sa.setBody(_body);
+            sa.setHost(_host);
+            sa.setPort(_port);
     	}
         db.close();
         cursor.close();

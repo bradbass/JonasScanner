@@ -22,10 +22,10 @@ class Mail extends javax.mail.Authenticator {
 	//private String _to;
 	private String _from; 
 
-	private final String _port;
-	private final String _sport;
+	private String _port;
+	private String _sport;
 
-	private final String _host;
+	private String _host;
 
 	private String _subject; 
 	private String _body; 
@@ -41,9 +41,9 @@ class Mail extends javax.mail.Authenticator {
 	 * 
 	 */
     private Mail() {
-		_host = "smtp.gmail.com"; // default smtp server 
-		_port = "465"; // default smtp port 
-		_sport = "465"; // default socketfactory port 
+		_host = ""; //"smtp.gmail.com"; // default smtp server
+		_port = ""; //"465"; // default smtp port
+		_sport = ""; //"465"; // default socketfactory port
 
 		_user = ""; // username 
 		_pass = ""; // password 
@@ -163,13 +163,11 @@ class Mail extends javax.mail.Authenticator {
 		try {
 			messageBodyPart.setText(_body);
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		try {
 			_multipart.addBodyPart(messageBodyPart);
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -178,7 +176,6 @@ class Mail extends javax.mail.Authenticator {
 	 * @param _to       array of addresses to send to.
 	 */
 	public void setTo(String[] _to) {
-		// TODO Auto-generated method stub
 		this._to = _to;
 	}
 
@@ -186,7 +183,6 @@ class Mail extends javax.mail.Authenticator {
 	 * @param _from         from address
 	 */
 	public void setFrom(String _from) {
-		// TODO Auto-generated method stub
 		this._from = _from;
 	}
 
@@ -194,9 +190,25 @@ class Mail extends javax.mail.Authenticator {
 	 * @param _subject      subject of the email
 	 */
 	public void setSubject(String _subject) {
-		// TODO Auto-generated method stub
 		this._subject = _subject;
-	} 
+	}
+
+    /**
+     *
+     * @param _host         the email provider host (eg, smtp.gmail.com)
+     */
+    public void setHost(String _host) {
+        this._host = _host;
+    }
+
+    /**
+     *
+     * @param _port         the email provider port (eg, 465)
+     */
+    public void setPort(String _port) {
+        this._port = _port;
+        _sport = _port;
+    }
  
 }
 //

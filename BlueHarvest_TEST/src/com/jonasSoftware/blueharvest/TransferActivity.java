@@ -65,7 +65,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
-        setTitle("onas Whse Transfer");
+        setTitle(" Whse Transfer");
 
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
@@ -429,6 +429,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             m.setFrom(SettingsActivity._from);
             m.setSubject(SettingsActivity._subject);
             m.setBody(SettingsActivity._body);
+            m.setHost(SettingsActivity._host);
+            m.setPort(SettingsActivity._port);
             try {
                 m.addAttachment(Environment.getExternalStorageDirectory().getPath(),_filename);
 
