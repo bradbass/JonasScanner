@@ -390,6 +390,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         _item = "";
         _upc = "";
         _whse = "";
+        _serial = "";
     }
 
     private void deleteAll() {
