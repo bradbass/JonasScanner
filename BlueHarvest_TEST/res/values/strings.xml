@@ -10,10 +10,10 @@
     <string name="select_label">Select Label</string>
     <string name="title_activity_charge">ChargeActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
-    <string name="add.new.label.label">Add New Label</string>
-    <string name="add.label.button">Add Label</string>
-    <string name="select.label.label">Select Label</string>
-    <string name="del.label.button">Del Label</string>
+    <string name="add.new.label.label">Add New Code</string>
+    <string name="add.label.button">Add Code</string>
+    <string name="select.label.label">Select Code</string>
+    <string name="del.label.button">Delete Code</string>
     <string name="charge.parts.label">Charge Parts</string>
     <string name="charge.button">Charge</string>
     <string name="configure.label">Configure</string>
@@ -49,6 +49,8 @@
     <string name="savemsg.window.message">You must input and save some data before you can SEND.</string>
     <string name="toast.email.success.message">Email was sent successfully.</string>
     <string name="toast.email.fail.message">Email was not sent.</string>
+    <string name="toast.test.email.success.msg">The test email was sent successfully.</string>
+    <string name="toast.test.email.fail.msg">The test email failed to send.</string>
     <string name="toast.saved.settings.message">Saved Settings.</string>
     <string name="mail.log.e.title">MailApp</string>
     <string name="mail.log.e.message">Could not send email</string>
