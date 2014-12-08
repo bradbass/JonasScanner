@@ -301,14 +301,55 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return _dataTables;
     }
-    
+
     /**
-     * Save all fields to the database.
+     * SettingsActivity
      *
+     * @param _actName      email account name
+     * @param _password     email account password
+     * @param _from         email from address
+     * @param _to           email list of to addresses [array]
+     * @param _subject      email subject
+     * @param _body         email body
+     */
+    public void saveToDb(String _actName, String _password, String _from, String _to,
+                         String _subject, String _body, String _host, String _port){
+        //
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ACT_NAME, _actName);
+        values.put(COLUMN_PASSWORD, _password);
+        values.put(COLUMN_FROM, _from);
+        values.put(COLUMN_TO, _to);
+        values.put(COLUMN_SUBJECT, _subject);
+        values.put(COLUMN_BODY, _body);
+        values.put(COLUMN_HOST, _host);
+        values.put(COLUMN_PORT, _port);
+
+        // Insert row
+        assert db != null;
+        db.insert(TABLE_SETTINGS, null, values);
+
+        db.close();
+    }
+
+    /**
+     * ChargeActivity
+     *
+     * @param _whse     warehouse part is coming from
+     * @param _wo       job or wo number
+     * @param _costItem optional cost item
+     * @param _costType Cost Type of part
+     * @param _upc      the upc code either scanned in or manually entered
+     * @param _quantity this is the quantity of the part
+     * @param _serial   optional serial number
+     * @param _comment  optional comment
+     * @param _date     date
      */
     public void saveToDb(String _whse, String _wo, String _costItem,
                          String _costType, String _upc, String _quantity, String _serial,
-                         String _comment, String _date, Context context){
+                         String _comment, String _date){
     	// save fields to db with new fields
     	SQLiteDatabase db = this.getWritableDatabase();
 
@@ -330,49 +371,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             db.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
-        //*/
-        //testing
-    	//makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
     	db.close();
         _existingRec = false;
     }
-    
-    /**
-     * @param _actName      email account name
-     * @param _password     email account password
-     * @param _from         email from address
-     * @param _to           email list of to addresses [array]
-     * @param _subject      email subject
-     * @param _body         email body
-     * @param context       context
-     */
-    public void saveToDb(String _actName, String _password, String _from, String _to,
-                         String _subject, String _body, String _host, String _port, Context context){
-    	//
-    	SQLiteDatabase db = this.getWritableDatabase();
-    	//*
-    	ContentValues values = new ContentValues();
-    	values.put(COLUMN_ACT_NAME, _actName);
-    	values.put(COLUMN_PASSWORD, _password);
-    	values.put(COLUMN_FROM, _from);
-    	values.put(COLUMN_TO, _to);
-    	values.put(COLUMN_SUBJECT, _subject);
-    	values.put(COLUMN_BODY, _body);
-        values.put(COLUMN_HOST, _host);
-        values.put(COLUMN_PORT, _port);
-    	
-    	// Insert row
-        assert db != null;
-        db.insert(TABLE_SETTINGS, null, values);
-    	//*/
-        //testing
-    	//makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
-    	
-    	db.close();
-    }
 
-    public void saveToDb(String whse, String upc, String quantity, Context context) {
+    /**
+     * ReceivePO Activity
+     *
+     * @param whse      warehouse we are receiving to
+     * @param upc       the upc code either scanned in or manually entered
+     * @param quantity  this is the quantity of the part
+     */
+    public void saveToDb(String whse, String upc, String quantity) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -387,19 +398,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             db.update(TABLE_UPLOAD_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
-        //*/
-        //Testing
-        //makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
         db.close();
         _existingRec = false;
     }
 
+    /**
+     * TransferActivity
+     *
+     * @param fromWhse  This is the warehouse the part is comming from
+     * @param toWhse    This is the warehouse the part is being transfered to
+     * @param quantity  The quantity of the part being transfered
+     * @param upc       The UPC code of the part being transfered
+     * @param serial    Optional serial number
+     */
     public void saveToDb(String fromWhse, String toWhse, String quantity, String upc,
-                         String serial, Context context) {
+                         String serial) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
-        //*
         // Insert row
         ContentValues values = new ContentValues();
         values.put(COLUMN_FROM_WHSE, fromWhse);
@@ -414,19 +430,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             db.update(TABLE_TRANSFER_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
-        //*/
-        //testing
-        //makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
         db.close();
         _existingRec = false;
     }
 
+    /**
+     *
+     * @param whse      this is the warehouse the part is coming from
+     * @param quantity  this is the quantity of the part
+     * @param upc       the upc code either scanned in or manually entered
+     * @param serial    optional serial number
+     * @param date      the transaction date
+     * @param comment   option comment
+     * @param po        optional PO number
+     */
     public void saveToDb(String whse, String quantity, String upc, String serial, String date,
-                         String comment, String po, Context context) {
+                         String comment, String po) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
-        //*
         // Insert row
         ContentValues values = new ContentValues();
         values.put(COLUMN_WHSE, whse);
@@ -443,9 +465,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             db.update(TABLE_RECEIVE_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
-        //*/
-        //testing
-        //makeText(context, context.getString(R.string.toast_wrote_to_db_message) + values, LENGTH_LONG).show();
 
         db.close();
         _existingRec = false;
