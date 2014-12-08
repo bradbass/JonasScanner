@@ -38,7 +38,7 @@ public class HomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-        setTitle("onas Scanner");
+        setTitle(" Inventory Scanner");
 
         //buttons
         final Button configBtn = (Button) findViewById(R.id.configBtn);
@@ -188,7 +188,6 @@ public class HomeActivity extends Activity {
 
     // change module button color if data exists in corresponding table
     private void moduleBtnColorChngr(List<String> dataTables) {
-        //TODO - do this
         for (String table : dataTables) {
             switch (table) {
                 case "chrgData":
