@@ -995,7 +995,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             _recordNum = cursor.getPosition();
             //*
             if (currentPos == _recordNum) {
-                makeText(context, context.getString(R.string.onLastRecord), LENGTH_LONG).show();
+                makeText(context, context.getString(R.string.onLastRecord), LENGTH_LONG); //.show();
             }
             //*/
             switchDB(dbNum);
@@ -1004,6 +1004,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * move cursor to the previous record
+     *
+     * @param dbName    name of the table
+     * @param context   application context
+     * @param dbNum     number of the table
+     */
     public void moveToPrevious(String dbName, Context context, int dbNum) {
         //go to previous record
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1013,10 +1020,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToPrevious();
             int currentPos = _recordNum;
             _recordNum = cursor.getPosition();
-            //*
+            if (_recordNum == -1) {_recordNum = 0;}
+
             if (currentPos == _recordNum) {
-                makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG).show();
-            }//*/
+                makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG); //.show();
+            }
             switchDB(dbNum);
             _existingRec = true;
             db.close();
