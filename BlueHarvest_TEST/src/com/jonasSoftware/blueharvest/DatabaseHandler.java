@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 //import java.util.HashMap;
 import java.util.List;
 
+import static android.os.Environment.getExternalStorageDirectory;
+import static android.os.Environment.getExternalStorageState;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
@@ -737,11 +740,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     File getDir(Context context) {
     	File exportDir;
-        if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
-            exportDir = new File(android.os.Environment.getExternalStorageDirectory(),"");
+        /*
+        if (getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+            exportDir = new File(getExternalStorageDirectory(),"");
         } else {
             exportDir = context.getCacheDir();
-        }                
+        }//*/
+
+        //test T-Op (var = condition ? resultIfTrue : resultIfFalse)
+        exportDir = getExternalStorageState().equals(Environment.MEDIA_MOUNTED) ? new File(String.valueOf(getExternalStorageDirectory())) : context.getCacheDir();
+
         return exportDir;
     }
     
@@ -861,6 +869,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
     //*/
+
+    // bored...
+    private void allYourDataBaseAreBelongToUs(List<String> bases) {
+        String temp;
+        if (bases.size()>1) // check if the number of bases is larger than 1
+        {
+            for (int x=0; x<bases.size(); x++) // bubble sort outer loop
+            {
+                for (int i=0; i < bases.size() - x - 1; i++) {
+                    if (bases.get(i).compareTo(bases.get(i+1)) > 0)
+                    {
+                        temp = bases.get(i);
+                        bases.set(i,bases.get(i+1) );
+                        bases.set(i+1, temp);
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Getting user data from database
