@@ -4,15 +4,15 @@ package com.jonasSoftware.blueharvest;
  * @author Brad Bass
  *
  */
+import java.util.Date;
+import java.util.Properties;
+
 import javax.activation.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.util.Date;
-import java.util.Properties;
-
 
 class Mail extends javax.mail.Authenticator {
 	private String _user; 
