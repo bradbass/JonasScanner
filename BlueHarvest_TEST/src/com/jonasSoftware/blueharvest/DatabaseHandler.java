@@ -11,13 +11,14 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-//import java.util.HashMap;
 import java.util.List;
 
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
+
+//import java.util.HashMap;
 
 /**
  * @author Brad Bass
@@ -747,7 +748,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             exportDir = context.getCacheDir();
         }//*/
 
-        //test T-Op (var = condition ? resultIfTrue : resultIfFalse)
+        //test T-Op (var = condition ? valueIfTrue : valueIfFalse)
         exportDir = getExternalStorageState().equals(Environment.MEDIA_MOUNTED) ? new File(String.valueOf(getExternalStorageDirectory())) : context.getCacheDir();
 
         return exportDir;
