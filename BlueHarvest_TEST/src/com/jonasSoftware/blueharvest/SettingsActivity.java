@@ -133,17 +133,30 @@ public class SettingsActivity extends Activity {
         port.setText(_port);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void sendTestEmail() {
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        db.populateFields();
+        //db.populateFields();
 
-        //
+        _actName = actName.getText().toString();
+        _password = password.getText().toString();
+        _from = from.getText().toString();
+        _to = to.getText().toString();
+        _subject = subject.getText().toString();
+        _body = body.getText().toString();
+        _host = host.getText().toString();
+        _port = port.getText().toString();
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         // decode password - see Crypter class for methods
         String _password = SettingsActivity._password;
-        _password = crypter.decode(_password);
+        try {
+            _password = crypter.decode(_password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //testing
         //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
