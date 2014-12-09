@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.TimeZone;
 
 import static android.app.AlertDialog.Builder;
@@ -527,15 +528,12 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         switch (tableName) {
             case "1":
                 spinnerWhse.setAdapter(dataAdapter);
-
                 break;
             case "2":
                 spinnerItem.setAdapter(dataAdapter);
-
                 break;
             case "3":
                 spinnerType.setAdapter(dataAdapter);
-
                 break;
         }
 
@@ -948,6 +946,21 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             });
             aDB.show();
         }//*/
+    }
+
+    private void isItReallyRandom() {
+        System.out.println(randomString(-229985452)+' '+randomString(-147909649));
+    }
+
+    public static String randomString(int seed) {
+        Random rand = new Random(seed);
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;;i++) {
+            int n = rand.nextInt(27);
+            if (n == 0) break;
+            sb.append((char) ('`' + n));
+        }
+        return sb.toString();
     }
 }
 
