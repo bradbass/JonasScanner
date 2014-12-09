@@ -3,6 +3,7 @@ package com.jonasSoftware.blueharvest;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
@@ -522,6 +523,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         assert db != null;
         try {
             cursor = db.query(TABLE_CHRG_DATA, null, null, null, null, null, null);
+            int rows = (int) DatabaseUtils.queryNumEntries(db, "chrgData");
+            if (recordNum >= rows) {recordNum = recordNum - 1;}
             cursor.moveToPosition(recordNum);
 
             String _upc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
