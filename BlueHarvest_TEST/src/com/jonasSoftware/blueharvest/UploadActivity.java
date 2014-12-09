@@ -54,7 +54,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     //static ArrayAdapter<String> dataAdapter;
 
     static EditText _quantityField;
-    static TextView _scanField;
+    static EditText _scanField;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +74,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         final Button delBtn = (Button) findViewById(R.id.delBtn);
         final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
 
-        _scanField = (TextView) findViewById(R.id.partUpcField);
+        _scanField = (EditText) findViewById(R.id.partUpcField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
         _quantityField.setText("1");
 
@@ -99,10 +99,11 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View view) {
-                if(_upc == null) {
+                if(_upc == null || _upc.equals("")) {
+                    _upc = _scanField.getText().toString();
+                }else if (!_upc.equals(_scanField.getText().toString())) {
                     _upc = _scanField.getText().toString();
                 }
-                DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
 
                 _quantity = _quantityField.getText().toString();
                  _whse = spinnerWhse.getSelectedItem().toString();
@@ -110,7 +111,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 validateFields();
 
                 if (isValid) {
-                    saveToDb.saveToDb(_whse, _upc, _quantity);
+                    _db.saveToDb(_whse, _upc, _quantity);
 
                     save = true;
                     clearBottomFields();

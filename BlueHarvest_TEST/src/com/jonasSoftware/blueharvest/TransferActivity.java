@@ -58,7 +58,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     private final Crypter crypter = new Crypter();
 
     private static EditText _quantityField;
-    private static TextView _scanField;
+    private static EditText _scanField;
     private static EditText _serialField;
     private boolean isValid = false;
 
@@ -80,7 +80,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         final Button delBtn = (Button) findViewById(R.id.delBtn);
         final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
 
-        _scanField = (TextView) findViewById(R.id.partUpcField);
+        _scanField = (EditText) findViewById(R.id.partUpcField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
         _quantityField.setText("1");
         _serialField = (EditText) findViewById(R.id.serialField);
@@ -107,10 +107,11 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v) {
-                if(_upc == null) {
+                if(_upc == null || _upc.equals("")) {
+                    _upc = _scanField.getText().toString();
+                }else if (!_upc.equals(_scanField.getText().toString())) {
                     _upc = _scanField.getText().toString();
                 }
-                DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
                 _quantity = _quantityField.getText().toString();
                 _quantityField.setText("1");
@@ -121,7 +122,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 validateFields();
 
                 if (isValid) {
-                    dbh.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial);
+                    _db.saveToDb(_fromWhse, _toWhse, _quantity, _upc, _serial);
 
                     save = true;
                     clearBottomFields();

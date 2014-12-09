@@ -65,8 +65,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
 
     private static EditText _quantityField;
     private static EditText _serialField;
-    private static TextView _commentField;
-    private static TextView _scanField;
+    private static EditText _commentField;
+    private static EditText _scanField;
     private static TextView _dateField;
     private static String _currentDate;
     private static EditText _poField;
@@ -135,11 +135,11 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                     date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
                     _date = date;
                 }
-                if(_upc == null) {
+                if(_upc == null || _upc.equals("")) {
+                    _upc = _scanField.getText().toString();
+                }else if (!_upc.equals(_scanField.getText().toString())) {
                     _upc = _scanField.getText().toString();
                 }
-
-                DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
                 _quantity = _quantityField.getText().toString();
                 _whse = spinnerWhse.getSelectedItem().toString();
@@ -150,7 +150,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 validateFields();
 
                 if (isValid) {
-                    dbh.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po);
+                    _db.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po);
 
                     save = true;
                     clearBottomFields();

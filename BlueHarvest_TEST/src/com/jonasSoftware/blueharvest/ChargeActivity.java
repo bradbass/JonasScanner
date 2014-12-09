@@ -78,8 +78,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     private static EditText _jobWoField;
     private static EditText _quantityField;
     private static EditText _serialField;
-    private static TextView _commentField;
-    private static TextView _scanField;
+    private static EditText _commentField;
+    private static EditText _scanField;
     private static TextView _dateField;
     private static String _currentDate;
 
@@ -121,8 +121,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         _quantityField = (EditText) findViewById(R.id.quantityField);
         _quantityField.setText("1");
         _serialField = (EditText) findViewById(R.id.serialField);
-        _commentField = (TextView) findViewById(R.id.commentField);
-		_scanField = (TextView) findViewById(R.id.scanField);
+        _commentField = (EditText) findViewById(R.id.commentField);
+		_scanField = (EditText) findViewById(R.id.scanField);
 
 		//comment = _commentField.getText().toString();
 
@@ -178,9 +178,11 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 					date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
                     _date = date;
 				}
-				if(_upc == null) {
+				if(_upc == null || _upc.equals("")) {
 					_upc = _scanField.getText().toString();
-				}
+				}else if (!_upc.equals(_scanField.getText().toString())) {
+                    _upc = _scanField.getText().toString();
+                }
 				//DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
 
 				comment = _commentField.getText().toString();
