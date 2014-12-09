@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
@@ -875,18 +876,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //*/
 
     // bored...
-    private void allYourDataBaseAreBelongToUs(List<String> bases) {
+    void allYourDataBaseAreBelongToUs(List<notSoRandom.BASES> bases) {
         String temp;
-        if (bases.size()>1) // check if the number of bases is larger than 1
+        List<String> _bases = new ArrayList<>();
+        for (notSoRandom.BASES base : bases) {
+            _bases.add(base != null ? base.toString() : null);
+        }
+        if (_bases.size()>1) // check if the number of bases is larger than 1
         {
-            for (int x=0; x<bases.size(); x++) // bubble sort outer loop
+            for (int x=0; x<_bases.size(); x++) // bubble sort outer loop
             {
-                for (int i=0; i < bases.size() - x - 1; i++) {
-                    if (bases.get(i).compareTo(bases.get(i+1)) > 0)
+                for (int i=0; i < _bases.size() - x - 1; i++) {
+                    if (_bases.get(i).compareTo(_bases.get(i+1)) > 0)
                     {
-                        temp = bases.get(i);
-                        bases.set(i,bases.get(i+1) );
-                        bases.set(i+1, temp);
+                        temp = _bases.get(i);
+                        _bases.set(i,_bases.get(i+1) );
+                        _bases.set(i+1, temp);
                     }
                 }
             }
@@ -1053,5 +1058,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             //db.delete(dbName, COLUMN_KEY+"="+_recordNum, null);
             db.close();
         }
+    }
+}
+
+class notSoRandom extends DatabaseHandler{
+
+    public notSoRandom(Context context, List<BASES> bases) {
+        super(context);
+        List<BASES> bases1 = getSomeBase(bases);
+        allYourDataBaseAreBelongToUs(bases1);
+    }
+
+    private List<BASES> getSomeBase(List<BASES> bases) {
+        Random random = new Random();
+        int base = random.nextInt(50)+1;
+        for (int i = 0; i < base; i++) {
+            //getBase
+        }
+        return bases;
+    }
+
+    public class BASES {
     }
 }
