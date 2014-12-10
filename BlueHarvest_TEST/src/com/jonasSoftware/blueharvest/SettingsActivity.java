@@ -150,14 +150,6 @@ public class SettingsActivity extends Activity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        // decode password - see Crypter class for methods
-        String _password = SettingsActivity._password;
-        try {
-            _password = crypter.decode(_password);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         //testing
         //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
 
