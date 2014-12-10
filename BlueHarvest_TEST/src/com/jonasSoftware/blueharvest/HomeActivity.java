@@ -245,7 +245,7 @@ public class HomeActivity extends Activity {
 	 */
 	@Override
 	public void onBackPressed() {
-		makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG).show();
+		makeText(getBaseContext(), getString(R.string.toast_goodbye_message), LENGTH_LONG); //.show();
 		
 		this.finish();
 	}
