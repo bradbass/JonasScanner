@@ -99,7 +99,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _currentDate = dateFormat.format(new Date());
         _dateField.setText(_currentDate);
 
-        EditText _installField = (EditText) findViewById(R.id.receiveDateField);
+        //EditText _installField = (EditText) findViewById(R.id.receiveDateField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
         _quantityField.setText("1");
         _serialField = (EditText) findViewById(R.id.serialField);
@@ -111,7 +111,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         spinnerWhse.setOnItemSelectedListener(this);
         loadSpinnerDataWhse();
 
-        _installField.setOnClickListener(new View.OnClickListener() {
+        _dateField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
@@ -687,8 +687,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 String scanResult = intent.getStringExtra("SCAN_RESULT");
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
-                EditText code =(EditText)findViewById(R.id.scanField);
-                code.setText(scanResult);
+                //EditText code =(EditText)findViewById(R.id.scanField);
+                _scanField.setText(scanResult);
                 setUpc(scanResult);
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel

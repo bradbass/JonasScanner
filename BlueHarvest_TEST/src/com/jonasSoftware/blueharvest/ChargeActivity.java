@@ -74,7 +74,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     private final Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
 
-    private static EditText _installField;
+    //private static EditText _installField;
     private static EditText _jobWoField;
     private static EditText _quantityField;
     private static EditText _serialField;
@@ -116,7 +116,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		_dateField.setText(_currentDate);
 		//*/
 
-		_installField = (EditText) findViewById(R.id.installField);
+		//_installField = (EditText) findViewById(R.id.installField);
         _jobWoField = (EditText) findViewById(R.id.jobWoField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
         _quantityField.setText("1");
@@ -141,7 +141,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         loadSpinnerDataItem();
         loadSpinnerDataType();
 
-        _installField.setOnClickListener(new OnClickListener() {
+        _dateField.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
@@ -582,8 +582,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	         String scanResult = intent.getStringExtra("SCAN_RESULT");
 	         //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 	         // Handle successful scan
-	         EditText code =(EditText)findViewById(R.id.scanField);
-	         code.setText(scanResult);
+	         //EditText code =(EditText)findViewById(R.id.scanField);
+	         _scanField.setText(scanResult);
 	         setUpc(scanResult);
 	      } else if (resultCode == RESULT_CANCELED) {
 	         // Handle cancel
@@ -716,7 +716,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         //
         _scanField.setText(_upc);
         _commentField.setText(_comment);
-        _installField.setText(_date);
+        _dateField.setText(_date);
         _jobWoField.setText(_wo);
         if (_quantity == null || _quantity.equals("")) {
             _quantityField.setText("1");

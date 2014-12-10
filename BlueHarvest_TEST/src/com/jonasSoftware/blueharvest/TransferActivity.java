@@ -597,8 +597,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 String scanResult = intent.getStringExtra("SCAN_RESULT");
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
-                EditText code =(EditText)findViewById(R.id.partUpcField);
-                code.setText(scanResult);
+                //EditText code =(EditText)findViewById(R.id.partUpcField);
+                _scanField.setText(scanResult);
                 setUpc(scanResult);
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel
