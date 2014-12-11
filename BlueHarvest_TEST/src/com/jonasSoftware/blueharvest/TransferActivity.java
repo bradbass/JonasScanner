@@ -50,8 +50,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     private static String _quantity;
     private static String _serial;
 
-    private Boolean sent = false;
-    private Boolean exit = false;
+    //private Boolean sent = false;
+    //private Boolean exit = false;
     private Boolean save = false;
 
     private final Crypter crypter = new Crypter();
@@ -444,7 +444,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                     makeText(TransferActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
                 } else {
                     makeText(TransferActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
-                    sent = true;
+                    //sent = true;
                     db.purgeData("transferData");
                 }
             } catch (final Exception e) {

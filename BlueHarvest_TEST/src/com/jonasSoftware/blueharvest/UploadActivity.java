@@ -45,8 +45,8 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private static String _whse;
     private static String _quantity;
 
-    private Boolean sent = false;
-    private Boolean exit = false;
+    //private Boolean sent = false;
+    //private Boolean exit = false;
     private Boolean save = false;
     private Boolean isValid = false;
     // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
@@ -450,7 +450,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                     makeText(UploadActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
                 } else {
                     makeText(UploadActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
-                    sent = true;
+                    //sent = true;
                     db.purgeData("uploadData");
                 }
             } catch (final Exception e) {

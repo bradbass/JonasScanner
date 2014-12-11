@@ -55,8 +55,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     private static String _comment;
     private static String _po;
 
-    private Boolean sent = false;
-    private Boolean exit = false;
+    //private Boolean sent = false;
+    //private Boolean exit = false;
     private Boolean save = false;
     private Boolean isValid = false;
     private String date;
@@ -403,7 +403,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                     makeText(ReceivePO.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
                 } else {
                     makeText(ReceivePO.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
-                    sent = true;
+                    //sent = true;
                     db.purgeData("receiveData");
                 }
             } catch (final Exception e) {
