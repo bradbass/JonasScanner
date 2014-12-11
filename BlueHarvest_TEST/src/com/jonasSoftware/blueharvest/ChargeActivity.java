@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -110,7 +111,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button delAllBtn = (Button) findViewById(R.id.delAll);
 
 		//*
-		_dateField = (TextView) findViewById(R.id.installField);
+		_dateField = (EditText) findViewById(R.id.installField);
+        _dateField.setInputType(InputType.TYPE_NULL);
 		SimpleDateFormat dateFormat = new SimpleDateFormat(getString(R.string.simple_date_format));
 		_currentDate = dateFormat.format(new Date());
 		_dateField.setText(_currentDate);
@@ -684,6 +686,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 } else {
                     makeText(ChargeActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                     Boolean sent = true;
+                    db.purgeData("chrgData");
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -705,7 +708,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 });
                 aDB.show();
             }
-            db.purgeData("chrgData");
+
             db.close();
 
             //change home screen module button back to original color

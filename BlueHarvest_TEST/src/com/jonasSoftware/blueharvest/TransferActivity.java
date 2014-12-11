@@ -445,6 +445,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 } else {
                     makeText(TransferActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                     sent = true;
+                    db.purgeData("transferData");
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -466,7 +467,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 });
                 aDB.show();
             }
-            db.purgeData("transferData");
+
             db.close();
 
             //change home screen module button back to original color

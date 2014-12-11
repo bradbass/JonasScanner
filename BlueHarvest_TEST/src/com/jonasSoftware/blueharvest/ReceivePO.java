@@ -404,6 +404,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 } else {
                     makeText(ReceivePO.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                     sent = true;
+                    db.purgeData("receiveData");
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -425,7 +426,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 });
                 aDB.show();
             }
-            db.purgeData("receiveData");
+
             db.close();
 
             //change home screen module button back to original color
