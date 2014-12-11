@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.lang.String;
 
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
@@ -76,6 +77,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_PORT = "email_port";
     //
     static int _recordNum;
+    static String _currentUpc;
     static Boolean _existingRec = false;
     static Cursor _curCSV;
     //final SQLiteDatabase _dbr = this.getReadableDatabase();
@@ -88,6 +90,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_USERNAME = "email";
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
+    private String keyId;
     
     // Table create strings
     private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + TABLE_LABELS + "("
@@ -159,6 +162,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_USERNAME + " TEXT UNIQUE,"
             + KEY_UID + " TEXT,"
             + KEY_CREATED_AT + " TEXT" + ")";
+    private int returnVal;
 
     /**
      * 
@@ -359,7 +363,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	// save fields to db with new fields
     	SQLiteDatabase db = this.getWritableDatabase();
 
-    	ContentValues values = new ContentValues();
+        getKey(TABLE_CHRG_DATA);
+
+        ContentValues values = new ContentValues();
     	values.put(COLUMN_WHSE, _whse);
         values.put(COLUMN_JOB_WO_NUM, _wo);
         values.put(COLUMN_ITEM, _costItem);
@@ -371,19 +377,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, _date);
     	
     	// Insert row
-        assert db != null;
-        if (!_existingRec) {
+        returnVal = db.update(TABLE_CHRG_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        if (returnVal == 0) {
             db.insert(TABLE_CHRG_DATA, null, values);
-        } else {
-            db.update(TABLE_CHRG_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
 
-    	db.close();
-        _existingRec = false;
+        db.close();
+        keyId = null;
     }
 
     /**
-     * ReceivePO Activity
+     * Upload Activity
      *
      * @param whse      warehouse we are receiving to
      * @param upc       the upc code either scanned in or manually entered
@@ -393,20 +397,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
 
+        getKey(TABLE_UPLOAD_DATA);
+
         ContentValues values = new ContentValues();
         values.put(COLUMN_WHSE, whse);
         values.put(COLUMN_UPC, upc);
         values.put(COLUMN_QUANTITY, quantity);
 
-        assert db != null;
-        if (!_existingRec) {
+        returnVal = db.update(TABLE_UPLOAD_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        if (returnVal == 0) {
             db.insert(TABLE_UPLOAD_DATA, null, values);
-        } else {
-            db.update(TABLE_UPLOAD_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
 
         db.close();
-        _existingRec = false;
     }
 
     /**
@@ -422,6 +425,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                          String serial) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
+
+        getKey(TABLE_TRANSFER_DATA);
+
         // Insert row
         ContentValues values = new ContentValues();
         values.put(COLUMN_FROM_WHSE, fromWhse);
@@ -430,18 +436,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_QUANTITY, quantity);
         values.put(COLUMN_SERIAL, serial);
 
-        assert db != null;
-        if (!_existingRec) {
+        returnVal = db.update(TABLE_TRANSFER_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        if (returnVal == 0) {
             db.insert(TABLE_TRANSFER_DATA, null, values);
-        } else {
-            db.update(TABLE_TRANSFER_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
 
         db.close();
-        _existingRec = false;
     }
 
     /**
+     * ReceivePO Activity
      *
      * @param whse      this is the warehouse the part is coming from
      * @param quantity  this is the quantity of the part
@@ -455,6 +459,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                          String comment, String po) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
+
+        getKey(TABLE_RECEIVE_DATA);
+
         // Insert row
         ContentValues values = new ContentValues();
         values.put(COLUMN_WHSE, whse);
@@ -465,15 +472,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_COMMENT, comment);
 
-        assert db != null;
-        if (!_existingRec) {
+        returnVal = db.update(TABLE_RECEIVE_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        if (returnVal == 0) {
             db.insert(TABLE_RECEIVE_DATA, null, values);
-        } else {
-            db.update(TABLE_RECEIVE_DATA, values, COLUMN_KEY + "=?", new String[]{Integer.toString(_recordNum + 1)});
         }
 
         db.close();
-        _existingRec = false;
+    }
+
+    private void getKey(String dbName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(dbName, null, null, null, null, null, null);
+        int rows = (int) DatabaseUtils.queryNumEntries(db, dbName);
+        try {
+            _recordNum = Integer.parseInt(keyId);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        if (_recordNum >= rows) {_recordNum = _recordNum - 1;}
+        _currentUpc = null;
+        try {
+            cursor.moveToPosition(_recordNum);
+            _currentUpc = cursor.getString(cursor.getColumnIndex(COLUMN_UPC));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        cursor.close();
     }
 
     /**
@@ -974,7 +998,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             _recordNum = cursor.getPosition();
             switchDB(dbNum);
-            _existingRec = true;
+            try {
+                keyId = cursor.getString(cursor.getColumnIndex(COLUMN_KEY));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             db.close();
         }
     }
@@ -987,7 +1015,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToLast();
             _recordNum = cursor.getPosition();
             switchDB(dbNum);
-            _existingRec = true;
+            try {
+                keyId = cursor.getString(cursor.getColumnIndex(COLUMN_KEY));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             db.close();
         }
     }
@@ -1007,7 +1039,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             }
             //*/
             switchDB(dbNum);
-            _existingRec = true;
+            try {
+                keyId = cursor.getString(cursor.getColumnIndex(COLUMN_KEY));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             db.close();
         }
     }
@@ -1034,7 +1070,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 makeText(context, context.getString(R.string.onFirstRecord), LENGTH_LONG); //.show();
             }
             switchDB(dbNum);
-            _existingRec = true;
+            try {
+                keyId = cursor.getString(cursor.getColumnIndex(COLUMN_KEY));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             db.close();
         }
     }
