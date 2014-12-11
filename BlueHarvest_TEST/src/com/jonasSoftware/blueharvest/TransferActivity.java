@@ -677,7 +677,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
      */
     @Override
     public void onBackPressed() {
-        if ((sent == null) || sent) {
+        endActivity();
+        /*if ((sent == null) || sent) {
             if ((sent == null) || (exit == null) || !exit) {
                 backToMain();
             } else {
@@ -709,7 +710,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 }
             });
             aDB.show();
-        }
+        }*/
     }
 }
 

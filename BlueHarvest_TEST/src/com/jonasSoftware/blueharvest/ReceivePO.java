@@ -775,7 +775,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
      */
     @Override
     public void onBackPressed() {
-        if ((sent == null) || sent) {
+        endActivity();
+        /*if ((sent == null) || sent) {
             if ((sent == null) || (exit == null) || !exit) {
                 backToMain();
             } else {
@@ -807,6 +808,6 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 }
             });
             aDB.show();
-        }
+        }*/
     }
 }
