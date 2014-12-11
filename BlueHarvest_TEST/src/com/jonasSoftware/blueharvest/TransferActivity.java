@@ -140,6 +140,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             @Override
             public void onClick(View v) {
                 send();
+                clearVars();
                 clearFields();
             }
         });
@@ -579,6 +580,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         _serial = serial;
     }
 
+    //i remove this and things get stupid... to tired to care why.
     void setLabel(String label) {
         String _label = label;
     }
@@ -707,5 +709,19 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             });
             aDB.show();
         }
+    }
+}
+
+class hexxy {
+    private void getHexxy() {
+        StringBuilder sb = new StringBuilder();
+        String hex = "48656c6c6f2c20576f726c6421";
+
+        for( int i=0; i<hex.length()-1; i+=2 ){
+            String output = hex.substring(i, (i + 2));
+            int decimal = Integer.parseInt(output, 16);
+            sb.append((char)decimal);
+        }
+        System.out.println(sb.toString());
     }
 }

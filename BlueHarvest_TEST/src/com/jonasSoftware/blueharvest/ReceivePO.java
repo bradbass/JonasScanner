@@ -171,6 +171,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             @Override
             public void onClick(View v) {
                 send();
+                clearVars();
                 clearFields();
             }
         });

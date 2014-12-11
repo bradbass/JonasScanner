@@ -129,6 +129,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @Override
             public void onClick(View view) {
                 send();
+                clearVars();
                 clearFields();
             }
         });

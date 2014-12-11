@@ -228,6 +228,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
                 send();
                 //testService();
+                clearVars();
                 clearFields();
 		    }
 	    });
