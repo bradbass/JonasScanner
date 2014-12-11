@@ -326,6 +326,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _upc = "";
         _whse = "";
         _serial = "";
+        _po = "";
     }
 
     /**
