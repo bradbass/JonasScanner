@@ -27,6 +27,7 @@ import java.util.TimeZone;
 
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
+import static android.view.View.OnClickListener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -73,6 +74,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
         final Button delBtn = (Button) findViewById(R.id.delBtn);
         final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+        final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+
+        final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
 
         _scanField = (EditText) findViewById(R.id.partUpcField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
@@ -85,7 +89,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         // Loading spinner data from database
         loadSpinnerDataWhse();
 
-        scanBtn.setOnClickListener(new View.OnClickListener() {
+        scanBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //do stuff
@@ -95,7 +99,16 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        partUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent uploadIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //uploadIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(uploadIntent, 0);
+            }
+        });
+
+        saveBtn.setOnClickListener(new OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View view) {
@@ -125,16 +138,16 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+        /*sendBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 send();
                 clearVars();
                 clearFields();
             }
-        });
+        });*/
 
-        firstBtn.setOnClickListener(new View.OnClickListener() {
+        firstBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //do stuff - table uploadData
@@ -143,7 +156,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        nextBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //do stuff
@@ -152,7 +165,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        prevBtn.setOnClickListener(new View.OnClickListener() {
+        prevBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //do stuff
@@ -161,7 +174,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        lastBtn.setOnClickListener(new View.OnClickListener() {
+        lastBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //do stuff
@@ -170,7 +183,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        delBtn.setOnClickListener(new View.OnClickListener() {
+        delBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // do stuff
@@ -179,12 +192,20 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        delAllBtn.setOnClickListener(new View.OnClickListener() {
+        delAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //do stuff
                 deleteAll();
                 clearFields();
+            }
+        });
+
+        clrBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearFields();
+                _quantityField.setText("1");
             }
         });
     }
@@ -197,7 +218,15 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
-        endActivity();
+        String toolbarItem = item.toString();
+        if (toolbarItem.equals("HOME")) {
+            endActivity();
+        } else if (toolbarItem.equals("SEND")) {
+            send();
+            //testService();
+            clearVars();
+            clearFields();
+        }
         return true;
     }
 

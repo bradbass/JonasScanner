@@ -106,9 +106,13 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
+        final Button clrBtn = (Button) findViewById(R.id.clrBtn);
 
         final Button delBtn = (Button) findViewById(R.id.delOne);
         final Button delAllBtn = (Button) findViewById(R.id.delAll);
+
+        final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
+        final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
 
 		//*
 		_dateField = (EditText) findViewById(R.id.installField);
@@ -161,11 +165,29 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 			public void onClick(View v) {
 				// Auto-generated method stub
 				Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
-					chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-					startActivityForResult(chargeIntent, 0);
+                chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 0);
 
 			}
 		});
+
+        serialBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 1);
+            }
+        });
+
+        partUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 2);
+            }
+        });
 
         /**
          * When user clicks the SAVE button, we insert all fields into the database
@@ -223,7 +245,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
          * into a .csv file.  We then create a new Object m of Mail class to
          * create and send an email with the csv file as an attachment.
 		 */
-		sendBtn.setOnClickListener(new OnClickListener() {
+		/*sendBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(final View v) {
@@ -233,7 +255,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 clearVars();
                 clearFields();
 		    }
-	    });
+	    });*/
 
         firstBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -288,6 +310,14 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 clearFields();
             }
         });
+
+        clrBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearFields();
+                _quantityField.setText("1");
+            }
+        });
     }
 
     @Override
@@ -298,7 +328,15 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
-        endActivity();
+        String toolbarItem = item.toString();
+        if (toolbarItem.equals("HOME")) {
+            endActivity();
+        } else if (toolbarItem.equals("SEND")) {
+            send();
+            //testService();
+            clearVars();
+            clearFields();
+        }
         return true;
     }
 
@@ -580,14 +618,25 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
      */
 	@SuppressWarnings("ConstantConditions")
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-	   if (requestCode == 0) {
+	   if (requestCode != 0) {
 	      if (resultCode == RESULT_OK) {
 	         String scanResult = intent.getStringExtra("SCAN_RESULT");
 	         //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 	         // Handle successful scan
 	         //EditText code =(EditText)findViewById(R.id.scanField);
-	         _scanField.setText(scanResult);
-	         setUpc(scanResult);
+              switch (requestCode) {
+                  case 1:
+                      _serialField.setText(scanResult);
+                      setUpc(scanResult);
+                      break;
+                  case 2:
+                      _scanField.setText(scanResult);
+                      setSerial(scanResult);
+                      break;
+                  default:
+                      // do something
+                      break;
+              }
 	      } else if (resultCode == RESULT_CANCELED) {
 	         // Handle cancel
              Toast.makeText(getApplicationContext(),getString(R.string.toast_failed_to_scan_message),LENGTH_LONG).show();

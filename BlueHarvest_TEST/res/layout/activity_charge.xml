@@ -93,8 +93,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                android:textColor="@color/JonasButtonColorBottom"
                     android:text="@string/part.upc.label"
-                    android:id="@+id/textView4"
+                    android:id="@+id/partUpcLabel"
                     android:textSize="18dp"
                     android:layout_weight=".40"/>
             <EditText
@@ -133,8 +134,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                android:textColor="@color/JonasButtonColorBottom"
                     android:text="@string/serial.label"
-                    android:id="@+id/textView6"
+                    android:id="@+id/serialLabel"
                     android:textSize="18dp"
                     android:layout_weight=".40"/>
             <EditText
@@ -209,8 +211,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/button.send.label"
-                    android:id="@+id/sendBtn"
+                    android:text="Clear"
+                    android:id="@+id/clrBtn"
                     android:layout_weight=".33"/>
         </LinearLayout>
         <LinearLayout

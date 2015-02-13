@@ -58,8 +58,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                android:textColor="@color/JonasButtonColorBottom"
                     android:text="@string/part.upc.label"
-                    android:id="@+id/textView5"
+                    android:id="@+id/partUpcLabel"
                     android:textSize="18dp"
                     android:layout_weight=".40"/>
             <EditText

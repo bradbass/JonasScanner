@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" >
+        <shape>
+            <gradient
+                android:endColor="@color/JonasButtonColor"
+                android:startColor="@color/JonasButtonColorBottom"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/NiceButtonBorderColor" />
+            <corners
+                android:radius="10dp" />
+            <padding
+                android:left="0dp"
+                android:top="10dp"
+                android:right="0dp"
+                android:bottom="10dp" />
+            <size
+                android:width="80dp"
+                android:height="15dp" />
+        </shape>
+    </item>
+
+    <item android:state_focused="true" >
+        <shape>
+            <gradient
+                android:startColor="@color/JonasButtonColor"
+                android:endColor="@color/JonasButtonColorBottom"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/NiceButtonBorderColor" />
+            <corners
+                android:radius="10dp" />
+            <padding
+                android:left="0dp"
+                android:top="10dp"
+                android:right="0dp"
+                android:bottom="10dp" />
+            <size
+                android:width="80dp"
+                android:height="15dp" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="false">
+        <shape>
+            <gradient
+                android:startColor="@color/JonasButtonColor"
+                android:endColor="@color/JonasButtonColorBottom"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/NiceButtonBorderColor" />
+            <corners
+                android:radius="10dp" />
+            <padding
+                android:left="0dp"
+                android:top="10dp"
+                android:right="0dp"
+                android:bottom="10dp" />
+            <size
+                android:width="80dp"
+                android:height="15dp" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <gradient
+                android:startColor="@color/JonasButtonColor"
+                android:endColor="@color/JonasButtonColorBottom"
+                android:angle="270" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/NiceButtonBorderColor" />
+            <corners
+                android:radius="10dp" />
+            <padding
+                android:left="0dp"
+                android:top="10dp"
+                android:right="0dp"
+                android:bottom="10dp" />
+            <size
+                android:width="80dp"
+                android:height="15dp" />
+        </shape>
+    </item>
+</selector>

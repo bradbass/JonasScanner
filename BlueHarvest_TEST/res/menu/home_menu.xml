@@ -8,14 +8,4 @@
         android:orderInCategory="100" >
 
     </item>
-    <item
-        android:id="@+id/send_email"
-        android:title="SEND"
-        android:icon="@drawable/ic_action_mail_add"
-        android:showAsAction="always|withText"
-        android:orderInCategory="10" >
-
-    </item>
-
-
 </menu>

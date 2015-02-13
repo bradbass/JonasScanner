@@ -25,11 +25,11 @@
     <string name="save.button">Save</string>
     <string name="send.button">Send</string>
     <string name="account.settings.label">Account Settings:</string>
-    <string name="email.account.name.label">Email Account Name:</string>
-    <string name="email.account.password.label">Email Account Password:</string>
+    <string name="email.account.name.label">Email Account Name:*</string>
+    <string name="email.account.password.label">Email Account Password:*</string>
     <string name="email.settings.label">Email Settings:</string>
     <string name="from.label">From:</string>
-    <string name="to.label">To:</string>
+    <string name="to.label">To:*</string>
     <string name="subject.label">Subject:</string>
     <string name="body.label">Body:</string>
     <string name="exit.button">Exit</string>
@@ -197,8 +197,8 @@
     <string name="upload.button">Upload</string>
     <string name="warehouse.transfer.label">Whse Transfer</string>
     <string name="transfer.button">Transfer</string>
-    <string name="email.port.label">Email Port:</string>
-    <string name="email.host.label">Email Host:</string>
+    <string name="email.port.label">Email Port:*</string>
+    <string name="email.host.label">Email Host:*</string>
     <string name="receive.po.button">Receive</string>
     <string name="receive.po.label">Receive P/O</string>
     <string name="first.button">First</string>

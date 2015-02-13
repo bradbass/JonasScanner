@@ -33,7 +33,8 @@
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/textView1"
             android:text="@string/email.host.label"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+        android:singleLine="false" />
 
     <EditText
             android:id="@+id/emailHost"

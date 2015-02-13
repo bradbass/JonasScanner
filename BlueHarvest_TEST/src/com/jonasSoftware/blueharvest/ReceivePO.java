@@ -35,6 +35,7 @@ import java.util.TimeZone;
 
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
+import static android.view.View.OnClickListener;
 
 /**
  * User: brad
@@ -93,6 +94,10 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
         final Button delBtn = (Button) findViewById(R.id.delBtn);
         final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+        final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+
+        final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
+        final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
 
         _dateField = (TextView) findViewById(R.id.receiveDateField);
         SimpleDateFormat dateFormat = new SimpleDateFormat(getString(R.string.simple_date_format));
@@ -111,14 +116,14 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         spinnerWhse.setOnItemSelectedListener(this);
         loadSpinnerDataWhse();
 
-        _dateField.setOnClickListener(new View.OnClickListener() {
+        _dateField.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
             }
         });
 
-        scanBtn.setOnClickListener(new View.OnClickListener() {
+        scanBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
@@ -127,7 +132,25 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        serialBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 1);
+            }
+        });
+
+        partUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 2);
+            }
+        });
+
+        saveBtn.setOnClickListener(new OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v) {
@@ -167,16 +190,16 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+       /* sendBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 send();
                 clearVars();
                 clearFields();
             }
-        });
+        });*/
 
-        firstBtn.setOnClickListener(new View.OnClickListener() {
+        firstBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToFirst("receiveData", 4);
@@ -184,7 +207,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        nextBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToNext("receiveData", getBaseContext(), 4);
@@ -192,7 +215,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        prevBtn.setOnClickListener(new View.OnClickListener() {
+        prevBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToPrevious("receiveData", getBaseContext(), 4);
@@ -200,7 +223,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        lastBtn.setOnClickListener(new View.OnClickListener() {
+        lastBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToLast("receiveData", 4);
@@ -208,7 +231,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        delBtn.setOnClickListener(new View.OnClickListener() {
+        delBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
@@ -217,7 +240,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        delAllBtn.setOnClickListener(new View.OnClickListener() {
+        delAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
@@ -226,6 +249,13 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
+        clrBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearFields();
+                _quantityField.setText("1");
+            }
+        });
     }
 
     @Override
@@ -236,7 +266,15 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
-        endActivity();
+        String toolbarItem = item.toString();
+        if (toolbarItem.equals("HOME")) {
+            endActivity();
+        } else if (toolbarItem.equals("SEND")) {
+            send();
+            //testService();
+            clearVars();
+            clearFields();
+        }
         return true;
     }
 
@@ -685,14 +723,25 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
      */
     @SuppressWarnings("ConstantConditions")
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
+        if (requestCode != 0) {
             if (resultCode == RESULT_OK) {
                 String scanResult = intent.getStringExtra("SCAN_RESULT");
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.scanField);
-                _scanField.setText(scanResult);
-                setUpc(scanResult);
+                switch (requestCode) {
+                    case 1:
+                        _serialField.setText(scanResult);
+                        setUpc(scanResult);
+                        break;
+                    case 2:
+                        _scanField.setText(scanResult);
+                        setSerial(scanResult);
+                        break;
+                    default:
+                        // do something
+                        break;
+                }
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel
                 Toast.makeText(getApplicationContext(), getString(R.string.toast_failed_to_scan_message), LENGTH_LONG).show();

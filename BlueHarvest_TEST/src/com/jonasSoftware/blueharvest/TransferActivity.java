@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ import java.util.TimeZone;
 
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
+import static android.view.View.OnClickListener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -78,6 +80,10 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         final Button lastBtn = (Button) findViewById(R.id.lastBtn);
         final Button delBtn = (Button) findViewById(R.id.delBtn);
         final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+        final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+
+        final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
+        final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
 
         _scanField = (EditText) findViewById(R.id.partUpcField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
@@ -93,7 +99,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         loadSpinnerDataFromWhse();
         loadSpinnerDataToWhse();
 
-        scanBtn.setOnClickListener(new View.OnClickListener() {
+        scanBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
@@ -102,7 +108,25 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        serialBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 1);
+            }
+        });
+
+        partUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+                startActivityForResult(chargeIntent, 2);
+            }
+        });
+
+        saveBtn.setOnClickListener(new OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v) {
@@ -136,16 +160,16 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        sendBtn.setOnClickListener(new View.OnClickListener() {
+        /*sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 send();
                 clearVars();
                 clearFields();
             }
-        });
+        });*/
 
-        firstBtn.setOnClickListener(new View.OnClickListener() {
+        firstBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToFirst("transferData", 3);
@@ -153,7 +177,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        nextBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToNext("transferData", getBaseContext(), 3);
@@ -161,7 +185,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        prevBtn.setOnClickListener(new View.OnClickListener() {
+        prevBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToPrevious("transferData", getBaseContext(), 3);
@@ -169,7 +193,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        lastBtn.setOnClickListener(new View.OnClickListener() {
+        lastBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 _db.moveToLast("transferData", 3);
@@ -177,7 +201,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        delBtn.setOnClickListener(new View.OnClickListener() {
+        delBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
@@ -186,12 +210,20 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        delAllBtn.setOnClickListener(new View.OnClickListener() {
+        delAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
                 deleteAll();
                 clearFields();
+            }
+        });
+
+        clrBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearFields();
+                _quantityField.setText("1");
             }
         });
     }
@@ -204,7 +236,15 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
-        endActivity();
+        String toolbarItem = item.toString();
+        if (toolbarItem.equals("HOME")) {
+            endActivity();
+        } else if (toolbarItem.equals("SEND")) {
+            send();
+            //testService();
+            clearVars();
+            clearFields();
+        }
         return true;
     }
 
@@ -595,14 +635,25 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
      */
     @SuppressWarnings("ConstantConditions")
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
+        if (requestCode != 0) {
             if (resultCode == RESULT_OK) {
                 String scanResult = intent.getStringExtra("SCAN_RESULT");
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.partUpcField);
-                _scanField.setText(scanResult);
-                setUpc(scanResult);
+                switch (requestCode) {
+                    case 1:
+                        _serialField.setText(scanResult);
+                        setUpc(scanResult);
+                        break;
+                    case 2:
+                        _scanField.setText(scanResult);
+                        setSerial(scanResult);
+                        break;
+                    default:
+                        // do something
+                        break;
+                }
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel
                 Toast.makeText(getApplicationContext(), getString(R.string.toast_failed_to_scan_message), LENGTH_LONG).show();

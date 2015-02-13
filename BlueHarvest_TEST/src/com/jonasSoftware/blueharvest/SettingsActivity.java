@@ -80,7 +80,6 @@ public class SettingsActivity extends Activity {
         } else if (toolbarItem.equals("TEST")) {
             sendTestEmail();
         }
-
         return true;
 	}
 	
