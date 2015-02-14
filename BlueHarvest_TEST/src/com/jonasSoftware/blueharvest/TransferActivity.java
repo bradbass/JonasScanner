@@ -73,7 +73,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         //create buttons
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
         final Button saveBtn = (Button) findViewById(R.id.saveBtn);
-        final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+        //final Button sendBtn = (Button) findViewById(R.id.sendBtn);
         final Button firstBtn = (Button) findViewById(R.id.firstBtn);
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
@@ -98,6 +98,9 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
 
         loadSpinnerDataFromWhse();
         loadSpinnerDataToWhse();
+
+        _db.populateDefaults(3);
+        populateDefaults();
 
         scanBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -371,6 +374,10 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         _serialField.setText(_serial);
         setSpinnerFromWhse(_fromWhse);
         setSpinnerToWhse(_toWhse);
+    }
+
+    void populateDefaults() {
+        setSpinnerFromWhse(_fromWhse);
     }
 
     /**

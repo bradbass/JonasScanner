@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
+    android:background="@drawable/background"
             android:id="@+id/scrollView1">
     <LinearLayout
             android:id="@+id/linearLayoutV"
@@ -17,7 +18,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:text="@string/warehouse.label"
+                    android:text="@string/warehouse_label"
                     android:id="@+id/textView"
                     android:textSize="18dp"
                     android:layout_weight=".40"
@@ -38,7 +39,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/quantity.label"
+                    android:text="@string/quantity_label"
                     android:id="@+id/textView4"
                     android:textSize="18dp"
                     android:layout_weight=".40"/>
@@ -59,7 +60,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                 android:textColor="@color/JonasButtonColorBottom"
-                    android:text="@string/part.upc.label"
+                    android:text="@string/part_upc_label"
                     android:id="@+id/partUpcLabel"
                     android:textSize="18dp"
                     android:layout_weight=".40"/>
@@ -81,22 +82,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/button.scan.label"
+                    android:text="@string/button_scan_label"
                     android:id="@+id/scanBtn"
                     android:layout_weight=".33"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/button.save.label"
+                    android:text="@string/button_save_label"
                     android:id="@+id/saveBtn"
                     android:layout_weight=".33"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/button.send.label"
-                    android:id="@+id/sendBtn"
+                    android:text="@string/button_send_label"
+                    android:id="@+id/clrBtn"
                     android:layout_weight=".33"/>
         </LinearLayout>
         <LinearLayout
@@ -110,28 +111,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/first.button"
+                    android:text="@string/first_button"
                     android:id="@+id/firstBtn"
                     android:layout_weight=".25"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/previous.button"
+                    android:text="@string/previous_button"
                     android:id="@+id/previousBtn"
                     android:layout_weight=".25"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/next.button"
+                    android:text="@string/next_button"
                     android:id="@+id/nextBtn"
                     android:layout_weight=".25"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/last.button"
+                    android:text="@string/last_button"
                     android:id="@+id/lastBtn"
                     android:layout_weight=".25"/>
         </LinearLayout>

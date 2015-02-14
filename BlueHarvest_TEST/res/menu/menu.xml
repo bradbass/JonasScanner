@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item 
         android:id="@+id/action_save" 
-        android:title="SAVE" 
+        android:title="@string/save_label"
         android:icon="@drawable/save"
         android:showAsAction="always|withText" 
         android:orderInCategory="100" >
@@ -10,7 +10,7 @@
     </item>
     <item
         android:id="@+id/send_test_email"
-        android:title="TEST"
+        android:title="@string/test_label"
         android:icon="@drawable/ic_action_mail_add"
         android:showAsAction="always|withText"
         android:orderInCategory="10" >

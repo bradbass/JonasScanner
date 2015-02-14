@@ -1,7 +1,9 @@
 package com.jonasSoftware.blueharvest;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -162,6 +164,7 @@ public class WebServiceDemo extends Activity
         });
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public void testService(final String whse, final String wo, final String item, final String type,
                             final String upc, final String quantity, final String serial, final String comment,
                             final String date) {

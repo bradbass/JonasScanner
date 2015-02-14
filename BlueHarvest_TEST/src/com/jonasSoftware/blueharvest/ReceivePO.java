@@ -87,7 +87,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         //create buttons
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
         final Button saveBtn = (Button) findViewById(R.id.saveBtn);
-        final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+        //final Button sendBtn = (Button) findViewById(R.id.sendBtn);
         final Button firstBtn = (Button) findViewById(R.id.firstBtn);
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
@@ -115,6 +115,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         spinnerWhse = (Spinner) findViewById(R.id.spinnerWhse);
         spinnerWhse.setOnItemSelectedListener(this);
         loadSpinnerDataWhse();
+
+        _db.populateDefaults(4);
+        populateDefaults();
 
         _dateField.setOnClickListener(new OnClickListener() {
             @Override
@@ -530,6 +533,10 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _poField.setText(_po);
         _commentField.setText(_comment);
         _dateField.setText(_date);
+        setSpinnerWhse(_whse);
+    }
+
+    void populateDefaults() {
         setSpinnerWhse(_whse);
     }
 

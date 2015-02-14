@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -32,7 +33,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
     public static List<String> _dataTables;
     // Database Version
-    private static final int DATABASE_VERSION = 16;
+    private static final int DATABASE_VERSION = 17;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -47,6 +48,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_WHSE = "warehouse";
     private static final String TABLE_ITEM = "cost_item";
     private static final String TABLE_TYPE = "cost_type";
+    private static final String TABLE_DEFAULTS = "defaults";
     // --Commented out by Inspection (5/15/13 12:04 PM):public static String _tableName = TABLE_CHRG_DATA;
     private static String selectQuery;
     // Table Columns names
@@ -78,7 +80,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //
     static int _recordNum;
     static String _currentUpc;
-    static Boolean _existingRec = false;
+    //static Boolean _existingRec = false;
     static Cursor _curCSV;
     //final SQLiteDatabase _dbr = this.getReadableDatabase();
     //final SQLiteDatabase _dbw = this.getWritableDatabase();
@@ -162,6 +164,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_USERNAME + " TEXT UNIQUE,"
             + KEY_UID + " TEXT,"
             + KEY_CREATED_AT + " TEXT" + ")";
+
+    private static final String CREATE_DEFAULTS_TABLE = "CREATE TABLE " + TABLE_DEFAULTS + "("
+            + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_WHSE + " TEXT,"
+            + COLUMN_JOB_WO_NUM + " TEXT,"
+            + COLUMN_TYPE + " TEXT,"
+            + COLUMN_ITEM + " TEXT)";
+
     private int returnVal;
 
     /**
@@ -190,6 +200,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_UPLOADDATA_TABLE);
         db.execSQL(CREATE_TRANSFER_TABLE);
         db.execSQL(CREATE_RECEIVE_TABLE);
+        db.execSQL(CREATE_DEFAULTS_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
     }
@@ -241,6 +252,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_UPLOAD_DATA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSFER_DATA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECEIVE_DATA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEFAULTS);
  
         // Create tables again
         onCreate(db);
@@ -480,6 +492,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void saveToDb(String whse, String jobwo, String type, String item, Context context) {
+        purgeData(TABLE_DEFAULTS);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_TYPE, type);
+        values.put(COLUMN_ITEM, item);
+        values.put(COLUMN_JOB_WO_NUM, jobwo);
+
+        try {
+            db.insert(TABLE_DEFAULTS, null, values);
+            Toast.makeText(context, "Defaults Saved", LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        db.close();
+    }
+
     private void getKey(String dbName) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(dbName, null, null, null, null, null, null);
@@ -683,6 +716,63 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             e.printStackTrace();
         } finally {
             //db.endTransaction();
+            db.close();
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+    public void populateDefaults(int module) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        assert db != null;
+
+        try {
+            cursor = db.query(TABLE_DEFAULTS, null, null, null, null, null, null);
+            cursor.moveToPosition(0);
+
+            String _whse = cursor.getString(cursor.getColumnIndex(COLUMN_WHSE));
+            String _type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
+            String _item = cursor.getString(cursor.getColumnIndex(COLUMN_ITEM));
+            String _jobWo = cursor.getString(cursor.getColumnIndex(COLUMN_JOB_WO_NUM));
+
+            ConfigActivity ca = new ConfigActivity();
+            ChargeActivity chrg = new ChargeActivity();
+            UploadActivity ua = new UploadActivity();
+            TransferActivity ta = new TransferActivity();
+            ReceivePO rpo = new ReceivePO();
+
+            switch (module) {
+                case 1:
+                    chrg.setWO(_jobWo);
+                    chrg.setWHSE(_whse);
+                    chrg.setType(_type);
+                    chrg.setItem(_item);
+                    break;
+                case 2:
+                    ua.setWHSE(_whse);
+                    break;
+                case 3:
+                    ta.setFromWHSE(_whse);
+                    break;
+                case 4:
+                    rpo.setWHSE(_whse);
+                    break;
+                case 5:
+                    ca.setWHSE(_whse);
+                    ca.setType(_type);
+                    ca.setItem(_item);
+                    ca.setWO(_jobWo);
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             db.close();
             if (cursor != null) {
                 cursor.close();

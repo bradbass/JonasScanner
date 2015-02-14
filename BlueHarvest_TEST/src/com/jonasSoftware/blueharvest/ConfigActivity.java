@@ -29,17 +29,25 @@ import static android.widget.Toast.makeText;
  * @see android.widget
  */
 @SuppressWarnings("ConstantConditions")
-public class ConfigActivity extends Activity {
+public class ConfigActivity extends Activity implements OnItemSelectedListener {
 	
 	// Spinner element
     private Spinner spinner;
     private Spinner spinnerTable;
-    public static int tableNum;
-    public static String table;
-    public static String _label;
+    private Spinner whseSpinner;
+    private Spinner costTypeSpinner;
+    private Spinner costItemSpinner;
+    private static int tableNum;
+    private static String table;
+    private static String _label;
+    private static String _whse;
+    private static String _type;
+    private static String _item;
+    private static String _jobWo;
 
     // Input text
     private EditText inputLabel;
+    private EditText jobWoField;
 
     // Creating Tables
     @Override
@@ -50,6 +58,9 @@ public class ConfigActivity extends Activity {
         // Spinner element
         spinner = (Spinner) findViewById(R.id.spinner);
         spinnerTable = (Spinner) findViewById(R.id.spinnerTable);
+        whseSpinner = (Spinner) findViewById(R.id.whseSpinner);
+        costTypeSpinner = (Spinner) findViewById(R.id.costTypeSpinner);
+        costItemSpinner = (Spinner) findViewById(R.id.costItemSpinner);
  
         // add button
         Button btnAdd = (Button) findViewById(R.id.btn_add);
@@ -58,9 +69,19 @@ public class ConfigActivity extends Activity {
  
         // new label input field
         inputLabel = (EditText) findViewById(R.id.input_label);
+        jobWoField = (EditText) findViewById(R.id.jobWoFieldConfig);
+
+        whseSpinner.setOnItemSelectedListener(this);
+        costTypeSpinner.setOnItemSelectedListener(this);
+        costItemSpinner.setOnItemSelectedListener(this);
 
         // Loading spinner data from database
         loadSpinnerTableData();
+        loadSpinnerDataWhse();
+        loadSpinnerDataItem();
+        loadSpinnerDataType();
+
+        populateFields();
         
         btnDel.setOnClickListener(new OnClickListener() {
 
@@ -122,17 +143,34 @@ public class ConfigActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.charge_menu, menu);
+        getMenuInflater().inflate(R.menu.config_menu, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
-        endActivity();
+        String toolbarItem = item.toString();
+        if (toolbarItem.equals("HOME")) {
+            endActivity();
+        } else if (toolbarItem.equals("SAVE")) {
+            saveToDb();
+        }
         return true;
     }
 
-    public void delLabel() {
+    private void saveToDb() {
+        //grab defaults and save to db
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+
+        _whse = whseSpinner.getSelectedItem().toString();
+        _type = costTypeSpinner.getSelectedItem().toString();
+        _item = costItemSpinner.getSelectedItem().toString();
+        _jobWo = jobWoField.getText().toString();
+
+        db.saveToDb(_whse, _jobWo, _type, _item, this);
+    }
+
+    void delLabel() {
         //String label = spinner.getSelectedItem().toString();
         String table = spinnerTable.getSelectedItem().toString();
 
@@ -163,7 +201,7 @@ public class ConfigActivity extends Activity {
         loadSpinnerData(tableNum);
     }
 
-    public void addLabel() {
+    void addLabel() {
         String label = inputLabel.getText().toString();
         String table = spinnerTable.getSelectedItem().toString();
 
@@ -258,7 +296,181 @@ public class ConfigActivity extends Activity {
         spinner.setAdapter(dataAdapter);
     }
 
+    //defaults
+    void populateFields() {
+        //
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        db.populateDefaults(5);
+        try {
+            jobWoField.setText(_jobWo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        setSpinnerWhse(_whse);
+        setSpinnerItem(_item);
+        setSpinnerType(_type);
+    }
+
+    private void loadSpinnerDataWhse() {
+        // calls method to load spinner
+        loadSpinnerData("1");
+        // load the spinner
+        //spinnerWhse.setAdapter(dataAdapter);
+    }
+
+    private void loadSpinnerDataItem() {
+        loadSpinnerData("2");
+
+        //spinnerItem.setAdapter(dataAdapter);
+    }
+
+    private void loadSpinnerDataType() {
+        loadSpinnerData("3");
+
+        //spinnerType.setAdapter(dataAdapter);
+    }
+
+    /**
+     *
+     * @param valueWhse the selected warehouse
+     */
+    @SuppressWarnings("ConstantConditions")
+    private void setSpinnerWhse(String valueWhse) {
+        //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerWhse.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueWhse);
+        //spinnerWhse.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<whseSpinner.getCount();i++) {
+            if (whseSpinner.getItemAtPosition(i).toString().equalsIgnoreCase(valueWhse)) {
+                index = i;
+                i = whseSpinner.getCount();
+            }
+        }
+        whseSpinner.setSelection(index);
+    }
+
+    /**
+     *
+     * @param valueItem     Cost Item
+     */
+    @SuppressWarnings("ConstantConditions")
+    private void setSpinnerItem(String valueItem) {
+        //ArrayAdapter spinAdapter = (ArrayAdapter) spinnerItem.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueItem);
+        //spinnerItem.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<costItemSpinner.getCount();i++) {
+            if (costItemSpinner.getItemAtPosition(i).toString().equalsIgnoreCase(valueItem)) {
+                index = i;
+                i = costItemSpinner.getCount();
+            }
+        }
+        costItemSpinner.setSelection(index);
+    }
+
+    /**
+     *
+     * @param valueType     Cost Type
+     */
+    @SuppressWarnings("ConstantConditions")
+    private void setSpinnerType(String valueType) {
+        //ArrayAdapter<String> spinAdapter = (ArrayAdapter<String>) spinnerType.getAdapter();
+        //int spinnerPos = spinAdapter.getPosition(valueType);
+        //spinnerType.setSelection(spinnerPos);
+        int index = 0;
+
+        for (int i=0;i<costTypeSpinner.getCount();i++) {
+            if (costTypeSpinner.getItemAtPosition(i).toString().equalsIgnoreCase(valueType)) {
+                index = i;
+                i = costTypeSpinner.getCount();
+            }
+        }
+        costTypeSpinner.setSelection(index);
+    }
+
+    /**
+     * Function to load the spinner data from SQLite database
+     *
+     * @param tableName selected table
+     */
+    private void loadSpinnerData(String tableName) {
+        // load WHSE, COST ITEM and COST TYPE spinners from DB
+        //String spinner = tableName;
+        // database handler
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+
+        // Spinner Drop down elements
+        List<String> labels = db.getAllLabels(tableName);
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, labels);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //spinnerWhse.setAdapter(dataAdapter);
+        switch (tableName) {
+            case "1":
+                whseSpinner.setAdapter(dataAdapter);
+                break;
+            case "2":
+                costItemSpinner.setAdapter(dataAdapter);
+                break;
+            case "3":
+                costTypeSpinner.setAdapter(dataAdapter);
+                break;
+        }
+
+        //return dataAdapter;
+    }
+
+    /**
+     *
+     * @param wo    job/wo number
+     */
+    public void setWO(String wo) {
+        _jobWo = wo;
+    }
+
+    /**
+     *
+     * @param whse  warehouse
+     */
+    public void setWHSE(String whse) {
+        _whse = whse;
+    }
+
+    /**
+     *
+     * @param item  cost item
+     */
+    public void setItem(String item) {
+        _item = item;
+    }
+
+    /**
+     *
+     * @param type  cost type
+     */
+    public void setType(String type) {
+        _type = type;
+    }
+
     void endActivity() {
         this.finish();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

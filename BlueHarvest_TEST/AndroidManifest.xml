@@ -75,6 +75,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ReceivePO"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ReportActivity" />
     </application>
 
 </manifest>

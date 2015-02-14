@@ -702,6 +702,7 @@ public class Base64 {
                     output[op++] = '\n';
                 }
 
+                if (!BuildConfig.DEBUG) throw new AssertionError();
                 assert tailLen == 0;
                 assert p == len;
             } else {

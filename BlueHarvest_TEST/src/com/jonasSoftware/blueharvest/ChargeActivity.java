@@ -99,7 +99,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 		//final Button dateBtn = (Button) findViewById(R.id.dateBtn);
 		final Button saveBtn = (Button) findViewById(R.id.saveBtn);
-		final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+		//final Button sendBtn = (Button) findViewById(R.id.sendBtn);
 		//final Button backBtn = (Button) findViewById(R.id.btnBack);
 		//final Button exitBtn = (Button) findViewById(R.id.btnExit);
         final Button firstBtn = (Button) findViewById(R.id.firstBtn);
@@ -146,6 +146,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         loadSpinnerDataWhse();
         loadSpinnerDataItem();
         loadSpinnerDataType();
+
+        _db.populateDefaults(1);
+        populateDefaults();
 
         _dateField.setOnClickListener(new OnClickListener() {
             @Override
@@ -235,7 +238,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 _quantityField.setText("1");
                 _serialField.setText(null);
                 _dateField.setText(_currentDate);
-                spinnerItem.setSelection(0);
+                //spinnerItem.setSelection(0);
             }
         });
 
@@ -780,6 +783,13 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         setSpinnerWhse(_whse);
         setSpinnerItem(_item);
         setSpinnerType(_type);
+    }
+
+    void populateDefaults() {
+        _jobWoField.setText(_wo);
+        setSpinnerWhse(_whse);
+        setSpinnerType(_type);
+        setSpinnerItem(_item);
     }
 
     /**

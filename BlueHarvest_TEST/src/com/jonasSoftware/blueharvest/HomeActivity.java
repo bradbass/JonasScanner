@@ -29,10 +29,10 @@ import static android.widget.Toast.makeText;
 
 public class HomeActivity extends Activity {
 
-    static Button _uploadBtn;
-    static Button _chrgBtn;
-    static Button _transferBtn;
-    static Button _receiveBtn;
+    private static Button _uploadBtn;
+    private static Button _chrgBtn;
+    private static Button _transferBtn;
+    private static Button _receiveBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +111,21 @@ public class HomeActivity extends Activity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
-        this.finish();
+        String toolbarItem = item.toString();
+        switch (toolbarItem) {
+            case "HOME":
+                this.finish();
+                break;
+            case "Report":
+                //launch report of all records waiting to be sent
+                break;
+            case "Help":
+                //launch help docs?
+                break;
+            case "About":
+                //launch about Jonas activity
+                break;
+        }
         return true;
     }
 

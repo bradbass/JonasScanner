@@ -3,79 +3,80 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
         android:padding="20dp"
-        android:background="@drawable/enterprisesplash">
+        android:background="@drawable/enterprisesplash"
+    >
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/charge.parts.label"
+            android:text="@string/charge_parts_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView1" android:layout_row="0" android:layout_column="0"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/charge.button"
+            android:text="@string/charge_button"
             android:background="@drawable/roundbutton"
             android:id="@+id/scanBtn" android:layout_row="0" android:layout_column="2"
             />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/parts.upload.label"
+            android:text="@string/parts_upload_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView2" android:layout_row="1" android:layout_column="0"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/upload.button"
+            android:text="@string/upload_button"
             android:background="@drawable/roundbutton"
             android:id="@+id/uploadBtn" android:layout_row="1" android:layout_column="2"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/warehouse.transfer.label"
+            android:text="@string/warehouse_transfer_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView3" android:layout_row="2" android:layout_column="0"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/transfer.button"
+            android:text="@string/transfer_button"
             android:background="@drawable/roundbutton"
             android:id="@+id/transferBtn" android:layout_row="2" android:layout_column="2"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/receive.po.label"
+            android:text="@string/receive_po_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView" android:layout_row="3" android:layout_column="0"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/receive.po.button"
+            android:text="@string/receive_po_button"
             android:background="@drawable/roundbutton"
             android:id="@+id/receiveBtn" android:layout_row="3" android:layout_column="2"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/configure.label"
+            android:text="@string/configure_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView4" android:layout_row="5" android:layout_column="0"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/config.button"
+            android:text="@string/config_button"
             android:background="@drawable/roundbutton"
             android:id="@+id/configBtn" android:layout_row="5" android:layout_column="2"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings.label"
+            android:text="@string/settings_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView5" android:layout_row="6" android:layout_column="0"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings.button"
+            android:text="@string/settings_button"
             android:background="@drawable/roundbutton"
             android:id="@+id/settingsBtn" android:layout_row="6" android:layout_column="2"/>
 </GridLayout>

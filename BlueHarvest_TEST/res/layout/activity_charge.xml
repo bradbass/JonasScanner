@@ -1,5 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
+    android:background="@drawable/background"
             android:layout_width="fill_parent" android:id="@+id/scrollView1">
     <LinearLayout
             android:id="@+id/linearLayoutV"
@@ -16,9 +17,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:text="@string/warehouse.label"
+                    android:text="@string/warehouse_label"
                     android:id="@+id/textView"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40" android:gravity="center_vertical"/>
             <Spinner
                     android:layout_width="0dp"
@@ -35,10 +36,10 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/job.wo.label"
+                    android:text="@string/job_wo_label"
                     android:id="@+id/textView1"
                     android:layout_weight=".40"
-                    android:textSize="18dp"/>
+                    android:textSize="18sp"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="40sp"
@@ -55,9 +56,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:text="@string/cost.item.label"
+                    android:text="@string/cost_item_label"
                     android:id="@+id/textView2"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40" android:gravity="center_vertical"/>
             <Spinner
                     android:layout_width="0dp"
@@ -74,9 +75,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:text="@string/cost.type.label"
+                    android:text="@string/cost_type_label"
                     android:id="@+id/textView3"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40" android:gravity="center_vertical"/>
             <Spinner
                     android:layout_width="0dp"
@@ -94,9 +95,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                 android:textColor="@color/JonasButtonColorBottom"
-                    android:text="@string/part.upc.label"
+                    android:text="@string/part_upc_label"
                     android:id="@+id/partUpcLabel"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -114,9 +115,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/quantity.label"
+                    android:text="@string/quantity_label"
                     android:id="@+id/textView5"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -135,9 +136,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                 android:textColor="@color/JonasButtonColorBottom"
-                    android:text="@string/serial.label"
+                    android:text="@string/serial_label"
                     android:id="@+id/serialLabel"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -155,9 +156,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/comments.label"
+                    android:text="@string/comments_label"
                     android:id="@+id/textView7"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -167,7 +168,7 @@
                     android:layout_weight=".60"/>
         </LinearLayout>
         <LinearLayout
-                android:id="@+id/linearLayoutH9"
+                android:id="@+id/linearLayoutH9a"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".10"
@@ -175,9 +176,9 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/install.date.label"
+                    android:text="@string/install_date_label"
                     android:id="@+id/textView8"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight=".40"/>
             <EditText
                     android:layout_width="0dp"
@@ -197,21 +198,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/button.scan.label"
+                    android:text="@string/button_scan_label"
                     android:id="@+id/scanBtn"
                     android:layout_weight=".33"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/button.save.label"
+                    android:text="@string/button_save_label"
                     android:id="@+id/saveBtn"
                     android:layout_weight=".33"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="Clear"
+                    android:text="@string/clear_label"
                     android:id="@+id/clrBtn"
                     android:layout_weight=".33"/>
         </LinearLayout>
@@ -226,33 +227,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/first.button"
+                    android:text="@string/first_button"
                     android:id="@+id/firstBtn"
                     android:layout_weight=".25"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/previous.button"
+                    android:text="@string/previous_button"
                     android:id="@+id/previousBtn"
                     android:layout_weight=".25"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/next.button"
+                    android:text="@string/next_button"
                     android:id="@+id/nextBtn"
                     android:layout_weight=".25"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/roundbutton"
-                    android:text="@string/last.button"
+                    android:text="@string/last_button"
                     android:id="@+id/lastBtn"
                     android:layout_weight=".25"/>
         </LinearLayout>
         <LinearLayout
-                android:id="@+id/linearLayoutH10"
+                android:id="@+id/linearLayoutH9"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".10"
@@ -262,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/required_fields"
                     android:id="@+id/requiredTag"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_weight="0.80"/>
 
             <Button

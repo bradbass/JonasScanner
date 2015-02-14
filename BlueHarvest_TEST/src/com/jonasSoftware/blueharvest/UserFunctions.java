@@ -42,10 +42,9 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("tag", login_tag));
         params.add(new BasicNameValuePair("username", username));
         params.add(new BasicNameValuePair("password", password));
-        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
         // return json
         // Log.e("JSON", json.toString());
-        return json;
+        return jsonParser.getJSONFromUrl(loginURL, params);
     }
 
     /**
@@ -63,9 +62,8 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("password", password));
 
         // getting JSON Object
-        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
         // return json
-        return json;
+        return jsonParser.getJSONFromUrl(registerURL, params);
     }
 
     /**
@@ -74,11 +72,12 @@ public class UserFunctions {
     public boolean isUserLoggedIn(Context context){
         DatabaseHandler db = new DatabaseHandler(context);
         int count = db.getRowCount();
+        /*
         if(count > 0){
             // user logged in
             return true;
-        }
-        return false;
+        }//*/
+        return count > 0;
     }
 
     /**

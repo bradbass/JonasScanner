@@ -40,7 +40,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     // Spinner element
     private Spinner spinnerWhse;
     //
-    static String _label;
+    private static String _label;
     private static String _upc;
     private static String _filename;
     private static String _whse;
@@ -51,11 +51,11 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     private Boolean save = false;
     private Boolean isValid = false;
     // --Commented out by Inspection (5/15/13 12:43 PM):public String label;
-    Crypter crypter = new Crypter();
+    private final Crypter crypter = new Crypter();
     //static ArrayAdapter<String> dataAdapter;
 
-    static EditText _quantityField;
-    static EditText _scanField;
+    private static EditText _quantityField;
+    private static EditText _scanField;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         //create buttons
         final Button scanBtn = (Button) findViewById(R.id.scanBtn);
         final Button saveBtn = (Button) findViewById(R.id.saveBtn);
-        final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+        //final Button sendBtn = (Button) findViewById(R.id.sendBtn);
         final Button firstBtn = (Button) findViewById(R.id.firstBtn);
         final Button nextBtn = (Button) findViewById(R.id.nextBtn);
         final Button prevBtn = (Button) findViewById(R.id.previousBtn);
@@ -88,6 +88,9 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         spinnerWhse.setOnItemSelectedListener(this);
         // Loading spinner data from database
         loadSpinnerDataWhse();
+
+        _db.populateDefaults(2);
+        populateDefaults();
 
         scanBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -342,6 +345,10 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         } else {
             _quantityField.setText(_quantity);
         }
+        setSpinnerWhse(_whse);
+    }
+
+    void populateDefaults() {
         setSpinnerWhse(_whse);
     }
 

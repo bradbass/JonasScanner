@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/action_home"
         android:title="@string/home_label"
         android:icon="@drawable/ic_menu_back"
         android:showAsAction="always|withText"
-        android:orderInCategory="100" >
-
-    </item>
-    <item
-        android:id="@+id/send_email"
-        android:title="@string/send_label"
-        android:icon="@drawable/ic_action_mail_add"
-        android:showAsAction="always|withText"
         android:orderInCategory="10" >
 
     </item>
+    <item
+        android:id="@+id/action_save"
+        android:title="@string/save_label"
+        android:icon="@drawable/save"
+        android:showAsAction="always|withText"
+        android:orderInCategory="1" >
 
-
+    </item>
 </menu>

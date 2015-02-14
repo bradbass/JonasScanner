@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/account.settings.label"
+        android:text="@string/account_settings_label"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/textView1"
-            android:text="@string/email.host.label"
+            android:text="@string/email_host_label"
             android:textAppearance="?android:attr/textAppearanceMedium"
         android:singleLine="false" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/emailHost"
-            android:text="@string/email.port.label"
+            android:text="@string/email_port_label"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/emailPort"
         android:layout_below="@+id/emailPort"
-        android:text="@string/email.account.name.label"
+        android:text="@string/email_account_name_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/accountName"
         android:layout_below="@+id/accountName"
-        android:text="@string/email.account.password.label"
+        android:text="@string/email_account_password_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/accountPassword"
         android:layout_below="@+id/accountPassword"
-        android:text="@string/email.settings.label"
+        android:text="@string/email_settings_label"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
-        android:text="@string/from.label"
+        android:text="@string/from_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/emailFrom"
         android:layout_below="@+id/emailFrom"
-        android:text="@string/to.label"
+        android:text="@string/to_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -148,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/emailTo"
         android:layout_below="@+id/emailTo"
-        android:text="@string/subject.label"
+        android:text="@string/subject_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <AutoCompleteTextView
@@ -166,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/emailSubject"
         android:layout_below="@+id/emailSubject"
-        android:text="@string/body.label"
+        android:text="@string/body_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <MultiAutoCompleteTextView

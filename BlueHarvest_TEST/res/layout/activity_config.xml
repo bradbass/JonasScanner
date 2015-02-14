@@ -1,71 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
- 
-    <!-- Label -->
-    <TextView
-        android:layout_width="fill_parent"
+    android:id="@+id/scrollView1">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add.new.label.label"
-        android:padding="8dip"
-        android:id="@+id/textView" android:layout_alignLeft="@+id/input_label" android:layout_alignParentTop="true"
-        android:layout_marginTop="110dp"/>
- 
-    <!-- Input Text -->
-    <EditText android:id="@+id/input_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapCharacters"
-        android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:layout_marginTop="162dp"/>
- 
-    <!-- Add Button -->
-    <Button android:id="@+id/btn_add"
-        android:background="@drawable/roundbutton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add.label.button"
-        android:layout_alignLeft="@+id/input_label" android:layout_alignParentTop="true"
-        android:layout_marginTop="205dp" android:layout_alignRight="@+id/input_label"/>
-         
-    <!-- Select Label -->
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/select.label.label"
-        android:padding="8dip"
-        android:layout_alignLeft="@+id/textView" android:layout_alignParentTop="true" android:layout_marginTop="263dp"
-        android:id="@+id/textView2"/>
- 
-    <!-- Spinner Dropdown -->
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="53dp"
-        android:prompt="@string/select_label"
-        android:layout_alignLeft="@+id/textView" android:layout_below="@+id/textView2"/>
+        android:weightSum="1">
 
-    <!--  Del Button -->
-    <Button
-        android:id="@+id/btn_del"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/roundbutton"
-        android:text="@string/del.label.button"
-        android:layout_alignLeft="@+id/input_label" android:layout_alignParentTop="true"
-        android:layout_marginTop="351dp" android:layout_alignRight="@+id/input_label"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Table"
-            android:id="@+id/textView1" android:layout_alignParentLeft="true" android:layout_marginLeft="6dp"
-            android:layout_alignParentTop="true" android:layout_marginTop="7dp"/>
-    <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="53dp"
-            android:id="@+id/spinnerTable" android:layout_alignLeft="@+id/textView"
-            android:layout_alignRight="@+id/textView"
-            android:layout_below="@+id/textView1"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</RelativeLayout>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:text="Select Table"
+                    android:id="@+id/textView9"
+                    android:layout_column="1"
+                    android:textStyle="bold|italic" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerTable"
+                    android:layout_column="1"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Add New Code"
+                    android:id="@+id/textView10"
+                    android:layout_column="1" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="534dp">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/input_label"
+                    android:layout_column="0"
+                    android:inputType="textCapCharacters"
+                    android:layout_span="1"
+                    android:layout_weight="1" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/btn_add"
+                    android:layout_column="20"
+                    android:background="@drawable/roundbutton" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Select Code to Delete"
+                    android:id="@+id/textView11"
+                    android:layout_column="0" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Spinner
+                    android:layout_width="6dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner"
+                    android:layout_column="0"
+                    android:layout_weight=".6"
+                    android:layout_span="27"
+                    android:spinnerMode="dropdown" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Del"
+                    android:id="@+id/btn_del"
+                    android:layout_column="27"
+                    android:background="@drawable/roundbutton" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Defaults"
+                    android:id="@+id/textView12"
+                    android:layout_column="0"
+                    android:textStyle="bold|italic"
+                    android:typeface="normal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Warehouse"
+                    android:id="@+id/textView13"
+                    android:layout_column="0" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/whseSpinner"
+                    android:layout_column="0"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Job/WO#"
+                    android:id="@+id/textView14"
+                    android:layout_column="0" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/jobWoFieldConfig"
+                    android:layout_column="0"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Cost Type"
+                    android:id="@+id/textView15"
+                    android:layout_column="0" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/costTypeSpinner"
+                    android:layout_column="0"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Cost Item"
+                    android:id="@+id/textView16"
+                    android:layout_column="0" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/costItemSpinner"
+                    android:layout_column="0"
+                    android:layout_weight="1" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

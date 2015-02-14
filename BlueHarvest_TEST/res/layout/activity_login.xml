@@ -14,14 +14,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
-                android:text="@string/login.label"
+                android:text="@string/login_label"
                 android:textSize="25sp"
                 android:textStyle="bold" />
         <!--  Email Label -->
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/username.label" />
+                android:text="@string/username_label" />
         <!--  Email TextField -->
         <EditText
                 android:id="@+id/loginUsername"
@@ -33,7 +33,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dip"
-                android:text="@string/password.label" />
+                android:text="@string/password_label" />
         <!--  Password TextField -->
         <EditText
                 android:id="@+id/loginPassword"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
                 android:background="@drawable/roundbutton"
-                android:text="@string/login.button" />
+                android:text="@string/login_button" />
     </LinearLayout>
 
 </LinearLayout>
