@@ -118,15 +118,29 @@ public class HomeActivity extends Activity {
                 break;
             case "Report":
                 //launch report of all records waiting to be sent
+                report();
                 break;
             case "Help":
                 //launch help docs?
                 break;
             case "About":
                 //launch about Jonas activity
+                about();
                 break;
         }
         return true;
+    }
+
+    void about() {
+        Intent aboutIntent = new Intent(getApplicationContext(), ReportActivity.class);
+        aboutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(aboutIntent);
+    }
+
+    void report() {
+        Intent reportIntent = new Intent(getApplicationContext(), ReportActivity.class);
+        reportIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(reportIntent);
     }
 
     void receivePO() {
