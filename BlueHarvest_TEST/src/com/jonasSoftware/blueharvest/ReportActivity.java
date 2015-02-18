@@ -2,8 +2,6 @@ package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.LocalActivityManager;
-import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +12,12 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TabHost;
 
 import java.util.List;
 
-import static android.widget.Toast.LENGTH_LONG;
-import static android.widget.Toast.makeText;
-
 /**
  * Created by Brad on 2/14/2015.
+ *
  */
 public class ReportActivity extends Activity {
 
