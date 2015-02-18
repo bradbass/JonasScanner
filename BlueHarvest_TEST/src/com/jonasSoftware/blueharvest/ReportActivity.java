@@ -114,9 +114,12 @@ public class ReportActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 _record = (String) _listView.getItemAtPosition(position);
                 _index = _listView.getItemIdAtPosition(position);
-                getTableName((int) _index);
-                popupAlertDialog();
-                populateListView();
+
+                if (!Character.toString(_record.charAt(0)).equals("*")) {
+                    getTableName((int) _index);
+                    popupAlertDialog();
+                    populateListView();
+                }
             }
         });
 
@@ -178,12 +181,43 @@ public class ReportActivity extends Activity {
         // go back to home screen
         String toolbarItem = item.toString();
         if (toolbarItem.equals("HOME")) {
+            Intent hi = new Intent(getApplicationContext(), HomeActivity.class);
+            hi.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(hi);
             this.finish();
         } else if (toolbarItem.equals("SEND")) {
-            //send();
-            this.finish();
+            send();
+            //this.finish();
         }
         return true;
+    }
+
+    private void send() {
+        //send all
+        ChargeActivity ca = new ChargeActivity();
+        UploadActivity ua = new UploadActivity();
+        TransferActivity ta = new TransferActivity();
+        ReceivePO rpo = new ReceivePO();
+        try {
+            ca.send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ua.send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ta.send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            rpo.send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     void getTableName(Integer position) {

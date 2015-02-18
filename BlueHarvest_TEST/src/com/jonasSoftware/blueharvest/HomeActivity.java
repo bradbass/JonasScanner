@@ -141,6 +141,7 @@ public class HomeActivity extends Activity {
         Intent reportIntent = new Intent(getApplicationContext(), ReportActivity.class);
         reportIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(reportIntent);
+        this.finish();
     }
 
     void receivePO() {

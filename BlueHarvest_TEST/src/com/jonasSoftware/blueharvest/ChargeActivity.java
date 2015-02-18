@@ -755,14 +755,11 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // When user clicks OK, the db is purged and user is sent back to main activity.
-
                     }
                 });
                 aDB.show();
             }
-
             db.close();
-
             //change home screen module button back to original color
             HomeActivity._moduleBtnColorChngr(1);
         }

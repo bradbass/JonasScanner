@@ -401,7 +401,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, _date);
     	
     	// Insert row
-        returnVal = db.update(TABLE_CHRG_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        returnVal = db.update(TABLE_CHRG_DATA, values, "id = ? AND upc = "
+                + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
             Long retVal = db.insert(TABLE_CHRG_DATA, null, values);
             returnVal = Integer.parseInt(retVal.toString());
@@ -430,7 +431,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_UPC, upc);
         values.put(COLUMN_QUANTITY, quantity);
 
-        returnVal = db.update(TABLE_UPLOAD_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        returnVal = db.update(TABLE_UPLOAD_DATA, values, "id = ? AND upc = "
+                + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
             Long retVal = db.insert(TABLE_UPLOAD_DATA, null, values);
             returnVal = Integer.parseInt(retVal.toString());
@@ -465,7 +467,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_QUANTITY, quantity);
         values.put(COLUMN_SERIAL, serial);
 
-        returnVal = db.update(TABLE_TRANSFER_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        returnVal = db.update(TABLE_TRANSFER_DATA, values, "id = ? AND upc = "
+                + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
             Long retVal = db.insert(TABLE_TRANSFER_DATA, null, values);
             returnVal = Integer.parseInt(retVal.toString());
@@ -504,7 +507,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_COMMENT, comment);
 
-        returnVal = db.update(TABLE_RECEIVE_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
+        returnVal = db.update(TABLE_RECEIVE_DATA, values, "id = ? AND upc = "
+                + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
             Long retVal = db.insert(TABLE_RECEIVE_DATA, null, values);
             returnVal = Integer.parseInt(retVal.toString());
@@ -545,7 +549,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_TABLENAME, tableName);
         values.put(COLUMN_RECORD, recordData);
 
-        returnVal = db.update(TABLE_REPORT_DATA, values, "record_index = ? AND table_name = '" + tableName + "'", new String[]{index.toString()});
+        returnVal = db.update(TABLE_REPORT_DATA, values, "record_index = ? AND table_name = '"
+                + tableName + "'", new String[]{index.toString()});
         if (returnVal == 0) {
             db.insert(TABLE_REPORT_DATA, null, values);
         }
@@ -553,7 +558,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    ContentValues getValuesChrg(String whse, String wo, String costItem, String costType, String upc, String quantity, String serial, String comment, String date) {
+    ContentValues getValuesChrg(String whse, String wo, String costItem, String costType,
+                                String upc, String quantity, String serial, String comment,
+                                String date) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_WHSE, whse);
         values.put(COLUMN_JOB_WO_NUM, wo);

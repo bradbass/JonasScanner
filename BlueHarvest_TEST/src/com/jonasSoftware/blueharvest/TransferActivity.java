@@ -452,7 +452,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
 
     @SuppressWarnings("ConstantConditions")
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    private void send() {
+    void send() {
         if ((save == null) || !save) {
             saveMsg();
         } else {
