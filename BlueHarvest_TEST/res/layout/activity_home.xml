@@ -60,23 +60,27 @@
             android:layout_height="wrap_content"
             android:text="@string/configure_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView4" android:layout_row="5" android:layout_column="0"/>
+            android:id="@+id/textView4" android:layout_row="5" android:layout_column="0"
+        android:visibility="invisible" />
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/config_button"
             android:background="@drawable/roundbutton"
-            android:id="@+id/configBtn" android:layout_row="5" android:layout_column="2"/>
+            android:id="@+id/configBtn" android:layout_row="5" android:layout_column="2"
+        android:visibility="invisible" />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView5" android:layout_row="6" android:layout_column="0"/>
+            android:id="@+id/textView5" android:layout_row="6" android:layout_column="0"
+        android:visibility="invisible" />
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings_button"
             android:background="@drawable/roundbutton"
-            android:id="@+id/settingsBtn" android:layout_row="6" android:layout_column="2"/>
+            android:id="@+id/settingsBtn" android:layout_row="6" android:layout_column="2"
+        android:visibility="invisible" />
 </GridLayout>

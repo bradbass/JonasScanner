@@ -127,6 +127,14 @@ public class HomeActivity extends Activity {
                 //launch about Jonas activity
                 about();
                 break;
+            case "Configure":
+                //launch configActivity
+                configScreen();
+                break;
+            case "Settings":
+                //launch settingsActivity
+                settingsScreen();
+                break;
         }
         return true;
     }
