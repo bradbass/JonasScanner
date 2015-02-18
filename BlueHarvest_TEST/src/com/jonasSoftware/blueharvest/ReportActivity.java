@@ -110,8 +110,8 @@ public class ReportActivity extends Activity {
                 _record = (String) _listView.getItemAtPosition(position);
                 _index = _listView.getItemIdAtPosition(position);
 
-                if (!Character.toString(_record.charAt(0)).equals("*")) {
-                    getTableName((int) _index);
+                if (!String.valueOf(_record.charAt(0)).equals("*")) {
+                    //getTableName((int) _index);
                     popupAlertDialog();
                     populateListView();
                 }
@@ -299,7 +299,7 @@ public class ReportActivity extends Activity {
     }
 
     private void editRecord() {
-
+        // TODO - grab data, launch activity and populate fields.
     }
 
     private void deleteOne(final String tableName, final Integer index) {
