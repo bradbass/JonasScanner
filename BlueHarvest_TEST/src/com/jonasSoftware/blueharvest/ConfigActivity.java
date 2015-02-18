@@ -2,6 +2,7 @@ package com.jonasSoftware.blueharvest;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -151,6 +152,9 @@ public class ConfigActivity extends Activity implements OnItemSelectedListener {
         // go back to home screen
         String toolbarItem = item.toString();
         if (toolbarItem.equals("HOME")) {
+            Intent hi = new Intent(getApplicationContext(), HomeActivity.class);
+            hi.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(hi);
             endActivity();
         } else if (toolbarItem.equals("SAVE")) {
             saveToDb();

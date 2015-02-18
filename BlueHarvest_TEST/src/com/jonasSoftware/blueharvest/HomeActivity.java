@@ -135,6 +135,7 @@ public class HomeActivity extends Activity {
         Intent aboutIntent = new Intent(getApplicationContext(), ReportActivity.class);
         aboutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(aboutIntent);
+        this.finish();
     }
 
     void report() {
@@ -149,6 +150,7 @@ public class HomeActivity extends Activity {
         Intent receivePOIntent = new Intent(getApplicationContext(), ReceivePO.class);
         receivePOIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(receivePOIntent);
+        this.finish();
     }
 
     /**
@@ -160,6 +162,7 @@ public class HomeActivity extends Activity {
         Intent transferIntent = new Intent(getApplicationContext(), TransferActivity.class);
         transferIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(transferIntent);
+        this.finish();
     }
 
     /**
@@ -171,6 +174,7 @@ public class HomeActivity extends Activity {
         Intent uploadIntent = new Intent(getApplicationContext(), UploadActivity.class);
         uploadIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(uploadIntent);
+        this.finish();
     }
 /*
 
@@ -191,6 +195,7 @@ public class HomeActivity extends Activity {
 		Intent chargeIntent = new Intent(getApplicationContext(), ChargeActivity.class);
 		chargeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivityForResult(chargeIntent, 1);
+        this.finish();
 	}
 	
 	/**
@@ -202,6 +207,7 @@ public class HomeActivity extends Activity {
 		Intent configIntent = new Intent(getApplicationContext(), ConfigActivity.class);
 		configIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(configIntent);
+        this.finish();
 	}
 	
 	/**
@@ -213,6 +219,7 @@ public class HomeActivity extends Activity {
 		Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
 		settingsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(settingsIntent);
+        this.finish();
 	}
 
     // change module button color if data exists in corresponding table

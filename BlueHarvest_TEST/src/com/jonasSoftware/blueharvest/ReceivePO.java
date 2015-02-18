@@ -794,6 +794,9 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
      * closes the ChargeActivity.
      */
     void endActivity() {
+        Intent hi = new Intent(getApplicationContext(), HomeActivity.class);
+        hi.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(hi);
         this.finish();
     }
 

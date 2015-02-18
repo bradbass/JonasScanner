@@ -706,6 +706,9 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
      * closes the Activity.
      */
     private void endActivity() {
+        Intent hi = new Intent(getApplicationContext(), HomeActivity.class);
+        hi.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(hi);
         this.finish();
     }
 
