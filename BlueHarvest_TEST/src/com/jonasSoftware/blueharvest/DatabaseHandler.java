@@ -33,7 +33,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
     public static List<String> _dataTables;
     // Database Version
-    private static final int DATABASE_VERSION = 17;
+    private static final int DATABASE_VERSION = 19;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -49,6 +49,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_ITEM = "cost_item";
     private static final String TABLE_TYPE = "cost_type";
     private static final String TABLE_DEFAULTS = "defaults";
+    private static final String TABLE_REPORT_DATA = "reportData";
     // --Commented out by Inspection (5/15/13 12:04 PM):public static String _tableName = TABLE_CHRG_DATA;
     private static String selectQuery;
     // Table Columns names
@@ -56,6 +57,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     //private static final String COLUMN_ID = "id";
     //private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_INDEX = "record_index";
+    private static final String COLUMN_TABLENAME = "table_name";
+    private static final String COLUMN_RECORD = "record";
     private static final String COLUMN_DATE = "date";
     private static final String COLUMN_UPC = "upc";
     private static final String COLUMN_COMMENT = "comment";
@@ -172,6 +176,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_TYPE + " TEXT,"
             + COLUMN_ITEM + " TEXT)";
 
+    private static final String CREATE_REPORTS_TABLE = "CREATE TABLE " + TABLE_REPORT_DATA + "("
+            + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_INDEX + " TEXT,"
+            + COLUMN_TABLENAME + " TEXT,"
+            + COLUMN_RECORD + " TEXT)";
+
     private int returnVal;
 
     /**
@@ -201,6 +211,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TRANSFER_TABLE);
         db.execSQL(CREATE_RECEIVE_TABLE);
         db.execSQL(CREATE_DEFAULTS_TABLE);
+        db.execSQL(CREATE_REPORTS_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
     }
@@ -253,6 +264,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSFER_DATA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECEIVE_DATA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEFAULTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT_DATA);
  
         // Create tables again
         onCreate(db);
@@ -391,8 +403,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	// Insert row
         returnVal = db.update(TABLE_CHRG_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
-            db.insert(TABLE_CHRG_DATA, null, values);
+            Long retVal = db.insert(TABLE_CHRG_DATA, null, values);
+            returnVal = Integer.parseInt(retVal.toString());
         }
+        saveToDb(TABLE_CHRG_DATA, returnVal, values.toString());
 
         db.close();
         keyId = null;
@@ -418,10 +432,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         returnVal = db.update(TABLE_UPLOAD_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
-            db.insert(TABLE_UPLOAD_DATA, null, values);
+            Long retVal = db.insert(TABLE_UPLOAD_DATA, null, values);
+            returnVal = Integer.parseInt(retVal.toString());
         }
+        saveToDb(TABLE_UPLOAD_DATA, returnVal, values.toString());
 
         db.close();
+        keyId = null;
     }
 
     /**
@@ -450,10 +467,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         returnVal = db.update(TABLE_TRANSFER_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
-            db.insert(TABLE_TRANSFER_DATA, null, values);
+            Long retVal = db.insert(TABLE_TRANSFER_DATA, null, values);
+            returnVal = Integer.parseInt(retVal.toString());
         }
+        saveToDb(TABLE_TRANSFER_DATA, returnVal, values.toString());
 
         db.close();
+        keyId = null;
     }
 
     /**
@@ -486,10 +506,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         returnVal = db.update(TABLE_RECEIVE_DATA, values, "id = ? AND upc = " + _currentUpc, new String[]{keyId});
         if (returnVal == 0) {
-            db.insert(TABLE_RECEIVE_DATA, null, values);
+            Long retVal = db.insert(TABLE_RECEIVE_DATA, null, values);
+            returnVal = Integer.parseInt(retVal.toString());
         }
+        saveToDb(TABLE_RECEIVE_DATA, returnVal, values.toString());
 
         db.close();
+        keyId = null;
     }
 
     public void saveToDb(String whse, String jobwo, String type, String item, Context context) {
@@ -513,6 +536,67 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void saveToDb(String tableName, Integer index, String recordData) {
+        // index is the keyId - use this later for editing/deleting records from report
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_INDEX, index.toString());
+        values.put(COLUMN_TABLENAME, tableName);
+        values.put(COLUMN_RECORD, recordData);
+
+        returnVal = db.update(TABLE_REPORT_DATA, values, "record_index = ? AND table_name = '" + tableName + "'", new String[]{index.toString()});
+        if (returnVal == 0) {
+            db.insert(TABLE_REPORT_DATA, null, values);
+        }
+
+        db.close();
+    }
+
+    ContentValues getValuesChrg(String whse, String wo, String costItem, String costType, String upc, String quantity, String serial, String comment, String date) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_JOB_WO_NUM, wo);
+        values.put(COLUMN_ITEM, costItem);
+        values.put(COLUMN_TYPE, costType);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+        values.put(COLUMN_SERIAL, serial);
+        values.put(COLUMN_COMMENT, comment);
+        values.put(COLUMN_DATE, date);
+        return values;
+    }
+
+    ContentValues getValuesUpload(String whse, String upc, String quantity) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+        return values;
+    }
+
+    ContentValues getValuesTransfer(String fromWhse, String toWhse, String upc, String quantity, String serial) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FROM_WHSE, fromWhse);
+        values.put(COLUMN_TO_WHSE, toWhse);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+        values.put(COLUMN_SERIAL, serial);
+        return values;
+    }
+
+    ContentValues getValuesReceive(String whse, String po, String upc, String quantity, String serial, String date, String comment) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WHSE, whse);
+        values.put(COLUMN_PO_NUM, po);
+        values.put(COLUMN_UPC, upc);
+        values.put(COLUMN_QUANTITY, quantity);
+        values.put(COLUMN_SERIAL, serial);
+        values.put(COLUMN_DATE, date);
+        values.put(COLUMN_COMMENT, comment);
+        return values;
+    }
+
     private void getKey(String dbName) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(dbName, null, null, null, null, null, null);
@@ -531,6 +615,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         cursor.close();
+    }
+
+    public void getTableName(Integer keyId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_REPORT_DATA, null, null, null, null, null, null);
+        cursor.moveToPosition(keyId);
+        String tableName = cursor.getString(cursor.getColumnIndex(COLUMN_TABLENAME));
+        ReportActivity ra = new ReportActivity();
+        ra.setTableName(tableName);
     }
 
     /**
@@ -721,6 +814,217 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
+    }
+
+    void populateReport() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ReportActivity ra = new ReportActivity();
+        ContentValues values;
+        Cursor cCursor = db.query(TABLE_CHRG_DATA, null, null, null, null, null, null);
+        Cursor uCursor = db.query(TABLE_UPLOAD_DATA, null, null, null, null, null, null);
+        Cursor tCursor = db.query(TABLE_TRANSFER_DATA, null, null, null, null, null, null);
+        Cursor rCursor = db.query(TABLE_RECEIVE_DATA, null, null, null, null, null, null);
+        List<String> recordData = new ArrayList<>();
+
+        //chargeActivity
+        recordData.add("*Charge Parts Records*");
+        for (int c = 0; c <= cCursor.getCount() + 1; c++) {
+            try {
+                cCursor.moveToPosition(c);
+                String _upc = cCursor.getString(cCursor.getColumnIndex(COLUMN_UPC));
+                String _date = cCursor.getString(cCursor.getColumnIndex(COLUMN_DATE));
+                String _wo = cCursor.getString(cCursor.getColumnIndex(COLUMN_JOB_WO_NUM));
+                String _whse = cCursor.getString(cCursor.getColumnIndex(COLUMN_WHSE));
+                String _item = cCursor.getString(cCursor.getColumnIndex(COLUMN_ITEM));
+                String _type = cCursor.getString(cCursor.getColumnIndex(COLUMN_TYPE));
+                String _qty = cCursor.getString(cCursor.getColumnIndex(COLUMN_QUANTITY));
+                String _serial = cCursor.getString(cCursor.getColumnIndex(COLUMN_SERIAL));
+                String _comment = cCursor.getString(cCursor.getColumnIndex(COLUMN_COMMENT));
+
+                values = getValuesChrg(_whse, _wo, _item, _type, _upc, _qty, _serial, _comment, _date);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        //uploadActivity
+        recordData.add("*Upload Parts Records*");
+        for (int u = 0; u <= uCursor.getCount(); u++) {
+            try {
+                uCursor.moveToPosition(u);
+                String _upc = uCursor.getString(uCursor.getColumnIndex(COLUMN_UPC));
+                String _whse = uCursor.getString(uCursor.getColumnIndex(COLUMN_WHSE));
+                String _qty = uCursor.getString(uCursor.getColumnIndex(COLUMN_QUANTITY));
+
+                values = getValuesUpload(_whse, _upc, _qty);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        //transferActivity
+        recordData.add("*Transfer Parts Records*");
+        for (int t = 0; t <= tCursor.getCount(); t++) {
+            try {
+                tCursor.moveToPosition(t);
+                String _upc = tCursor.getString(tCursor.getColumnIndex(COLUMN_UPC));
+                String _fromWhse = tCursor.getString(tCursor.getColumnIndex(COLUMN_FROM_WHSE));
+                String _toWhse = tCursor.getString(tCursor.getColumnIndex(COLUMN_TO_WHSE));
+                String _qty = tCursor.getString(tCursor.getColumnIndex(COLUMN_QUANTITY));
+                String _serial = tCursor.getString(tCursor.getColumnIndex(COLUMN_SERIAL));
+
+                values = getValuesTransfer(_fromWhse, _toWhse, _upc, _qty, _serial);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        //receiveActivity
+        recordData.add("*Receive Parts Records*");
+        for (int r = 0; r <= rCursor.getCount(); r++) {
+            try {
+                rCursor.moveToPosition(r);
+                String _upc = rCursor.getString(rCursor.getColumnIndex(COLUMN_UPC));
+                String _whse = rCursor.getString(rCursor.getColumnIndex(COLUMN_WHSE));
+                String _qty = rCursor.getString(rCursor.getColumnIndex(COLUMN_QUANTITY));
+                String _serial = rCursor.getString(rCursor.getColumnIndex(COLUMN_SERIAL));
+                String _date = rCursor.getString(rCursor.getColumnIndex(COLUMN_DATE));
+                String _comment = rCursor.getString(rCursor.getColumnIndex(COLUMN_COMMENT));
+                String _po = rCursor.getString(rCursor.getColumnIndex(COLUMN_PO_NUM));
+
+                values = getValuesReceive(_whse, _po, _upc, _qty, _serial, _date, _comment);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        ra.setRecordData(recordData);
+        db.close();
+        cCursor.close();
+        uCursor.close();
+    }
+
+    void populateReportCharge() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ReportActivity ra = new ReportActivity();
+        ContentValues values;
+        Cursor cCursor = db.query(TABLE_CHRG_DATA, null, null, null, null, null, null);
+        List<String> recordData = new ArrayList<>();
+
+        for (int c = 0; c <= cCursor.getCount() + 1; c++) {
+            try {
+                cCursor.moveToPosition(c);
+                String _upc = cCursor.getString(cCursor.getColumnIndex(COLUMN_UPC));
+                String _date = cCursor.getString(cCursor.getColumnIndex(COLUMN_DATE));
+                String _wo = cCursor.getString(cCursor.getColumnIndex(COLUMN_JOB_WO_NUM));
+                String _whse = cCursor.getString(cCursor.getColumnIndex(COLUMN_WHSE));
+                String _item = cCursor.getString(cCursor.getColumnIndex(COLUMN_ITEM));
+                String _type = cCursor.getString(cCursor.getColumnIndex(COLUMN_TYPE));
+                String _qty = cCursor.getString(cCursor.getColumnIndex(COLUMN_QUANTITY));
+                String _serial = cCursor.getString(cCursor.getColumnIndex(COLUMN_SERIAL));
+                String _comment = cCursor.getString(cCursor.getColumnIndex(COLUMN_COMMENT));
+
+                values = getValuesChrg(_whse, _wo, _item, _type, _upc, _qty, _serial, _comment, _date);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        ra.setRecordData(recordData);
+        db.close();
+        cCursor.close();
+    }
+
+    void populateReportUpload() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ReportActivity ra = new ReportActivity();
+        ContentValues values;
+        Cursor uCursor = db.query(TABLE_UPLOAD_DATA, null, null, null, null, null, null);
+        List<String> recordData = new ArrayList<>();
+
+        for (int u = 0; u <= uCursor.getCount(); u++) {
+            try {
+                uCursor.moveToPosition(u);
+                String _upc = uCursor.getString(uCursor.getColumnIndex(COLUMN_UPC));
+                String _whse = uCursor.getString(uCursor.getColumnIndex(COLUMN_WHSE));
+                String _qty = uCursor.getString(uCursor.getColumnIndex(COLUMN_QUANTITY));
+
+                values = getValuesUpload(_whse, _upc, _qty);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        ra.setRecordData(recordData);
+        db.close();
+        uCursor.close();
+    }
+
+    void populateReportTransfer() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ReportActivity ra = new ReportActivity();
+        ContentValues values;
+        Cursor tCursor = db.query(TABLE_TRANSFER_DATA, null, null, null, null, null, null);
+        List<String> recordData = new ArrayList<>();
+
+        for (int t = 0; t <= tCursor.getCount(); t++) {
+            try {
+                tCursor.moveToPosition(t);
+                String _upc = tCursor.getString(tCursor.getColumnIndex(COLUMN_UPC));
+                String _fromWhse = tCursor.getString(tCursor.getColumnIndex(COLUMN_FROM_WHSE));
+                String _toWhse = tCursor.getString(tCursor.getColumnIndex(COLUMN_TO_WHSE));
+                String _qty = tCursor.getString(tCursor.getColumnIndex(COLUMN_QUANTITY));
+                String _serial = tCursor.getString(tCursor.getColumnIndex(COLUMN_SERIAL));
+
+                values = getValuesTransfer(_fromWhse, _toWhse, _upc, _qty, _serial);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        ra.setRecordData(recordData);
+        db.close();
+        tCursor.close();
+    }
+
+    void populateReportReceive() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ReportActivity ra = new ReportActivity();
+        ContentValues values;
+        Cursor rCursor = db.query(TABLE_RECEIVE_DATA, null, null, null, null, null, null);
+        List<String> recordData = new ArrayList<>();
+
+        for (int r = 0; r <= rCursor.getCount(); r++) {
+            try {
+                rCursor.moveToPosition(r);
+                String _upc = rCursor.getString(rCursor.getColumnIndex(COLUMN_UPC));
+                String _whse = rCursor.getString(rCursor.getColumnIndex(COLUMN_WHSE));
+                String _qty = rCursor.getString(rCursor.getColumnIndex(COLUMN_QUANTITY));
+                String _serial = rCursor.getString(rCursor.getColumnIndex(COLUMN_SERIAL));
+                String _date = rCursor.getString(rCursor.getColumnIndex(COLUMN_DATE));
+                String _comment = rCursor.getString(rCursor.getColumnIndex(COLUMN_COMMENT));
+                String _po = rCursor.getString(rCursor.getColumnIndex(COLUMN_PO_NUM));
+
+                values = getValuesReceive(_whse, _po, _upc, _qty, _serial, _date, _comment);
+
+                recordData.add(values.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        ra.setRecordData(recordData);
+        db.close();
+        rCursor.close();
     }
 
     public void populateDefaults(int module) {
@@ -1186,6 +1490,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (db != null) {
             db.delete(dbName, COLUMN_KEY + "=?", new String[] {Integer.toString(_recordNum + 1)});
             //db.delete(dbName, COLUMN_KEY+"="+_recordNum, null);
+            db.close();
+        }
+    }
+
+    public void deleteOne(String tableName, Integer index) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (db != null) {
+            db.delete(tableName, COLUMN_KEY + "=?", new String[]{Integer.toString(index)});
             db.close();
         }
     }

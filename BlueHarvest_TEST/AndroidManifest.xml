@@ -76,6 +76,10 @@
         <activity android:name=".ReceivePO"
             android:screenOrientation="portrait"/>
         <activity android:name=".ReportActivity" />
+        <activity android:name=".ReportActivityCharge" />
+        <activity android:name=".ReportActivityTransfer" />
+        <activity android:name=".ReportActivityUpload" />
+        <activity android:name=".ReportActivityReceive" />
         <activity android:name=".AboutActivity" />
     </application>
 

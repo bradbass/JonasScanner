@@ -29,10 +29,15 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <target>android-20</target>
+        <target>android-19</target>
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/res/layout/activity_about.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -53,6 +58,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/activity_report.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/activity_settings.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -61,43 +71,16 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.jonasSoftware.blueharvest" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="">
+    <list default="true" readonly="true" id="71f454cc-025b-440b-818c-84e3faab6422" name="Default" comment="Added Report and About activities.  &#10;Added logic to HomeActivity to add Report and About to the context menu.&#10;">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BlueHarvest.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/FlashLight.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/activity_report.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/config_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/context_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/login_menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/Base64.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/Base64.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/google/zxing/client/android/CaptureActivity.java" afterPath="$PROJECT_DIR$/src/com/google/zxing/client/android/CaptureActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/HomeActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/HomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/JSONParser.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/JSONParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Jonas Scanner.iml" afterPath="$PROJECT_DIR$/Jonas Scanner.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/LoginActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UserFunctions.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UserFunctions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/WebServiceDemo.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/WebServiceDemo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_charge.xml" afterPath="$PROJECT_DIR$/res/layout/activity_charge.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_config.xml" afterPath="$PROJECT_DIR$/res/layout/activity_config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/res/layout/activity_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_receive.xml" afterPath="$PROJECT_DIR$/res/layout/activity_receive.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/res/layout/activity_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_transfer.xml" afterPath="$PROJECT_DIR$/res/layout/activity_transfer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_upload.xml" afterPath="$PROJECT_DIR$/res/layout/activity_upload.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/charge_menu.xml" afterPath="$PROJECT_DIR$/res/menu/charge_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/home_menu.xml" afterPath="$PROJECT_DIR$/res/menu/home_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/menu.xml" afterPath="$PROJECT_DIR$/res/menu/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java" afterPath="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_report.xml" afterPath="$PROJECT_DIR$/res/layout/activity_report.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -310,8 +293,8 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -319,95 +302,95 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UploadActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
+      <file leaf-file-name="ReportActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29246935" vertical-offset="5239" max-vertical-offset="10642">
-              <caret line="384" column="33" selection-start-line="384" selection-start-column="33" selection-end-line="384" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="4947">
+              <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
               <folding>
-                <element signature="e#6696#6894#0" expanded="true" />
-                <element signature="e#6883#6884#0" expanded="true" />
-                <element signature="e#6932#7119#0" expanded="true" />
-                <element signature="e#7108#7109#0" expanded="true" />
-                <element signature="e#11699#11700#0" expanded="true" />
-                <element signature="e#11736#11737#0" expanded="true" />
-                <element signature="e#16703#16747#0" expanded="true" />
-                <element signature="e#16845#16892#0" expanded="true" />
-                <element signature="e#17196#17232#0" expanded="true" />
-                <element signature="e#17234#17272#0" expanded="true" />
-                <element signature="e#18589#18629#0" expanded="true" />
-                <element signature="e#18659#18701#0" expanded="true" />
-                <element signature="e#19283#19330#0" expanded="true" />
-                <element signature="e#19824#19869#0" expanded="true" />
-                <element signature="e#19898#19941#0" expanded="true" />
-                <element signature="e#21585#21633#0" expanded="true" />
-                <element signature="e#21857#21898#0" expanded="true" />
+                <element signature="e#4143#4579#0" expanded="true" />
+                <element signature="e#4568#4569#0" expanded="true" />
+                <element signature="e#7448#7449#0" expanded="true" />
+                <element signature="e#7486#7487#0" expanded="true" />
+                <element signature="e#7537#7538#0" expanded="true" />
+                <element signature="e#7577#7578#0" expanded="true" />
+                <element signature="e#7755#7763#0" expanded="true" />
+                <element signature="e#8059#8067#0" expanded="true" />
+                <element signature="e#8369#8377#0" expanded="true" />
+                <element signature="e#8683#8691#0" expanded="true" />
+                <element signature="e#8997#9005#0" expanded="true" />
+                <element signature="e#9533#9838#0" expanded="true" />
+                <element signature="e#9586#9625#0" expanded="true" />
+                <element signature="e#9827#9828#0" expanded="true" />
+                <element signature="e#9880#10241#0" expanded="true" />
+                <element signature="e#10230#10231#0" expanded="true" />
+                <element signature="e#10284#10477#0" expanded="true" />
+                <element signature="e#10466#10467#0" expanded="true" />
+                <element signature="e#10943#11518#0" expanded="true" />
+                <element signature="e#10996#11035#0" expanded="true" />
+                <element signature="e#11507#11508#0" expanded="true" />
+                <element signature="e#11557#11801#0" expanded="true" />
+                <element signature="e#11790#11791#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home_menu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/home_menu.xml">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+            <state vertical-scroll-proportion="-2.29067" vertical-offset="7865" max-vertical-offset="19210">
+              <caret line="387" column="54" selection-start-line="387" selection-start-column="54" selection-end-line="387" selection-end-column="54" />
               <folding>
-                <element signature="e#176#196#0" expanded="true" />
-                <element signature="e#490#512#0" expanded="true" />
-                <element signature="e#660#680#0" expanded="true" />
-                <element signature="e#829#850#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#saveToDb#3;class#DatabaseHandler#0" expanded="false" />
+                <element signature="docComment;method#saveToDb#4;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#getKey#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateChrg#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateUpload#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateTrans#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateReceive#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateReport#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#populateDefaults#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="e#42414#42460#0" expanded="true" />
+                <element signature="e#53659#53699#0" expanded="true" />
+                <element signature="e#54779#54820#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login_menu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/login_menu.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+      <file leaf-file-name="activity_charge.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="5032">
+              <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/menu.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-              <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-              <folding>
-                <element signature="e#178#198#0" expanded="true" />
-                <element signature="e#420#440#0" expanded="true" />
-              </folding>
-            </state>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransferActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8843" max-vertical-offset="11696">
-              <caret line="632" column="15" selection-start-line="632" selection-start-column="15" selection-end-line="632" selection-end-column="15" />
-              <folding>
-                <element signature="e#12802#12803#0" expanded="true" />
-                <element signature="e#12847#12848#0" expanded="true" />
-                <element signature="e#16826#16870#0" expanded="true" />
-                <element signature="e#16970#17017#0" expanded="true" />
-                <element signature="e#17323#17359#0" expanded="true" />
-                <element signature="e#17361#17399#0" expanded="true" />
-                <element signature="e#18741#18781#0" expanded="true" />
-                <element signature="e#18811#18853#0" expanded="true" />
-                <element signature="e#19458#19505#0" expanded="true" />
-                <element signature="e#19956#20008#0" expanded="true" />
-                <element signature="e#20037#20080#0" expanded="true" />
-                <element signature="e#21216#21217#0" expanded="true" />
-                <element signature="e#21253#21254#0" expanded="true" />
-                <element signature="e#22569#22617#0" expanded="true" />
-                <element signature="e#24195#24236#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="activity_report.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_report.xml">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding />
             </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -438,36 +421,43 @@
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/res/drawable/roundbuttonOther.xml" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/Mail.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/drawable/smallroundbutton.xml" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_config_.xml" />
-        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/LoginActivity.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_report.xml" />
-        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_home.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_login.xml" />
-        <option value="$PROJECT_DIR$/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_transfer.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_receive.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_upload.xml" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/FlashLight.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/HomeActivity.java" />
         <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java" />
         <option value="$PROJECT_DIR$/src/com/google/zxing/client/android/CaptureActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_config.xml" />
         <option value="$PROJECT_DIR$/res/menu/charge_menu.xml" />
         <option value="$PROJECT_DIR$/res/menu/config_menu.xml" />
         <option value="$PROJECT_DIR$/res/menu/context_menu.xml" />
-        <option value="$PROJECT_DIR$/res/menu/home_menu.xml" />
         <option value="$PROJECT_DIR$/res/menu/login_menu.xml" />
         <option value="$PROJECT_DIR$/res/menu/menu.xml" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/AboutActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_settings.xml" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityCharge.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityUpload.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityTransfer.java" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityReceive.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_about.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_report_test.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_report.xml" />
+        <option value="$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java" />
+        <option value="$PROJECT_DIR$/res/menu/home_menu.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_charge.xml" />
       </list>
     </option>
@@ -757,7 +747,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/jonasScanner.keystore" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="DEBUGGABLE_DEVICE" value="46d55909" />
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sgh_i337m-46d55909" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="DEBUGGABLE_PROCESS" value="com.jonasSoftware.blueharvest" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -770,15 +760,44 @@
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="emulator-5554" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Galaxy_Nexus_API_18" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_4_API_19_2" />
     <property name="ExportedModule" value="Jonas Scanner" />
     <property name="ExportedApkPath" value="C:\PROJECTS\Android\BlueHarvest\BlueHarvest_TEST\Jonas Scanner.apk" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5" value="5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="75" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.WIDTH" value="273" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="352" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\PROJECTS\Android\BlueHarvest\BlueHarvest_TEST\res\drawable" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.jonasSoftware.blueharvest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PROJECTS\Android\BlueHarvest\BlueHarvest_TEST\res\drawable" />
@@ -1545,7 +1564,19 @@
       <created>1418315558101</created>
       <updated>1418315558101</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="Changed background color.&#10;Corrected some issues with strings.xml.&#10;Got rid of a bunch of warnings.&#10;Couple other minor changes.">
+      <created>1423904582107</created>
+      <updated>1423904582107</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Added Report and About activities.  &#10;Added logic to HomeActivity to add Report and About to the context menu.&#10;Updated version in manifest.">
+      <created>1423954292106</created>
+      <updated>1423954292106</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Added 3 resource files. Pictures.">
+      <created>1424152591110</created>
+      <updated>1424152591110</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1570,30 +1601,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2195122" sideWeight="0.6781116" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327252" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20588236" sideWeight="0.6781116" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26279318" sideWeight="0.6011478" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3249715" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.3962804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-1836" y="662" width="1207" height="538" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.3962804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-1915" y="672" width="1207" height="538" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3249715" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31698975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32474965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="731" y="390" width="1145" height="585" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31698975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32474965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="178" y="272" width="1266" height="585" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15085287" sideWeight="0.57593125" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.39985693" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1924307" sideWeight="0.6809728" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39680728" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29532498" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.67180616" order="1" side_tool="false" content_ui="tabs" />
@@ -1603,15 +1633,16 @@
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39680728" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2195122" sideWeight="0.6781116" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.67180616" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1282235" sideWeight="0.42406878" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1632,8 +1663,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805158" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32474965" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="1454" y="529" width="1394" height="337" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1282235" sideWeight="0.57593125" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39684814" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1652,8 +1683,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added a couple new icons and a new button drawable." />
-    <MESSAGE value="Added email host and port.  Previously these were hardcoded to use gmail.  Can now be set to any valid SMTP server.  Also changed screen title." />
     <MESSAGE value="Removed a TODO and changed screen title." />
     <MESSAGE value="Changed screen title" />
     <MESSAGE value="Changed minimum SDK version to 14, which makes Android 4.0 the lowest supported version." />
@@ -1677,7 +1706,9 @@
     <MESSAGE value="Removed unnecessary variables sent and exit." />
     <MESSAGE value="Changed layout of ConfigActivity.&#10;Added Defaults section.&#10;Added code to all modules to populate defaults.&#10;added context menu to home activity with Report, Help and About.&#10;Changed background color." />
     <MESSAGE value="Changed background color.&#10;Corrected some issues with strings.xml.&#10;Got rid of a bunch of warnings.&#10;Couple other minor changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed background color.&#10;Corrected some issues with strings.xml.&#10;Got rid of a bunch of warnings.&#10;Couple other minor changes." />
+    <MESSAGE value="Added Report and About activities.  &#10;Added logic to HomeActivity to add Report and About to the context menu.&#10;Updated version in manifest." />
+    <MESSAGE value="Added 3 resource files. Pictures." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 3 resource files. Pictures." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1708,27 +1739,45 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java</url>
-          <line>135</line>
-          <properties />
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java</url>
           <line>178</line>
           <properties />
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java</url>
-          <line>164</line>
+          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java</url>
+          <line>408</line>
           <properties />
-          <option name="timeStamp" value="100" />
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java</url>
+          <line>249</line>
+          <properties />
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java</url>
+          <line>287</line>
+          <properties />
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java</url>
+          <line>821</line>
+          <properties />
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java</url>
+          <line>1490</line>
+          <properties />
+          <option name="timeStamp" value="131" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="104" />
+      <option name="time" value="134" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1736,344 +1785,26 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/drawable/save.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/mail.jar!/javax/mail/Transport.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26898733" vertical-offset="0" max-vertical-offset="632">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatePickerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/roundbuttonother.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1445">
-          <caret line="41" column="62" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/smallroundbutton.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="893" max-vertical-offset="1649">
-          <caret line="56" column="63" selection-start-line="56" selection-start-column="63" selection-end-line="56" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/roundbutton.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35755813" vertical-offset="893" max-vertical-offset="1649">
-          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="748">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="688">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/charge.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="688">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="849">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/sdk/sources/android-19/com/android/internal/os/ZygoteInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63957596" vertical-offset="11986" max-vertical-offset="12835">
-          <caret line="781" column="0" selection-start-line="781" selection-start-column="0" selection-end-line="781" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="4029">
-          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12302" max-vertical-offset="20723">
-          <caret line="760" column="39" selection-start-line="760" selection-start-column="39" selection-end-line="760" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/sdk/sources/android-19/com/android/internal/policy/impl/PhoneWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="26288" max-vertical-offset="63614">
-          <caret line="1679" column="0" selection-start-line="1679" selection-start-column="0" selection-end-line="1679" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/sdk/sources/android-19/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="53964" max-vertical-offset="113118">
-          <caret line="3265" column="0" selection-start-line="3265" selection-start-column="0" selection-end-line="3265" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/sdk/sources/android-19/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="266107" max-vertical-offset="325006">
-          <caret line="16027" column="0" selection-start-line="16027" selection-start-column="0" selection-end-line="16027" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/sdk/sources/android-19/android/view/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14269" max-vertical-offset="21420">
-          <caret line="912" column="0" selection-start-line="912" selection-start-column="0" selection-end-line="912" selection-end-column="0" />
-          <folding>
-            <element signature="e#34646#34647#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Android/sdk/sources/android-19/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="29773" max-vertical-offset="89641">
-          <caret line="1883" column="0" selection-start-line="1883" selection-start-column="0" selection-end-line="1883" selection-end-column="0" />
-          <folding>
-            <element signature="e#83993#83994#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="12920">
-          <caret line="96" column="63" selection-start-line="96" selection-start-column="63" selection-end-line="96" selection-end-column="63" />
-          <folding>
-            <element signature="e#8697#8887#0" expanded="false" />
-            <element signature="e#8876#8877#0" expanded="false" />
-            <element signature="e#8925#9112#0" expanded="false" />
-            <element signature="e#9101#9102#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.020023556" vertical-offset="0" max-vertical-offset="849">
-          <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="e#217#242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1768">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_report.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="408">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <element signature="e#233#266#0" expanded="true" />
-            <element signature="e#291#326#0" expanded="true" />
-            <element signature="e#352#387#0" expanded="true" />
-            <element signature="e#411#444#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30035335" vertical-offset="0" max-vertical-offset="849">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-125.8" vertical-offset="0" max-vertical-offset="3791">
-          <caret line="185" column="50" selection-start-line="185" selection-start-column="50" selection-end-line="185" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_home.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8" vertical-offset="714" max-vertical-offset="1479">
-          <caret line="78" column="43" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="43" />
-          <folding>
-            <element signature="e#428#456#0" expanded="true" />
-            <element signature="e#753#776#0" expanded="true" />
-            <element signature="e#1070#1098#0" expanded="true" />
-            <element signature="e#1395#1418#0" expanded="true" />
-            <element signature="e#1701#1735#0" expanded="true" />
-            <element signature="e#2032#2057#0" expanded="true" />
-            <element signature="e#2342#2368#0" expanded="true" />
-            <element signature="e#2664#2691#0" expanded="true" />
-            <element signature="e#2976#3001#0" expanded="true" />
-            <element signature="e#3298#3321#0" expanded="true" />
-            <element signature="e#3604#3628#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6484185" vertical-offset="317" max-vertical-offset="1139">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="e#695#716#0" expanded="true" />
-            <element signature="e#982#1006#0" expanded="true" />
-            <element signature="e#1475#1499#0" expanded="true" />
-            <element signature="e#2439#2461#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_settings.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13333334" vertical-offset="2414" max-vertical-offset="3179">
-          <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
-          <folding>
-            <element signature="e#1067#1099#0" expanded="true" />
-            <element signature="e#1456#1482#0" expanded="true" />
-            <element signature="e#2179#2205#0" expanded="true" />
-            <element signature="e#2840#2874#0" expanded="true" />
-            <element signature="e#3518#3556#0" expanded="true" />
-            <element signature="e#4208#4238#0" expanded="true" />
-            <element signature="e#4566#4586#0" expanded="true" />
-            <element signature="e#5224#5242#0" expanded="true" />
-            <element signature="e#5874#5897#0" expanded="true" />
-            <element signature="e#6556#6576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6001" max-vertical-offset="14790">
-          <caret line="226" column="53" selection-start-line="226" selection-start-column="53" selection-end-line="226" selection-end-column="53" />
-          <folding>
-            <element signature="e#4436#4474#0" expanded="true" />
-            <element signature="e#5708#5862#0" expanded="true" />
-            <element signature="e#5851#5852#0" expanded="true" />
-            <element signature="e#11330#11517#0" expanded="true" />
-            <element signature="e#11506#11507#0" expanded="true" />
-            <element signature="e#16731#16771#0" expanded="true" />
-            <element signature="e#16801#16843#0" expanded="true" />
-            <element signature="e#17407#17454#0" expanded="true" />
-            <element signature="e#17874#17912#0" expanded="true" />
-            <element signature="e#17938#17981#0" expanded="true" />
-            <element signature="e#21957#22005#0" expanded="true" />
-            <element signature="method#send#0;class#ChargeActivity#0" expanded="false" />
-            <element signature="e#25647#25691#0" expanded="true" />
-            <element signature="e#25789#25836#0" expanded="true" />
-            <element signature="e#26144#26180#0" expanded="true" />
-            <element signature="e#26182#26220#0" expanded="true" />
-            <element signature="e#28493#28494#0" expanded="true" />
-            <element signature="e#28521#28522#0" expanded="true" />
-            <element signature="e#28735#28736#0" expanded="true" />
-            <element signature="e#28763#28764#0" expanded="true" />
-            <element signature="e#31297#31338#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_receive.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04136253" vertical-offset="0" max-vertical-offset="4403">
-          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_transfer.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="3706">
           <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_upload.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.062043797" vertical-offset="0" max-vertical-offset="3060">
           <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lint.xml">
@@ -2088,7 +1819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1040" max-vertical-offset="1819">
           <caret line="104" column="57" selection-start-line="104" selection-start-column="57" selection-end-line="104" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2096,27 +1826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1301" max-vertical-offset="1802">
           <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="3893">
-          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-          <folding>
-            <element signature="e#7824#7865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3760" max-vertical-offset="7871">
-          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2125,30 +1834,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="326" max-vertical-offset="11424">
           <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8843" max-vertical-offset="11696">
-          <caret line="632" column="15" selection-start-line="632" selection-start-column="15" selection-end-line="632" selection-end-column="15" />
-          <folding>
-            <element signature="e#12802#12803#0" expanded="true" />
-            <element signature="e#12847#12848#0" expanded="true" />
-            <element signature="e#16826#16870#0" expanded="true" />
-            <element signature="e#16970#17017#0" expanded="true" />
-            <element signature="e#17323#17359#0" expanded="true" />
-            <element signature="e#17361#17399#0" expanded="true" />
-            <element signature="e#18741#18781#0" expanded="true" />
-            <element signature="e#18811#18853#0" expanded="true" />
-            <element signature="e#19458#19505#0" expanded="true" />
-            <element signature="e#19956#20008#0" expanded="true" />
-            <element signature="e#20037#20080#0" expanded="true" />
-            <element signature="e#21216#21217#0" expanded="true" />
-            <element signature="e#21253#21254#0" expanded="true" />
-            <element signature="e#22569#22617#0" expanded="true" />
-            <element signature="e#24195#24236#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2164,30 +1849,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="1397" max-vertical-offset="2805">
           <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/capture.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="522" max-vertical-offset="3808">
           <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/charge_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding>
-            <element signature="e#176#196#0" expanded="false" />
-            <element signature="e#412#432#0" expanded="false" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/config_menu.xml">
@@ -2205,8 +1878,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
           <folding>
-            <element signature="e#213#233#0" expanded="true" />
-            <element signature="e#382#403#0" expanded="true" />
+            <element signature="e#213#233#0" expanded="false" />
+            <element signature="e#382#403#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2224,74 +1897,423 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
           <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
           <folding>
-            <element signature="e#178#198#0" expanded="true" />
-            <element signature="e#420#440#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49635038" vertical-offset="0" max-vertical-offset="5032">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-          <folding>
-            <element signature="e#9901#9922#0" expanded="true" />
-            <element signature="e#12270#12295#0" expanded="true" />
-            <element signature="e#12596#12619#0" expanded="true" />
-            <element signature="e#12878#12905#0" expanded="true" />
+            <element signature="e#420#440#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_config.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16545013" vertical-offset="0" max-vertical-offset="4692">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/home_menu.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReceivePO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="527">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="12818">
+          <caret line="96" column="63" selection-start-line="96" selection-start-column="63" selection-end-line="96" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/AboutActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ConfigActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="2352" max-vertical-offset="7871">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
-            <element signature="e#176#196#0" expanded="true" />
-            <element signature="e#490#512#0" expanded="true" />
-            <element signature="e#660#680#0" expanded="true" />
-            <element signature="e#829#850#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.28" vertical-offset="3111" max-vertical-offset="3927">
+          <caret line="204" column="39" selection-start-line="204" selection-start-column="39" selection-end-line="204" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/dumpsys-7806983252862567381.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9214">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/ddms1009267605923490554.alloc">
+      <provider selected="true" editor-type-id="allocations-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/ddms3027048793428336270.trace">
+      <provider selected="true" editor-type-id="vmtrace-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/dumpsys-com.jonasSoftware.blueharvest3861239440044649662.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.navigation/Jonas Scanner/raw/main.nvg.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="navigationeditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/database/sqlite/SQLiteDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="24605" max-vertical-offset="36346">
+          <caret line="1519" column="0" selection-start-line="1519" selection-start-column="0" selection-end-line="1519" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/widget/AbsListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="48218" max-vertical-offset="114733">
+          <caret line="2971" column="87" selection-start-line="2971" selection-start-column="87" selection-end-line="2971" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/widget/AdapterView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47349823" vertical-offset="8710" max-vertical-offset="19703">
+          <caret line="574" column="7" selection-start-line="574" selection-start-column="7" selection-end-line="574" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63957596" vertical-offset="11986" max-vertical-offset="12835">
+          <caret line="781" column="0" selection-start-line="781" selection-start-column="0" selection-end-line="781" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29246935" vertical-offset="5239" max-vertical-offset="10642">
-          <caret line="384" column="33" selection-start-line="384" selection-start-column="33" selection-end-line="384" selection-end-column="33" />
+        <state vertical-scroll-proportion="5.5465255" vertical-offset="1207" max-vertical-offset="10506">
+          <caret line="422" column="64" selection-start-line="422" selection-start-column="64" selection-end-line="422" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/content/ContentValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6818" max-vertical-offset="7667">
+          <caret line="511" column="0" selection-start-line="511" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ChargeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3066" max-vertical-offset="16558">
+          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
           <folding>
-            <element signature="e#6696#6894#0" expanded="true" />
-            <element signature="e#6883#6884#0" expanded="true" />
-            <element signature="e#6932#7119#0" expanded="true" />
-            <element signature="e#7108#7109#0" expanded="true" />
-            <element signature="e#11699#11700#0" expanded="true" />
-            <element signature="e#11736#11737#0" expanded="true" />
-            <element signature="e#16703#16747#0" expanded="true" />
-            <element signature="e#16845#16892#0" expanded="true" />
-            <element signature="e#17196#17232#0" expanded="true" />
-            <element signature="e#17234#17272#0" expanded="true" />
-            <element signature="e#18589#18629#0" expanded="true" />
-            <element signature="e#18659#18701#0" expanded="true" />
-            <element signature="e#19283#19330#0" expanded="true" />
-            <element signature="e#19824#19869#0" expanded="true" />
-            <element signature="e#19898#19941#0" expanded="true" />
-            <element signature="e#21585#21633#0" expanded="true" />
-            <element signature="e#21857#21898#0" expanded="true" />
+            <element signature="e#5708#5862#0" expanded="true" />
+            <element signature="e#5851#5852#0" expanded="true" />
+            <element signature="e#6148#6465#0" expanded="true" />
+            <element signature="e#6460#6461#0" expanded="true" />
+            <element signature="e#6506#6834#0" expanded="true" />
+            <element signature="e#6823#6824#0" expanded="true" />
+            <element signature="e#6876#7204#0" expanded="true" />
+            <element signature="e#7193#7194#0" expanded="true" />
+            <element signature="e#9680#9916#0" expanded="true" />
+            <element signature="e#9905#9906#0" expanded="true" />
+            <element signature="e#9955#10207#0" expanded="true" />
+            <element signature="e#10196#10197#0" expanded="true" />
+            <element signature="e#11330#11517#0" expanded="true" />
+            <element signature="e#11506#11507#0" expanded="true" />
+            <element signature="e#14125#14605#0" expanded="true" />
+            <element signature="e#14594#14595#0" expanded="true" />
+            <element signature="e#14644#14888#0" expanded="true" />
+            <element signature="e#14877#14878#0" expanded="true" />
+            <element signature="e#15469#15950#0" expanded="true" />
+            <element signature="e#15939#15940#0" expanded="true" />
+            <element signature="e#15989#16233#0" expanded="true" />
+            <element signature="e#16222#16223#0" expanded="true" />
+            <element signature="e#16886#17094#0" expanded="true" />
+            <element signature="e#17079#17080#0" expanded="true" />
+            <element signature="e#26518#26811#0" expanded="true" />
+            <element signature="e#26792#26793#0" expanded="true" />
+            <element signature="e#28010#28011#0" expanded="true" />
+            <element signature="e#28043#28044#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1145" max-vertical-offset="12563">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/com/android/internal/app/AlertController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1638" max-vertical-offset="15606">
+          <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_settings.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3179">
+          <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
+          <folding>
+            <element signature="e#1067#1099#0" expanded="false" />
+            <element signature="e#1456#1482#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityCharge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1186#1187#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityUpload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#740#1196#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityReceive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#748#1207#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_about.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.6666665" vertical-offset="0" max-vertical-offset="255">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/widget/TabHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3151" max-vertical-offset="12342">
+          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/graphics/drawable/BitmapDrawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9101" max-vertical-offset="10625">
+          <caret line="614" column="0" selection-start-line="614" selection-start-column="0" selection-end-line="614" selection-end-column="0" />
+          <folding>
+            <element signature="e#21652#21653#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Android/sdk/sources/android-19/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3133098" vertical-offset="34142" max-vertical-offset="82569">
+          <caret line="2186" column="0" selection-start-line="2186" selection-start-column="0" selection-end-line="2186" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivityTransfer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22025913" vertical-offset="0" max-vertical-offset="849">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#753#1215#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_report_test.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1660" max-vertical-offset="2550">
+          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/TransferActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.573616" vertical-offset="2012" max-vertical-offset="11628">
+          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_report.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/charge_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2803298" vertical-offset="0" max-vertical-offset="849">
+          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6219081" vertical-offset="0" max-vertical-offset="1547">
+          <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="4131">
+          <caret line="74" column="11" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/home_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.080094226" vertical-offset="0" max-vertical-offset="849">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_charge.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="5032">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/ReportActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="4947">
+          <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
+          <folding>
+            <element signature="e#4143#4579#0" expanded="true" />
+            <element signature="e#4568#4569#0" expanded="true" />
+            <element signature="e#7448#7449#0" expanded="true" />
+            <element signature="e#7486#7487#0" expanded="true" />
+            <element signature="e#7537#7538#0" expanded="true" />
+            <element signature="e#7577#7578#0" expanded="true" />
+            <element signature="e#7755#7763#0" expanded="true" />
+            <element signature="e#8059#8067#0" expanded="true" />
+            <element signature="e#8369#8377#0" expanded="true" />
+            <element signature="e#8683#8691#0" expanded="true" />
+            <element signature="e#8997#9005#0" expanded="true" />
+            <element signature="e#9533#9838#0" expanded="true" />
+            <element signature="e#9586#9625#0" expanded="true" />
+            <element signature="e#9827#9828#0" expanded="true" />
+            <element signature="e#9880#10241#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
+            <element signature="e#10284#10477#0" expanded="true" />
+            <element signature="e#10466#10467#0" expanded="true" />
+            <element signature="e#10943#11518#0" expanded="true" />
+            <element signature="e#10996#11035#0" expanded="true" />
+            <element signature="e#11507#11508#0" expanded="true" />
+            <element signature="e#11557#11801#0" expanded="true" />
+            <element signature="e#11790#11791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jonasSoftware/blueharvest/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.29067" vertical-offset="7865" max-vertical-offset="19210">
+          <caret line="387" column="54" selection-start-line="387" selection-start-column="54" selection-end-line="387" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#onCreate#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#setDefaultLabel#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#onUpgrade#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#saveToDb#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#saveToDb#1;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#saveToDb#2;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#saveToDb#3;class#DatabaseHandler#0" expanded="false" />
+            <element signature="docComment;method#saveToDb#4;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#getKey#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateFields#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateChrg#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateUpload#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateTrans#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateReceive#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateReport#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#populateDefaults#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="e#42414#42460#0" expanded="true" />
+            <element signature="e#53659#53699#0" expanded="true" />
+            <element signature="e#54779#54820#0" expanded="true" />
           </folding>
         </state>
       </provider>
