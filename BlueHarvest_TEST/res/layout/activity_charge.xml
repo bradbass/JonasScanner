@@ -38,14 +38,19 @@
                     android:layout_height="wrap_content"
                     android:text="@string/job_wo_label"
                     android:id="@+id/textView1"
-                    android:layout_weight=".40"
+                    android:layout_weight=".47"
                     android:textSize="18sp"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="40sp"
                     android:id="@+id/jobWoField"
-                    android:layout_weight=".60"
+                    android:layout_weight=".53"
                     android:inputType="textCapCharacters"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/jobWoLookupBtn"
+                android:src="@drawable/ic_action_search" />
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/linearLayoutH3"
@@ -94,17 +99,22 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                android:textColor="@color/JonasButtonColorBottom"
+                android:textColor="@color/JonasButtonColor"
                     android:text="@string/part_upc_label"
                     android:id="@+id/partUpcLabel"
                     android:textSize="18sp"
-                    android:layout_weight=".40"/>
+                    android:layout_weight=".47"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="40sp"
                     android:id="@+id/scanField"
-                    android:layout_weight=".60"
+                    android:layout_weight=".53"
                     android:inputType="number"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/scanUpcBtn"
+                android:src="@drawable/ic_action_camera" />
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/linearLayoutH6"
@@ -135,17 +145,22 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                android:textColor="@color/JonasButtonColorBottom"
+                android:textColor="@color/JonasButtonColor"
                     android:text="@string/serial_label"
                     android:id="@+id/serialLabel"
                     android:textSize="18sp"
-                    android:layout_weight=".40"/>
+                    android:layout_weight=".47"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="40sp"
                     android:id="@+id/serialField"
                     android:inputType="textCapCharacters"
-                    android:layout_weight=".60"/>
+                    android:layout_weight=".53"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/scanSerialBtn"
+                android:src="@drawable/ic_action_camera" />
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/linearLayoutH8"
@@ -187,35 +202,7 @@
                     android:inputType="date"
                     android:layout_weight=".60"/>
         </LinearLayout>
-        <LinearLayout
-                android:id="@+id/chargeActivityButtons"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".10"
-                android:weightSum="1.0" android:gravity="center_horizontal|bottom" android:padding="10dip">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/button_scan_label"
-                    android:id="@+id/scanBtn"
-                    android:layout_weight=".33"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/button_save_label"
-                    android:id="@+id/saveBtn"
-                    android:layout_weight=".33"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/clear_label"
-                    android:id="@+id/clrBtn"
-                    android:layout_weight=".33"/>
-        </LinearLayout>
+
         <LinearLayout
                 android:id="@+id/navigateDatabaseButtons"
                 android:orientation="horizontal"
@@ -223,34 +210,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".10"
                 android:weightSum="1.0" android:gravity="center_horizontal|bottom" android:padding="10dip">
-            <Button
+            <ImageButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/first_button"
-                    android:id="@+id/firstBtn"
-                    android:layout_weight=".25"/>
-            <Button
+                    android:layout_height="40dp"
+                android:id="@+id/firstBtn"
+                    android:layout_weight=".25"
+                android:src="@drawable/ic_action_back" />
+            <ImageButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/previous_button"
+                    android:layout_height="40dp"
+                android:text="@string/previous_button"
                     android:id="@+id/previousBtn"
-                    android:layout_weight=".25"/>
-            <Button
+                    android:layout_weight=".25"
+                android:src="@drawable/ic_action_previous_item" />
+            <ImageButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/next_button"
+                    android:layout_height="40dp"
+                android:text="@string/next_button"
                     android:id="@+id/nextBtn"
-                    android:layout_weight=".25"/>
-            <Button
+                    android:layout_weight=".25"
+                android:src="@drawable/ic_action_next_item" />
+            <ImageButton
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/last_button"
+                    android:layout_height="40dp"
+                android:text="@string/last_button"
                     android:id="@+id/lastBtn"
-                    android:layout_weight=".25"/>
+                    android:layout_weight=".25"
+                android:src="@drawable/ic_action_forward" />
         </LinearLayout>
         <LinearLayout
                 android:id="@+id/linearLayoutH9"
@@ -264,27 +250,21 @@
                     android:text="@string/required_fields"
                     android:id="@+id/requiredTag"
                     android:textSize="18sp"
-                    android:layout_weight="0.80"/>
+                    android:layout_weight="0.50"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:text="@string/delete_button"
-                android:id="@+id/delOne"
-                android:background="@drawable/roundbutton" />
+                android:id="@+id/delOne" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:text="@string/delete_all_button"
-                android:id="@+id/delAll"
-                android:background="@drawable/roundbutton" />
-
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="40sp"
-                    android:id="@+id/blankField"
-                    android:layout_weight=".70"/>
+                android:text="Clear"
+                android:id="@+id/clrBtn"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" />
 
         </LinearLayout>
     </LinearLayout>

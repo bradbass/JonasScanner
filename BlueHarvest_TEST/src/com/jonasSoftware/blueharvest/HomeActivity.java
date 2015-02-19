@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.List;
 
@@ -34,19 +35,27 @@ public class HomeActivity extends Activity {
     private static Button _transferBtn;
     private static Button _receiveBtn;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
         setTitle(" Inventory Scanner");
 
         //buttons
-        final Button configBtn = (Button) findViewById(R.id.configBtn);
-        final Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
-        _chrgBtn = (Button) findViewById(R.id.scanBtn);
+        //final Button configBtn = (Button) findViewById(R.id.configBtn);
+        //final Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
+        _chrgBtn = (Button) findViewById(R.id.chargeBtn);
         _uploadBtn = (Button) findViewById(R.id.uploadBtn);
         _transferBtn = (Button) findViewById(R.id.transferBtn);
         _receiveBtn = (Button) findViewById(R.id.receiveBtn);
+        ImageButton chargeSendAllBtn = (ImageButton) findViewById(R.id.chargeSendAllBtn);
+        ImageButton uploadSendAllBtn = (ImageButton) findViewById(R.id.uploadSendAllBtn);
+        ImageButton transferSendAllBtn = (ImageButton) findViewById(R.id.transferSendAllBtn);
+        ImageButton receiveSendAllBtn = (ImageButton) findViewById(R.id.receiveSendAllBtn);
+        ImageButton chargeDeleteAllBtn = (ImageButton) findViewById(R.id.chargeDeleteAllBtn);
+        ImageButton uploadDeleteAllBtn = (ImageButton) findViewById(R.id.uploadDeleteAllBtn);
+        ImageButton transferDeleteAllBtn = (ImageButton) findViewById(R.id.transferDeleteAllBtn);
+        ImageButton receiveDeleteAllBtn = (ImageButton) findViewById(R.id.receiveDeleteAllBtn);
 
         //test
         //_chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
@@ -60,7 +69,7 @@ public class HomeActivity extends Activity {
             moduleBtnColorChngr(dataTables);
         }
 
-        configBtn.setOnClickListener(new OnClickListener() {
+        /*configBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 configScreen();
@@ -71,6 +80,71 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 settingsScreen();
+            }
+        });*/
+
+        chargeSendAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // send all
+                ChargeActivity ca = new ChargeActivity();
+                ca.send();
+            }
+        });
+
+        uploadSendAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UploadActivity ua = new UploadActivity();
+                ua.send();
+            }
+        });
+
+        transferSendAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransferActivity ta = new TransferActivity();
+                ta.send();
+            }
+        });
+
+        receiveSendAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReceivePO rpo = new ReceivePO();
+                rpo.send();
+            }
+        });
+
+        chargeDeleteAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChargeActivity ca = new ChargeActivity();
+                ca.deleteAll();
+            }
+        });
+
+        uploadDeleteAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UploadActivity ua = new UploadActivity();
+                ua.deleteAll();
+            }
+        });
+
+        transferDeleteAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransferActivity ta = new TransferActivity();
+                ta.deleteAll();
+            }
+        });
+
+        receiveDeleteAllBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReceivePO rpo = new ReceivePO();
+                rpo.deleteAll();
             }
         });
 

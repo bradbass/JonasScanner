@@ -10,8 +10,8 @@
     </item>
     <item
         android:id="@+id/send_email"
-        android:title="@string/send_label"
-        android:icon="@drawable/ic_action_mail_add"
+        android:title="SAVE"
+        android:icon="@drawable/save"
         android:showAsAction="always|withText"
         android:orderInCategory="10" >
 

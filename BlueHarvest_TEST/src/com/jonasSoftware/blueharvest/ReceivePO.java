@@ -157,39 +157,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v) {
-                if(_date == null) {
-                    date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
-                    _date = date;
-                }
-                if(_upc == null || _upc.equals("")) {
-                    _upc = _scanField.getText().toString();
-                }else if (!_upc.equals(_scanField.getText().toString())) {
-                    _upc = _scanField.getText().toString();
-                }
-
-                _quantity = _quantityField.getText().toString();
-                _whse = spinnerWhse.getSelectedItem().toString();
-                _serial = _serialField.getText().toString();
-                _comment = _commentField.getText().toString();
-                _po = _poField.getText().toString();
-
-                validateFields();
-
-                if (isValid) {
-                    _db.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po);
-
-                    save = true;
-                    clearBottomFields();
-                }
-            }
-
-            private void clearBottomFields() {
-                _upc = null;
-                _scanField.setText(null);
-                _dateField.setText(_currentDate);
-                _quantityField.setText("1");
-                _serialField.setText(null);
-                _commentField.setText(null);
+                save();
             }
         });
 
@@ -270,13 +238,19 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
         String toolbarItem = item.toString();
-        if (toolbarItem.equals("HOME")) {
-            endActivity();
-        } else if (toolbarItem.equals("SEND")) {
-            send();
-            //testService();
-            clearVars();
-            clearFields();
+        switch (toolbarItem) {
+            case "HOME":
+                endActivity();
+                break;
+            case "SEND":
+                send();
+                //testService();
+                clearVars();
+                clearFields();
+                break;
+            case "SAVE":
+                save();
+                break;
         }
         return true;
     }
@@ -333,7 +307,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     /**
      *
      */
-    private void deleteAll() {
+    void deleteAll() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Delete All Records?");
@@ -475,6 +449,34 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         }
     }
 
+    private void save() {
+        DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
+        if(_date == null) {
+            date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
+            _date = date;
+        }
+        if(_upc == null || _upc.equals("")) {
+            _upc = _scanField.getText().toString();
+        }else if (!_upc.equals(_scanField.getText().toString())) {
+            _upc = _scanField.getText().toString();
+        }
+
+        _quantity = _quantityField.getText().toString();
+        _whse = spinnerWhse.getSelectedItem().toString();
+        _serial = _serialField.getText().toString();
+        _comment = _commentField.getText().toString();
+        _po = _poField.getText().toString();
+
+        validateFields();
+
+        if (isValid) {
+            _db.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po);
+
+            save = true;
+            clearBottomFields();
+        }
+    }
+
     /**
      *
      */
@@ -516,6 +518,15 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         _poField.setText(null);
         _dateField.setText(_currentDate);
         spinnerWhse.setSelection(0);
+    }
+
+    private void clearBottomFields() {
+        _upc = null;
+        _scanField.setText(null);
+        _dateField.setText(_currentDate);
+        _quantityField.setText("1");
+        _serialField.setText(null);
+        _commentField.setText(null);
     }
 
     /**

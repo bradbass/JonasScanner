@@ -115,29 +115,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View view) {
-                if(_upc == null || _upc.equals("")) {
-                    _upc = _scanField.getText().toString();
-                }else if (!_upc.equals(_scanField.getText().toString())) {
-                    _upc = _scanField.getText().toString();
-                }
-
-                _quantity = _quantityField.getText().toString();
-                 _whse = spinnerWhse.getSelectedItem().toString();
-
-                validateFields();
-
-                if (isValid) {
-                    _db.saveToDb(_whse, _upc, _quantity);
-
-                    save = true;
-                    clearBottomFields();
-                }
-            }
-
-            private void clearBottomFields() {
-                _upc = null;
-                _scanField.setText(null);
-                _quantityField.setText("1");
+                save();
             }
         });
 
@@ -222,13 +200,19 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
         String toolbarItem = item.toString();
-        if (toolbarItem.equals("HOME")) {
-            endActivity();
-        } else if (toolbarItem.equals("SEND")) {
-            send();
-            //testService();
-            clearVars();
-            clearFields();
+        switch (toolbarItem) {
+            case "HOME":
+                endActivity();
+                break;
+            case "SEND":
+                send();
+                //testService();
+                clearVars();
+                clearFields();
+                break;
+            case "SAVE":
+                save();
+                break;
         }
         return true;
     }
@@ -270,7 +254,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         aDB.show();
     }
 
-    private void deleteAll() {
+    void deleteAll() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Delete All Records?");
@@ -335,6 +319,12 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         _scanField.setText(null);
         _quantityField.setText(null);
         spinnerWhse.setSelection(0);
+    }
+
+    private void clearBottomFields() {
+        _upc = null;
+        _scanField.setText(null);
+        _quantityField.setText("1");
     }
 
     private void populateFields() {
@@ -514,6 +504,27 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
             //change home screen module button back to original color
             HomeActivity._moduleBtnColorChngr(2);
+        }
+    }
+
+    private void save() {
+        DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
+        if(_upc == null || _upc.equals("")) {
+            _upc = _scanField.getText().toString();
+        }else if (!_upc.equals(_scanField.getText().toString())) {
+            _upc = _scanField.getText().toString();
+        }
+
+        _quantity = _quantityField.getText().toString();
+        _whse = spinnerWhse.getSelectedItem().toString();
+
+        validateFields();
+
+        if (isValid) {
+            _db.saveToDb(_whse, _upc, _quantity);
+
+            save = true;
+            clearBottomFields();
         }
     }
 

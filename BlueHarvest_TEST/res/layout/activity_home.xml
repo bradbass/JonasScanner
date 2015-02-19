@@ -3,84 +3,190 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
         android:padding="20dp"
-        android:background="@drawable/enterprisesplash"
+        android:background="@drawable/officialbackgroundwithlogo"
     >
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/charge_parts_label"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView1" android:layout_row="0" android:layout_column="0"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/charge_button"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/scanBtn" android:layout_row="0" android:layout_column="2"
-            />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/parts_upload_label"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView2" android:layout_row="1" android:layout_column="0"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/upload_button"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/uploadBtn" android:layout_row="1" android:layout_column="2"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/warehouse_transfer_label"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView3" android:layout_row="2" android:layout_column="0"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/transfer_button"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/transferBtn" android:layout_row="2" android:layout_column="2"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/receive_po_label"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView" android:layout_row="3" android:layout_column="0"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/receive_po_button"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/receiveBtn" android:layout_row="3" android:layout_column="2"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/configure_label"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView4" android:layout_row="5" android:layout_column="0"
-        android:visibility="invisible" />
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="0"
+        android:layout_column="0" />
+
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/config_button"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/configBtn" android:layout_row="5" android:layout_column="2"
-        android:visibility="invisible" />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_label"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView5" android:layout_row="6" android:layout_column="0"
-        android:visibility="invisible" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Charge Parts"
+        android:id="@+id/chargeBtn"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:background="@drawable/roundbutton"
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp"
+        android:singleLine="false" />
+
+    <Space
+        android:layout_width="50px"
+        android:layout_height="20px"
+        android:layout_row="1"
+        android:layout_column="1" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:id="@+id/chargeSendAllBtn"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:src="@drawable/ic_action_email"
+        android:background="@drawable/roundbutton" />
+
+    <Space
+        android:layout_width="120px"
+        android:layout_height="20px"
+        android:layout_row="1"
+        android:layout_column="3" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:id="@+id/chargeDeleteAllBtn"
+        android:layout_row="1"
+        android:layout_column="4"
+        android:src="@drawable/ic_action_discard"
+        android:background="@drawable/roundbuttonother" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="40px"
+        android:layout_row="2"
+        android:layout_column="0" />
+
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_button"
-            android:background="@drawable/roundbutton"
-            android:id="@+id/settingsBtn" android:layout_row="6" android:layout_column="2"
-        android:visibility="invisible" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parts Upload"
+        android:id="@+id/uploadBtn"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:background="@drawable/roundbutton"
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp"/>
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="3"
+        android:layout_column="1" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:id="@+id/uploadSendAllBtn"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:src="@drawable/ic_action_email" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="3"
+        android:layout_column="3" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:id="@+id/uploadDeleteAllBtn"
+        android:layout_row="3"
+        android:layout_column="4"
+        android:src="@drawable/ic_action_discard" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="40px"
+        android:layout_row="4"
+        android:layout_column="0" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whse Transfer"
+        android:id="@+id/transferBtn"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:background="@drawable/roundbutton"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="5"
+        android:layout_column="1" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:id="@+id/transferSendAllBtn"
+        android:layout_row="5"
+        android:layout_column="2"
+        android:src="@drawable/ic_action_email" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="5"
+        android:layout_column="3" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:id="@+id/transferDeleteAllBtn"
+        android:layout_row="5"
+        android:layout_column="4"
+        android:src="@drawable/ic_action_discard" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="40px"
+        android:layout_row="6"
+        android:layout_column="0" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Receive P/O"
+        android:id="@+id/receiveBtn"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:paddingLeft="19.5dp"
+        android:paddingRight="19.5dp"
+        android:background="@drawable/roundbutton" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="7"
+        android:layout_column="1" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:id="@+id/receiveSendAllBtn"
+        android:layout_row="7"
+        android:layout_column="2"
+        android:src="@drawable/ic_action_email" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px"
+        android:layout_row="7"
+        android:layout_column="3" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:id="@+id/receiveDeleteAllBtn"
+        android:layout_row="7"
+        android:layout_column="4"
+        android:src="@drawable/ic_action_discard" />
+
 </GridLayout>

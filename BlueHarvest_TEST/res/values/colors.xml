@@ -31,8 +31,8 @@
     <color name="NiceButtonDisabledStartColor">#565051</color>
     <color name="NiceButtonDisabledEndColor">#736F6E</color>
     <color name="NiceButtonBorderColor">#254117</color>
-    <color name="JonasButtonColor">#FF8000</color>
-    <color name="JonasButtonColorBottom">#CB5800</color>
-    <color name="DataToSendButtonColor">#090</color>
-    <color name="DataToSendButtonColorBottom">#050</color>
+    <color name="JonasButtonColor">#ffffff</color>
+    <color name="JonasButtonColorBottom">#B7DEFF</color>
+    <color name="DataToSendButtonColor">#B7DEFF</color>
+    <color name="DataToSendButtonColorBottom">#062F53</color>
 </resources>

@@ -102,14 +102,17 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		//final Button sendBtn = (Button) findViewById(R.id.sendBtn);
 		//final Button backBtn = (Button) findViewById(R.id.btnBack);
 		//final Button exitBtn = (Button) findViewById(R.id.btnExit);
-        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
-        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
-        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
-        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
-        final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+        final ImageButton firstBtn = (ImageButton) findViewById(R.id.firstBtn);
+        final ImageButton nextBtn = (ImageButton) findViewById(R.id.nextBtn);
+        final ImageButton prevBtn = (ImageButton) findViewById(R.id.previousBtn);
+        final ImageButton lastBtn = (ImageButton) findViewById(R.id.lastBtn);
 
+        final Button clrBtn = (Button) findViewById(R.id.clrBtn);
         final Button delBtn = (Button) findViewById(R.id.delOne);
-        final Button delAllBtn = (Button) findViewById(R.id.delAll);
+        //final Button delAllBtn = (Button) findViewById(R.id.delAll);
+
+        final ImageButton scanUpcBtn = (ImageButton) findViewById(R.id.scanUpcBtn);
+        final ImageButton scanSerialBtn = (ImageButton) findViewById(R.id.scanSerialBtn);
 
         final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
         final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
@@ -162,7 +165,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
          * scanner library.  We use .putExtra to send the scan mode, which we set to
          * PRODUCT_MODE, which scans UPC bar codes.
          */
-        scanBtn.setOnClickListener(new OnClickListener() {
+        /*scanBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -172,7 +175,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 startActivityForResult(chargeIntent, 0);
 
 			}
-		});
+		});*/
 
         serialBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -192,55 +195,33 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
+        scanSerialBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(chargeIntent, 1);
+            }
+        });
+
+        scanUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(chargeIntent, 2);
+            }
+        });
+
         /**
          * When user clicks the SAVE button, we insert all fields into the database
          */
-		saveBtn.setOnClickListener(new OnClickListener() {
+		/*saveBtn.setOnClickListener(new OnClickListener() {
 
 			@SuppressWarnings({"StringBufferReplaceableByString", "ConstantConditions"})
             @Override
 			public void onClick(View v) {
-				// add fields from new table
-				if(_date == null) {
-					date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
-                    _date = date;
-				}
-				if(_upc == null || _upc.equals("")) {
-					_upc = _scanField.getText().toString();
-				}else if (!_upc.equals(_scanField.getText().toString())) {
-                    _upc = _scanField.getText().toString();
-                }
-				//DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
-
-				comment = _commentField.getText().toString();
-                _quantity = _quantityField.getText().toString();
-                _wo = _jobWoField.getText().toString();
-                _serial = _serialField.getText().toString();
-                _whse = spinnerWhse.getSelectedItem().toString();
-                _item = spinnerItem.getSelectedItem().toString();
-                _type = spinnerType.getSelectedItem().toString();
-
-                validateFields();
-
-                if (isValid) {
-                    _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
-                            _serial, comment, _date);
-
-                    save = true;
-                    clearBottomFields();
-                }
+				save();
             }
-
-            private void clearBottomFields() {
-                _upc = null;
-                _scanField.setText(null);
-                _commentField.setText(null);
-                _quantityField.setText("1");
-                _serialField.setText(null);
-                _dateField.setText(_currentDate);
-                //spinnerItem.setSelection(0);
-            }
-        });
+        });*/
 
 		/**
 		 * When user clicks the SEND button we first call db.exportDB() from
@@ -296,14 +277,14 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        delAllBtn.setOnClickListener(new OnClickListener() {
+        /*delAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //delete all records in db
                 deleteAll();
                 clearFields();
             }
-        });
+        });*/
 
         delBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -332,13 +313,19 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     public boolean onOptionsItemSelected(MenuItem item) {
         // go back to home screen
         String toolbarItem = item.toString();
-        if (toolbarItem.equals("HOME")) {
-            endActivity();
-        } else if (toolbarItem.equals("SEND")) {
-            send();
-            //testService();
-            clearVars();
-            clearFields();
+        switch (toolbarItem) {
+            case "HOME":
+                endActivity();
+                break;
+            case "SEND":
+                send();
+                //testService();
+                clearVars();
+                clearFields();
+                break;
+            case "SAVE":
+                save();
+                break;
         }
         return true;
     }
@@ -399,6 +386,16 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         spinnerType.setSelection(0);
     }
 
+    private void clearBottomFields() {
+        _upc = null;
+        _scanField.setText(null);
+        _commentField.setText(null);
+        _quantityField.setText("1");
+        _serialField.setText(null);
+        _dateField.setText(_currentDate);
+        //spinnerItem.setSelection(0);
+    }
+
     private void deleteOne() {
         //
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
@@ -439,7 +436,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         _serial = "";
     }
 
-    private void deleteAll() {
+    void deleteAll() {
         final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
         Builder aDB = new Builder(this);
         aDB.setTitle("Delete All Records?");
@@ -464,6 +461,38 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             }
         });
         aDB.show();
+    }
+
+    private void save() {
+        DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
+        if(_date == null) {
+            date = _currentDate.replaceAll("\\s+", "").replaceAll("/", "");
+            _date = date;
+        }
+        if(_upc == null || _upc.equals("")) {
+            _upc = _scanField.getText().toString();
+        }else if (!_upc.equals(_scanField.getText().toString())) {
+            _upc = _scanField.getText().toString();
+        }
+        //DatabaseHandler saveToDb = new DatabaseHandler(getApplicationContext());
+
+        comment = _commentField.getText().toString();
+        _quantity = _quantityField.getText().toString();
+        _wo = _jobWoField.getText().toString();
+        _serial = _serialField.getText().toString();
+        _whse = spinnerWhse.getSelectedItem().toString();
+        _item = spinnerItem.getSelectedItem().toString();
+        _type = spinnerType.getSelectedItem().toString();
+
+        validateFields();
+
+        if (isValid) {
+            _db.saveToDb(_whse, _wo, _item, _type, _upc, _quantity,
+                    _serial, comment, _date);
+
+            save = true;
+            clearBottomFields();
+        }
     }
 
     void saveMsg() {
