@@ -36,7 +36,7 @@
         android:id="@+id/chargeSendAllBtn"
         android:layout_row="1"
         android:layout_column="2"
-        android:src="@drawable/ic_action_email"
+        android:src="@drawable/ic_action_email_dark"
         android:background="@drawable/roundbutton" />
 
     <Space
@@ -51,8 +51,8 @@
         android:id="@+id/chargeDeleteAllBtn"
         android:layout_row="1"
         android:layout_column="4"
-        android:src="@drawable/ic_action_discard"
-        android:background="@drawable/roundbuttonother" />
+        android:src="@drawable/ic_action_discard_dark"
+        android:background="@drawable/roundbutton" />
 
     <Space
         android:layout_width="20px"
@@ -83,7 +83,8 @@
         android:id="@+id/uploadSendAllBtn"
         android:layout_row="3"
         android:layout_column="2"
-        android:src="@drawable/ic_action_email" />
+        android:src="@drawable/ic_action_email_dark"
+        android:background="@drawable/roundbutton" />
 
     <Space
         android:layout_width="20px"
@@ -97,7 +98,8 @@
         android:id="@+id/uploadDeleteAllBtn"
         android:layout_row="3"
         android:layout_column="4"
-        android:src="@drawable/ic_action_discard" />
+        android:src="@drawable/ic_action_discard_dark"
+        android:background="@drawable/roundbutton" />
 
     <Space
         android:layout_width="20px"
@@ -128,7 +130,8 @@
         android:id="@+id/transferSendAllBtn"
         android:layout_row="5"
         android:layout_column="2"
-        android:src="@drawable/ic_action_email" />
+        android:src="@drawable/ic_action_email_dark"
+        android:background="@drawable/roundbutton" />
 
     <Space
         android:layout_width="20px"
@@ -142,7 +145,8 @@
         android:id="@+id/transferDeleteAllBtn"
         android:layout_row="5"
         android:layout_column="4"
-        android:src="@drawable/ic_action_discard" />
+        android:src="@drawable/ic_action_discard_dark"
+        android:background="@drawable/roundbutton" />
 
     <Space
         android:layout_width="20px"
@@ -173,7 +177,8 @@
         android:id="@+id/receiveSendAllBtn"
         android:layout_row="7"
         android:layout_column="2"
-        android:src="@drawable/ic_action_email" />
+        android:src="@drawable/ic_action_email_dark"
+        android:background="@drawable/roundbutton" />
 
     <Space
         android:layout_width="20px"
@@ -187,6 +192,7 @@
         android:id="@+id/receiveDeleteAllBtn"
         android:layout_row="7"
         android:layout_column="4"
-        android:src="@drawable/ic_action_discard" />
+        android:src="@drawable/ic_action_discard_dark"
+        android:background="@drawable/roundbutton" />
 
 </GridLayout>

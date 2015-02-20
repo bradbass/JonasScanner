@@ -292,6 +292,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 //delete only the current record
                 deleteOne();
                 clearFields();
+                _quantityField.setText("1");
             }
         });
 

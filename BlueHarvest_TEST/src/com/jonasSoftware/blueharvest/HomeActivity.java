@@ -1,15 +1,28 @@
 package com.jonasSoftware.blueharvest;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static android.view.View.OnClickListener;
 import static android.widget.Toast.LENGTH_LONG;
@@ -34,6 +47,17 @@ public class HomeActivity extends Activity {
     private static Button _chrgBtn;
     private static Button _transferBtn;
     private static Button _receiveBtn;
+    private static ImageButton _chargeSendAllBtn;
+    private static ImageButton _chargeDeleteAllBtn;
+    private static ImageButton _uploadSendAllBtn;
+    private static ImageButton _uploadDeleteAllBtn;
+    private static ImageButton _transferSendAllBtn;
+    private static ImageButton _transferDeleteAllBtn;
+    private static ImageButton _receiveSendAllBtn;
+    private static ImageButton _receiveDeleteAllBtn;
+    private static String _filename;
+    private final Crypter crypter = new Crypter();
+    private Boolean save = false;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +72,14 @@ public class HomeActivity extends Activity {
         _uploadBtn = (Button) findViewById(R.id.uploadBtn);
         _transferBtn = (Button) findViewById(R.id.transferBtn);
         _receiveBtn = (Button) findViewById(R.id.receiveBtn);
-        ImageButton chargeSendAllBtn = (ImageButton) findViewById(R.id.chargeSendAllBtn);
-        ImageButton uploadSendAllBtn = (ImageButton) findViewById(R.id.uploadSendAllBtn);
-        ImageButton transferSendAllBtn = (ImageButton) findViewById(R.id.transferSendAllBtn);
-        ImageButton receiveSendAllBtn = (ImageButton) findViewById(R.id.receiveSendAllBtn);
-        ImageButton chargeDeleteAllBtn = (ImageButton) findViewById(R.id.chargeDeleteAllBtn);
-        ImageButton uploadDeleteAllBtn = (ImageButton) findViewById(R.id.uploadDeleteAllBtn);
-        ImageButton transferDeleteAllBtn = (ImageButton) findViewById(R.id.transferDeleteAllBtn);
-        ImageButton receiveDeleteAllBtn = (ImageButton) findViewById(R.id.receiveDeleteAllBtn);
+        _chargeSendAllBtn = (ImageButton) findViewById(R.id.chargeSendAllBtn);
+        _uploadSendAllBtn = (ImageButton) findViewById(R.id.uploadSendAllBtn);
+        _transferSendAllBtn = (ImageButton) findViewById(R.id.transferSendAllBtn);
+        _receiveSendAllBtn = (ImageButton) findViewById(R.id.receiveSendAllBtn);
+        _chargeDeleteAllBtn = (ImageButton) findViewById(R.id.chargeDeleteAllBtn);
+        _uploadDeleteAllBtn = (ImageButton) findViewById(R.id.uploadDeleteAllBtn);
+        _transferDeleteAllBtn = (ImageButton) findViewById(R.id.transferDeleteAllBtn);
+        _receiveDeleteAllBtn = (ImageButton) findViewById(R.id.receiveDeleteAllBtn);
 
         //test
         //_chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
@@ -83,68 +107,68 @@ public class HomeActivity extends Activity {
             }
         });*/
 
-        chargeSendAllBtn.setOnClickListener(new OnClickListener() {
+        _chargeSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // send all
                 ChargeActivity ca = new ChargeActivity();
-                ca.send();
+                send(1);
             }
         });
 
-        uploadSendAllBtn.setOnClickListener(new OnClickListener() {
+        _uploadSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 UploadActivity ua = new UploadActivity();
-                ua.send();
+                send(2);
             }
         });
 
-        transferSendAllBtn.setOnClickListener(new OnClickListener() {
+        _transferSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 TransferActivity ta = new TransferActivity();
-                ta.send();
+                send(3);
             }
         });
 
-        receiveSendAllBtn.setOnClickListener(new OnClickListener() {
+        _receiveSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 ReceivePO rpo = new ReceivePO();
-                rpo.send();
+                send(4);
             }
         });
 
-        chargeDeleteAllBtn.setOnClickListener(new OnClickListener() {
+        _chargeDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChargeActivity ca = new ChargeActivity();
-                ca.deleteAll();
+                deleteAll(1);
             }
         });
 
-        uploadDeleteAllBtn.setOnClickListener(new OnClickListener() {
+        _uploadDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 UploadActivity ua = new UploadActivity();
-                ua.deleteAll();
+                deleteAll(2);
             }
         });
 
-        transferDeleteAllBtn.setOnClickListener(new OnClickListener() {
+        _transferDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 TransferActivity ta = new TransferActivity();
-                ta.deleteAll();
+                deleteAll(3);
             }
         });
 
-        receiveDeleteAllBtn.setOnClickListener(new OnClickListener() {
+        _receiveDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 ReceivePO rpo = new ReceivePO();
-                rpo.deleteAll();
+                deleteAll(4);
             }
         });
 
@@ -304,21 +328,209 @@ public class HomeActivity extends Activity {
         this.finish();
 	}
 
+    @SuppressWarnings("ConstantConditions")
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    void send(final Integer table) {
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Send all?");
+        aDB.setMessage("Are you sure you want to send all data from this module?");
+        aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                // Auto-generated method stub
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                db.populateFields();
+
+                setDateTime(table);
+
+                //db.exportDb(getApplicationContext());
+                db.exportDb(getApplicationContext(), _filename, table);
+                //
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+
+                // decode password - see Crypter class for methods
+                String _password = SettingsActivity._password;
+                _password = crypter.decode(_password);
+
+                //testing
+                //Toast.makeText(getApplicationContext(), getString(R.string.toast_decode_message) + _password, LENGTH_LONG).show();
+
+                Mail m = new Mail(SettingsActivity._actName, _password);
+                String[] toArr = SettingsActivity._to.split(";");
+                //String[] toArr = { "brad.bass@jonassoftware.com",	"brad.bass@hotmail.ca", "baruch.bass@gmail.com", "tripleb33@hotmail.com" };
+                m.setTo(toArr);
+                m.setFrom(SettingsActivity._from);
+                m.setSubject(SettingsActivity._subject);
+                m.setBody(SettingsActivity._body);
+                m.setHost(SettingsActivity._host);
+                m.setPort(SettingsActivity._port);
+                try {
+                    m.addAttachment(Environment.getExternalStorageDirectory().getPath(),_filename);
+
+                    if (!m.send()) {
+                        makeText(HomeActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
+                    } else {
+                        makeText(HomeActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
+                        Boolean sent = true;
+                        db.purgeData("chrgData");
+                    }
+                } catch (final Exception e) {
+                    //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                    Log.e(getString(R.string.mail_log_e_title), getString(R.string.mail_log_e_message), e);
+
+                    e.printStackTrace();
+                    String stackTrace = Log.getStackTraceString(e);
+
+                    AlertDialog.Builder aDB = new AlertDialog.Builder(getApplicationContext());
+                    aDB.setTitle("Program Exception!");
+                    aDB.setMessage(stackTrace);
+                    aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // When user clicks OK, the db is purged and user is sent back to main activity.
+                        }
+                    });
+                    aDB.show();
+                }
+                db.close();
+                //change home screen module button back to original color
+                HomeActivity._moduleBtnColorChngr(table);
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+        //if ((save == null) || !save) {
+            //saveMsg();
+        //} else {
+
+        //}
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    void setDateTime(Integer table) {
+        // add DateTime to filename
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        Date currentLocalTime = cal.getTime();
+        SimpleDateFormat date = new SimpleDateFormat(getString(R.string.filename_simple_date_format));
+        date.setTimeZone(TimeZone.getDefault());
+        String currentDateTime = date.format(currentLocalTime);
+
+        setFileName(table, currentDateTime, getBaseContext());
+    }
+
+    /**
+     *
+     * @param currentDateTime the current date and time from setDateTime()
+     * @param context   application context
+     */
+    void setFileName(Integer table, String currentDateTime, Context context) {
+        //
+        switch (table) {
+            case 1:
+                _filename = currentDateTime + getString(R.string.filename_extension);
+                break;
+            case 2:
+                _filename = currentDateTime + getString(R.string.upload_filename_extension);
+                break;
+            case 3:
+                _filename = currentDateTime + getString(R.string.whse_transfer_filename_extension);
+                break;
+            case 4:
+                _filename = currentDateTime + getString(R.string.po_receive_filename_extension);
+                break;
+            default:
+                break;
+        }
+        //_filename = currentDateTime + getString(R.string.filename_extension);
+
+        makeText(context, getString(R.string.toast_filename_is_label)
+                + _filename, LENGTH_LONG)
+                .show();
+    }
+
+    void deleteAll(final Integer table) {
+        final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+        aDB.setTitle("Delete All Records?");
+        aDB.setMessage("Are you sure you want to delete all the records from this module?");
+        aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+            @SuppressWarnings("ConstantConditions")
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When user clicks OK, the db is purged and user is sent back to main activity.
+                switch (table) {
+                    case 1:
+                        dbh.deleteAll("chrgData");
+                        break;
+                    case 2:
+                        dbh.deleteAll("uploadData");
+                        break;
+                    case 3:
+                        dbh.deleteAll("transferData");
+                        break;
+                    case 4:
+                        dbh.deleteAll("receiveData");
+                        break;
+                    default:
+                        break;
+                }
+                //dbh.deleteAll("chrgData");
+                //clearVars();
+                makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
+                //change home screen module button back to original color
+                HomeActivity._moduleBtnColorChngr(table);
+            }
+        });
+        aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // If user clicks NO, dialog is closed.
+                dialog.cancel();
+            }
+        });
+        aDB.show();
+    }
+
     // change module button color if data exists in corresponding table
     private void moduleBtnColorChngr(List<String> dataTables) {
         for (String table : dataTables) {
             switch (table) {
                 case "chrgData":
-                    _chrgBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _chargeSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _chargeSendAllBtn.setImageResource(R.drawable.ic_action_email);
+                    _chargeDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _chargeDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
                     break;
                 case "uploadData":
-                    _uploadBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _uploadSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _uploadSendAllBtn.setImageResource(R.drawable.ic_action_email);
+                    _uploadDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _uploadDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
                     break;
                 case "transferData":
-                    _transferBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _transferSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _transferSendAllBtn.setImageResource(R.drawable.ic_action_email);
+                    _transferDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _transferDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
                     break;
                 case "receiveData":
-                    _receiveBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _receiveSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _receiveSendAllBtn.setImageResource(R.drawable.ic_action_email);
+                    _receiveDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
+                    _receiveDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
                     break;
                 default:
                     //default case?
@@ -331,16 +543,28 @@ public class HomeActivity extends Activity {
     public static void _moduleBtnColorChngr(Integer tableNum) {
         switch (tableNum) {
             case 1:
-                _chrgBtn.setBackgroundResource(R.drawable.roundbutton);
+                _chargeSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _chargeSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
+                _chargeDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _chargeDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
                 break;
             case 2:
-                _uploadBtn.setBackgroundResource(R.drawable.roundbutton);
+                _uploadSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _uploadSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
+                _uploadDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _uploadDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
                 break;
             case 3:
-                _transferBtn.setBackgroundResource(R.drawable.roundbutton);
+                _transferSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _transferSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
+                _transferDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _transferDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
                 break;
             case 4:
-                _receiveBtn.setBackgroundResource(R.drawable.roundbutton);
+                _receiveSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _receiveSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
+                _receiveDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
+                _receiveDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
                 break;
             default:
                 // default case?
