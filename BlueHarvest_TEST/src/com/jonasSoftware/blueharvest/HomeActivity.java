@@ -513,24 +513,32 @@ public class HomeActivity extends Activity {
                     _chargeSendAllBtn.setImageResource(R.drawable.ic_action_email);
                     _chargeDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _chargeDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
+                    _chargeSendAllBtn.setEnabled(true);
+                    _chargeDeleteAllBtn.setEnabled(true);
                     break;
                 case "uploadData":
                     _uploadSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _uploadSendAllBtn.setImageResource(R.drawable.ic_action_email);
                     _uploadDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _uploadDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
+                    _uploadSendAllBtn.setEnabled(true);
+                    _uploadDeleteAllBtn.setEnabled(true);
                     break;
                 case "transferData":
                     _transferSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _transferSendAllBtn.setImageResource(R.drawable.ic_action_email);
                     _transferDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _transferDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
+                    _transferSendAllBtn.setEnabled(true);
+                    _transferDeleteAllBtn.setEnabled(true);
                     break;
                 case "receiveData":
                     _receiveSendAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _receiveSendAllBtn.setImageResource(R.drawable.ic_action_email);
                     _receiveDeleteAllBtn.setBackgroundResource(R.drawable.roundbuttonother);
                     _receiveDeleteAllBtn.setImageResource(R.drawable.ic_action_discard);
+                    _receiveSendAllBtn.setEnabled(true);
+                    _receiveDeleteAllBtn.setEnabled(true);
                     break;
                 default:
                     //default case?
@@ -547,24 +555,32 @@ public class HomeActivity extends Activity {
                 _chargeSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
                 _chargeDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _chargeDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
+                _chargeSendAllBtn.setEnabled(false);
+                _chargeDeleteAllBtn.setEnabled(false);
                 break;
             case 2:
                 _uploadSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _uploadSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
                 _uploadDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _uploadDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
+                _uploadSendAllBtn.setEnabled(false);
+                _uploadDeleteAllBtn.setEnabled(false);
                 break;
             case 3:
                 _transferSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _transferSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
                 _transferDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _transferDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
+                _transferSendAllBtn.setEnabled(false);
+                _transferDeleteAllBtn.setEnabled(false);
                 break;
             case 4:
                 _receiveSendAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _receiveSendAllBtn.setImageResource(R.drawable.ic_action_email_dark);
                 _receiveDeleteAllBtn.setBackgroundResource(R.drawable.roundbutton);
                 _receiveDeleteAllBtn.setImageResource(R.drawable.ic_action_discard_dark);
+                _receiveSendAllBtn.setEnabled(false);
+                _receiveDeleteAllBtn.setEnabled(false);
                 break;
             default:
                 // default case?
