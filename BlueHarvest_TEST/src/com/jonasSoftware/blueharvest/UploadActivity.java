@@ -170,6 +170,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 // do stuff
                 deleteOne();
                 clearFields();
+                _quantityField.setText("1");
             }
         });
 

@@ -208,6 +208,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 //
                 deleteOne();
                 clearFields();
+                _quantityField.setText("1");
             }
         });
 

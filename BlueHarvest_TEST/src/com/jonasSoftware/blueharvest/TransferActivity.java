@@ -184,6 +184,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 //
                 deleteOne();
                 clearFields();
+                _quantityField.setText("1");
             }
         });
 
