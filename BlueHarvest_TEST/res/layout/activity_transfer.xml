@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
-    android:background="@drawable/background"
+    android:background="@drawable/blue_background"
             android:layout_width="fill_parent" android:id="@+id/scrollView1">
     <LinearLayout
             android:id="@+id/linearLayoutV"
@@ -69,25 +69,30 @@
                     android:inputType="number"/>
         </LinearLayout>
         <LinearLayout
-                android:id="@+id/linearLayoutH6"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".10"
-                android:weightSum="1.0" >
+            android:id="@+id/linearLayoutH6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".10"
+            android:weightSum="1.0" >
             <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                android:textColor="@color/JonasButtonColorBottom"
-                    android:text="@string/part_upc_label"
-                    android:id="@+id/partUpcLabel"
-                    android:textSize="18dp"
-                    android:layout_weight=".40"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/part_upc_label"
+                android:id="@+id/partUpcLabel"
+                android:textSize="18sp"
+                android:layout_weight=".47"/>
             <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="40sp"
-                    android:id="@+id/partUpcField"
-                    android:inputType="number"
-                    android:layout_weight=".60"/>
+                android:layout_width="0dp"
+                android:layout_height="40sp"
+                android:id="@+id/partUpcField"
+                android:layout_weight=".53"
+                android:maxLength="15"
+                android:inputType="number"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/scanUpcBtn"
+                android:src="@drawable/ic_action_camera" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linearLayoutH7"
@@ -95,119 +100,95 @@
             android:layout_height="wrap_content"
             android:layout_weight=".10"
             android:weightSum="1.0" >
-        <TextView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-            android:textColor="@color/JonasButtonColorBottom"
                 android:text="@string/serial_label"
                 android:id="@+id/serialLabel"
-                android:textSize="18dp"
-                android:layout_weight=".40"/>
-        <EditText
+                android:textSize="18sp"
+                android:layout_weight=".47"/>
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="40sp"
                 android:id="@+id/serialField"
+                android:maxLength="15"
                 android:inputType="textCapCharacters"
-                android:layout_weight=".60"/>
-    </LinearLayout>
-        <LinearLayout
-                android:id="@+id/chargeActivityButtons"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".10"
-                android:weightSum="1.0" android:gravity="center_horizontal|bottom" android:padding="10dip">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/button_scan_label"
-                    android:id="@+id/scanBtn"
-                    android:layout_weight=".33"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/button_save_label"
-                    android:id="@+id/saveBtn"
-                    android:layout_weight=".33"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="Clear"
-                    android:id="@+id/clrBtn"
-                    android:layout_weight=".33"/>
+                android:layout_weight=".53"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/scanSerialBtn"
+                android:src="@drawable/ic_action_camera" />
         </LinearLayout>
         <LinearLayout
-                android:id="@+id/navigateDatabaseButtons"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".10"
-                android:weightSum="1.0" android:gravity="center_horizontal|bottom" android:padding="10dip">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/first_button"
-                    android:id="@+id/firstBtn"
-                    android:layout_weight=".25"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/previous_button"
-                    android:id="@+id/previousBtn"
-                    android:layout_weight=".25"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/next_button"
-                    android:id="@+id/nextBtn"
-                    android:layout_weight=".25"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/roundbutton"
-                    android:text="@string/last_button"
-                    android:id="@+id/lastBtn"
-                    android:layout_weight=".25"/>
+            android:id="@+id/navigateDatabaseButtons"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".10"
+            android:weightSum="1.0" android:gravity="center_horizontal|bottom" android:padding="10dip">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:id="@+id/firstBtn"
+                android:layout_weight=".25"
+                android:src="@drawable/ic_action_back_dark"
+                android:background="@drawable/roundbutton" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/previous_button"
+                android:id="@+id/previousBtn"
+                android:layout_weight=".25"
+                android:src="@drawable/ic_action_previous_item_dark"
+                android:background="@drawable/roundbutton" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/next_button"
+                android:id="@+id/nextBtn"
+                android:layout_weight=".25"
+                android:src="@drawable/ic_action_next_item_dark"
+                android:background="@drawable/roundbutton" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/last_button"
+                android:id="@+id/lastBtn"
+                android:layout_weight=".25"
+                android:src="@drawable/ic_action_forward_dark"
+                android:background="@drawable/roundbutton" />
         </LinearLayout>
         <LinearLayout
-                android:id="@+id/linearLayoutH8"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".10"
-                android:weightSum="1.0" >
+            android:id="@+id/linearLayoutH9"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".10"
+            android:weightSum="1.0" >
             <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/required_fields"
-                    android:id="@+id/requiredTag"
-                    android:textSize="18dp"
-                    android:layout_weight=".80"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/required_fields"
+                android:id="@+id/requiredTag"
+                android:textSize="18sp"
+                android:layout_weight="0.50"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/roundbutton"
                 android:text="@string/delete_button"
-                android:id="@+id/delBtn" />
+                android:id="@+id/delOne"
+                android:background="@drawable/roundbutton" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/roundbutton"
-                android:text="@string/delete_all_button"
-                android:id="@+id/delAllBtn" />
+                android:text="Clear"
+                android:id="@+id/clrBtn"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:background="@drawable/roundbutton" />
 
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="40sp"
-                    android:id="@+id/blankField"
-                    android:layout_weight=".70"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

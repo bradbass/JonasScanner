@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,16 +86,18 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
         //create buttons
-        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
-        final Button saveBtn = (Button) findViewById(R.id.saveBtn);
+        //final Button scanBtn = (Button) findViewById(R.id.scanBtn);
+        //final Button saveBtn = (Button) findViewById(R.id.saveBtn);
         //final Button sendBtn = (Button) findViewById(R.id.sendBtn);
-        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
-        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
-        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
-        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
-        final Button delBtn = (Button) findViewById(R.id.delBtn);
-        final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+        final ImageButton firstBtn = (ImageButton) findViewById(R.id.firstBtn);
+        final ImageButton nextBtn = (ImageButton) findViewById(R.id.nextBtn);
+        final ImageButton prevBtn = (ImageButton) findViewById(R.id.previousBtn);
+        final ImageButton lastBtn = (ImageButton) findViewById(R.id.lastBtn);
+        final ImageButton scanUpcBtn = (ImageButton) findViewById(R.id.scanUpcBtn);
+        final ImageButton scanSerialBtn = (ImageButton) findViewById(R.id.scanSerialBtn);
+
         final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+        final Button delBtn = (Button) findViewById(R.id.delOne);
 
         final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
         final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
@@ -126,14 +129,14 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        scanBtn.setOnClickListener(new OnClickListener() {
+        /*scanBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
                 transferIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
                 startActivityForResult(transferIntent, 0);
             }
-        });
+        });*/
 
         serialBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -153,13 +156,30 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        saveBtn.setOnClickListener(new OnClickListener() {
+        scanSerialBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(chargeIntent, 1);
+            }
+        });
+
+        scanUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                Intent chargeIntent = new Intent(Scan.ACTION);
+                startActivityForResult(chargeIntent, 2);
+            }
+        });
+
+        /*saveBtn.setOnClickListener(new OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v) {
                 save();
             }
-        });
+        });*/
 
        /* sendBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -212,14 +232,14 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        delAllBtn.setOnClickListener(new OnClickListener() {
+        /*delAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //
                 deleteAll();
                 clearFields();
             }
-        });
+        });*/
 
         clrBtn.setOnClickListener(new OnClickListener() {
             @Override

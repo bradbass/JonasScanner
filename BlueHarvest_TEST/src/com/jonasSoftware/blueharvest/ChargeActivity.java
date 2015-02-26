@@ -96,9 +96,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
 		//buttons
-		final Button scanBtn = (Button) findViewById(R.id.scanBtn);
+		//final Button scanBtn = (Button) findViewById(R.id.scanBtn);
 		//final Button dateBtn = (Button) findViewById(R.id.dateBtn);
-		final Button saveBtn = (Button) findViewById(R.id.saveBtn);
+		//final Button saveBtn = (Button) findViewById(R.id.saveBtn);
 		//final Button sendBtn = (Button) findViewById(R.id.sendBtn);
 		//final Button backBtn = (Button) findViewById(R.id.btnBack);
 		//final Button exitBtn = (Button) findViewById(R.id.btnExit);
@@ -106,13 +106,12 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         final ImageButton nextBtn = (ImageButton) findViewById(R.id.nextBtn);
         final ImageButton prevBtn = (ImageButton) findViewById(R.id.previousBtn);
         final ImageButton lastBtn = (ImageButton) findViewById(R.id.lastBtn);
+        final ImageButton scanUpcBtn = (ImageButton) findViewById(R.id.scanUpcBtn);
+        final ImageButton scanSerialBtn = (ImageButton) findViewById(R.id.scanSerialBtn);
 
         final Button clrBtn = (Button) findViewById(R.id.clrBtn);
         final Button delBtn = (Button) findViewById(R.id.delOne);
         //final Button delAllBtn = (Button) findViewById(R.id.delAll);
-
-        final ImageButton scanUpcBtn = (ImageButton) findViewById(R.id.scanUpcBtn);
-        final ImageButton scanSerialBtn = (ImageButton) findViewById(R.id.scanSerialBtn);
 
         final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
         final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
@@ -206,7 +205,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
         scanUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                Intent chargeIntent = new Intent(Scan.ACTION);
                 startActivityForResult(chargeIntent, 2);
             }
         });
@@ -493,6 +493,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 
             save = true;
             clearBottomFields();
+            HomeActivity.moduleBtnColorChngr();
         }
     }
 
@@ -653,18 +654,19 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 	   if (requestCode != 0) {
 	      if (resultCode == RESULT_OK) {
-	         String scanResult = intent.getStringExtra("SCAN_RESULT");
+	         //String scanResult = intent.getStringExtra("SCAN_RESULT");
+              String scanResult = intent.getStringExtra(Scan.BARCODE);
 	         //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 	         // Handle successful scan
 	         //EditText code =(EditText)findViewById(R.id.scanField);
               switch (requestCode) {
                   case 1:
                       _serialField.setText(scanResult);
-                      setUpc(scanResult);
+                      setSerial(scanResult);
                       break;
                   case 2:
                       _scanField.setText(scanResult);
-                      setSerial(scanResult);
+                      setUpc(scanResult);
                       break;
                   default:
                       // do something

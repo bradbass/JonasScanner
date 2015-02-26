@@ -59,6 +59,8 @@ public class HomeActivity extends Activity {
     private final Crypter crypter = new Crypter();
     private Boolean save = false;
 
+    private static DatabaseHandler _dbh;
+
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,15 +85,8 @@ public class HomeActivity extends Activity {
 
         //test
         //_chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
-
-        //check tables for data.  If data exists, change the button color of the corresponding module and italicise the text
-        DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
-        dbh.checkTables();
-
-        if (!DatabaseHandler._dataTables.isEmpty()) {
-            List<String> dataTables = DatabaseHandler._dataTables;
-            moduleBtnColorChngr(dataTables);
-        }
+        _dbh = new DatabaseHandler(getApplicationContext());
+        moduleBtnColorChngr();
 
         /*configBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -398,7 +393,7 @@ public class HomeActivity extends Activity {
                 }
                 db.close();
                 //change home screen module button back to original color
-                HomeActivity._moduleBtnColorChngr(table);
+                _moduleBtnColorChngr(table);
             }
         });
         aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -490,7 +485,7 @@ public class HomeActivity extends Activity {
                 //clearVars();
                 makeText(getApplicationContext(), "All records have been deleted!", LENGTH_LONG).show();
                 //change home screen module button back to original color
-                HomeActivity._moduleBtnColorChngr(table);
+                _moduleBtnColorChngr(table);
             }
         });
         aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -504,8 +499,18 @@ public class HomeActivity extends Activity {
         aDB.show();
     }
 
+    public static void moduleBtnColorChngr() {
+        //check tables for data.  If data exists, change the button color of the corresponding module and italicise the text
+        _dbh.checkTables();
+
+        if (!DatabaseHandler._dataTables.isEmpty()) {
+            List<String> dataTables = DatabaseHandler._dataTables;
+            moduleBtnColorChngr(dataTables);
+        }
+    }
+
     // change module button color if data exists in corresponding table
-    private void moduleBtnColorChngr(List<String> dataTables) {
+    public static void moduleBtnColorChngr(List<String> dataTables) {
         for (String table : dataTables) {
             switch (table) {
                 case "chrgData":

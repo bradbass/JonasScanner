@@ -4,9 +4,10 @@
             android:layout_height="fill_parent" >
 
     <LinearLayout
+            android:id="@+id/loginScreen"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-        android:background="@drawable/jonasbackdrop"
+            android:background="@drawable/officialbackgroundwithlogo_25bright45contrast"
             android:orientation="vertical"
             android:padding="10dip" >
         <!--  View Title Label -->

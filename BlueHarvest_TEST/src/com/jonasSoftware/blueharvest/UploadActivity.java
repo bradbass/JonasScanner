@@ -65,16 +65,14 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
         //create buttons
-        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
-        final Button saveBtn = (Button) findViewById(R.id.saveBtn);
-        //final Button sendBtn = (Button) findViewById(R.id.sendBtn);
-        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
-        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
-        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
-        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
-        final Button delBtn = (Button) findViewById(R.id.delBtn);
-        final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+        final ImageButton firstBtn = (ImageButton) findViewById(R.id.firstBtn);
+        final ImageButton nextBtn = (ImageButton) findViewById(R.id.nextBtn);
+        final ImageButton prevBtn = (ImageButton) findViewById(R.id.previousBtn);
+        final ImageButton lastBtn = (ImageButton) findViewById(R.id.lastBtn);
+        final ImageButton scanUpcBtn = (ImageButton) findViewById(R.id.scanUpcBtn);
+
         final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+        final Button delBtn = (Button) findViewById(R.id.delOne);
 
         final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
 
@@ -92,7 +90,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         _db.populateDefaults(2);
         populateDefaults();
 
-        scanBtn.setOnClickListener(new OnClickListener() {
+        /*scanBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //do stuff
@@ -100,7 +98,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 uploadIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
                 startActivityForResult(uploadIntent, 0);
             }
-        });
+        });*/
 
         partUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -111,13 +109,22 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        saveBtn.setOnClickListener(new OnClickListener() {
+        scanUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                Intent chargeIntent = new Intent(Scan.ACTION);
+                startActivityForResult(chargeIntent, 2);
+            }
+        });
+
+        /*saveBtn.setOnClickListener(new OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View view) {
                 save();
             }
-        });
+        });*/
 
         /*sendBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -174,14 +181,14 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             }
         });
 
-        delAllBtn.setOnClickListener(new OnClickListener() {
+        /*delAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //do stuff
                 deleteAll();
                 clearFields();
             }
-        });
+        });*/
 
         clrBtn.setOnClickListener(new OnClickListener() {
             @Override

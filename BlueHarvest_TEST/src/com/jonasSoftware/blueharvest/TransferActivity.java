@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,16 +72,15 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         final DatabaseHandler _db = new DatabaseHandler(getApplicationContext());
 
         //create buttons
-        final Button scanBtn = (Button) findViewById(R.id.scanBtn);
-        final Button saveBtn = (Button) findViewById(R.id.saveBtn);
-        //final Button sendBtn = (Button) findViewById(R.id.sendBtn);
-        final Button firstBtn = (Button) findViewById(R.id.firstBtn);
-        final Button nextBtn = (Button) findViewById(R.id.nextBtn);
-        final Button prevBtn = (Button) findViewById(R.id.previousBtn);
-        final Button lastBtn = (Button) findViewById(R.id.lastBtn);
-        final Button delBtn = (Button) findViewById(R.id.delBtn);
-        final Button delAllBtn = (Button) findViewById(R.id.delAllBtn);
+        final ImageButton firstBtn = (ImageButton) findViewById(R.id.firstBtn);
+        final ImageButton nextBtn = (ImageButton) findViewById(R.id.nextBtn);
+        final ImageButton prevBtn = (ImageButton) findViewById(R.id.previousBtn);
+        final ImageButton lastBtn = (ImageButton) findViewById(R.id.lastBtn);
+        final ImageButton scanUpcBtn = (ImageButton) findViewById(R.id.scanUpcBtn);
+        final ImageButton scanSerialBtn = (ImageButton) findViewById(R.id.scanSerialBtn);
+
         final Button clrBtn = (Button) findViewById(R.id.clrBtn);
+        final Button delBtn = (Button) findViewById(R.id.delOne);
 
         final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
         final TextView serialBtn = (TextView) findViewById(R.id.serialLabel);
@@ -102,15 +102,6 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         _db.populateDefaults(3);
         populateDefaults();
 
-        scanBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
-                transferIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-                startActivityForResult(transferIntent, 0);
-            }
-        });
-
         serialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,11 +120,20 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             }
         });
 
-        saveBtn.setOnClickListener(new OnClickListener() {
-            @SuppressWarnings("ConstantConditions")
+        scanSerialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                save();
+                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                startActivityForResult(chargeIntent, 1);
+            }
+        });
+
+        scanUpcBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
+                Intent chargeIntent = new Intent(Scan.ACTION);
+                startActivityForResult(chargeIntent, 2);
             }
         });
 
@@ -185,15 +185,6 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 deleteOne();
                 clearFields();
                 _quantityField.setText("1");
-            }
-        });
-
-        delAllBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //
-                deleteAll();
-                clearFields();
             }
         });
 
@@ -663,11 +654,11 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 switch (requestCode) {
                     case 1:
                         _serialField.setText(scanResult);
-                        setUpc(scanResult);
+                        setSerial(scanResult);
                         break;
                     case 2:
                         _scanField.setText(scanResult);
-                        setSerial(scanResult);
+                        setUpc(scanResult);
                         break;
                     default:
                         // do something
