@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
     android:background="@drawable/blue_background"
             android:layout_width="fill_parent" android:id="@+id/scrollView1">
     <LinearLayout
@@ -7,7 +7,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="1.1" android:dividerPadding="10sp" android:paddingTop="10sp" android:paddingLeft="2sp">
+            android:weightSum="1.1"
+        android:dividerPadding="10sp"
+        android:paddingTop="10sp"
+        android:paddingStart="2sp"
+        android:paddingEnd="2sp">
         <LinearLayout
                 android:id="@+id/linearLayoutH1"
                 android:layout_width="fill_parent"
