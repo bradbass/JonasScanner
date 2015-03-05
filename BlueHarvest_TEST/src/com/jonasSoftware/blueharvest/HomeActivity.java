@@ -501,6 +501,10 @@ public class HomeActivity extends Activity {
 
     public static void moduleBtnColorChngr() {
         //check tables for data.  If data exists, change the button color of the corresponding module and italicise the text
+        for (int i = 1; i < 5; i++) {
+            _moduleBtnColorChngr(i);
+        }
+
         _dbh.checkTables();
 
         if (!DatabaseHandler._dataTables.isEmpty()) {
