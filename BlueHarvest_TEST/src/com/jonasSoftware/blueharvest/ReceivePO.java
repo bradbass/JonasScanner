@@ -129,66 +129,37 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             }
         });
 
-        /*scanBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent transferIntent = new Intent("com.google.zxing.client.android.SCAN");
-                transferIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-                startActivityForResult(transferIntent, 0);
-            }
-        });*/
-
         serialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
-                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-                startActivityForResult(chargeIntent, 1);
+                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                startActivityForResult(intent, 1);
             }
         });
 
         partUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
-                //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-                startActivityForResult(chargeIntent, 2);
+                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                startActivityForResult(intent, 2);
             }
         });
 
         scanSerialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
-                startActivityForResult(chargeIntent, 1);
+                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                startActivityForResult(intent, 1);
             }
         });
 
         scanUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
-                Intent chargeIntent = new Intent(Scan.ACTION);
-                startActivityForResult(chargeIntent, 2);
+                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                startActivityForResult(intent, 2);
             }
         });
-
-        /*saveBtn.setOnClickListener(new OnClickListener() {
-            @SuppressWarnings("ConstantConditions")
-            @Override
-            public void onClick(View v) {
-                save();
-            }
-        });*/
-
-       /* sendBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                send();
-                clearVars();
-                clearFields();
-            }
-        });*/
 
         firstBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -231,15 +202,6 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 _quantityField.setText("1");
             }
         });
-
-        /*delAllBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //
-                deleteAll();
-                clearFields();
-            }
-        });*/
 
         clrBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -764,7 +726,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode != 0) {
             if (resultCode == RESULT_OK) {
-                String scanResult = intent.getStringExtra("SCAN_RESULT");
+                String scanResult = ScanActivity._barcode;
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.scanField);
@@ -867,38 +829,5 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     @Override
     public void onBackPressed() {
         endActivity();
-        /*if ((sent == null) || sent) {
-            if ((sent == null) || (exit == null) || !exit) {
-                backToMain();
-            } else {
-                exitApp();
-            }
-        } else {
-            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
-            aDB.setTitle(getString(R.string.onbackpress_dialog_title));
-            aDB.setMessage(getString(R.string.onbackpress_dialog_message));
-            aDB.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // When user clicks OK, the db is purged and user is sent back to main activity.
-                    if((exit != null) && exit) {
-                        exitApp();
-                    } else {
-                        backToMain();
-                    }
-                }
-            });
-            aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // If user clicks NO, dialog is closed.
-                    exit = false;
-                    dialog.cancel();
-                }
-            });
-            aDB.show();
-        }*/
     }
 }

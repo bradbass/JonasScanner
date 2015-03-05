@@ -106,8 +106,10 @@ public class ScanActivity extends Activity implements ScanditSDKListener {
 
         Toast.makeText(this, symbology + ": " + cleanedBarcode, Toast.LENGTH_LONG).show();
 
+        // stop the scanner
         mBarcodePicker.stopScanning();
 
+        //return result
         Intent returnIntent = new Intent();
         returnIntent.putExtra("result", _barcode);
         setResult(RESULT_OK, returnIntent);

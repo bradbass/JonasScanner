@@ -103,18 +103,16 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         partUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent uploadIntent = new Intent("com.google.zxing.client.android.SCAN");
-                //uploadIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-                startActivityForResult(uploadIntent, 0);
+                Intent intent = new Intent(UploadActivity.this, ScanActivity.class);
+                startActivityForResult(intent, 2);
             }
         });
 
         scanUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
-                Intent chargeIntent = new Intent(Scan.ACTION);
-                startActivityForResult(chargeIntent, 2);
+                Intent intent = new Intent(UploadActivity.this, ScanActivity.class);
+                startActivityForResult(intent, 2);
             }
         });
 
@@ -640,7 +638,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                String scanResult = intent.getStringExtra("SCAN_RESULT");
+                String scanResult = ScanActivity._barcode;
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.scanField);
