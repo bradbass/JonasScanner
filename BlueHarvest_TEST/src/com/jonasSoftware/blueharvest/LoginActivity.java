@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created with IntelliJ IDEA.
@@ -48,14 +52,19 @@ public class LoginActivity extends Activity {
                 homeActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeActivity);
 
-                /*
+                //*
                 // if GJSYSTEM bypass login check
-                if (username == "GJSYSTEM" && password == "W!NE") {
+                //if (username.equals("betauser") && password.equals("b3t4u53r")) {
+                if (username.equals("") && password.equals("")) {
                     // log in
-                    Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+                    //Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
                     homeActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(homeActivity);
                 } else {
+                    Toast.makeText(getApplicationContext(), "Login Failed - Username or Password Incorrect!"
+                            , Toast.LENGTH_LONG).show();
+                    loginErrorMsg.setText("Login Failed!");
+                    /*
                     UserFunctions userFunction = new UserFunctions();
                     JSONObject json = userFunction.loginUser(username, password);
 
@@ -72,10 +81,10 @@ public class LoginActivity extends Activity {
 
                                 // Clear all previous data in database
                                 userFunction.logoutUser(getApplicationContext());
-                                db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_USERNAME), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT));
+                                //db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_USERNAME), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT));
 
                                 // Launch Dashboard Screen
-                                Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+                                //Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
 
                                 // Close all views before launching Dashboard
                                 homeActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -90,7 +99,7 @@ public class LoginActivity extends Activity {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                    }
+                    }//*/
                 }//*/
             }
         });
