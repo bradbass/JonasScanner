@@ -105,7 +105,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         serialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransferActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 1);
             }
         });
@@ -113,7 +113,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         partUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransferActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -121,7 +121,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         scanSerialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransferActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 1);
             }
         });
@@ -129,7 +129,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         scanUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransferActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -644,8 +644,8 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode != 0) {
             if (resultCode == RESULT_OK) {
-                String scanResult = ScanActivity._barcode;
-                //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                String scanResult = intent.getStringExtra(Scan.BARCODE);
+                String barcodeFormat = intent.getStringExtra(Scan.Pro.FORMAT);
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.partUpcField);
                 switch (requestCode) {

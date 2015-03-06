@@ -132,7 +132,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         serialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 1);
             }
         });
@@ -140,7 +140,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         partUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -148,7 +148,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         scanSerialBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 1);
             }
         });
@@ -156,7 +156,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         scanUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReceivePO.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -726,7 +726,8 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode != 0) {
             if (resultCode == RESULT_OK) {
-                String scanResult = ScanActivity._barcode;
+                String scanResult = intent.getStringExtra(Scan.BARCODE);
+                String barcodeFormat = intent.getStringExtra(Scan.Pro.FORMAT);
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.scanField);

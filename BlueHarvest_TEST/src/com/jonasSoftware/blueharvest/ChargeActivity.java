@@ -182,7 +182,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
                 //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
                 //startActivityForResult(chargeIntent, 1);
-                Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                //Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                //startActivityForResult(intent, 1);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 1);
             }
         });
@@ -193,7 +195,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
                 //chargeIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
                 //startActivityForResult(chargeIntent, 2);
-                Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                //Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -203,7 +206,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
             public void onClick(View v) {
                 //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
                 //startActivityForResult(chargeIntent, 1);
-                Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                //Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                //startActivityForResult(intent, 1);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 1);
             }
         });
@@ -214,7 +219,8 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 //Intent chargeIntent = new Intent("com.google.zxing.client.android.SCAN");
                 //Intent chargeIntent = new Intent(Scan.ACTION);
                 //startActivityForResult(chargeIntent, 2);
-                Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                //Intent intent = new Intent(ChargeActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -663,7 +669,9 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 	   if (requestCode != 0) {
 	      if (resultCode == RESULT_OK) {
 	         //String scanResult = intent.getStringExtra("SCAN_RESULT");
-             String scanResult = ScanActivity._barcode;
+             //String scanResult = ScanActivity._barcode;
+              String scanResult = intent.getStringExtra(Scan.BARCODE);
+              String barcodeFormat = intent.getStringExtra(Scan.Pro.FORMAT);
 	         //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 	         // Handle successful scan
 	         //EditText code =(EditText)findViewById(R.id.scanField);

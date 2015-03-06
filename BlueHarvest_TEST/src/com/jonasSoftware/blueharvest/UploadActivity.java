@@ -90,20 +90,10 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         _db.populateDefaults(2);
         populateDefaults();
 
-        /*scanBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //do stuff
-                Intent uploadIntent = new Intent("com.google.zxing.client.android.SCAN");
-                uploadIntent.putExtra("SCAN_MODE", "PRODUCT_MODE");
-                startActivityForResult(uploadIntent, 0);
-            }
-        });*/
-
         partUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UploadActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
@@ -111,27 +101,10 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
         scanUpcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UploadActivity.this, ScanActivity.class);
+                Intent intent = new Intent(Scan.ACTION);
                 startActivityForResult(intent, 2);
             }
         });
-
-        /*saveBtn.setOnClickListener(new OnClickListener() {
-            @SuppressWarnings("ConstantConditions")
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });*/
-
-        /*sendBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                send();
-                clearVars();
-                clearFields();
-            }
-        });*/
 
         firstBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -178,15 +151,6 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
                 _quantityField.setText("1");
             }
         });
-
-        /*delAllBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //do stuff
-                deleteAll();
-                clearFields();
-            }
-        });*/
 
         clrBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -638,7 +602,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                String scanResult = ScanActivity._barcode;
+                String scanResult = intent.getStringExtra(Scan.BARCODE);
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 //EditText code =(EditText)findViewById(R.id.scanField);

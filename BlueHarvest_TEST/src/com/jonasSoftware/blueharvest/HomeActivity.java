@@ -88,6 +88,29 @@ public class HomeActivity extends Activity {
         _dbh = new DatabaseHandler(getApplicationContext());
         moduleBtnColorChngr();
 
+        //check if pic2shop is installed, if not, install it
+        if (!Utils.isFreeScannerAppInstalled(this)) {
+            AlertDialog.Builder aDB = new AlertDialog.Builder(this);
+            aDB.setTitle("Dependency Missing");
+            aDB.setMessage("A missing dependency has been detected.  Click YES to install.");
+            aDB.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Utils.launchMarketToInstallFreeScannerApp(getApplicationContext());
+                }
+            });
+            aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // If user clicks NO, dialog is closed.
+                    dialog.cancel();
+                }
+            });
+            aDB.show();
+        }
+
         /*configBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
