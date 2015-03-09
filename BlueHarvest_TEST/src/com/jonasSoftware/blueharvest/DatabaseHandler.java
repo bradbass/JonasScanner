@@ -84,6 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //
     static int _recordNum;
     static String _currentUpc;
+    static String _dbName;
     //static Boolean _existingRec = false;
     static Cursor _curCSV;
     //final SQLiteDatabase _dbr = this.getReadableDatabase();
@@ -329,6 +330,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 // do something
                 _dataTables.add(table);
             }
+            cursor.close();
         }
         if (db != null) {
             db.close();
@@ -520,7 +522,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void saveToDb(String whse, String jobwo, String type, String item, Context context) {
-        purgeData(TABLE_DEFAULTS);
+        purgeData(5);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -631,6 +633,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String tableName = cursor.getString(cursor.getColumnIndex(COLUMN_TABLENAME));
         ReportActivity ra = new ReportActivity();
         ra.setTableName(tableName);
+        cursor.close();
     }
 
     /**
@@ -916,6 +919,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         cCursor.close();
         uCursor.close();
+        tCursor.close();
+        rCursor.close();
     }
 
     void populateReportCharge() {
@@ -1220,10 +1225,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * purge the charge data table.
      *
      */
-    public void purgeData(String dbName) {
+    public void purgeData(Integer tableNum) {
     	SQLiteDatabase db = this.getWritableDatabase();
+        switch (tableNum) {
+            case 1:
+                _dbName = "chrgData";
+                break;
+            case 2:
+                _dbName = "uploadData";
+                break;
+            case 3:
+                _dbName = "transferData";
+                break;
+            case 4:
+                _dbName = "receiveData";
+                break;
+            case 5:
+                _dbName = "defaults";
+                break;
+            default:
+                break;
+        }
         assert db != null;
-        db.delete(dbName, null, null);
+        db.delete(_dbName, null, null);
     	db.close();
     }
 
@@ -1405,6 +1429,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
             db.close();
+            cursor.close();
         }
     }
 
@@ -1422,6 +1447,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
             db.close();
+            cursor.close();
         }
     }
 
@@ -1446,6 +1472,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
             db.close();
+            cursor.close();
         }
     }
 
@@ -1477,6 +1504,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
             db.close();
+            cursor.close();
         }
     }
 
@@ -1521,6 +1549,7 @@ class notSoRandom extends DatabaseHandler{
     private List<BASES> getSomeBase(List<BASES> bases) {
         Random random = new Random();
         int base = random.nextInt(50)+1;
+        //noinspection StatementWithEmptyBody
         for (int i = 0; i < base; i++) {
             //getBase
         }

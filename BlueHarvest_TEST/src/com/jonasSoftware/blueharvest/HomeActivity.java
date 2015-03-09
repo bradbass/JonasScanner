@@ -57,7 +57,7 @@ public class HomeActivity extends Activity {
     private static ImageButton _receiveDeleteAllBtn;
     private static String _filename;
     private final Crypter crypter = new Crypter();
-    private Boolean save = false;
+    //private Boolean save = false;
 
     private static DatabaseHandler _dbh;
 
@@ -129,7 +129,6 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // send all
-                ChargeActivity ca = new ChargeActivity();
                 send(1);
             }
         });
@@ -137,7 +136,6 @@ public class HomeActivity extends Activity {
         _uploadSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                UploadActivity ua = new UploadActivity();
                 send(2);
             }
         });
@@ -145,7 +143,6 @@ public class HomeActivity extends Activity {
         _transferSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransferActivity ta = new TransferActivity();
                 send(3);
             }
         });
@@ -153,7 +150,6 @@ public class HomeActivity extends Activity {
         _receiveSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReceivePO rpo = new ReceivePO();
                 send(4);
             }
         });
@@ -161,7 +157,6 @@ public class HomeActivity extends Activity {
         _chargeDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChargeActivity ca = new ChargeActivity();
                 deleteAll(1);
             }
         });
@@ -169,7 +164,6 @@ public class HomeActivity extends Activity {
         _uploadDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                UploadActivity ua = new UploadActivity();
                 deleteAll(2);
             }
         });
@@ -177,7 +171,6 @@ public class HomeActivity extends Activity {
         _transferDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransferActivity ta = new TransferActivity();
                 deleteAll(3);
             }
         });
@@ -185,7 +178,6 @@ public class HomeActivity extends Activity {
         _receiveDeleteAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReceivePO rpo = new ReceivePO();
                 deleteAll(4);
             }
         });
@@ -392,8 +384,8 @@ public class HomeActivity extends Activity {
                         makeText(HomeActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
                     } else {
                         makeText(HomeActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
-                        Boolean sent = true;
-                        db.purgeData("chrgData");
+                        //Boolean sent = true;
+                        db.purgeData(table);
                     }
                 } catch (final Exception e) {
                     //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
