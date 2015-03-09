@@ -253,17 +253,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LABELS);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_LABELS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHRG_DATA);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WHSE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_WHSE);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_UPLOAD_DATA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSFER_DATA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECEIVE_DATA);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEFAULTS);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEFAULTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT_DATA);
  
         // Create tables again
