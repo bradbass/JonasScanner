@@ -786,7 +786,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
                 } else {
                     makeText(ChargeActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                     Boolean sent = true;
-                    db.purgeData("chrgData");
+                    db.purgeData(1);
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -1002,7 +1002,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 		Intent chrgAct = new Intent();
 		setResult(RESULT_OK, chrgAct);
-		db.purgeData("chrgData");
+		db.purgeData(1);
         db.close();
 		finish();
 	}
@@ -1012,7 +1012,7 @@ public class ChargeActivity extends Activity implements OnItemSelectedListener, 
 		//String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 		//Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-		db.purgeData("chrgData");
+		db.purgeData(1);
 		db.close();
 		endActivity();
 	}
