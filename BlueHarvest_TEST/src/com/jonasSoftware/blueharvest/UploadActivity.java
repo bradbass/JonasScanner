@@ -76,7 +76,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
 
         final TextView partUpcBtn = (TextView) findViewById(R.id.partUpcLabel);
 
-        _scanField = (EditText) findViewById(R.id.partUpcField);
+        _scanField = (EditText) findViewById(R.id.scanField);
         _quantityField = (EditText) findViewById(R.id.quantityField);
         _quantityField.setText("1");
 
