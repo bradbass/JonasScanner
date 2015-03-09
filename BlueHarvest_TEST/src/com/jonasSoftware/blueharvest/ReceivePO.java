@@ -402,7 +402,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
                 } else {
                     makeText(ReceivePO.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                     //sent = true;
-                    db.purgeData("receiveData");
+                    db.purgeData(4);
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -803,7 +803,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         Intent recAct = new Intent();
         setResult(RESULT_OK, recAct);
-        db.purgeData("receiveData");
+        db.purgeData(4);
         db.close();
         finish();
     }
@@ -816,7 +816,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         //String TABLE_CHRG_DATA = "TABLE_CHRG_DATA";
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         //Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-        db.purgeData("receiveData");
+        db.purgeData(4);
         db.close();
         endActivity();
     }

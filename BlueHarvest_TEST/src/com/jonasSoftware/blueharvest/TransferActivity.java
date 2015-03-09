@@ -468,7 +468,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
                 } else {
                     makeText(TransferActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                     //sent = true;
-                    db.purgeData("transferData");
+                    db.purgeData(3);
                 }
             } catch (final Exception e) {
                 //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -717,7 +717,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         Intent transAct = new Intent();
         setResult(RESULT_OK, transAct);
-        db.purgeData("transferData");
+        db.purgeData(3);
         db.close();
         finish();
     }
@@ -725,7 +725,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
     private void backToMain() {
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         //Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-        db.purgeData("transferData");
+        db.purgeData(3);
         db.close();
         endActivity();
     }
