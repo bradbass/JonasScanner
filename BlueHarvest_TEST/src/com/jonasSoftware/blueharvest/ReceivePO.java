@@ -453,7 +453,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
         validateFields();
 
         if (isValid) {
-            _db.saveToDb(_whse, _quantity, _upc, _serial, _date, _comment, _po);
+            _db.saveToDb(_date, _whse, _po, _upc, _quantity, _serial, _comment);
 
             save = true;
             clearBottomFields();

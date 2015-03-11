@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
@@ -33,7 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
     public static List<String> _dataTables;
     // Database Version
-    private static final int DATABASE_VERSION = 19;
+    private static final int DATABASE_VERSION = 20;
  
     // Database Name
     private static final String DATABASE_NAME = "jonasScanner";
@@ -132,13 +133,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String CREATE_RECEIVE_TABLE = "CREATE TABLE " + TABLE_RECEIVE_DATA + "("
             + COLUMN_KEY + " INTEGER PRIMARY KEY,"
+            + COLUMN_DATE + " TEXT,"
             + COLUMN_WHSE + " TEXT,"
             + COLUMN_PO_NUM + " TEXT,"
             + COLUMN_UPC + " TEXT,"
             + COLUMN_QUANTITY + " TEXT,"
             + COLUMN_SERIAL + " TEXT,"
-            + COLUMN_COMMENT + " TEXT,"
-            + COLUMN_DATE + " TEXT)";
+            + COLUMN_COMMENT + " TEXT)";
     
     private static final String CREATE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
     		+ COLUMN_KEY + " INTEGER PRIMARY KEY,"
@@ -201,17 +202,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Create tables    	
-        db.execSQL(CREATE_CATEGORIES_TABLE);        
-        db.execSQL(CREATE_CHRGDATA_TABLE);
-        db.execSQL(CREATE_SETTINGS_TABLE);
-        db.execSQL(CREATE_WHSE_TABLE);
-        db.execSQL(CREATE_ITEM_TABLE);
-        db.execSQL(CREATE_TYPE_TABLE);
+        try {
+            db.execSQL(CREATE_CATEGORIES_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            db.execSQL(CREATE_SETTINGS_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            db.execSQL(CREATE_DEFAULTS_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            db.execSQL(CREATE_WHSE_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            db.execSQL(CREATE_ITEM_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            db.execSQL(CREATE_TYPE_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         db.execSQL(CREATE_LOGIN_TABLE);
+        db.execSQL(CREATE_CHRGDATA_TABLE);
         db.execSQL(CREATE_UPLOADDATA_TABLE);
         db.execSQL(CREATE_TRANSFER_TABLE);
         db.execSQL(CREATE_RECEIVE_TABLE);
-        db.execSQL(CREATE_DEFAULTS_TABLE);
         db.execSQL(CREATE_REPORTS_TABLE);
         setDefaultLabel(db);
         //insertBlankRow();
@@ -492,8 +517,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * @param comment   option comment
      * @param po        optional PO number
      */
-    public void saveToDb(String whse, String quantity, String upc, String serial, String date,
-                         String comment, String po) {
+    public void saveToDb(String date, String whse, String po, String upc, String quantity,
+                         String serial, String comment) {
         //do stuff
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -501,12 +526,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // Insert row
         ContentValues values = new ContentValues();
+        values.put(COLUMN_DATE, date);
         values.put(COLUMN_WHSE, whse);
         values.put(COLUMN_PO_NUM, po);
         values.put(COLUMN_UPC, upc);
         values.put(COLUMN_QUANTITY, quantity);
         values.put(COLUMN_SERIAL, serial);
-        values.put(COLUMN_DATE, date);
         values.put(COLUMN_COMMENT, comment);
 
         returnVal = db.update(TABLE_RECEIVE_DATA, values, "id = ? AND upc = "
