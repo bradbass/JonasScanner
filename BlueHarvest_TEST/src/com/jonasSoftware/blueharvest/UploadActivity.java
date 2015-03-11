@@ -600,7 +600,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
      */
     @SuppressWarnings("ConstantConditions")
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0) {
+        if (requestCode != 0) {
             if (resultCode == RESULT_OK) {
                 String scanResult = intent.getStringExtra(Scan.BARCODE);
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
