@@ -519,7 +519,7 @@ public class Base64 {
         encoder.output = new byte[output_len];
         encoder.process(input, offset, len, true);
 
-        assert encoder.op == output_len;
+        //assert encoder.op == output_len;
 
         return encoder.output;
     }
@@ -702,9 +702,9 @@ public class Base64 {
                     output[op++] = '\n';
                 }
 
-                if (BuildConfig.DEBUG && tailLen == 0) { throw new AssertionError(); }
+                //if (BuildConfig.DEBUG && tailLen == 0) { throw new AssertionError(); }
                 //assert tailLen == 0;
-                if (BuildConfig.DEBUG && p == len) { throw new AssertionError(); }
+                //if (BuildConfig.DEBUG && p == len) { throw new AssertionError(); }
                 //assert p == len;
             } else {
                 // Save the leftovers in tail to be consumed on the next
