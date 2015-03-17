@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -56,6 +58,7 @@ public class HomeActivity extends Activity {
     private static ImageButton _receiveSendAllBtn;
     private static ImageButton _receiveDeleteAllBtn;
     private static String _filename;
+    private static Integer _tableNum;
     private final Crypter crypter = new Crypter();
     //private Boolean save = false;
 
@@ -129,28 +132,32 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // send all
-                send(1);
+                _tableNum = 1;
+                send();
             }
         });
 
         _uploadSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                send(2);
+                _tableNum = 2;
+                send();
             }
         });
 
         _transferSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                send(3);
+                _tableNum = 3;
+                send();
             }
         });
 
         _receiveSendAllBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                send(4);
+                _tableNum = 4;
+                send();
             }
         });
 
@@ -340,7 +347,7 @@ public class HomeActivity extends Activity {
 
     @SuppressWarnings("ConstantConditions")
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    void send(final Integer table) {
+    void send() {
         AlertDialog.Builder aDB = new AlertDialog.Builder(this);
         aDB.setTitle("Send all?");
         aDB.setMessage("Are you sure you want to send all data from this module?");
@@ -352,11 +359,12 @@ public class HomeActivity extends Activity {
                 // Auto-generated method stub
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 db.populateFields();
+                //new PopulateFields().execute((Object[]) null);
 
-                setDateTime(table);
+                setDateTime(_tableNum);
 
                 //db.exportDb(getApplicationContext());
-                db.exportDb(getApplicationContext(), _filename, table);
+                db.exportDb(getApplicationContext(), _filename, _tableNum);
                 //
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                 StrictMode.setThreadPolicy(policy);
@@ -378,14 +386,14 @@ public class HomeActivity extends Activity {
                 m.setHost(SettingsActivity._host);
                 m.setPort(SettingsActivity._port);
                 try {
-                    m.addAttachment(Environment.getExternalStorageDirectory().getPath(),_filename);
+                    m.addAttachment(Environment.getExternalStorageDirectory().getPath() + "/Attachments", _filename);
 
                     if (!m.send()) {
                         makeText(HomeActivity.this, getString(R.string.toast_email_fail_message), LENGTH_LONG).show();
                     } else {
                         makeText(HomeActivity.this, getString(R.string.toast_email_success_message), LENGTH_LONG).show();
                         //Boolean sent = true;
-                        db.purgeData(table);
+                        db.purgeData(_tableNum);
                     }
                 } catch (final Exception e) {
                     //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
@@ -408,7 +416,7 @@ public class HomeActivity extends Activity {
                 }
                 db.close();
                 //change home screen module button back to original color
-                _moduleBtnColorChngr(table);
+                _moduleBtnColorChngr(_tableNum);
             }
         });
         aDB.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -512,6 +520,14 @@ public class HomeActivity extends Activity {
             }
         });
         aDB.show();
+    }
+
+    private void checkOldAttachments() {
+        // check for old attachments and if older than a certain date, delete them
+    }
+
+    private void deleteOldAttachments() {
+        // if we've found old attachments, we need to delete them
     }
 
     public static void moduleBtnColorChngr() {
@@ -631,4 +647,28 @@ public class HomeActivity extends Activity {
 		
 		this.finish();
 	}
+
+    private class PopulateFields extends AsyncTask<Object, Object, Cursor> {
+        //DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+
+        @Override
+        protected Cursor doInBackground(Object... params) {
+            _dbh.populateFields();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Cursor result) {
+            //
+        }
+    }
+
+    private class ExportDB extends AsyncTask<Object, Object, Cursor> {
+
+        @Override
+        protected Cursor doInBackground(Object... params) {
+            _dbh.exportDb(getApplicationContext(), _filename, _tableNum);
+            return null;
+        }
+    }
 }
