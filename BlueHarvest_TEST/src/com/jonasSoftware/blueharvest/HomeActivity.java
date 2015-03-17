@@ -13,17 +13,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import static android.view.View.OnClickListener;
@@ -85,6 +90,9 @@ public class HomeActivity extends Activity {
         _uploadDeleteAllBtn = (ImageButton) findViewById(R.id.uploadDeleteAllBtn);
         _transferDeleteAllBtn = (ImageButton) findViewById(R.id.transferDeleteAllBtn);
         _receiveDeleteAllBtn = (ImageButton) findViewById(R.id.receiveDeleteAllBtn);
+
+        //check for and delete old attachments
+        checkOldAttachments();
 
         //test
         //_chrgBtn.setBackgroundResource(R.color.DataToSendButtonColor);
@@ -524,10 +532,47 @@ public class HomeActivity extends Activity {
 
     private void checkOldAttachments() {
         // check for old attachments and if older than a certain date, delete them
+        // AsyncTask?
+        List<String> attachments = new ArrayList<>();
+        File dir = new File(Environment.getExternalStorageDirectory().getPath() + "/Attachments");
+        File[] arrAttachments = dir.listFiles();
+        for (File arrAttachment : arrAttachments) {
+            attachments.add(arrAttachment.getPath());
+        }
+        validateOldAttachments(attachments);
     }
 
-    private void deleteOldAttachments() {
+    private void validateOldAttachments(List<String> attachments) {
+        String[] attFiles = attachments.toArray(new String[attachments.size()]);
+        for (int i = 0; i < attachments.size(); i++) {
+            File attFile = new File(attFiles[i]);
+            //Date lastModDate = new Date(attFile.lastModified());
+            Integer lastModifiedDate = Integer.valueOf(new SimpleDateFormat("ddMMyyyy", Locale.US).format(new Date(attFile.lastModified()))); //Integer.valueOf(String.valueOf(lastModDate));
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy", Locale.US);
+            Integer currDate = Integer.valueOf(sdf.format(cal.getTime()));
+            //Time today = new Time(Time.getCurrentTimezone());
+            //today.setToNow();
+            //Integer currDate = today.monthDay + today.month + today.year;
+            Integer days = currDate - lastModifiedDate;
+            if (days > 30) {
+                deleteOldAttachments(attFile);
+            }
+        }
+    }
+
+    private void deleteOldAttachments(File attFile) {
         // if we've found old attachments, we need to delete them
+        boolean deleted = false;
+        try {
+            deleted = attFile.delete();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (deleted) {
+            Toast.makeText(getApplicationContext(),"Old attachments successfully deleted", Toast.LENGTH_LONG).show();
+        }
     }
 
     public static void moduleBtnColorChngr() {
