@@ -1123,17 +1123,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     /**
      * Export the database to a csv file.
-     * @param context   context
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void exportDb(Context context, String filename, Integer tableNum) {
+    public void exportDb(String filename, Integer tableNum) {
         //
     	SQLiteDatabase _db = this.getReadableDatabase();
         //File exportDir = getDir(context);
         File ed = Environment.getExternalStorageDirectory();
         String exportDir = ed.getPath();
 
-        File exfile = new File(exportDir + "/Attachments");
+        File exfile = new File(exportDir + "/ScannerAttachments");
         try {
             exfile.mkdir();
         } catch (Exception e) {

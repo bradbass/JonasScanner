@@ -373,7 +373,7 @@ public class ReceivePO extends Activity implements OnItemSelectedListener, OnDat
             setDateTime();
 
             //db.exportDb(getApplicationContext());
-            db.exportDb(getApplicationContext(), _filename, 4);
+            db.exportDb(_filename, 4);
             //
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);

@@ -439,7 +439,7 @@ public class TransferActivity extends Activity implements OnItemSelectedListener
             setDateTime();
 
             //db.exportDb(getApplicationContext());
-            db.exportDb(getApplicationContext(), _filename, 3);
+            db.exportDb(_filename, 3);
             //
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);

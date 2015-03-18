@@ -13,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -372,7 +371,7 @@ public class HomeActivity extends Activity {
                 setDateTime(_tableNum);
 
                 //db.exportDb(getApplicationContext());
-                db.exportDb(getApplicationContext(), _filename, _tableNum);
+                db.exportDb(_filename, _tableNum);
                 //
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                 StrictMode.setThreadPolicy(policy);
@@ -534,12 +533,17 @@ public class HomeActivity extends Activity {
         // check for old attachments and if older than a certain date, delete them
         // AsyncTask?
         List<String> attachments = new ArrayList<>();
-        File dir = new File(Environment.getExternalStorageDirectory().getPath() + "/Attachments");
-        File[] arrAttachments = dir.listFiles();
-        for (File arrAttachment : arrAttachments) {
-            attachments.add(arrAttachment.getPath());
+        File dir;
+        try {
+            dir = new File(Environment.getExternalStorageDirectory().getPath() + "/ScannerAttachments");
+            File[] arrAttachments = dir.listFiles();
+            for (File arrAttachment : arrAttachments) {
+                attachments.add(arrAttachment.getPath());
+            }
+            validateOldAttachments(attachments);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        validateOldAttachments(attachments);
     }
 
     private void validateOldAttachments(List<String> attachments) {
@@ -712,7 +716,7 @@ public class HomeActivity extends Activity {
 
         @Override
         protected Cursor doInBackground(Object... params) {
-            _dbh.exportDb(getApplicationContext(), _filename, _tableNum);
+            _dbh.exportDb(_filename, _tableNum);
             return null;
         }
     }

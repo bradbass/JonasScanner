@@ -418,7 +418,7 @@ public class UploadActivity extends Activity implements OnItemSelectedListener, 
             setDateTime();
 
             //db.exportDb(getApplicationContext());
-            db.exportDb(getApplicationContext(), _filename, 2);
+            db.exportDb(_filename, 2);
             //
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
